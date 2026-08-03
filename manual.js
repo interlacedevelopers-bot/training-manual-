@@ -484,5 +484,91 @@ const MANUALS = {
         body: "Partner visas run through the 820/801 (onshore) or 309/100 (offshore) pathway, generally requiring 12 months of de facto relationship (or a registered relationship). Parent visas: Subclass 103 has an extremely long queue (30+ years); Subclass 143 (Contributory) is much faster (2–3 years) but far more expensive. The 'balance of family test' requires at least half the applicant's children to be Australian citizens/PRs/eligible NZ citizens, or more children living in Australia than any other single country. The Subclass 870 (Sponsored Parent, Temporary) allows a temporary stay of up to 3–5 years, renewable to a 10-year total."
       }
     ]
+  },
+
+  18: {
+    intro: "This module is mandatory for every Interlace Studies staff member. It covers the Code of Conduct, the Privacy and Data Protection Policy, the Whistleblower Protection Policy, and the Modern Slavery Policy — the ethical and legal foundation of how we operate.",
+    sections: [
+      {
+        heading: "Code of Conduct",
+        body: "Applies to everyone working for or representing Interlace Studies — employees, directors, officers, contractors, consultants, and volunteers — regardless of location or seniority. Core principles: act with honesty and integrity, treat everyone with respect, comply with the law and company policy, and protect the company's reputation and assets. Any actual, potential, or perceived conflict of interest must be declared immediately to a manager or HR. Gifts or entertainment must be declared if their value exceeds $100. Breaches can lead to counselling, formal warnings, or termination, with illegal acts reported to authorities."
+      },
+      {
+        heading: "Privacy and Data Protection",
+        body: "Personal information is collected lawfully and only as reasonably necessary; sensitive information (health, criminal records) requires explicit consent. Interlace Studies will never sell personal information to third parties. Data is stored securely and access is restricted on a need-to-know basis. A breach likely to cause serious harm is an 'Eligible Data Breach' under the Notifiable Data Breaches scheme, requiring notification to affected individuals and the OAIC. Employees must use secure passwords, lock screens when unattended, never share login credentials, and immediately report suspected breaches to IT and the Privacy Officer."
+      },
+      {
+        heading: "Whistleblower Protection",
+        body: "Eligible Whistleblowers include current and former employees/officers, contractors/consultants/suppliers (and their employees), associates, and their spouses/relatives/dependents. Reportable conduct includes fraud, corruption, illegal activity, and significant WHS breaches — but NOT personal grievances (use the Grievance Policy instead). Reports can go to the Whistleblower Protection Officer, a Director/Senior Executive, an auditor, or externally to ASIC/ATO, and can be made anonymously. Legal protections include identity confidentiality, protection from detriment, a right to compensation, and protection from civil/criminal/administrative liability. Breaching a whistleblower's confidentiality or retaliating against them carries severe disciplinary and legal consequences."
+      },
+      {
+        heading: "Modern Slavery",
+        body: "Modern slavery includes slavery, servitude, forced labour, debt bondage, human trafficking, and child labour. Interlace Studies takes a zero-tolerance approach and expects the same standard from all contractors, suppliers, and business partners, including due diligence on high-risk suppliers. Suspected breaches should be reported to a manager or via the Whistleblower Protection Policy."
+      }
+    ]
+  },
+
+  19: {
+    intro: "This module is mandatory for every Interlace Studies staff member. It covers leave entitlements and attendance expectations, flexible work arrangements, superannuation, and the right to disconnect outside working hours.",
+    sections: [
+      {
+        heading: "Leave and Attendance",
+        body: "Full-time/part-time employees get 4 weeks paid annual leave per year (non-expiring; can be directed to take leave if balance exceeds 8 weeks). Personal/carer's leave is 10 days per year (pro-rata for part-time) — a medical certificate is needed for 2+ consecutive days or absences around a public holiday/weekend. Compassionate leave is 2 days (paid for FT/PT, unpaid for casuals). Family and domestic violence leave is 10 paid days per 12-month period for ALL employees including casuals, available upfront and handled confidentially. Parental leave is up to 12 months unpaid after 12 months' continuous service, with the right to request another 12 months. Unexpected absences must be phoned in as soon as practicable, ideally 2+ hours before the shift starts."
+      },
+      {
+        heading: "Flexible Work Arrangements",
+        body: "Eligible employees (12+ months service) include parents/carers of school-age-or-younger children, carers, people with disability, those 55+, pregnant employees, and those experiencing or supporting someone experiencing family violence. Requests must be in writing to the direct manager, with a written response (approval or refusal) provided within 21 days. Refusals must be on reasonable business grounds only (cost, impracticality, efficiency or customer service impact) with written reasons. Approved arrangements are typically subject to a trial period."
+      },
+      {
+        heading: "Superannuation",
+        body: "The statutory Superannuation Guarantee rate is 12% of Ordinary Time Earnings (OTE) as of 1 July 2025. Contributions are paid at least quarterly per ATO deadlines. Employees choose their own fund via a Standard Choice Form; if none is nominated, Interlace Studies requests their 'stapled' fund from the ATO, falling back to the company default fund if none exists. Salary sacrifice arrangements must be agreed in writing before the work is performed."
+      },
+      {
+        heading: "Right to Disconnect",
+        body: "Employees can refuse to monitor, read, or respond to work contact outside ordinary hours unless the refusal is unreasonable — assessed by the reason for contact, the disruption caused, any compensation for availability, the role's seniority, and personal circumstances. Managers must respect these boundaries, avoid non-urgent after-hours contact (using 'schedule send' where appropriate), and must never penalise an employee for reasonably exercising this right. Genuine emergencies or urgent client matters (for senior/client-facing roles compensated for this) are reasonable exceptions."
+      }
+    ]
+  },
+
+  20: {
+    intro: "This module is mandatory for every Interlace Studies staff member. It covers Equal Employment Opportunity and Anti-Discrimination, Sexual Harassment and Bullying, and the Grievance and Complaints process.",
+    sections: [
+      {
+        heading: "Equal Employment Opportunity & Anti-Discrimination",
+        body: "Protected attributes include race, sex, gender identity, sexual orientation, age, disability, marital/relationship status, pregnancy, family/carer responsibilities, religion, political opinion, and trade union activity. Direct discrimination is treating someone less favourably because of a protected attribute; indirect discrimination is a seemingly neutral rule that disproportionately disadvantages a group with a protected attribute. Victimisation — penalising someone for making or supporting a discrimination complaint — is strictly prohibited."
+      },
+      {
+        heading: "Sexual Harassment and Bullying",
+        body: "Sexual harassment is unwelcome conduct of a sexual nature where a reasonable person would anticipate offence, humiliation, or intimidation — intent is irrelevant. The positive duty under the Sex Discrimination Act requires Interlace Studies to proactively eliminate such conduct, not just respond after the fact. Workplace bullying is repeated unreasonable behaviour creating a health and safety risk (e.g. intimidation, humiliating comments, malicious rumours, unreasonable exclusion). Reasonable management action — performance goals, constructive feedback, disciplinary process, directing duties — is explicitly NOT bullying. Breaches carry serious disciplinary consequences, with sexual assault or violence referred to police."
+      },
+      {
+        heading: "Grievance and Complaints",
+        body: "The resolution process runs: informal direct discussion → escalation to manager → formal written complaint to HR → investigation by an impartial investigator → outcome and action, communicated to both parties in writing. Guiding principles are fairness and impartiality, need-to-know confidentiality, timeliness, no victimisation for good-faith reports, and the right to a support person. If unresolved internally, an employee may escalate to the Fair Work Commission or the Australian Human Rights Commission. Malicious or vexatious complaints without factual basis can themselves lead to disciplinary action against the complainant."
+      }
+    ]
+  },
+
+  21: {
+    intro: "This module is mandatory for every Interlace Studies staff member. It covers IT, Communications and Social Media use, Work Health and Safety, Psychosocial Safety, and the Drug and Alcohol policy.",
+    sections: [
+      {
+        heading: "IT, Communications & Social Media",
+        body: "Limited, reasonable personal use of company IT is fine if it doesn't interfere with work or breach policy — but confidential information must never go to a personal email account or unauthorised third party. On personal social media, never imply you speak for the company unless authorised, and never post confidential company, client, or student information. The company can monitor, log, and audit IT system use — there is no expectation of complete privacy. Report suspected phishing or malware to IT Support immediately; use strong passwords, lock your screen, and never share login credentials."
+      },
+      {
+        heading: "Work Health and Safety",
+        body: "Management must provide a safe work environment, safe systems of work, and adequate training and supervision. Employees must take reasonable care for their own and others' safety, and promptly report hazards, near misses, and injuries via the Incident Report Form. Risks are managed using the hierarchy of control measures, from most to least preferred: Elimination, Substitution, Isolation, Engineering, Administration, and Personal Protective Equipment (PPE) as the last resort."
+      },
+      {
+        heading: "Psychosocial Safety",
+        body: "Psychosocial hazards include high/low job demands, low job control, poor supervisor/co-worker support, lack of role clarity, poor change management, job insecurity, remote/isolated work, and intrusive surveillance. The risk management process is: Identify Hazards → Assess Risks → Control Risks (prioritising job design over individual coping strategies) → Review Controls. A confidential Employee Assistance Program (EAP) is available to all employees and their immediate family."
+      },
+      {
+        heading: "Drug and Alcohol",
+        body: "Employees must not consume, possess, or distribute illicit drugs, and must not be impaired by alcohol or drugs at work. Alcohol is only permitted at approved company events, consumed moderately and responsibly, with safe transport home always required. Prescription medication that may impair safe work must be flagged to a manager or HR (side effects only — not the underlying condition). If impairment is suspected, a manager should direct the employee to stop work, hold a private discussion with HR present, and arrange safe transport home. Dependency is treated primarily as a health issue, with EAP support and rehabilitation assistance encouraged."
+      }
+    ]
   }
 };
+
+if (typeof module !== 'undefined' && module.exports) { module.exports = { MANUALS }; }

@@ -2378,5 +2378,551 @@ const MODULES = [
         tag: "family", difficulty: "hard"
       }
     ]
+  },
+  {
+    id: 18,
+    title: "Governance & Ethics",
+    icon: "🏛️",
+    tag: "governance",
+    description: "Code of Conduct, Privacy and Data Protection, Whistleblower Protection, and Modern Slavery policies — mandatory for all staff",
+    passmark: 100,
+    roles: ["Migration Consultant", "Education Consultant", "Sales & Client Relations", "Office Administrator", "Branch Manager", "Support Staff"],
+    remark_pass: "Excellent command of the governance and ethics policies. Understanding these obligations — and how to raise concerns safely — protects clients, colleagues, and the business.",
+    remark_low: "Good effort. Revisit the Whistleblower Protection Policy and the Privacy Policy's data breach section — these carry serious legal weight if handled incorrectly.",
+    remark_fail: "These policies establish the ethical and legal foundation for everyone at Interlace Studies. Please re-study all four policies in full before retrying.",
+    questions: [
+      {
+        q: "Who does the Interlace Studies Code of Conduct apply to?",
+        options: ["Only full-time permanent employees", "All employees, directors, officers, contractors, consultants, and volunteers, regardless of location or seniority", "Only staff based in Australia", "Only senior management"],
+        answer: 1,
+        explanation: "The Code of Conduct applies to all individuals working for or representing the company — employees, directors, officers, contractors, consultants, and volunteers — regardless of location or seniority.",
+        law: "Code of Conduct (GOV-001), §2 — Scope",
+        tag: "governance", difficulty: "easy"
+      },
+      {
+        q: "If an employee identifies a potential conflict of interest, what must they do?",
+        options: ["Handle it quietly on their own", "Declare it immediately to a manager or HR", "Only declare it if someone else notices first", "Wait until their annual performance review to mention it"],
+        answer: 1,
+        explanation: "Any actual, potential, or perceived conflict of interest must be declared immediately to a manager or HR — employees must not use their position for personal gain.",
+        law: "Code of Conduct (GOV-001), §5 — Conflict of Interest",
+        tag: "governance", difficulty: "medium"
+      },
+      {
+        q: "A supplier gives an employee a gift. At what value must it be declared under the Code of Conduct?",
+        options: ["Any gift regardless of value", "If its value exceeds $100", "Only gifts over $1,000", "Gifts never need to be declared"],
+        answer: 1,
+        explanation: "Small, token gifts of nominal value (e.g. promotional pens, standard business lunches) may be acceptable, but must be declared if their value exceeds $100.",
+        law: "Code of Conduct (GOV-001), §8 — Gifts and Entertainment",
+        tag: "governance", difficulty: "easy"
+      },
+      {
+        q: "What types of consequences can follow a breach of the Code of Conduct?",
+        options: ["No consequences unless a client complains", "Counselling, formal warnings, or termination of employment, depending on severity — with illegal acts reported to authorities", "A verbal reminder only, every time", "Automatic termination with no consideration of severity"],
+        answer: 1,
+        explanation: "Consequences depend on the severity of the breach and may include counselling, formal warnings, or termination of employment. Illegal acts will be reported to the relevant authorities.",
+        law: "Code of Conduct (GOV-001), §10 — Breach of the Code",
+        tag: "governance", difficulty: "medium"
+      },
+      {
+        q: "Under the Privacy and Data Protection Policy, when can sensitive information (e.g. health information, criminal records) be collected?",
+        options: ["Any time it might be useful", "Only with the individual's explicit consent, unless an exception under the Privacy Act applies", "Never, under any circumstances", "Only for clients, never for employees"],
+        answer: 1,
+        explanation: "Sensitive information is only collected with the individual's explicit consent, unless a specific exception under the Privacy Act 1988 (Cth) applies.",
+        law: "Privacy and Data Protection Policy (GOV-002), §3 — Collection of Personal Information",
+        tag: "governance", difficulty: "medium"
+      },
+      {
+        q: "What is an 'Eligible Data Breach' and what must happen if one occurs?",
+        options: ["Any minor IT glitch; no action required", "A breach likely to result in serious harm to an individual; Interlace Studies must notify affected individuals and the OAIC", "A breach that only needs to be logged internally", "A breach that only affects clients, not staff, needs reporting"],
+        answer: 1,
+        explanation: "If a breach is likely to result in serious harm, it is classified as an Eligible Data Breach under the Notifiable Data Breaches scheme, requiring notification of affected individuals and the Office of the Australian Information Commissioner (OAIC).",
+        law: "Privacy and Data Protection Policy (GOV-002), §7 — Data Breach Response",
+        tag: "governance", difficulty: "hard"
+      },
+      {
+        q: "Which of the following is an explicit employee responsibility under the Privacy and Data Protection Policy?",
+        options: ["Sharing login credentials with trusted colleagues for convenience", "Using secure passwords, locking screens when unattended, and never sharing login credentials", "Only reporting data breaches if a client asks", "Storing personal information on personal USB drives for backup"],
+        answer: 1,
+        explanation: "Employees must use secure passwords, lock their computer screens when unattended, not share login credentials, and immediately report any suspected data breach to IT and the Privacy Officer.",
+        law: "Privacy and Data Protection Policy (GOV-002), §8 — Employee Responsibilities",
+        tag: "governance", difficulty: "easy"
+      },
+      {
+        q: "Who is considered an 'Eligible Whistleblower' under the Whistleblower Protection Policy?",
+        options: ["Only current full-time employees", "Current and former employees/officers, contractors/consultants/suppliers (and their employees), associates, and spouses/relatives/dependents of any of these", "Only company directors", "Only people who have never worked for a competitor"],
+        answer: 1,
+        explanation: "Eligible Whistleblowers include current and former employees and officers, contractors, consultants, suppliers and service providers (and their employees), associates, and spouses, relatives, or dependents of any of the above.",
+        law: "Whistleblower Protection Policy (GOV-003), §2 — Scope and Eligible Whistleblowers",
+        tag: "governance", difficulty: "medium"
+      },
+      {
+        q: "An employee is dissatisfied with their own performance review. Is this covered by the Whistleblower Protection Policy?",
+        options: ["Yes, all workplace issues are whistleblower matters", "No — personal work-related grievances are generally not covered and should be raised under the Grievance and Complaints Policy instead", "Only if the employee is anonymous", "Only if a director is involved"],
+        answer: 1,
+        explanation: "Personal work-related grievances, such as interpersonal conflict or dissatisfaction with a performance review, are generally not covered by the Whistleblower Policy and should be raised under the Grievance and Complaints Policy.",
+        law: "Whistleblower Protection Policy (GOV-003), §3 — Reportable Conduct",
+        tag: "governance", difficulty: "medium"
+      },
+      {
+        q: "To whom can a protected whistleblower disclosure be made?",
+        options: ["Only to the CEO in person", "The Whistleblower Protection Officer, a Director/Senior Executive, the internal/external auditor, or externally to bodies like ASIC or the ATO — reports can be anonymous", "Only to a lawyer hired by the employee", "Only in writing to the front reception desk"],
+        answer: 1,
+        explanation: "Eligible Recipients include the Whistleblower Protection Officer, a Director or Senior Executive, or the internal/external auditor. Reports can also be made externally to ASIC or the ATO, and can be made anonymously.",
+        law: "Whistleblower Protection Policy (GOV-003), §4 — How to Make a Report",
+        tag: "governance", difficulty: "medium"
+      },
+      {
+        q: "What legal protections apply to a whistleblower who makes a qualifying disclosure?",
+        options: ["None — they act entirely at their own risk", "Identity protection, protection from detriment, a right to compensation for loss/damage, and protection from civil/criminal/administrative liability for making the disclosure", "Only protection from being fired, nothing else", "Protection only lasts for 30 days after the report"],
+        answer: 1,
+        explanation: "Under the Corporations Act, qualifying whistleblowers receive identity protection, protection from detriment (e.g. dismissal, demotion, harassment), a right to seek compensation, and protection from civil, criminal, and administrative liability for making the disclosure.",
+        law: "Whistleblower Protection Policy (GOV-003), §5 — Legal Protections for Whistleblowers",
+        tag: "governance", difficulty: "hard"
+      },
+      {
+        q: "What happens to an employee found to have breached a whistleblower's confidentiality or engaged in detrimental conduct against them?",
+        options: ["A private word of caution and nothing further", "Severe disciplinary action up to and including termination, and possible civil and criminal penalties under Australian law", "No consequence unless the whistleblower complains again", "A temporary pay reduction only"],
+        answer: 1,
+        explanation: "Breaching a whistleblower's confidentiality or engaging in detrimental conduct against them results in severe disciplinary action, up to and including termination, and may carry significant civil and criminal penalties.",
+        law: "Whistleblower Protection Policy (GOV-003), §8 — Breach of Policy",
+        tag: "governance", difficulty: "medium"
+      },
+      {
+        q: "Which of the following is explicitly listed as a form of modern slavery under the Modern Slavery Policy?",
+        options: ["Working overtime with proper compensation", "Debt bondage — being forced to work to pay off a debt where the value of work is not properly applied to it", "Taking annual leave", "Salary sacrificing into superannuation"],
+        answer: 1,
+        explanation: "Debt bondage — where a person is forced to work to pay off a debt, with the value of their work not properly applied to the debt, or the work's length/nature not limited — is explicitly listed as a form of modern slavery, alongside slavery, servitude, forced labour, human trafficking, and child labour.",
+        law: "Modern Slavery Policy (GOV-004), §3 — Definition of Modern Slavery",
+        tag: "governance", difficulty: "medium"
+      },
+      {
+        q: "What is Interlace Studies' stated approach to modern slavery?",
+        options: ["A tolerant approach, assessed case by case", "A zero-tolerance approach, with the same high standards expected of contractors, suppliers, and business partners", "It only applies to overseas suppliers, not local ones", "It only applies to direct employees"],
+        answer: 1,
+        explanation: "Interlace Studies has a zero-tolerance approach to modern slavery and expects the same high standards from all contractors, suppliers, and other business partners.",
+        law: "Modern Slavery Policy (GOV-004), §4 — Policy Statement",
+        tag: "governance", difficulty: "easy"
+      },
+      {
+        q: "If an employee suspects a breach of the Modern Slavery Policy, what should they do?",
+        options: ["Ignore it unless they have absolute proof", "Notify their manager or report it in accordance with the Whistleblower Protection Policy", "Post about it on social media to raise awareness", "Confront the suspected offender directly and alone"],
+        answer: 1,
+        explanation: "Suspected breaches of the Modern Slavery Policy should be notified to a manager or reported in accordance with the Whistleblower Protection Policy. Genuine good-faith reports are supported even if they turn out to be mistaken.",
+        law: "Modern Slavery Policy (GOV-004), §7 — Reporting Modern Slavery",
+        tag: "governance", difficulty: "medium"
+      },
+      {
+        q: "Under the Privacy Policy, can Interlace Studies sell an individual's personal information to third parties?",
+        options: ["Yes, if the price is reasonable", "No — personal information will not be sold to third parties", "Only client information can be sold, not staff information", "Yes, but only to government departments"],
+        answer: 1,
+        explanation: "The Privacy and Data Protection Policy explicitly states that Interlace Studies will not sell personal information to third parties; disclosure is limited to providing the requested service or where required or authorised by law.",
+        law: "Privacy and Data Protection Policy (GOV-002), §4 — Use and Disclosure of Personal Information",
+        tag: "governance", difficulty: "easy"
+      }
+    ]
+  },
+  {
+    id: 19,
+    title: "Employment Conditions & Leave",
+    icon: "📅",
+    tag: "employment",
+    description: "Leave and Attendance, Flexible Work Arrangements, Superannuation, and Right to Disconnect policies — mandatory for all staff",
+    passmark: 100,
+    roles: ["Migration Consultant", "Education Consultant", "Sales & Client Relations", "Office Administrator", "Branch Manager", "Support Staff"],
+    remark_pass: "Excellent command of your employment conditions. Knowing your leave entitlements, flexible work rights, and right to disconnect is essential for managing your own wellbeing and work-life balance.",
+    remark_low: "Good effort. Revisit the leave entitlement figures and the flexible work request process — these are the details staff ask about most often.",
+    remark_fail: "These policies directly affect your day-to-day entitlements and wellbeing. Please re-study all four policies in full before retrying.",
+    questions: [
+      {
+        q: "How many weeks of paid annual leave are full-time and part-time employees entitled to per year?",
+        options: ["2 weeks", "4 weeks", "6 weeks", "10 weeks"],
+        answer: 1,
+        explanation: "Full-time and part-time employees are entitled to four (4) weeks of paid annual leave per year, accrued progressively and rolling over (it does not expire).",
+        law: "Leave and Attendance Policy (HR-001), §5.1 — Annual Leave",
+        tag: "employment", difficulty: "easy"
+      },
+      {
+        q: "When can Interlace Studies direct an employee to take annual leave?",
+        options: ["At any time, for any reason", "If the employee has accumulated an excessive balance of more than 8 weeks", "Only if the employee requests it themselves", "Interlace Studies can never direct an employee to take leave"],
+        answer: 1,
+        explanation: "Interlace Studies may direct an employee to take annual leave if they have accumulated an excessive balance of more than 8 weeks.",
+        law: "Leave and Attendance Policy (HR-001), §5.1 — Annual Leave",
+        tag: "employment", difficulty: "medium"
+      },
+      {
+        q: "When is a medical certificate or statutory declaration required for personal/carer's leave?",
+        options: ["For every single day of leave taken, no exceptions", "For absences of 2 or more consecutive days, or immediately before/after a public holiday or weekend", "Never — it's not required under any circumstances", "Only for absences longer than a month"],
+        answer: 1,
+        explanation: "A medical certificate or statutory declaration is required for absences of two (2) or more consecutive days, or for absences immediately before or after a public holiday or weekend.",
+        law: "Leave and Attendance Policy (HR-001), §5.2 — Personal / Carer's Leave",
+        tag: "employment", difficulty: "medium"
+      },
+      {
+        q: "How many days of paid family and domestic violence leave are ALL employees (including casuals) entitled to per 12-month period?",
+        options: ["2 days", "5 days", "10 days", "20 days"],
+        answer: 2,
+        explanation: "All employees, including casuals, are entitled to ten (10) days of paid family and domestic violence leave in a 12-month period, available in full upfront and handled with the utmost confidentiality.",
+        law: "Leave and Attendance Policy (HR-001), §5.4 — Family and Domestic Violence Leave",
+        tag: "employment", difficulty: "medium"
+      },
+      {
+        q: "If an employee is unexpectedly unable to attend work due to illness, how and when should they notify their manager?",
+        options: ["By text message any time before their shift ends", "By phone call as soon as practicable, ideally at least 2 hours before their scheduled start time", "There is no requirement to notify in advance", "Only by email, sent the following day"],
+        answer: 1,
+        explanation: "Employees must notify their direct manager as soon as practicable, ideally at least two hours before their scheduled start time, via phone call — text or email is only acceptable if the manager cannot be reached by phone.",
+        law: "Leave and Attendance Policy (HR-001), §4 — Attendance Expectations",
+        tag: "employment", difficulty: "easy"
+      },
+      {
+        q: "Which of the following employees is eligible to request a flexible working arrangement under the Fair Work Act?",
+        options: ["Only employees over 65 years of age", "An employee who is a parent/carer of a school-age or younger child, a carer, has a disability, is 55+, is pregnant, or is experiencing or supporting someone experiencing family violence", "Only employees who have worked for exactly 6 months", "Only part-time employees, never full-time"],
+        answer: 1,
+        explanation: "Eligibility includes parents/carers of a child of school age or younger, carers, people with a disability, those 55 or older, pregnant employees, and those experiencing or supporting someone experiencing family violence (after 12 months of continuous service).",
+        law: "Flexible Work Arrangements Policy (HR-002), §3 — Eligibility",
+        tag: "employment", difficulty: "medium"
+      },
+      {
+        q: "Within how many days must Interlace Studies provide a written response to a flexible work request?",
+        options: ["7 days", "21 days", "60 days", "There is no timeframe specified"],
+        answer: 1,
+        explanation: "Interlace Studies must provide a written response within 21 days of receiving a flexible work request, stating whether it is approved or refused.",
+        law: "Flexible Work Arrangements Policy (HR-002), §5 — Application Process",
+        tag: "employment", difficulty: "medium"
+      },
+      {
+        q: "On what basis can a flexible work request be refused?",
+        options: ["Any reason the manager prefers, with no justification needed", "Only on reasonable business grounds (e.g. too costly, impractical to adjust other staff, significant loss of efficiency or customer service impact), with written reasons provided", "Flexible work requests can never legally be refused", "Only if the employee has been with the company less than 5 years"],
+        answer: 1,
+        explanation: "A request may only be refused on reasonable business grounds — such as excessive cost, impracticality of adjusting other employees' arrangements, or significant negative impact on efficiency or customer service — and the written response must explain how those grounds apply.",
+        law: "Flexible Work Arrangements Policy (HR-002), §6 — Refusal of a Request",
+        tag: "employment", difficulty: "hard"
+      },
+      {
+        q: "What is the current statutory Superannuation Guarantee (SG) contribution rate (as of 1 July 2025)?",
+        options: ["9.5% of base salary", "12% of Ordinary Time Earnings (OTE)", "15% of gross annual income", "A flat $5,000 per year"],
+        answer: 1,
+        explanation: "As of 1 July 2025, the statutory Superannuation Guarantee rate is 12% of an employee's Ordinary Time Earnings (OTE).",
+        law: "Superannuation Policy (HR-003), §3.1 — Contribution Rate",
+        tag: "employment", difficulty: "easy"
+      },
+      {
+        q: "How often, at minimum, must superannuation contributions be paid to an employee's fund?",
+        options: ["Annually", "Quarterly, in line with ATO deadlines", "Only when the employee requests it", "Every 5 years"],
+        answer: 1,
+        explanation: "Superannuation contributions are calculated and remitted at least quarterly, in accordance with ATO deadlines (e.g. Q1 payment due by 28 October).",
+        law: "Superannuation Policy (HR-003), §3.3 — Payment Frequency",
+        tag: "employment", difficulty: "medium"
+      },
+      {
+        q: "If an employee does not nominate a superannuation fund, what happens?",
+        options: ["No contributions are made until they nominate one", "Interlace Studies requests the employee's 'stapled' super fund details from the ATO; if none exists, contributions go to the company's default fund", "The contributions are held by the company indefinitely", "The employee forfeits their superannuation for that period"],
+        answer: 1,
+        explanation: "If an employee does not nominate a fund, Interlace Studies requests their 'stapled' super fund details from the ATO. If the ATO advises there is no stapled fund, contributions are paid into the company's nominated default fund.",
+        law: "Superannuation Policy (HR-003), §4 — Choice of Fund",
+        tag: "employment", difficulty: "medium"
+      },
+      {
+        q: "Under the Right to Disconnect Policy, can an employee refuse to respond to a work message sent outside their ordinary working hours?",
+        options: ["No, employees must always respond within 1 hour regardless of time", "Yes — employees have the right to refuse to monitor or respond to contact outside ordinary hours, unless the refusal is unreasonable", "Only employees in senior roles have this right", "Only if they are on annual leave at the time"],
+        answer: 1,
+        explanation: "Employees have the right to refuse to monitor, read, or respond to contact outside their ordinary working hours, unless that refusal would be unreasonable in the circumstances.",
+        law: "Right to Disconnect Policy (HR-007), §3 — The Right to Disconnect",
+        tag: "employment", difficulty: "easy"
+      },
+      {
+        q: "Which factors are considered when deciding if an employee's refusal to respond after hours is 'unreasonable'?",
+        options: ["Only the employee's job title", "The reason for contact, the disruption caused, any compensation for availability, the employee's role/seniority, and their personal circumstances", "Whether the manager personally likes the employee", "Only whether the company has a strict rule against after-hours contact"],
+        answer: 1,
+        explanation: "Factors include the reason for the contact, how it's made and the disruption caused, compensation for availability, the nature and seniority of the role, and the employee's personal circumstances (e.g. caring responsibilities).",
+        law: "Right to Disconnect Policy (HR-007), §4 — Determining 'Unreasonable' Refusal",
+        tag: "employment", difficulty: "hard"
+      },
+      {
+        q: "What is a manager's responsibility under the Right to Disconnect Policy?",
+        options: ["To send as many after-hours messages as needed to get quick responses", "To respect team members' working hours, avoid non-urgent after-hours communication, and not penalise reasonable exercise of the right to disconnect", "To require all staff to be reachable 24/7", "Managers have no specific responsibilities under this policy"],
+        answer: 1,
+        explanation: "Managers must respect the boundaries of their team's working hours, avoid sending non-urgent communications after hours, clearly communicate availability expectations, and not penalise an employee for reasonably exercising their right to disconnect.",
+        law: "Right to Disconnect Policy (HR-007), §6 — Manager Responsibilities",
+        tag: "employment", difficulty: "medium"
+      },
+      {
+        q: "After how many months of continuous service does an employee become entitled to unpaid parental leave?",
+        options: ["3 months", "6 months", "12 months", "24 months"],
+        answer: 2,
+        explanation: "Employees who have completed at least 12 months of continuous service are entitled to up to 12 months of unpaid parental leave, with the right to request an additional 12 months.",
+        law: "Leave and Attendance Policy (HR-001), §5.5 — Parental Leave",
+        tag: "employment", difficulty: "medium"
+      },
+      {
+        q: "How many days of compassionate leave are employees entitled to, and how is it paid for casual employees?",
+        options: ["5 days, fully paid for everyone including casuals", "2 days; paid for full-time/part-time employees, unpaid for casual employees", "1 day, unpaid for all employees", "Compassionate leave is not provided under this policy"],
+        answer: 1,
+        explanation: "All employees, including casuals, are entitled to 2 days of compassionate leave. Full-time and part-time employees receive it paid; casual employees receive it unpaid.",
+        law: "Leave and Attendance Policy (HR-001), §5.3 — Compassionate Leave",
+        tag: "employment", difficulty: "medium"
+      }
+    ]
+  },
+  {
+    id: 20,
+    title: "Respect, Equality & Complaints",
+    icon: "🤝",
+    tag: "respect",
+    description: "Equal Employment Opportunity & Anti-Discrimination, Sexual Harassment & Bullying, and Grievance & Complaints policies — mandatory for all staff",
+    passmark: 100,
+    roles: ["Migration Consultant", "Education Consultant", "Sales & Client Relations", "Office Administrator", "Branch Manager", "Support Staff"],
+    remark_pass: "Excellent command of these policies. A workplace built on respect and a clear, fair complaints process protects everyone — colleagues, clients, and the business.",
+    remark_low: "Good effort. Revisit the definitions of discrimination, harassment, and bullying, and the grievance resolution steps in order — these come up in real workplace situations.",
+    remark_fail: "These policies protect the dignity and safety of everyone at Interlace Studies. Please re-study all three policies in full before retrying.",
+    questions: [
+      {
+        q: "Which of the following is explicitly listed as a protected attribute under the EEO and Anti-Discrimination Policy?",
+        options: ["Favourite sports team", "Religion or political opinion", "Preferred coffee order", "Choice of commute method"],
+        answer: 1,
+        explanation: "Protected attributes include race, sex, gender identity, sexual orientation, age, disability, marital status, pregnancy, family/carer responsibilities, religion or political opinion, and trade union activity, among others.",
+        law: "EEO and Anti-Discrimination Policy (HR-004), §5 — Protected Attributes",
+        tag: "respect", difficulty: "easy"
+      },
+      {
+        q: "What is the difference between direct and indirect discrimination?",
+        options: ["There is no difference — they are the same thing", "Direct discrimination is treating someone less favourably because of a protected attribute; indirect discrimination is a rule applying to everyone that disproportionately disadvantages a group with a protected attribute", "Direct discrimination only applies to hiring; indirect only applies to firing", "Indirect discrimination is always intentional, unlike direct discrimination"],
+        answer: 1,
+        explanation: "Direct discrimination occurs when someone is treated less favourably due to a protected attribute. Indirect discrimination occurs when a seemingly neutral rule or practice disproportionately disadvantages a group with a protected attribute.",
+        law: "EEO and Anti-Discrimination Policy (HR-004), §6 — Definitions",
+        tag: "respect", difficulty: "medium"
+      },
+      {
+        q: "What is 'victimisation' under the EEO Policy?",
+        options: ["A form of positive feedback for good performance", "Subjecting or threatening to subject someone to a detriment because they made or helped with a discrimination complaint", "A synonym for direct discrimination", "A term that only applies to customers, not employees"],
+        answer: 1,
+        explanation: "Victimisation means subjecting or threatening to subject someone to a detriment because they made a complaint of discrimination, or helped someone else make one — it is strictly prohibited.",
+        law: "EEO and Anti-Discrimination Policy (HR-004), §6.3 — Victimisation",
+        tag: "respect", difficulty: "medium"
+      },
+      {
+        q: "Under the definition of sexual harassment, does the harasser's intent matter?",
+        options: ["Yes, if they didn't mean any harm, it is not harassment", "No — intent is irrelevant; what matters is the impact and nature of the behaviour on a reasonable person", "Intent only matters for repeat offenders", "Intent is the only thing that matters"],
+        answer: 1,
+        explanation: "Intent is irrelevant to whether conduct constitutes sexual harassment — what matters is whether a reasonable person would anticipate the conduct could offend, humiliate, or intimidate.",
+        law: "Sexual Harassment and Bullying Policy (HR-005), §4.1 — Definition",
+        tag: "respect", difficulty: "hard"
+      },
+      {
+        q: "What is the 'positive duty' introduced by the Sex Discrimination Act 1984, as reflected in this policy?",
+        options: ["A duty to investigate complaints only after three occurrences", "A duty to take reasonable and proportionate measures to eliminate, as far as possible, sexual harassment and related conduct", "A duty that only applies to HR staff", "A duty to provide free counselling to all staff regardless of any incident"],
+        answer: 1,
+        explanation: "The positive duty requires Interlace Studies to take reasonable and proportionate measures to eliminate, as far as possible, sexual harassment, sex-based harassment, sex discrimination, hostile environments, and victimisation — proactively, not just reactively.",
+        law: "Sexual Harassment and Bullying Policy (HR-005), §3 — The Positive Duty",
+        tag: "respect", difficulty: "hard"
+      },
+      {
+        q: "What is workplace bullying, as defined in the policy?",
+        options: ["Any single disagreement between colleagues", "Repeated, unreasonable behaviour towards a worker or group that creates a risk to health and safety", "Any feedback an employee finds uncomfortable", "A one-off joke that offends someone"],
+        answer: 1,
+        explanation: "Workplace bullying occurs when an individual or group repeatedly behaves unreasonably towards a worker or group of workers, and that behaviour creates a risk to health and safety.",
+        law: "Sexual Harassment and Bullying Policy (HR-005), §5.1 — Definition",
+        tag: "respect", difficulty: "medium"
+      },
+      {
+        q: "Which of the following is explicitly stated as NOT bullying?",
+        options: ["Reasonable management action carried out in a reasonable manner, such as constructive feedback or performance management", "Spreading malicious rumours", "Aggressive, intimidating, or threatening behaviour", "Unreasonable exclusion from work-related events"],
+        answer: 0,
+        explanation: "Reasonable management action carried out reasonably — including setting performance goals, constructive feedback, disciplinary action, and directing duties per the job description — is explicitly NOT considered bullying.",
+        law: "Sexual Harassment and Bullying Policy (HR-005), §5.3 — What is NOT Bullying",
+        tag: "respect", difficulty: "medium"
+      },
+      {
+        q: "What is the correct order of steps in the Grievance and Complaints resolution process?",
+        options: ["Formal complaint to HR → informal discussion → investigation → escalation to manager", "Informal direct discussion → escalation to manager → formal complaint to HR → investigation → outcome and action", "Investigation → informal discussion → outcome → formal complaint", "Escalation to Fair Work Commission → informal discussion → HR complaint"],
+        answer: 1,
+        explanation: "The process flows: Step 1 informal direct discussion, Step 2 escalation to manager, Step 3 formal complaint to HR, Step 4 investigation, Step 5 outcome and action.",
+        law: "Grievance and Complaints Policy (HR-006), §4 — Resolution Process",
+        tag: "respect", difficulty: "medium"
+      },
+      {
+        q: "Which of the following is a stated principle of grievance resolution?",
+        options: ["Grievances are only investigated if lodged by senior staff", "Fairness and impartiality — all parties are given a fair hearing and the opportunity to respond", "Confidentiality does not apply once a complaint is formal", "Employees raising a grievance in good faith may be disadvantaged if it isn't substantiated"],
+        answer: 1,
+        explanation: "Principles include fairness and impartiality (a fair hearing for all parties), confidentiality on a need-to-know basis, timeliness, no victimisation for raising a grievance in good faith, and the right to a support person.",
+        law: "Grievance and Complaints Policy (HR-006), §3 — Principles of Grievance Resolution",
+        tag: "respect", difficulty: "medium"
+      },
+      {
+        q: "If a grievance cannot be resolved internally, what external avenue may an employee pursue?",
+        options: ["There is no external avenue — internal resolution is final", "The Fair Work Commission or the Australian Human Rights Commission, depending on the nature of the grievance", "Only the police, regardless of the issue", "Direct legal action is the only option, skipping all other bodies"],
+        answer: 1,
+        explanation: "If dissatisfied with the internal process, an employee may seek assistance from external bodies such as the Fair Work Commission or the Australian Human Rights Commission, depending on the nature of the grievance.",
+        law: "Grievance and Complaints Policy (HR-006), §5 — External Avenues",
+        tag: "respect", difficulty: "medium"
+      },
+      {
+        q: "What can happen if an investigation finds a complaint was made maliciously or vexatiously, without factual basis?",
+        options: ["Nothing — all complainants are automatically protected regardless of outcome", "The complainant may be subject to disciplinary action", "The respondent is automatically dismissed instead", "The complaint is simply re-investigated by a different person"],
+        answer: 1,
+        explanation: "Raising a grievance is a serious matter — if an investigation reveals a complaint was made maliciously, vexatiously, or without factual basis, the complainant may face disciplinary action.",
+        law: "Grievance and Complaints Policy (HR-006), §6 — Frivolous or Vexatious Complaints",
+        tag: "respect", difficulty: "hard"
+      },
+      {
+        q: "How should a formal complaint to HR under the Grievance Policy be documented?",
+        options: ["A verbal mention in passing is sufficient", "A written complaint including details (dates, times, locations), names of people involved/witnesses, and the outcome sought", "Anonymous complaints only, with no other detail permitted", "It must be submitted only via a third-party lawyer"],
+        answer: 1,
+        explanation: "A formal written complaint to HR should include details of the grievance (dates, times, locations), names of people involved and any witnesses, and the outcome the employee is seeking.",
+        law: "Grievance and Complaints Policy (HR-006), §4.3 — Formal Complaint to HR",
+        tag: "respect", difficulty: "medium"
+      },
+      {
+        q: "Displaying or sharing sexually explicit material at work (e.g. via email or a screensaver) is an example of what?",
+        options: ["Acceptable personal expression", "An example of sexual harassment", "A minor IT policy breach only, unrelated to harassment", "Only a concern if a client sees it"],
+        answer: 1,
+        explanation: "Displaying or sharing sexually explicit material is explicitly listed as an example of sexual harassment under the policy.",
+        law: "Sexual Harassment and Bullying Policy (HR-005), §4.2 — Examples of Sexual Harassment",
+        tag: "respect", difficulty: "easy"
+      }
+    ]
+  },
+  {
+    id: 21,
+    title: "IT Security, WHS & Wellbeing",
+    icon: "💻",
+    tag: "itwhs",
+    description: "IT, Communications and Social Media, Work Health and Safety, Psychosocial Safety, and Drug and Alcohol policies — mandatory for all staff",
+    passmark: 100,
+    roles: ["Migration Consultant", "Education Consultant", "Sales & Client Relations", "Office Administrator", "Branch Manager", "Support Staff"],
+    remark_pass: "Excellent command of IT security, workplace safety, and wellbeing policies. These protect the business, your colleagues, and your own health every single day.",
+    remark_low: "Good effort. Revisit the hierarchy of control measures and the psychosocial hazards list — these are the areas staff most often underestimate.",
+    remark_fail: "These policies protect your safety, your data, and your wellbeing at work. Please re-study all four policies in full before retrying.",
+    questions: [
+      {
+        q: "Is personal use of company IT systems (e.g. checking personal email during a break) permitted?",
+        options: ["Never, under any circumstances", "Yes, limited and reasonable personal use is permitted provided it doesn't interfere with work, consume significant bandwidth, or breach policy", "Only for management, not general staff", "Only outside of business hours while still on company premises"],
+        answer: 1,
+        explanation: "Reasonable, occasional personal use of IT systems is permitted, provided it does not interfere with work duties, consume significant network bandwidth, or violate company policies.",
+        law: "IT, Communications, and Social Media Policy (IT-001), §3 — Acceptable Use of IT Resources",
+        tag: "itwhs", difficulty: "easy"
+      },
+      {
+        q: "Can confidential company information be sent to a personal email account?",
+        options: ["Yes, if it's for backup purposes", "No — confidential information must not be sent to personal email accounts or unauthorised third parties", "Yes, but only client data, not staff data", "Only with verbal approval, no written record needed"],
+        answer: 1,
+        explanation: "Confidential information must not be sent to personal email accounts or unauthorised third parties under the IT, Communications, and Social Media Policy.",
+        law: "IT, Communications, and Social Media Policy (IT-001), §4 — Email and Communications",
+        tag: "itwhs", difficulty: "easy"
+      },
+      {
+        q: "On personal social media, what must an employee who identifies as working at Interlace Studies avoid doing?",
+        options: ["Ever mentioning where they work", "Implying they speak on behalf of the company unless authorised, and posting confidential company, client, or student information", "Posting about their weekend activities", "Following the company's official social media pages"],
+        answer: 1,
+        explanation: "Employees must not imply they are speaking on behalf of Interlace Studies unless authorised, and must not post confidential company information, client details, or student data — and must keep their conduct consistent with the Code of Conduct.",
+        law: "IT, Communications, and Social Media Policy (IT-001), §5.2 — Personal Social Media Use",
+        tag: "itwhs", difficulty: "medium"
+      },
+      {
+        q: "Does Interlace Studies monitor employees' use of its IT systems?",
+        options: ["No, all IT use is completely private", "Yes — the company reserves the right to monitor, log, and audit IT system use, and employees should not expect complete privacy", "Only email is monitored, never internet browsing", "Monitoring only occurs after a formal complaint is lodged"],
+        answer: 1,
+        explanation: "Interlace Studies reserves the right to monitor, log, and audit IT system use to ensure compliance, protect network security, and investigate misconduct. Employees should not expect complete privacy on company IT resources.",
+        law: "IT, Communications, and Social Media Policy (IT-001), §7 — Monitoring and Privacy",
+        tag: "itwhs", difficulty: "medium"
+      },
+      {
+        q: "What should an employee do if they suspect a phishing email or malware on their device?",
+        options: ["Delete it and say nothing", "Report it to IT Support immediately", "Forward it to colleagues as a warning without informing IT", "Wait to see if the problem resolves itself"],
+        answer: 1,
+        explanation: "Suspected security incidents, such as phishing emails or malware warnings, must be reported to IT Support immediately.",
+        law: "IT, Communications, and Social Media Policy (IT-001), §6 — Information Security and Passwords",
+        tag: "itwhs", difficulty: "easy"
+      },
+      {
+        q: "What is the correct order of the WHS hierarchy of control measures, from most to least preferred?",
+        options: ["PPE → Administration → Engineering → Isolation → Substitution → Elimination", "Elimination → Substitution → Isolation → Engineering → Administration → Personal Protective Equipment", "Administration → Elimination → PPE → Engineering", "There is no defined order — all controls are equally preferred"],
+        answer: 1,
+        explanation: "The hierarchy of control measures, from most to least preferred, is: Elimination, Substitution, Isolation, Engineering, Administration, and Personal Protective Equipment (PPE) as the last line of defence.",
+        law: "Work Health and Safety Policy (WHS-001), §5 — Hazard Identification and Risk Management",
+        tag: "itwhs", difficulty: "hard"
+      },
+      {
+        q: "What must an employee do upon witnessing a workplace incident, injury, or near miss?",
+        options: ["Only report it if someone was seriously hurt", "Report it immediately using the company's Incident Report Form", "Wait until the end of the week to mention it in a team meeting", "Handle it informally and never document it"],
+        answer: 1,
+        explanation: "All workplace incidents, injuries, and near misses must be reported immediately using the company's Incident Report Form, so they can be investigated and corrective action taken.",
+        law: "Work Health and Safety Policy (WHS-001), §6 — Incident Reporting and Investigation",
+        tag: "itwhs", difficulty: "easy"
+      },
+      {
+        q: "Which of the following is explicitly listed as a psychosocial hazard?",
+        options: ["Taking annual leave", "Sustained high workload with unachievable deadlines, or poor support from supervisors", "Receiving a performance bonus", "Attending a voluntary training session"],
+        answer: 1,
+        explanation: "Psychosocial hazards include high or low job demands (e.g. sustained high workload, unachievable deadlines), low job control, poor support from supervisors/co-workers, lack of role clarity, job insecurity, and more.",
+        law: "Psychosocial Safety Policy (WHS-002), §4 — Definition of Psychosocial Hazards",
+        tag: "itwhs", difficulty: "medium"
+      },
+      {
+        q: "What is the correct order of the psychosocial risk management process?",
+        options: ["Control Risks → Identify Hazards → Assess Risks → Review Controls", "Identify Hazards → Assess Risks → Control Risks → Review Controls", "Review Controls → Assess Risks → Identify Hazards", "There is no structured process — issues are handled case by case"],
+        answer: 1,
+        explanation: "The systematic approach is: Identify Hazards (via surveys, consultation, monitoring), Assess Risks (frequency/duration/severity), Control Risks (prioritising job design and organisational factors), and Review Controls regularly.",
+        law: "Psychosocial Safety Policy (WHS-002), §6 — Risk Management Process",
+        tag: "itwhs", difficulty: "hard"
+      },
+      {
+        q: "Who can access the confidential Employee Assistance Program (EAP)?",
+        options: ["Only senior management", "All employees and their immediate family members", "Only employees who have been with the company for 5+ years", "Only employees who have made a formal complaint"],
+        answer: 1,
+        explanation: "Interlace Studies provides access to a confidential Employee Assistance Program (EAP) for all employees and their immediate family members.",
+        law: "Psychosocial Safety Policy (WHS-002), §7 — Support Mechanisms",
+        tag: "itwhs", difficulty: "easy"
+      },
+      {
+        q: "Under the Drug and Alcohol Policy, when is alcohol consumption permitted while representing the company?",
+        options: ["At any time, as long as the employee doesn't drive afterward", "Only at approved corporate events where alcohol is provided by the company, consumed moderately and responsibly", "Alcohol is banned in all circumstances connected to work, with no exceptions", "Only for management-level staff"],
+        answer: 1,
+        explanation: "Employees must not consume alcohol while at work or representing the company, except at approved corporate events where alcohol is provided by the company — and even then, consumption must be moderate and responsible.",
+        law: "Drug and Alcohol Policy (WHS-003), §4 & §6 — Prohibited Conduct; Corporate Events",
+        tag: "itwhs", difficulty: "medium"
+      },
+      {
+        q: "An employee is taking prescription medication that may cause drowsiness. What must they do?",
+        options: ["Nothing — medical information is entirely private and never needs to be disclosed", "Notify their manager or HR of the potential side effects before commencing work — they do not need to disclose the specific medical condition", "Immediately resign from safety-related duties", "Take double the recommended dose to manage symptoms faster"],
+        answer: 1,
+        explanation: "Employees must notify their manager or HR of medication that may impair their ability to work safely, so reasonable adjustments can be considered. They are not required to disclose the specific medical condition — only the relevant potential side effects.",
+        law: "Drug and Alcohol Policy (WHS-003), §5 — Prescription and Over-the-Counter Medication",
+        tag: "itwhs", difficulty: "medium"
+      },
+      {
+        q: "If a manager reasonably suspects an employee is impaired by drugs or alcohol and poses a safety risk, what should they do?",
+        options: ["Ignore it unless a serious incident actually occurs", "Direct the employee to cease work immediately, arrange a private discussion with an HR representative present, and arrange safe transport home", "Publicly confront the employee in front of colleagues", "Immediately terminate the employee with no discussion"],
+        answer: 1,
+        explanation: "The manager should direct the employee to cease work immediately, arrange a private discussion accompanied by an HR representative or another manager, and arrange safe transport home for the employee.",
+        law: "Drug and Alcohol Policy (WHS-003), §7 — Identification of Impairment",
+        tag: "itwhs", difficulty: "hard"
+      },
+      {
+        q: "How does Interlace Studies primarily view drug and alcohol dependency?",
+        options: ["As grounds for immediate termination with no support offered", "Primarily as a health issue, encouraging voluntary support through the EAP and, where appropriate, support during rehabilitation", "As a matter only for the police to handle", "As something that should never be discussed at work"],
+        answer: 1,
+        explanation: "Interlace Studies views drug and alcohol dependency primarily as a health issue, encouraging employees to seek help voluntarily through the EAP, and supporting rehabilitation where appropriate (e.g. personal leave or flexible arrangements).",
+        law: "Drug and Alcohol Policy (WHS-003), §8 — Support and Rehabilitation",
+        tag: "itwhs", difficulty: "medium"
+      },
+      {
+        q: "What must management provide under the Work Health and Safety Policy's responsibilities?",
+        options: ["Only a first aid kit, nothing further", "A safe work environment, safe systems of work, adequate welfare facilities, and necessary training, instruction, and supervision", "WHS is solely the employee's responsibility, not management's", "Only an annual safety poster in the break room"],
+        answer: 1,
+        explanation: "Management responsibilities include providing and maintaining a safe work environment, safe systems of work, adequate welfare facilities, and necessary information, training, instruction, and supervision to protect workers from risks.",
+        law: "Work Health and Safety Policy (WHS-001), §4.1 — Management Responsibilities",
+        tag: "itwhs", difficulty: "medium"
+      },
+      {
+        q: "Which of the following is explicitly listed as a psychosocial hazard related to how work is monitored?",
+        options: ["Regular, respectful check-ins with a supervisor", "Intrusive surveillance", "Annual performance reviews conducted fairly", "Optional wellbeing surveys"],
+        answer: 1,
+        explanation: "Intrusive surveillance is explicitly listed as a psychosocial hazard, alongside things like job insecurity, poor organisational change management, and remote or isolated work.",
+        law: "Psychosocial Safety Policy (WHS-002), §4 — Definition of Psychosocial Hazards",
+        tag: "itwhs", difficulty: "medium"
+      }
+    ]
   }
 ];
+
+if (typeof module !== 'undefined' && module.exports) { module.exports = { MODULES }; }

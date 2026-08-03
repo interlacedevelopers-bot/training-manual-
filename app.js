@@ -441,7 +441,8 @@ function renderQuestion() {
     compliance:'compliance', product:'product', leadgen:'leadgen',
     engagement:'engagement', crm:'crm', conduct:'conduct',
     sponsor:'sponsor', callcentre:'callcentre', esos:'esos',
-    counselling:'counselling', skilled:'skilled', family:'family'
+    counselling:'counselling', skilled:'skilled', family:'family',
+    governance:'governance', employment:'employment', respect:'respect', itwhs:'itwhs'
   };
   const tagClass = tagMap[q.tag] || 'process';
   const tagLabels = {
@@ -450,7 +451,8 @@ function renderQuestion() {
     compliance:'Compliance & Legal', product:'Visa Product Knowledge', leadgen:'Lead Generation',
     engagement:'Client Engagement', crm:'CRM & Operations', conduct:'Code of Conduct',
     sponsor:'Employer Sponsorship', callcentre:'Call Centre Skills', esos:'ESOS & Education Policy',
-    counselling:'Career Counselling', skilled:'Skilled Migration', family:'Family & Compliance'
+    counselling:'Career Counselling', skilled:'Skilled Migration', family:'Family & Compliance',
+    governance:'Governance & Ethics', employment:'Employment Conditions', respect:'Respect & Equality', itwhs:'IT, WHS & Wellbeing'
   };
 
   const diffClass = q.difficulty === 'easy' ? 'diff-easy' : q.difficulty === 'medium' ? 'diff-med' : 'diff-hard';
