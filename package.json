@@ -1,0 +1,10 @@
+{
+  "name": "interlace-training-academy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interlace Studies staff training platform — static frontend + Vercel serverless API for admin-controlled access.",
+  "dependencies": {
+    "@upstash/redis": "^1.34.3",
+    "resend": "^4.0.1"
+  }
+}

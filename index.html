@@ -799,6 +799,17 @@ input, select { font-family: inherit; }
   transition: var(--transition);
 }
 .btn-secondary:hover { background: var(--grey-lt); }
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--teal-mid);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px;
+}
+.btn-link:hover { color: var(--teal-dark); }
 .btn-gold {
   background: linear-gradient(135deg, var(--gold-dark), var(--gold));
   color: var(--dark);
@@ -1185,9 +1196,13 @@ input, select { font-family: inherit; }
   .cert-name { font-size: 32px; }
 }
 @media print {
-  .cert-controls, .top-bar, #screen-modules, #screen-quiz, #screen-results, #screen-landing { display: none !important; }
+  .cert-controls, .top-bar, #screen-modules, #screen-quiz, #screen-results, #screen-landing, #screen-manual, #screen-admin { display: none !important; }
   #screen-cert { padding: 0; background: #fff; }
   .certificate { box-shadow: none; border: 2px solid var(--teal); }
+}
+/* Block printing of study material (manual/quiz) — the certificate is the only intended print target */
+@media print {
+  body:has(#screen-manual.active) *, body:has(#screen-quiz.active) * { display: none !important; }
 }
 
 /* Confetti animation */
@@ -1201,6 +1216,69 @@ input, select { font-family: inherit; }
 }
 @keyframes confettiFall {
   to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════
+   ██ ADMIN PANEL
+═══════════════════════════════════════════════ */
+#screen-admin { background: var(--off-white); min-height: 100vh; }
+.admin-wrap { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+.admin-section {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+.admin-section h2 { font-family:'Playfair Display', serif; font-size: 22px; color: var(--teal); margin-bottom: 6px; }
+.admin-section > p { font-size: 13px; color: var(--grey); margin-bottom: 20px; }
+.admin-quickselect { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 16px 0; font-size: 12px; color: var(--grey-dk); }
+.admin-quickselect .btn-secondary { font-size: 11px; padding: 6px 12px; }
+.admin-module-checklist { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-top: 10px; }
+.admin-module-group { border: 1.5px solid var(--grey-lt); border-radius: var(--radius); padding: 12px 14px; }
+.admin-module-group h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--teal); margin-bottom: 8px; }
+.admin-module-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--dark); padding: 4px 0; }
+.admin-module-item input { flex-shrink: 0; }
+.admin-status-msg { margin-left: 14px; font-size: 13px; font-weight: 600; }
+.admin-status-msg.ok { color: var(--green); }
+.admin-status-msg.err { color: var(--red); }
+.admin-table-wrap { overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.admin-table th, .admin-table td { padding: 10px 12px; border-bottom: 1px solid var(--grey-lt); text-align: left; white-space: nowrap; }
+.admin-table th { color: var(--teal); font-weight: 700; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.5px; }
+.admin-table .btn-secondary { font-size: 11px; padding: 5px 10px; margin-right: 4px; }
+.admin-lock-pill { background: var(--red-lt); color: var(--red); font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 100px; }
+.admin-ok-pill { background: var(--green-lt); color: var(--green); font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 100px; }
+
+/* ═══════════════════════════════════════════════
+   ██ CONTENT PROTECTION (deterrents only — not foolproof)
+═══════════════════════════════════════════════ */
+#screen-manual, #screen-quiz, #screen-cert {
+  -webkit-user-select: none; -moz-user-select: none; user-select: none;
+}
+#screen-manual input, #screen-quiz input, #screen-cert input,
+#screen-manual textarea, #screen-quiz textarea {
+  -webkit-user-select: text; -moz-user-select: text; user-select: text;
+}
+.content-watermark {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5000;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+  opacity: 0.07;
+  overflow: hidden;
+}
+.content-watermark span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  transform: rotate(-30deg);
+  white-space: nowrap;
+  margin: 40px;
 }
 
 /* Tooltip / info popup */
@@ -1264,57 +1342,39 @@ input, select { font-family: inherit; }
     </div>
 
     <div class="reg-card">
-      <h3>Register to Begin Training</h3>
-      <p>Enter your details below. Your progress and certificate will be saved locally.</p>
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name *</label>
-          <input type="text" id="reg-fname" placeholder="e.g. Siddhartha" required>
+      <div id="login-step-email">
+        <h3>Staff Sign-In</h3>
+        <p>Enter your work email address. Your administrator must have already assigned your training before you can sign in.</p>
+        <div class="form-group" style="margin-bottom:16px">
+          <label>Work Email Address *</label>
+          <input type="email" id="login-email" placeholder="your@interlace.com.au" autocomplete="email">
         </div>
-        <div class="form-group">
-          <label>Last Name *</label>
-          <input type="text" id="reg-lname" placeholder="e.g. Bhandari">
+        <button class="btn-start" id="btn-request-otp" onclick="requestOtp()">📧 &nbsp; Send Verification Code</button>
+      </div>
+
+      <div id="login-step-otp" style="display:none">
+        <h3>Enter Verification Code</h3>
+        <p>We've sent a 6-digit code to <strong id="otp-sent-to"></strong>. Enter it below to continue — the code expires in 10 minutes.</p>
+        <div class="form-group" style="margin-bottom:16px">
+          <label>Verification Code *</label>
+          <input type="text" id="otp-code" placeholder="123456" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+        </div>
+        <button class="btn-start" id="btn-verify-otp" onclick="verifyOtp()">✅ &nbsp; Verify &amp; Continue</button>
+        <div style="display:flex;justify-content:space-between;margin-top:14px">
+          <button class="btn-link" onclick="backToEmailStep()">← Use a different email</button>
+          <button class="btn-link" onclick="resendOtp()">Resend code</button>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Role / Position *</label>
-          <select id="reg-role">
-            <option value="">Select your role…</option>
-            <option>Migration Consultant</option>
-            <option>Education Consultant</option>
-            <option>Sales &amp; Client Relations</option>
-            <option>Office Administrator</option>
-            <option>Branch Manager</option>
-            <option>Support Staff</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Office / Branch *</label>
-          <select id="reg-branch">
-            <option value="">Select branch…</option>
-            <option>Brisbane (HQ)</option>
-            <option>Parramatta / Sydney</option>
-            <option>Perth</option>
-            <option>Adelaide</option>
-            <option>Kathmandu</option>
-            <option>Bali</option>
-            <option>Phnom Penh</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group" style="margin-bottom:16px">
-        <label>Email Address (for certificate)</label>
-        <input type="email" id="reg-email" placeholder="your@email.com">
-      </div>
-      <button class="btn-start" onclick="startTraining()">🚀 &nbsp; Begin Training Programme</button>
     </div>
 
     <div class="compliance-note">
       <span>⚖️ LEGAL NOTE:</span> This training is based on Migration Act 1958, Migration Regulations 1994 &amp; current DHA policy. Law changes frequently — always verify before advising clients.
     </div>
     <div class="compliance-note" style="margin-top:10px">
-      <span>📋 POLICY:</span> Each module requires studying the manual first, a 100% pass mark, and questions/options are reshuffled on every attempt. Three attempts without a 100% score locks your account.
+      <span>📋 POLICY:</span> Every module requires studying the manual first, a 100% pass mark, and questions/options are reshuffled on every attempt. Three attempts without a 100% score locks your account.
+    </div>
+    <div style="text-align:center;margin-top:24px">
+      <button class="btn-link" style="opacity:0.6" onclick="showAdminLogin()">🔑 Administrator Access</button>
     </div>
   </div>
 </div>
@@ -1526,8 +1586,120 @@ input, select { font-family: inherit; }
   </div>
 </div>
 
-<script src="questions.js?v=3"></script>
-<script src="manual.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<!-- ═══════════════════════════════════════════════
+     SCREEN 6: ADMIN PANEL
+═══════════════════════════════════════════════ -->
+<div id="screen-admin" class="screen">
+  <div class="top-bar">
+    <div class="top-bar-brand">
+      <img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo">
+      <span class="sep">|</span>
+      <span style="font-weight:400;color:rgba(255,255,255,0.6)">Administrator Panel</span>
+    </div>
+    <div class="top-bar-user">
+      <button class="btn-secondary" style="font-size:12px;padding:6px 14px" onclick="backToStaffLogin()">← Staff Sign-In</button>
+    </div>
+  </div>
+
+  <div id="admin-login-view" class="admin-wrap">
+    <div class="reg-card" style="margin-top:60px">
+      <h3>Administrator Sign-In</h3>
+      <p>Authorised for the Interlace Studies training administrator only.</p>
+      <div class="form-group" style="margin-bottom:14px">
+        <label>Admin Email *</label>
+        <input type="email" id="admin-email" placeholder="admin@interlace.com.au" autocomplete="username">
+      </div>
+      <div class="form-group" style="margin-bottom:16px">
+        <label>Password *</label>
+        <input type="password" id="admin-password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button class="btn-start" onclick="adminLogin()">🔑 &nbsp; Sign In</button>
+    </div>
+  </div>
+
+  <div id="admin-dashboard-view" class="admin-wrap" style="display:none">
+    <div class="admin-section">
+      <h2>Assign Training</h2>
+      <p>Create or update a staff member's record and choose exactly which modules they can access. Company Policy modules are mandatory and pre-selected.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" id="admin-fname" placeholder="e.g. Siddhartha">
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" id="admin-lname" placeholder="e.g. Bhandari">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Staff Email *</label>
+          <input type="email" id="admin-staff-email" placeholder="staff@interlace.com.au">
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="tel" id="admin-mobile" placeholder="+61 4XX XXX XXX">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Role / Position *</label>
+          <select id="admin-role">
+            <option value="">Select role…</option>
+            <option>Migration Consultant</option>
+            <option>Education Consultant</option>
+            <option>Sales &amp; Client Relations</option>
+            <option>Office Administrator</option>
+            <option>Branch Manager</option>
+            <option>Support Staff</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Office / Branch *</label>
+          <select id="admin-branch">
+            <option value="">Select branch…</option>
+            <option>Brisbane (HQ)</option>
+            <option>Parramatta / Sydney</option>
+            <option>Perth</option>
+            <option>Adelaide</option>
+            <option>Kathmandu</option>
+            <option>Bali</option>
+            <option>Phnom Penh</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="admin-quickselect">
+        <span>Quick select:</span>
+        <button class="btn-secondary" onclick="adminQuickSelect('Migration Consultant')">Migration Consultant</button>
+        <button class="btn-secondary" onclick="adminQuickSelect('Education Consultant')">Education Consultant</button>
+        <button class="btn-secondary" onclick="adminQuickSelect('Sales & Client Relations')">Sales &amp; Client Relations</button>
+        <button class="btn-secondary" onclick="adminQuickSelect('Policy Only')">Policy Only</button>
+        <button class="btn-secondary" onclick="adminQuickSelect('None')">Clear All</button>
+      </div>
+
+      <div id="admin-module-checklist" class="admin-module-checklist"></div>
+
+      <button class="btn-gold" style="margin-top:18px" onclick="adminAssign()">💾 &nbsp; Save Assignment</button>
+      <span id="admin-assign-status" class="admin-status-msg"></span>
+    </div>
+
+    <div class="admin-section">
+      <h2>All Staff</h2>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="admin-staff-table">
+          <thead>
+            <tr><th>Name</th><th>Email</th><th>Role</th><th>Modules</th><th>Progress</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="admin-staff-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="questions.js?v=4"></script>
+<script src="manual.js?v=4"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

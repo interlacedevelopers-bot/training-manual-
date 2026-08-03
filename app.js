@@ -3,11 +3,24 @@
 // Application Logic — v3.0
 // ═══════════════════════════════════════════════════════════════════
 
-// Change this before deploying to a real admin — it only guards the
-// in-browser "reset attempts" control, not a real auth system.
-const ADMIN_PASSCODE = 'INTERLACE-ADMIN-2026';
-const LMS_STORAGE_KEY = 'interlace_lms_data_v1';
 const MAX_ATTEMPTS = 3;
+const SESSION_KEY = 'interlace_session_token';
+const ADMIN_TOKEN_KEY = 'interlace_admin_token';
+
+const MODULE_GROUPS = [
+  { label: 'Partner Visa (Migration Consultant / Branch Manager)', ids: [1,2,3,4,5,11] },
+  { label: 'Sales & Client Relations', ids: [6,7,8,9,10] },
+  { label: 'Education Consultant', ids: [12,13,14,15,16,17] },
+  { label: 'Company Policy (mandatory for all)', ids: [18,19,20,21] },
+];
+const ROLE_DEFAULT_MODULES = {
+  'Migration Consultant': [1,2,3,4,5,11,18,19,20,21],
+  'Branch Manager': [1,2,3,4,5,11,18,19,20,21],
+  'Sales & Client Relations': [6,7,8,9,10,18,19,20,21],
+  'Education Consultant': [12,13,14,15,16,17,18,19,20,21],
+  'Policy Only': [18,19,20,21],
+  'None': [],
+};
 
 // Role-based access: which staff roles see which training track, and how
 // the certificate should describe that track.
@@ -34,8 +47,8 @@ const TRACKS = {
   },
 };
 function getMyModules() {
-  const role = STATE.user.role;
-  return MODULES.filter(m => (m.roles || []).includes(role));
+  const assigned = STATE.assignedModules || [];
+  return MODULES.filter(m => assigned.includes(m.id));
 }
 function getTrackInfo() {
   return TRACKS[STATE.user.role] || { programName: 'Staff Training Programme', academyName: 'Staff Training Academy' };
@@ -47,12 +60,15 @@ function moduleLabel(modId) {
 
 // ── State ────────────────────────────────────────────────────────
 const STATE = {
-  userKey: null,
-  user: { firstName:'', lastName:'', role:'', branch:'', email:'' },
+  user: { firstName:'', lastName:'', role:'', branch:'', email:'', mobile:'' },
+  assignedModules: [],    // module ids the admin has granted this staff member
   moduleResults: {},     // { modId: {score, total, pct, passed, time, attemptNumber, answers} }
   moduleMeta: {},         // { modId: {attempts, studyTimeSec, passed} }
   lmsLocked: false,
   lockedInfo: null,
+
+  pendingLoginEmail: null,
+  adminToken: null,
 
   currentModule: null,    // shuffled question set for the in-progress attempt
   currentModuleId: null,
@@ -107,70 +123,125 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('en-AU', {day:'numeric',month:'long',year:'numeric'});
 }
 
-// ── Persistence (per-user, survives reloads so attempts/lock can't be reset by refreshing) ──
-function computeUserKey(u) {
-  const base = u.email ? u.email : `${u.firstName}_${u.lastName}_${u.branch}`;
-  return base.trim().toLowerCase().replace(/\s+/g,'_');
+// ── Server API helpers ───────────────────────────────────────────
+function getSessionToken() { return localStorage.getItem(SESSION_KEY); }
+function setSessionToken(t) { if (t) localStorage.setItem(SESSION_KEY, t); else localStorage.removeItem(SESSION_KEY); }
+function getAdminToken() { return sessionStorage.getItem(ADMIN_TOKEN_KEY); }
+function setAdminToken(t) { if (t) sessionStorage.setItem(ADMIN_TOKEN_KEY, t); else sessionStorage.removeItem(ADMIN_TOKEN_KEY); }
+
+async function apiPost(url, body, headers) {
+  const res = await fetch(url, { method:'POST', headers: {'Content-Type':'application/json', ...(headers||{})}, body: JSON.stringify(body||{}) });
+  const data = await res.json().catch(()=>({}));
+  if (!res.ok) { const err = new Error(data.message || data.error || 'Request failed'); err.code = data.error; err.status = res.status; throw err; }
+  return data;
 }
-function loadAllData() {
-  try { return JSON.parse(localStorage.getItem(LMS_STORAGE_KEY)) || {}; }
-  catch(e) { return {}; }
-}
-function saveAllData(all) {
-  localStorage.setItem(LMS_STORAGE_KEY, JSON.stringify(all));
-}
-function getUserRecord(key) {
-  const all = loadAllData();
-  return all[key] || null;
-}
-function persist() {
-  if (!STATE.userKey) return;
-  const all = loadAllData();
-  all[STATE.userKey] = {
-    user: STATE.user,
-    moduleResults: STATE.moduleResults,
-    moduleMeta: STATE.moduleMeta,
-    lmsLocked: STATE.lmsLocked,
-    lockedInfo: STATE.lockedInfo,
-  };
-  saveAllData(all);
+async function apiGet(url, headers) {
+  const res = await fetch(url, { headers: headers||{} });
+  const data = await res.json().catch(()=>({}));
+  if (!res.ok) { const err = new Error(data.message || data.error || 'Request failed'); err.code = data.error; err.status = res.status; throw err; }
+  return data;
 }
 
-// ── SCREEN 1: Landing / Registration ─────────────────────────────
-function startTraining() {
-  const fn = $('reg-fname').value.trim();
-  const ln = $('reg-lname').value.trim();
-  const role = $('reg-role').value;
-  const branch = $('reg-branch').value;
-  const email = $('reg-email').value.trim();
+function applyStaffRecord(rec) {
+  STATE.user = { firstName: rec.firstName||'', lastName: rec.lastName||'', role: rec.role||'', branch: rec.branch||'', email: rec.email||'', mobile: rec.mobile||'' };
+  STATE.assignedModules = rec.assignedModules || [];
+  STATE.moduleResults = rec.moduleResults || {};
+  STATE.moduleMeta = rec.moduleMeta || {};
+  STATE.lmsLocked = !!rec.lmsLocked;
+  STATE.lockedInfo = rec.lockedInfo || null;
 
-  if (!fn || !ln) { alert('Please enter your first and last name.'); return; }
-  if (!role) { alert('Please select your role.'); return; }
-  if (!branch) { alert('Please select your branch.'); return; }
+  const ini = initials(STATE.user.firstName, STATE.user.lastName);
+  ['tb-avatar','q-avatar'].forEach(id => { const el = $(id); if (el) el.textContent = ini; });
+  ['tb-name','q-name'].forEach(id => { const el = $(id); if (el) el.textContent = `${STATE.user.firstName} ${STATE.user.lastName}`; });
+}
 
-  STATE.user = { firstName:fn, lastName:ln, role, branch, email };
-  STATE.userKey = computeUserKey(STATE.user);
+async function syncToServer() {
+  const token = getSessionToken();
+  if (!token) return;
+  try {
+    await apiPost('/api/training/save', {
+      moduleResults: STATE.moduleResults,
+      moduleMeta: STATE.moduleMeta,
+      lmsLocked: STATE.lmsLocked,
+      lockedInfo: STATE.lockedInfo,
+    }, { 'X-Session-Token': token });
+  } catch (e) { console.error('Sync to server failed', e); }
+}
 
-  const existing = getUserRecord(STATE.userKey);
-  if (existing) {
-    STATE.moduleResults = existing.moduleResults || {};
-    STATE.moduleMeta = existing.moduleMeta || {};
-    STATE.lmsLocked = !!existing.lmsLocked;
-    STATE.lockedInfo = existing.lockedInfo || null;
-  } else {
-    STATE.moduleResults = {};
-    STATE.moduleMeta = {};
-    STATE.lmsLocked = false;
-    STATE.lockedInfo = null;
+// ── SCREEN 1: Staff Sign-In (email + one-time code) ──────────────
+async function requestOtp() {
+  const email = $('login-email').value.trim().toLowerCase();
+  if (!email || !email.includes('@')) { alert('Please enter a valid work email address.'); return; }
+
+  const btn = $('btn-request-otp');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    await apiPost('/api/auth/request-otp', { email });
+    STATE.pendingLoginEmail = email;
+    $('otp-sent-to').textContent = email;
+    $('login-step-email').style.display = 'none';
+    $('login-step-otp').style.display = 'block';
+    $('otp-code').value = '';
+    $('otp-code').focus();
+  } catch (e) {
+    alert(e.message || 'Could not send a verification code.');
+  } finally {
+    btn.disabled = false; btn.textContent = '📧 Send Verification Code';
   }
-  persist();
+}
 
-  const ini = initials(fn, ln);
-  ['tb-avatar','q-avatar'].forEach(id => $(id).textContent = ini);
-  ['tb-name','q-name'].forEach(id => $(id).textContent = `${fn} ${ln}`);
+function backToEmailStep() {
+  $('login-step-otp').style.display = 'none';
+  $('login-step-email').style.display = 'block';
+}
 
-  renderModules();
-  show('screen-modules');
+async function verifyOtp() {
+  const code = $('otp-code').value.trim();
+  if (!code) { alert('Please enter the 6-digit code from your email.'); return; }
+
+  const btn = $('btn-verify-otp');
+  btn.disabled = true; btn.textContent = 'Verifying…';
+  try {
+    const data = await apiPost('/api/auth/verify-otp', { email: STATE.pendingLoginEmail, code });
+    setSessionToken(data.token);
+    applyStaffRecord(data.staff);
+    renderModules();
+    show('screen-modules');
+  } catch (e) {
+    alert(e.message || 'Incorrect or expired code.');
+  } finally {
+    btn.disabled = false; btn.textContent = '✅ Verify & Continue';
+  }
+}
+
+async function resendOtp() {
+  if (!STATE.pendingLoginEmail) return;
+  try {
+    await apiPost('/api/auth/request-otp', { email: STATE.pendingLoginEmail });
+    alert('A new code has been sent.');
+  } catch (e) {
+    alert(e.message || 'Could not resend the code.');
+  }
+}
+
+async function tryAutoLogin() {
+  const token = getSessionToken();
+  if (!token) return false;
+  try {
+    const data = await apiGet('/api/training/state', { 'X-Session-Token': token });
+    applyStaffRecord(data.staff);
+    renderModules();
+    show('screen-modules');
+    return true;
+  } catch (e) {
+    setSessionToken(null);
+    return false;
+  }
+}
+
+function logout() {
+  setSessionToken(null);
+  location.reload();
 }
 
 // ── SCREEN 2: Module Selection ────────────────────────────────────
@@ -193,7 +264,6 @@ function renderModules() {
         <h2>Training Access Locked</h2>
         <p>You used all ${MAX_ATTEMPTS} attempts on <strong>Module ${info?.moduleId}: ${lockedMod?.title||''}</strong> without reaching the required 100% pass mark.</p>
         <p>Please contact your training administrator to have your record reset before continuing.</p>
-        <p style="margin-top:18px"><button class="btn-secondary" onclick="adminUnlock()">🔑 Administrator Reset</button></p>
       </div>
     `;
     $('tb-progress').textContent = 'LOCKED';
@@ -215,8 +285,8 @@ function renderModules() {
       <div class="lockout-card" style="border-color:var(--grey-lt)">
         <div class="lock-icon">📭</div>
         <h2 style="color:var(--teal)">No Modules Assigned Yet</h2>
-        <p>There is no training track assigned to the <strong>${STATE.user.role}</strong> role yet.</p>
-        <p>Please contact your training administrator to have a module set assigned to your role.</p>
+        <p>Your administrator has not yet assigned any training modules to your account.</p>
+        <p>Please contact your training administrator.</p>
       </div>
     `;
     $('tb-progress').textContent = '—';
@@ -285,20 +355,6 @@ function goToModules() {
   show('screen-modules');
 }
 
-function adminUnlock() {
-  const code = prompt("Enter the administrator passcode to reset this staff member's attempts and unlock the LMS:");
-  if (code === null) return;
-  if (code !== ADMIN_PASSCODE) { alert('Incorrect passcode.'); return; }
-  STATE.lmsLocked = false;
-  STATE.lockedInfo = null;
-  Object.keys(STATE.moduleMeta).forEach(id => {
-    if (!STATE.moduleMeta[id].passed) STATE.moduleMeta[id].attempts = 0;
-  });
-  persist();
-  alert('Access unlocked and attempts reset for unpassed modules.');
-  renderModules();
-}
-
 // ── SCREEN 2b: Study Manual ───────────────────────────────────────
 function renderManual(modId) {
   const mod = MODULES.find(m => m.id === modId);
@@ -348,6 +404,7 @@ function openManual(modId) {
     $('manual-timer').textContent = '⏱ ' + fmtTime(STATE.manualSessionElapsed);
   }, 1000);
 
+  renderWatermark();
   show('screen-manual');
 }
 
@@ -358,7 +415,7 @@ function commitManualTime() {
   if (!STATE.moduleMeta[modId]) STATE.moduleMeta[modId] = { attempts:0, studyTimeSec:0, passed:false };
   STATE.moduleMeta[modId].studyTimeSec += (STATE.manualSessionElapsed || 0);
   STATE.manualSessionElapsed = 0;
-  persist();
+  syncToServer();
 }
 
 function exitManual() {
@@ -396,6 +453,7 @@ function startModule(modId) {
 
   renderNavList();
   renderQuestion();
+  renderWatermark();
   show('screen-quiz');
 }
 
@@ -619,7 +677,7 @@ function finishModule() {
     attemptNumber: meta.attempts,
     answers: [...answers]
   };
-  persist();
+  syncToServer();
 
   let medal = pct >= 90 ? '🏆' : pct >= 80 ? '🥇' : pct >= 70 ? '🥈' : pct >= 50 ? '🥉' : '📋';
   $('res-medal').textContent = medal;
@@ -758,6 +816,7 @@ function showCert() {
   $('cert-id').textContent = `Certificate ID: ${id}  |  Issued: ${today}  |  Valid for CPD purposes`;
 
   spawnConfetti();
+  renderWatermark();
   show('screen-cert');
 }
 
@@ -813,6 +872,193 @@ function spawnConfetti() {
   }
 }
 
+// ── Admin Panel ───────────────────────────────────────────────────
+function showAdminLogin() {
+  show('screen-admin');
+  const isAdmin = !!getAdminToken();
+  $('admin-login-view').style.display = isAdmin ? 'none' : 'block';
+  $('admin-dashboard-view').style.display = isAdmin ? 'block' : 'none';
+  if (isAdmin) loadAdminStaff();
+}
+
+function backToStaffLogin() {
+  show('screen-landing');
+}
+
+async function adminLogin() {
+  const email = $('admin-email').value.trim();
+  const password = $('admin-password').value;
+  if (!email || !password) { alert('Please enter both the admin email and password.'); return; }
+  try {
+    const data = await apiPost('/api/admin/login', { email, password });
+    setAdminToken(data.token);
+    $('admin-login-view').style.display = 'none';
+    $('admin-dashboard-view').style.display = 'block';
+    renderAdminModuleChecklist();
+    await loadAdminStaff();
+  } catch (e) {
+    alert(e.message || 'Invalid admin credentials.');
+  }
+}
+
+function adminLogout() {
+  setAdminToken(null);
+  show('screen-landing');
+}
+
+function renderAdminModuleChecklist(checkedIds) {
+  const checked = new Set(checkedIds || ROLE_DEFAULT_MODULES['Policy Only']);
+  const wrap = $('admin-module-checklist');
+  wrap.innerHTML = MODULE_GROUPS.map(group => `
+    <div class="admin-module-group">
+      <h4>${group.label}</h4>
+      ${group.ids.map(id => {
+        const mod = MODULES.find(m => m.id === id);
+        if (!mod) return '';
+        return `
+          <label class="admin-module-item">
+            <input type="checkbox" value="${id}" ${checked.has(id) ? 'checked' : ''}>
+            ${mod.icon} ${mod.title}
+          </label>
+        `;
+      }).join('')}
+    </div>
+  `).join('');
+}
+
+function adminQuickSelect(roleKey) {
+  const ids = ROLE_DEFAULT_MODULES[roleKey] || [];
+  renderAdminModuleChecklist(ids);
+}
+
+function adminGetCheckedModuleIds() {
+  return [...document.querySelectorAll('#admin-module-checklist input[type="checkbox"]:checked')].map(el => Number(el.value));
+}
+
+async function adminAssign() {
+  const statusEl = $('admin-assign-status');
+  statusEl.textContent = '';
+  statusEl.className = 'admin-status-msg';
+
+  const firstName = $('admin-fname').value.trim();
+  const lastName = $('admin-lname').value.trim();
+  const email = $('admin-staff-email').value.trim();
+  const mobile = $('admin-mobile').value.trim();
+  const role = $('admin-role').value;
+  const branch = $('admin-branch').value;
+  const moduleIds = adminGetCheckedModuleIds();
+
+  if (!firstName || !lastName || !email || !role || !branch) {
+    statusEl.textContent = 'Please fill in all required fields.';
+    statusEl.className = 'admin-status-msg err';
+    return;
+  }
+  if (moduleIds.length === 0) {
+    statusEl.textContent = 'Select at least one module to assign.';
+    statusEl.className = 'admin-status-msg err';
+    return;
+  }
+
+  try {
+    const data = await apiPost('/api/admin/assign', {
+      adminToken: getAdminToken(), email, firstName, lastName, mobile, role, branch, moduleIds,
+    });
+    statusEl.textContent = data.isNew ? `New staff record created for ${email}.` : `Assignment updated for ${email}.`;
+    statusEl.className = 'admin-status-msg ok';
+    $('admin-fname').value = ''; $('admin-lname').value = ''; $('admin-staff-email').value = '';
+    $('admin-mobile').value = ''; $('admin-role').value = ''; $('admin-branch').value = '';
+    renderAdminModuleChecklist();
+    await loadAdminStaff();
+  } catch (e) {
+    statusEl.textContent = e.message || 'Could not save this assignment.';
+    statusEl.className = 'admin-status-msg err';
+  }
+}
+
+async function loadAdminStaff() {
+  try {
+    const data = await apiGet('/api/admin/staff', { 'X-Admin-Token': getAdminToken() });
+    renderAdminStaffTable(data.staff || []);
+  } catch (e) {
+    if (e.status === 401) { setAdminToken(null); showAdminLogin(); }
+  }
+}
+
+function renderAdminStaffTable(staffList) {
+  const tbody = $('admin-staff-tbody');
+  if (!staffList.length) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--grey)">No staff assigned yet.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = staffList.map(s => {
+    const assigned = s.assignedModules || [];
+    const passedCount = assigned.filter(id => s.moduleMeta?.[id]?.passed).length;
+    const statusHtml = s.lmsLocked
+      ? '<span class="admin-lock-pill">🔒 Locked</span>'
+      : (passedCount === assigned.length && assigned.length > 0)
+        ? '<span class="admin-ok-pill">✓ Complete</span>'
+        : (s.activatedAt ? 'In Progress' : 'Not yet signed in');
+    return `
+      <tr>
+        <td>${s.firstName || ''} ${s.lastName || ''}</td>
+        <td>${s.email}</td>
+        <td>${s.role || ''}</td>
+        <td>${assigned.length} assigned</td>
+        <td>${passedCount} / ${assigned.length} passed</td>
+        <td>${statusHtml}</td>
+        <td>
+          <button class="btn-secondary" onclick="adminResetStaff('${s.email}')">Reset Attempts</button>
+          <button class="btn-secondary" onclick="adminUnassignStaff('${s.email}')">Remove</button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+async function adminResetStaff(email) {
+  if (!confirm(`Reset attempts and unlock training for ${email}?`)) return;
+  try {
+    await apiPost('/api/admin/reset', { adminToken: getAdminToken(), email });
+    await loadAdminStaff();
+  } catch (e) {
+    alert(e.message || 'Could not reset this staff member.');
+  }
+}
+
+async function adminUnassignStaff(email) {
+  if (!confirm(`Remove ${email} entirely? This deletes their assignment and all recorded progress.`)) return;
+  try {
+    await apiPost('/api/admin/unassign', { adminToken: getAdminToken(), email });
+    await loadAdminStaff();
+  } catch (e) {
+    alert(e.message || 'Could not remove this staff member.');
+  }
+}
+
+// ── Content protection (deterrents only — cannot stop screenshots) ──
+document.addEventListener('contextmenu', e => {
+  if (e.target.closest('#screen-manual, #screen-quiz, #screen-cert')) e.preventDefault();
+});
+document.addEventListener('keydown', e => {
+  const inProtectedScreen = document.querySelector('#screen-manual.active, #screen-quiz.active, #screen-cert.active');
+  if (!inProtectedScreen) return;
+  const key = e.key.toLowerCase();
+  if ((e.ctrlKey || e.metaKey) && ['c','p','s','u'].includes(key)) e.preventDefault();
+  if (e.key === 'PrintScreen') e.preventDefault();
+});
+
+function renderWatermark() {
+  let wm = document.getElementById('content-watermark');
+  if (!wm) {
+    wm = document.createElement('div');
+    wm.id = 'content-watermark';
+    wm.className = 'content-watermark';
+    document.body.appendChild(wm);
+  }
+  const label = STATE.user.email ? `${STATE.user.firstName} ${STATE.user.lastName} · ${STATE.user.email}` : 'Interlace Studies';
+  wm.innerHTML = Array.from({ length: 24 }).map(() => `<span>${label}</span>`).join('');
+}
+
 // ── Keyboard navigation ───────────────────────────────────────────
 document.addEventListener('keydown', e => {
   if (!$('screen-quiz').classList.contains('active')) return;
@@ -826,9 +1072,25 @@ document.addEventListener('keydown', e => {
 
 // ── Persist on unload (also flushes in-progress manual study time) ──
 window.addEventListener('beforeunload', () => {
+  const token = getSessionToken();
+  if (!token) return;
   if ($('screen-manual')?.classList.contains('active') && STATE.pendingManualModId != null) {
     if (!STATE.moduleMeta[STATE.pendingManualModId]) STATE.moduleMeta[STATE.pendingManualModId] = { attempts:0, studyTimeSec:0, passed:false };
     STATE.moduleMeta[STATE.pendingManualModId].studyTimeSec += (STATE.manualSessionElapsed || 0);
   }
-  persist();
+  // sendBeacon survives page unload, unlike a normal fetch — but it can't
+  // set custom headers, so the session token travels in the body instead.
+  const payload = JSON.stringify({
+    token,
+    moduleResults: STATE.moduleResults,
+    moduleMeta: STATE.moduleMeta,
+    lmsLocked: STATE.lmsLocked,
+    lockedInfo: STATE.lockedInfo,
+  });
+  navigator.sendBeacon('/api/training/save', new Blob([payload], { type: 'application/json' }));
 });
+
+// ── Auto sign-in on page load if a valid session token is stored ──
+(async function bootstrap() {
+  await tryAutoLogin();
+})();
