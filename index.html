@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interlace Studies — Partner Visa Training Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  --teal:       #1a5276;
+  --teal-dark:  #154360;
+  --teal-mid:   #2471a3;
+  --teal-lt:    #d6eaf8;
+  --teal-pale:  #eaf4fb;
+  --gold:       #d4a017;
+  --gold-lt:    #fef9e7;
+  --gold-dark:  #b8860b;
+  --white:      #ffffff;
+  --off-white:  #f8fafc;
+  --dark:       #1c2833;
+  --grey-dk:    #4a5568;
+  --grey:       #718096;
+  --grey-lt:    #e2e8f0;
+  --grey-pale:  #f7f8fa;
+  --red:        #c0392b;
+  --red-lt:     #fdf2f2;
+  --green:      #1e8449;
+  --green-lt:   #eafaf1;
+  --orange:     #d35400;
+  --orange-lt:  #fef5ed;
+  --purple:     #6c3483;
+  --purple-lt:  #f4ecfb;
+
+  --radius:     12px;
+  --radius-lg:  20px;
+  --shadow:     0 4px 24px rgba(26,82,118,0.10);
+  --shadow-lg:  0 12px 48px rgba(26,82,118,0.16);
+  --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--off-white);
+  color: var(--dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input, select { font-family: inherit; }
+
+/* ═══════════════════════════════════════════════
+   SCREEN MANAGEMENT
+═══════════════════════════════════════════════ */
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: block; }
+
+/* ═══════════════════════════════════════════════
+   ██ LANDING SCREEN
+═══════════════════════════════════════════════ */
+#screen-landing {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 50%, var(--teal-mid) 100%);
+  position: relative;
+  overflow: hidden;
+}
+#screen-landing::before {
+  content:'';
+  position:absolute;
+  top:-200px;right:-200px;
+  width:600px;height:600px;
+  background: radial-gradient(circle, rgba(212,160,23,0.15) 0%, transparent 70%);
+  pointer-events:none;
+}
+#screen-landing::after {
+  content:'';
+  position:absolute;
+  bottom:-150px;left:-150px;
+  width:500px;height:500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  pointer-events:none;
+}
+.landing-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+.brand-pill .dot { width:6px;height:6px;border-radius:50%;background:var(--gold); }
+.landing-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px,6vw,62px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+.landing-logo span { color: var(--gold); }
+.landing-logo-img { height: clamp(40px,6vw,64px); width: auto; margin-bottom: 20px; }
+.top-bar-logo { height: 24px; width: auto; display: block; }
+.cert-logo-img { height: 52px; width: auto; }
+.landing-sub {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 48px;
+  letter-spacing: 0.2px;
+}
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+  text-align: left;
+}
+.module-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius);
+  padding: 20px;
+  backdrop-filter: blur(8px);
+  transition: var(--transition);
+}
+.module-card:hover {
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-2px);
+}
+.module-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.module-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.module-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+.module-count {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold);
+  background: rgba(212,160,23,0.15);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+/* Staff Registration */
+.reg-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+  max-width: 520px;
+  margin: 0 auto 40px;
+}
+.reg-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+.reg-card p {
+  font-size: 13px;
+  color: var(--grey);
+  margin-bottom: 24px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--grey-dk);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-group input, .form-group select {
+  border: 1.5px solid var(--grey-lt);
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: var(--dark);
+  background: var(--off-white);
+  transition: var(--transition);
+  outline: none;
+  width: 100%;
+}
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--teal-mid);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(36,113,163,0.12);
+}
+.btn-start {
+  width: 100%;
+  background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 8px;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+}
+.btn-start:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(26,82,118,0.3);
+}
+.compliance-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  justify-content: center;
+}
+.compliance-note span { color: var(--gold); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════
+   ██ MODULE SELECT SCREEN
+═══════════════════════════════════════════════ */
+#screen-modules {
+  background: var(--off-white);
+}
+.top-bar {
+  background: var(--teal-dark);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.top-bar-brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.top-bar-brand .sep { color: rgba(255,255,255,0.3); }
+.top-bar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--dark);
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-name { font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500; }
+.progress-badge {
+  background: rgba(212,160,23,0.2);
+  border: 1px solid rgba(212,160,23,0.4);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.modules-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+.modules-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.modules-content > p {
+  color: var(--grey);
+  font-size: 14px;
+  margin-bottom: 36px;
+}
+.modules-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.mod-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 2px solid transparent;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.mod-card::before {
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  opacity:0;
+  transition: var(--transition);
+}
+.mod-card:hover { border-color: var(--teal-lt); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.mod-card:hover::before { opacity:1; }
+.mod-card.completed { border-color: var(--green); background: var(--green-lt); }
+.mod-card.completed::before { opacity:1; background: var(--green); }
+.mod-card.locked { opacity: 0.55; cursor: not-allowed; }
+.mod-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.mod-icon-big { font-size: 36px; margin-bottom: 12px; }
+.mod-card h3 { font-size: 16px; font-weight: 700; color: var(--teal); margin-bottom: 6px; }
+.mod-card p { font-size: 13px; color: var(--grey); line-height: 1.5; margin-bottom: 16px; }
+.mod-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--grey-pale);
+  color: var(--grey-dk);
+}
+.meta-pill.teal { background: var(--teal-pale); color: var(--teal); }
+.meta-pill.gold { background: var(--gold-lt); color: var(--gold-dark); }
+.meta-pill.green { background: var(--green-lt); color: var(--green); }
+.status-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+.status-badge.done { background: var(--green-lt); color: var(--green); }
+.status-badge.progress { background: var(--gold-lt); color: var(--gold-dark); }
+.status-badge.locked-badge { background: var(--grey-pale); color: var(--grey); }
+
+/* Overall progress bar */
+.overall-progress {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.progress-label { font-size: 13px; font-weight: 600; color: var(--grey-dk); min-width: 120px; }
+.progress-bar-wrap {
+  flex: 1;
+  background: var(--grey-lt);
+  border-radius: 100px;
+  height: 10px;
+  min-width: 150px;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  transition: width 0.6s ease;
+}
+.progress-pct { font-size: 15px; font-weight: 800; color: var(--teal); }
+
+/* ═══════════════════════════════════════════════
+   ██ QUIZ SCREEN
+═══════════════════════════════════════════════ */
+#screen-quiz { background: var(--off-white); }
+
+.quiz-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 52px);
+}
+
+/* Sidebar */
+.quiz-sidebar {
+  background: var(--teal-dark);
+  padding: 28px 20px;
+  position: sticky;
+  top: 52px;
+  height: calc(100vh - 52px);
+  overflow-y: auto;
+}
+.sidebar-module-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+.sidebar-module-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+.q-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+.q-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+}
+.q-nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.q-nav-item.active { background: rgba(255,255,255,0.15); color: #fff; font-weight: 600; }
+.q-nav-item.answered { color: #fff; }
+.q-nav-item.correct { color: #6fcf97; }
+.q-nav-item.wrong { color: #eb5757; }
+.q-dot {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.q-nav-item.active .q-dot { background: var(--gold); color: var(--dark); }
+.q-nav-item.correct .q-dot { background: #6fcf97; color: var(--dark); }
+.q-nav-item.wrong .q-dot { background: #eb5757; color: #fff; }
+.sidebar-score {
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 8px;
+}
+.score-row { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+.score-row strong { color: #fff; }
+
+/* Main quiz area */
+.quiz-main {
+  padding: 40px 48px;
+  max-width: 800px;
+}
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.quiz-progress-wrap {
+  flex: 1;
+}
+.quiz-progress-label {
+  font-size: 12px;
+  color: var(--grey);
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.quiz-progress-bar {
+  height: 6px;
+  background: var(--grey-lt);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  border-radius: 100px;
+  transition: width 0.4s ease;
+}
+.timer-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-pale);
+  padding: 8px 16px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+.timer-pill.warning { color: var(--orange); background: var(--orange-lt); }
+
+/* Question card */
+.question-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { opacity:0; transform: translateY(16px); }
+  to { opacity:1; transform: translateY(0); }
+}
+.q-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.q-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+.q-tag.eligibility { background: var(--teal-pale); color: var(--teal); }
+.q-tag.evidence { background: var(--purple-lt); color: var(--purple); }
+.q-tag.refusal { background: var(--red-lt); color: var(--red); }
+.q-tag.fv { background: var(--orange-lt); color: var(--orange); }
+.q-tag.process { background: var(--green-lt); color: var(--green); }
+.q-tag.integrity { background: #fff4e6; color: #b7410e; }
+.q-difficulty {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--grey);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.diff-dot { width:7px;height:7px;border-radius:50%; }
+.diff-easy .diff-dot { background: var(--green); }
+.diff-med .diff-dot { background: var(--gold); }
+.diff-hard .diff-dot { background: var(--red); }
+.q-num-badge {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--grey);
+}
+.question-text {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+.law-cite {
+  font-size: 12px;
+  color: var(--grey);
+  font-style: italic;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.option-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 2px solid var(--grey-lt);
+  background: var(--grey-pale);
+  text-align: left;
+  font-size: 14px;
+  color: var(--dark);
+  font-weight: 500;
+  line-height: 1.45;
+  transition: var(--transition);
+  width: 100%;
+}
+.option-btn:hover:not(:disabled) {
+  border-color: var(--teal-mid);
+  background: var(--teal-pale);
+  color: var(--teal-dark);
+}
+.option-btn:disabled { cursor: default; }
+.option-letter {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--grey-lt);
+  color: var(--grey-dk);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.option-btn:hover:not(:disabled) .option-letter {
+  background: var(--teal);
+  color: #fff;
+}
+.option-btn.selected {
+  border-color: var(--teal);
+  background: var(--teal-pale);
+}
+.option-btn.selected .option-letter { background: var(--teal); color:#fff; }
+.option-btn.correct {
+  border-color: var(--green) !important;
+  background: var(--green-lt) !important;
+  color: var(--green) !important;
+}
+.option-btn.correct .option-letter { background: var(--green) !important; color:#fff !important; }
+.option-btn.wrong {
+  border-color: var(--red) !important;
+  background: var(--red-lt) !important;
+  color: var(--red) !important;
+}
+.option-btn.wrong .option-letter { background: var(--red) !important; color:#fff !important; }
+.option-btn.dimmed { opacity: 0.4; }
+
+/* Feedback box */
+.feedback-box {
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-top: 20px;
+  display: none;
+  animation: slideUp 0.25s ease;
+}
+.feedback-box.show { display: block; }
+.feedback-box.correct { background: var(--green-lt); border: 1.5px solid var(--green); }
+.feedback-box.wrong { background: var(--red-lt); border: 1.5px solid var(--red); }
+.feedback-icon { font-size: 20px; margin-bottom: 8px; }
+.feedback-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.feedback-box.correct .feedback-title { color: var(--green); }
+.feedback-box.wrong .feedback-title { color: var(--red); }
+.feedback-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--grey-dk);
+}
+.feedback-law {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  font-size: 12px;
+  color: var(--grey);
+  font-style: italic;
+}
+
+/* Remark / info card */
+.remark-card {
+  background: linear-gradient(135deg, var(--teal-pale), #fff);
+  border: 1.5px solid var(--teal-lt);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+.remark-card h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.remark-card p { font-size: 13px; line-height: 1.6; color: var(--grey-dk); }
+.warning-card {
+  background: var(--orange-lt);
+  border: 1.5px solid #f0a500;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--orange);
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Action buttons */
+.quiz-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 13px 28px;
+  border-radius: 10px;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,82,118,0.25); }
+.btn-primary:disabled { opacity:0.4; cursor:not-allowed; transform:none; box-shadow:none; }
+.btn-secondary {
+  background: var(--grey-pale);
+  color: var(--grey-dk);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 10px;
+  border: 1.5px solid var(--grey-lt);
+  transition: var(--transition);
+}
+.btn-secondary:hover { background: var(--grey-lt); }
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 13px 28px;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+.btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,160,23,0.35); }
+
+/* ═══════════════════════════════════════════════
+   ██ STUDY MANUAL SCREEN
+═══════════════════════════════════════════════ */
+#screen-manual { background: var(--off-white); }
+.manual-wrap { max-width: 780px; margin: 0 auto; padding: 40px 24px 40px; }
+.manual-title-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:24px; }
+.manual-title-row h2 { font-family:'Playfair Display', serif; font-size:26px; color:var(--teal); }
+.manual-intro {
+  background: linear-gradient(135deg, var(--teal-pale), #fff);
+  border: 1.5px solid var(--teal-lt);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: var(--grey-dk);
+  line-height: 1.7;
+}
+.manual-section {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.manual-section h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.manual-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--teal-pale);
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.manual-section p { font-size: 13.5px; line-height: 1.75; color: var(--grey-dk); }
+.manual-footer-bar {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid var(--grey-lt);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+}
+.manual-footer-note { font-size: 12px; color: var(--grey); }
+
+/* ═══════════════════════════════════════════════
+   ██ LOCKOUT SCREEN
+═══════════════════════════════════════════════ */
+.lockout-card {
+  max-width: 620px;
+  margin: 60px auto;
+  background: #fff;
+  border: 2px solid var(--red);
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+.lockout-card .lock-icon { font-size: 52px; margin-bottom: 16px; }
+.lockout-card h2 { font-size: 24px; color: var(--red); margin-bottom: 12px; }
+.lockout-card p { font-size: 14px; color: var(--grey-dk); line-height: 1.7; margin-bottom: 10px; }
+.attempt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: var(--red-lt);
+  color: var(--red);
+}
+.attempt-pill.ok { background: var(--teal-pale); color: var(--teal); }
+
+/* ═══════════════════════════════════════════════
+   ██ MODULE RESULTS SCREEN
+═══════════════════════════════════════════════ */
+#screen-results {
+  background: var(--off-white);
+  min-height: 100vh;
+}
+.results-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+.result-hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.result-medal {
+  font-size: 72px;
+  margin-bottom: 16px;
+  animation: bounce 0.6s ease;
+}
+@keyframes bounce {
+  0% { transform: scale(0); opacity:0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity:1; }
+}
+.result-grade {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.result-grade.pass { color: var(--green); }
+.result-grade.fail { color: var(--red); }
+.result-tagline { font-size: 16px; color: var(--grey); margin-bottom: 32px; }
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.score-cell {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.score-cell .val {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+.score-cell .lbl {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.review-section { margin-bottom: 40px; }
+.review-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--teal-lt);
+}
+.review-item {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid transparent;
+}
+.review-item.correct-item { border-left-color: var(--green); }
+.review-item.wrong-item { border-left-color: var(--red); }
+.review-item-q {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.review-item-ans { font-size: 12px; color: var(--grey); line-height: 1.5; }
+.review-item-ans strong { color: var(--green); }
+.review-item-ans .wrong-ans { color: var(--red); }
+.results-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+/* ═══════════════════════════════════════════════
+   ██ CERTIFICATE SCREEN
+═══════════════════════════════════════════════ */
+#screen-cert {
+  background: var(--off-white);
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px;
+}
+#screen-cert.active { display: flex; }
+.cert-wrapper {
+  max-width: 860px;
+  width: 100%;
+}
+.cert-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.certificate {
+  background: #fff;
+  border: 3px solid var(--teal);
+  border-radius: 4px;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.cert-corner {
+  position: absolute;
+  width: 100px; height: 100px;
+}
+.cert-corner.tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.cert-corner.tr { top: 0; right: 0; transform: scaleX(-1); }
+.cert-corner.bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.cert-corner.br { bottom: 0; right: 0; transform: scale(-1); }
+.cert-corner svg { width:100%; height:100%; }
+
+.cert-inner { text-align: center; position: relative; z-index: 1; }
+.cert-header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.cert-company-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--grey);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.cert-divider-gold {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 20px 0;
+}
+.cert-presents {
+  font-size: 13px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.cert-of-completion {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--teal-dark);
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+.cert-issued-to {
+  font-size: 13px;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+.cert-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--teal);
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+}
+.cert-body-text {
+  font-size: 14px;
+  color: var(--grey-dk);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 28px;
+}
+.cert-badge-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.cert-badge {
+  background: var(--teal-pale);
+  border: 1.5px solid var(--teal-lt);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal);
+  text-align: center;
+}
+.cert-badge small { display:block; font-size:10px; font-weight:500; color:var(--grey); margin-top:2px; }
+.cert-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: end;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--grey-lt);
+}
+.cert-sig-block { text-align: center; }
+.cert-sig-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+.cert-sig-title { font-size: 11px; color: var(--grey); letter-spacing: 0.5px; }
+.cert-sig-line { height: 1px; background: var(--grey-lt); margin-bottom: 8px; }
+.cert-seal {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--gold-lt);
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--gold-dark);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+.cert-seal .seal-icon { font-size: 20px; margin-bottom: 2px; }
+.cert-id {
+  font-size: 10px;
+  color: var(--grey);
+  margin-top: 20px;
+  letter-spacing: 0.5px;
+}
+.cert-stats { margin: 24px auto 0; max-width: 640px; text-align: left; }
+.cert-stats-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.cert-stats table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.cert-stats th, .cert-stats td { padding: 6px 10px; border-bottom: 1px solid var(--grey-lt); text-align: left; color: var(--grey-dk); }
+.cert-stats th { color: var(--teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; font-size: 9.5px; }
+.cert-stats td.num { text-align: center; }
+.cert-stats-totals { display: flex; justify-content: center; gap: 24px; margin-top: 14px; font-size: 11px; color: var(--grey); flex-wrap: wrap; }
+.cert-stats-totals strong { color: var(--teal); }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .quiz-layout { grid-template-columns: 1fr; }
+  .quiz-sidebar { position: static; height: auto; }
+  .quiz-main { padding: 24px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .score-grid { grid-template-columns: 1fr 1fr; }
+  .cert-footer { grid-template-columns: 1fr; gap: 16px; }
+  .certificate { padding: 32px 24px; }
+  .cert-of-completion { font-size: 28px; }
+  .cert-name { font-size: 32px; }
+}
+@media print {
+  .cert-controls, .top-bar, #screen-modules, #screen-quiz, #screen-results, #screen-landing { display: none !important; }
+  #screen-cert { padding: 0; background: #fff; }
+  .certificate { box-shadow: none; border: 2px solid var(--teal); }
+}
+
+/* Confetti animation */
+.confetti-piece {
+  position: fixed;
+  width: 10px; height: 10px;
+  top: -20px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+  z-index: 9999;
+}
+@keyframes confettiFall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Tooltip / info popup */
+.info-tooltip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--teal-lt);
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: help;
+  position: relative;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 1: LANDING / REGISTRATION
+═══════════════════════════════════════════════ -->
+<div id="screen-landing" class="screen active">
+  <div class="landing-inner">
+    <div class="brand-pill"><span class="dot"></span> MARN 2418363 &nbsp;|&nbsp; ICEF Certified</div>
+    <img src="assets/logo-white.png" alt="Interlace Studies" class="landing-logo-img">
+    <p class="landing-sub">Partner Visa Training Academy &mdash; Staff Certification Programme</p>
+
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-icon">📋</div>
+        <div class="module-title">Module 1</div>
+        <div class="module-desc">Visa Framework &amp; Eligibility</div>
+        <div class="module-count">20 Questions</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">🔍</div>
+        <div class="module-title">Module 2</div>
+        <div class="module-desc">Relationship Evidence</div>
+        <div class="module-count">20 Questions</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">⚖️</div>
+        <div class="module-title">Module 3</div>
+        <div class="module-desc">Refusals, Bars &amp; Integrity</div>
+        <div class="module-count">20 Questions</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">🏛️</div>
+        <div class="module-title">Module 4</div>
+        <div class="module-desc">Family Violence &amp; ART Appeals</div>
+        <div class="module-count">20 Questions</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">💼</div>
+        <div class="module-title">Module 5</div>
+        <div class="module-desc">Process, Fees &amp; Client Care</div>
+        <div class="module-count">20 Questions</div>
+      </div>
+    </div>
+
+    <div class="reg-card">
+      <h3>Register to Begin Training</h3>
+      <p>Enter your details below. Your progress and certificate will be saved locally.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" id="reg-fname" placeholder="e.g. Siddhartha" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" id="reg-lname" placeholder="e.g. Bhandari">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Role / Position *</label>
+          <select id="reg-role">
+            <option value="">Select your role…</option>
+            <option>Migration Consultant</option>
+            <option>Education Consultant</option>
+            <option>Sales &amp; Client Relations</option>
+            <option>Office Administrator</option>
+            <option>Branch Manager</option>
+            <option>Support Staff</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Office / Branch *</label>
+          <select id="reg-branch">
+            <option value="">Select branch…</option>
+            <option>Brisbane (HQ)</option>
+            <option>Parramatta / Sydney</option>
+            <option>Perth</option>
+            <option>Adelaide</option>
+            <option>Kathmandu</option>
+            <option>Bali</option>
+            <option>Phnom Penh</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:16px">
+        <label>Email Address (for certificate)</label>
+        <input type="email" id="reg-email" placeholder="your@email.com">
+      </div>
+      <button class="btn-start" onclick="startTraining()">🚀 &nbsp; Begin Training Programme</button>
+    </div>
+
+    <div class="compliance-note">
+      <span>⚖️ LEGAL NOTE:</span> This training is based on Migration Act 1958, Migration Regulations 1994 &amp; current DHA policy. Law changes frequently — always verify before advising clients.
+    </div>
+    <div class="compliance-note" style="margin-top:10px">
+      <span>📋 POLICY:</span> Each module requires studying the manual first, a 100% pass mark, and questions/options are reshuffled on every attempt. Three attempts without a 100% score locks your account.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 2: MODULE SELECTION
+═══════════════════════════════════════════════ -->
+<div id="screen-modules" class="screen">
+  <div class="top-bar">
+    <div class="top-bar-brand">
+      <img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo">
+      <span class="sep">|</span>
+      <span style="font-weight:400;color:rgba(255,255,255,0.6)">Training Academy</span>
+    </div>
+    <div class="top-bar-user">
+      <div class="avatar" id="tb-avatar">IS</div>
+      <span class="user-name" id="tb-name">Staff Member</span>
+      <span class="progress-badge" id="tb-progress">0 / 5 Complete</span>
+    </div>
+  </div>
+
+  <div class="modules-content">
+    <h2>Training Modules</h2>
+    <p>Complete all 5 modules to earn your Partner Visa Training Certificate. Pass mark: 100% per module. Study manual required before each attempt. Maximum 3 attempts per module.</p>
+
+    <div id="lockout-container"></div>
+
+    <div class="overall-progress" id="overall-progress-wrap">
+      <div class="progress-label">Overall Progress</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="overall-bar" style="width:0%"></div>
+      </div>
+      <div class="progress-pct" id="overall-pct">0%</div>
+    </div>
+
+    <div class="modules-list" id="modules-list"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 2b: STUDY MANUAL
+═══════════════════════════════════════════════ -->
+<div id="screen-manual" class="screen">
+  <div class="top-bar">
+    <div class="top-bar-brand">
+      <img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo">
+      <span class="sep">|</span>
+      <span style="font-weight:400;color:rgba(255,255,255,0.6)" id="manual-top-module">Module</span>
+    </div>
+    <div class="top-bar-user">
+      <div class="timer-pill" id="manual-timer">⏱ 00:00</div>
+      <button class="btn-secondary" style="font-size:12px;padding:6px 14px" onclick="exitManual()">← Modules</button>
+    </div>
+  </div>
+  <div class="manual-wrap" id="manual-wrap"><!-- injected --></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 3: QUIZ
+═══════════════════════════════════════════════ -->
+<div id="screen-quiz" class="screen">
+  <div class="top-bar">
+    <div class="top-bar-brand">
+      <img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo">
+      <span class="sep">|</span>
+      <span style="font-weight:400;color:rgba(255,255,255,0.6)" id="quiz-top-module">Module</span>
+    </div>
+    <div class="top-bar-user">
+      <div class="avatar" id="q-avatar">IS</div>
+      <span class="user-name" id="q-name">Staff</span>
+      <button class="btn-secondary" style="font-size:12px;padding:6px 14px" onclick="goToModules()">← Modules</button>
+    </div>
+  </div>
+
+  <div class="quiz-layout">
+    <aside class="quiz-sidebar">
+      <div class="sidebar-module-title">Current Module</div>
+      <div class="sidebar-module-name" id="sidebar-mod-name">—</div>
+      <div class="q-nav-list" id="q-nav-list"></div>
+      <div class="sidebar-score">
+        <div class="score-row"><span>Answered</span><strong id="sb-answered">0/0</strong></div>
+        <div class="score-row"><span>Correct</span><strong id="sb-correct">0</strong></div>
+        <div class="score-row"><span>Score</span><strong id="sb-score">—</strong></div>
+      </div>
+    </aside>
+
+    <main class="quiz-main" id="quiz-main">
+      <!-- Dynamic question content injected here -->
+    </main>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 4: MODULE RESULTS
+═══════════════════════════════════════════════ -->
+<div id="screen-results" class="screen">
+  <div class="top-bar">
+    <div class="top-bar-brand"><img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo"> <span class="sep">|</span> <span style="font-weight:400;color:rgba(255,255,255,0.6)">Module Results</span></div>
+  </div>
+  <div class="results-inner">
+    <div class="result-hero">
+      <div class="result-medal" id="res-medal">🏅</div>
+      <div class="result-grade" id="res-grade">85%</div>
+      <p class="result-tagline" id="res-tagline">Module complete</p>
+    </div>
+    <div class="score-grid">
+      <div class="score-cell"><div class="val" id="res-score">17/20</div><div class="lbl">Score</div></div>
+      <div class="score-cell"><div class="val" id="res-pct">85%</div><div class="lbl">Percentage</div></div>
+      <div class="score-cell"><div class="val" id="res-time">4:32</div><div class="lbl">Time Taken</div></div>
+    </div>
+    <div class="remark-card" id="res-remark">
+      <h4>📝 Training Remark</h4>
+      <p id="res-remark-text">Great work!</p>
+    </div>
+    <div class="review-section">
+      <h3>Question Review</h3>
+      <div id="res-review-list"></div>
+    </div>
+    <div class="results-actions">
+      <button class="btn-secondary" id="btn-retry" onclick="retryModule()">↺ &nbsp;Retry This Module</button>
+      <button class="btn-primary" onclick="goToModules()">← Back to Modules</button>
+      <button class="btn-gold" id="btn-cert" onclick="showCert()" style="display:none">🏆 &nbsp;Get Certificate</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCREEN 5: CERTIFICATE
+═══════════════════════════════════════════════ -->
+<div id="screen-cert" class="screen">
+  <div class="cert-wrapper">
+    <div class="cert-controls">
+      <button class="btn-secondary" onclick="goToModules()">← Back to Modules</button>
+      <button class="btn-primary" onclick="window.print()">🖨️ &nbsp;Print Certificate</button>
+      <button class="btn-gold" onclick="downloadCert()">⬇️ &nbsp;Download PNG</button>
+    </div>
+
+    <div class="certificate" id="certificate">
+      <!-- Decorative corners -->
+      <div class="cert-corner tl">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M0 0 L80 0 L80 8 L8 8 L8 80 L0 80 Z" fill="#1a5276" opacity="0.15"/>
+          <path d="M0 0 L50 0 L50 4 L4 4 L4 50 L0 50 Z" fill="#d4a017" opacity="0.5"/>
+          <circle cx="10" cy="10" r="4" fill="#d4a017" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="cert-corner tr">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M0 0 L80 0 L80 8 L8 8 L8 80 L0 80 Z" fill="#1a5276" opacity="0.15"/>
+          <path d="M0 0 L50 0 L50 4 L4 4 L4 50 L0 50 Z" fill="#d4a017" opacity="0.5"/>
+          <circle cx="10" cy="10" r="4" fill="#d4a017" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="cert-corner bl">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M0 0 L80 0 L80 8 L8 8 L8 80 L0 80 Z" fill="#1a5276" opacity="0.15"/>
+          <path d="M0 0 L50 0 L50 4 L4 4 L4 50 L0 50 Z" fill="#d4a017" opacity="0.5"/>
+          <circle cx="10" cy="10" r="4" fill="#d4a017" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="cert-corner br">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M0 0 L80 0 L80 8 L8 8 L8 80 L0 80 Z" fill="#1a5276" opacity="0.15"/>
+          <path d="M0 0 L50 0 L50 4 L4 4 L4 50 L0 50 Z" fill="#d4a017" opacity="0.5"/>
+          <circle cx="10" cy="10" r="4" fill="#d4a017" opacity="0.6"/>
+        </svg>
+      </div>
+
+      <div class="cert-inner">
+        <div class="cert-header-logo">
+          <img src="assets/logo-color.png" alt="Interlace Studies" class="cert-logo-img">
+        </div>
+        <div class="cert-company-sub">PTY LTD &nbsp;|&nbsp; MARN 2418363 &nbsp;|&nbsp; ICEF CERTIFIED</div>
+        <div class="cert-divider-gold"></div>
+        <div class="cert-presents">This is to certify that</div>
+        <div class="cert-of-completion">Certificate of Completion</div>
+        <div class="cert-issued-to">has been awarded to</div>
+        <div class="cert-name" id="cert-name">—</div>
+        <div class="cert-body-text" id="cert-body">
+          has successfully completed the <strong>Australian Partner Visa Training Programme</strong>
+          at Interlace Studies Pty Ltd, demonstrating comprehensive knowledge of partner visa law,
+          evidence requirements, compliance obligations, and client advisory best practices
+          as governed by the <em>Migration Act 1958</em> and <em>Migration Regulations 1994</em>.
+        </div>
+        <div class="cert-badge-row" id="cert-badges"></div>
+        <div class="cert-stats" id="cert-stats"></div>
+        <div class="cert-divider-gold"></div>
+        <div class="cert-footer">
+          <div class="cert-sig-block">
+            <div class="cert-sig-line"></div>
+            <div class="cert-sig-name">Rajaram Dhungana</div>
+            <div class="cert-sig-title">Registered Migration Agent &nbsp;|&nbsp; MARN 2418363</div>
+          </div>
+          <div style="display:flex;justify-content:center">
+            <div class="cert-seal">
+              <div class="seal-icon">⚖️</div>
+              OFFICIAL<br>TRAINING<br>SEAL
+            </div>
+          </div>
+          <div class="cert-sig-block">
+            <div class="cert-sig-line"></div>
+            <div class="cert-sig-name">Interlace Studies</div>
+            <div class="cert-sig-title">Training Academy Director &nbsp;|&nbsp; interlace.com.au</div>
+          </div>
+        </div>
+        <div class="cert-id" id="cert-id">Certificate ID: IS-PV-2026-0000 &nbsp;|&nbsp; Issued: — &nbsp;|&nbsp; Valid for CPD purposes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="questions.js?v=3"></script>
+<script src="manual.js?v=3"></script>
+<script src="app.js?v=3"></script>
+</body>
+</html>
