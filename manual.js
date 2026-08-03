@@ -318,5 +318,171 @@ const MANUALS = {
         body: "If you encounter a situation that appears to involve fraud, exploitation, or illegal activity, you must report it to your team leader immediately."
       }
     ]
+  },
+
+  11: {
+    intro: "This module covers Interlace Studies' specialised employer sponsorship service — the Standard Business Sponsorship (SBS) framework, the fee structures for the 482, 186, 494 and 407 pathways, and the compliance obligations that protect business clients from serious penalties.",
+    sections: [
+      {
+        heading: "The Three-Stage Sponsorship Framework",
+        body: "Every employer sponsorship engagement follows the same sequential journey. Stage A: Standard Business Sponsorship (SBS) — a one-time approval ($420 government fee, valid 5 years) authorising the business to sponsor overseas workers; required before any nomination. Stage B: Nomination — a separate application per position, assessing role genuineness, occupation eligibility, TSMIT compliance, and Labour Market Testing (LMT — advertising the role for at least 28 days on two or more platforms within the 4 months prior to lodgement). Stage C: Visa Application — the employee's application, assessing skills, English, health and character. The typical end-to-end 482 pathway takes 5–12 months."
+      },
+      {
+        heading: "Subclass 482 (Skills in Demand)",
+        body: "Australia's primary temporary skilled work visa, available under three streams: Core Skills, Specialist Skills, and Labour Agreement. Granted for up to 4 years with full-time work rights for the nominated employer and occupation, and a clear PR pathway via the Subclass 186 TRT stream after 2 years. The employer must pay at least the TSMIT (currently $73,150 p.a., confirm current rate) or the Annual Market Salary Rate, whichever is higher."
+      },
+      {
+        heading: "Subclass 186 (Employer Nomination Scheme)",
+        body: "A permanent visa with two streams. Temporary Residence Transition (TRT): for applicants who have held a 482 with the same employer for 2+ years in the nominated occupation. Direct Entry (DE): for applicants who have not previously held a 482, requiring a skills assessment plus 3 years of relevant experience — ideal for senior or hard-to-fill roles needing immediate PR, bypassing the temporary stage entirely."
+      },
+      {
+        heading: "Subclass 494 & Subclass 407",
+        body: "Subclass 494 (Skilled Employer Sponsored Regional): a 5-year provisional visa for regional employers; the holder must live, work, and study only in a designated regional area, leading to the permanent Subclass 191 after 3 years of compliance. Subclass 407 (Training): for structured workplace-based occupational training only — not general employment, and with no direct PR pathway. It has the lowest fees of all employer-sponsored options (no SAF Levy, $430 primary applicant VAC), making it cost-effective for genuine short-term training needs, but the 482 is the better choice if the business wants to retain the worker long-term."
+      },
+      {
+        heading: "Employer Sponsorship Obligations & Risks",
+        body: "Approved sponsors carry serious legal obligations. Pay equivalent terms & conditions to an equivalent Australian worker — breach carries a civil penalty of up to $93,900 per breach. No cost recovery — employers cannot pass sponsorship, nomination, or SAF levy costs to the visa holder; breach risks penalty and sponsorship cancellation. Maintain records of employment, pay, and role for the visa duration plus 2 years after. Notify Home Affairs within 28 days of changes to the worker's role, salary, or employment status. Cooperate with inspections. The genuine role requirement means the nominated position must remain a real, ongoing full-time role — breach can mean visa cancellation and a sponsorship bar."
+      },
+      {
+        heading: "Recommending the Right Pathway",
+        body: "The 482 SID is the recommended primary pathway for most employers — fastest entry, broadest eligible occupations, and a structured PR route via 186 TRT. For critical, senior, or hard-to-fill roles needing immediate permanent residency as an incentive, the 186 DE stream is the stronger recommendation. The 407 is reserved for genuine training-only needs where a work visa is not the goal."
+      }
+    ]
+  },
+
+  12: {
+    intro: "This module covers the communication standards every Interlace Studies staff member must follow: the CAEP standard, structured listening and de-escalation techniques, and CRM documentation discipline.",
+    sections: [
+      {
+        heading: "The CAEP Communication Standard",
+        body: "All client interactions — in every channel, at every stage — must reflect Clarity (plain English, no unexplained jargon), Accuracy (never guess; verify before advising and cite the source), Empathy (acknowledge the client's emotions and situation genuinely), and Professionalism (a professional tone at all times, no slang or personal opinions)."
+      },
+      {
+        heading: "Phone Etiquette & the LARS Method",
+        body: "Every inbound call opens with the approved script: 'Good [morning/afternoon], thank you for calling Interlace Studies. My name is [Name]. How may I assist you today?' Once the client explains their enquiry, use LARS: Listen (without interrupting), Acknowledge (confirm you've heard and understood), Respond (provide accurate, relevant information), and Summarise (recap key points and next steps)."
+      },
+      {
+        heading: "The HEAT Technique for Difficult Clients",
+        body: "When a client is upset: Hear them out without interrupting; Empathise genuinely with their feelings; Apologise for the situation (not the decision itself); and Take Action by clearly explaining next steps. Never argue or become defensive, never provide specific migration advice, never promise outcomes or processing times, never leave a client on hold more than 2 minutes without checking in, and never end a call abruptly."
+      },
+      {
+        heading: "Written Communication Standards",
+        body: "Every email needs a clear, specific subject line, the client's name in the salutation, a professional and accurate body (paragraphs, not bullet points, for formal correspondence), the standard company disclaimer, and a proper sign-off. The approved general enquiry template always directs clients needing specific advice to a MARA-registered migration agent."
+      },
+      {
+        heading: "CRM Documentation",
+        body: "Every client interaction must be logged in the CRM within 15 minutes of the call ending, recording: date & time, channel, client details (name, contact, nationality, current visa status), a brief enquiry summary, the information/guidance actually provided, any referrals made, agreed next steps, and whether follow-up is required (with date and nature if yes)."
+      }
+    ]
+  },
+
+  13: {
+    intro: "This module covers the legal framework governing international education in Australia: the ESOS Act 2000, the National Code 2018, PRISMS, the frequently-misunderstood 6-month transfer rule, and the AQF.",
+    sections: [
+      {
+        heading: "The ESOS Act 2000",
+        body: "The Education Services for Overseas Students (ESOS) Act 2000 is the primary legislation governing education for international students, establishing provider registration and protecting students' rights — to receive the education paid for, to a refund if the provider cannot deliver, to a fair complaints process, and to be treated without discrimination."
+      },
+      {
+        heading: "The National Code 2018 — Key Standards",
+        body: "Standard 3 (Formalisation of Enrolment): the provider must give a written agreement before enrolment. Standard 7 (Transfer Between Providers): no transfer within the first 6 months of the principal course without a release letter, unless an exception applies. Standard 8 (Overseas Student Visa Requirements): the provider must monitor and report on attendance/progress, and must run an intervention strategy for at-risk students before reporting them. Standard 9: strict rules on deferral, suspension and cancellation. Standard 10: providers must have an accessible, fair complaints and appeals process — escalating to the Overseas Students Ombudsman if unresolved."
+      },
+      {
+        heading: "The 6-Month Transfer Rule in Depth",
+        body: "A provider must release a student before 6 months only if: the provider cannot deliver the course as agreed (provider default); the course is no longer CRICOS-registered; the student's welfare is at risk; or the student has been offered a place at a HIGHER AQF level. Critically, the 6-month period applies to the principal course — the highest AQF level course in a packaged enrolment — so completing a lower-level component (e.g. ELICOS) first does NOT reset the clock for the main course."
+      },
+      {
+        heading: "PRISMS & Provider/Student Default",
+        body: "PRISMS (Provider Registration and International Student Management System) is used to issue CoEs and report student compliance. A default or breach reported through PRISMS is automatically transmitted to the Department of Home Affairs and can trigger visa cancellation. A 'provider default' (unable to deliver a paid course) entitles the student to an equivalent course or refund via the Tuition Protection Service (TPS). A 'student default' (failing to commence, withdrawing, or being excluded) must be reported by the provider through PRISMS."
+      },
+      {
+        heading: "AQF, CRICOS & Course Structures",
+        body: "The Australian Qualifications Framework runs from Certificate I (Level 1) to Doctoral Degree (Level 10) — Diploma is Level 5, Bachelor is Level 7, Masters is Level 9. CRICOS is the official register of providers and courses approved for international students. A 'packaged CoE' covers linked courses (e.g. ELICOS then a Diploma) with the principal course being the highest AQF level in the package; a 'single CoE' covers just one course."
+      }
+    ]
+  },
+
+  14: {
+    intro: "This module covers the DEPA counselling model, proven counselling questions, course pathway analysis for the most common career choices, and financial capacity evidence requirements.",
+    sections: [
+      {
+        heading: "The DEPA Counselling Model",
+        body: "Every counselling session follows: Discover (understand background, goals, current visa status), Explore (identify suitable course/visa options — 'have you considered...', 'are you aware of the PR pathway...'), Plan (develop a clear, step-by-step pathway with a timeline), and Act (identify immediate next steps and who is responsible for them). Questions should feel conversational, never like an interrogation."
+      },
+      {
+        heading: "Proven Counselling Questions",
+        body: "Background & Motivation: educational background, work experience, main goal (study/work/PR), current visa, previous Australian study. Course Selection: passion/industry interest, awareness of in-demand occupations, PR pathway awareness, budget, ability to study full-time, openness to regional study. PR Pathway: whether PR is the primary goal, points test awareness, family in Australia, partner's willingness to study/work, skills assessment status."
+      },
+      {
+        heading: "Course Pathway Analysis",
+        body: "Nursing: Diploma → Enrolled Nurse (limited PR, EN not on MLTSSL) vs Bachelor → Registered Nurse (strong PR, RN on MLTSSL, 485 + ANMAC assessment); AHPRA requires IELTS 7.0 in each band — higher than the standard student visa requirement. IT: Diploma or Bachelor/Master, all leading to a 485 visa and ACS skills assessment, with higher qualifications giving longer 485 duration and more points. Accounting: Diploma/Bachelor/Master, each leading to 485 + CPA/CAANZ/IPA membership. Commercial Cookery: Certificate III/IV, leading to Cook or Chef occupations via the TRA Job Ready Program. Social Work: Bachelor/Master, leading to 485 + AASW assessment."
+      },
+      {
+        heading: "Financial Capacity Evidence",
+        body: "For a Student Visa, the applicant must show genuine access to funds covering: living costs for the student (a set annual amount, updated periodically), living costs for a partner and each child, school costs for school-age children, travel costs, and first-year tuition (per the CoE). Acceptable evidence: bank statements (3–6 months), scholarship or loan approval letters, or evidence of annual income — never a verbal assurance alone."
+      }
+    ]
+  },
+
+  15: {
+    intro: "This module covers the most common policy-accurate FAQs for the Subclass 500 (Student), Subclass 600 (Visitor), and Bridging Visas A, B and C.",
+    sections: [
+      {
+        heading: "Subclass 600 (Visitor) Essentials",
+        body: "Condition 8503 (No Further Stay), when imposed, blocks any further substantive visa application onshore — including a Student visa — forcing the holder to depart and apply offshore; waivers exist but are rarely granted. Condition 8101 (mandatory) bans all work. Condition 8201 allows study for up to 3 months only. The Sponsored Family stream (mandatory 8503) lets an Australian citizen/PR/eligible NZ citizen sponsor a relative to visit."
+      },
+      {
+        heading: "Subclass 500 (Student) Core Conditions",
+        body: "Condition 8105 caps work at 48 hours per fortnight while the course is in session (unlimited during scheduled breaks). Condition 8501 requires OSHC for the entire visa duration. Condition 8202 requires satisfactory course progress and at least 80% attendance. Condition 8534 blocks an onshore Partner visa (820) application. The Genuine Student requirement (replacing GTE) requires a statement showing genuine study intent, logical academic progression, and understanding of visa conditions. Only a partner and dependent children — never parents — can be secondary applicants."
+      },
+      {
+        heading: "Bridging Visas A, B & C",
+        body: "A Bridging Visa A (BVA) is automatically granted when a person on a valid substantive visa lodges another substantive visa application — it has NO travel rights and ceases if the holder departs without first obtaining a Bridging Visa B (BVB). A BVA also ceases when the underlying application is decided (though it continues through a merits review period if refused) or if cancelled. A Bridging Visa C (BVC) is for someone without a current substantive visa who has lodged a valid application; it has no work or travel rights by default."
+      }
+    ]
+  },
+
+  16: {
+    intro: "This module covers the Subclass 485 (Temporary Graduate) visa and General Skilled Migration (189, 190, 491), including the points test that determines eligibility.",
+    sections: [
+      {
+        heading: "Subclass 485 (Temporary Graduate)",
+        body: "Requires the Australian Study Requirement: at least 92 weeks of CRICOS-registered study over no less than 16 calendar months, in English, while in Australia on a valid visa. Two streams: Post-Vocational Education Work (VET/Diploma graduates, requires a skills assessment in an MLTSSL occupation) and Post-Higher Education Work (Bachelor/Masters/PhD graduates, no skills assessment required). Duration varies by qualification — commonly 2 years for Bachelor/Masters, 3 years for Masters by Research/PhD, 18 months for Post-Vocational. Generally grantable only ONCE in a lifetime, with limited regional exceptions (which can add a further year). Age limit: under 50 at application. Full, unrestricted work rights throughout."
+      },
+      {
+        heading: "General Skilled Migration — 189, 190, 491",
+        body: "Subclass 189: points-tested, permanent, no nomination required. Subclass 190: points-tested, permanent, requires state/territory nomination (+5 points). Subclass 491: points-tested, provisional, requires state or eligible relative sponsorship in a regional area (+15 points), leading to the permanent Subclass 191 after 3 years of regional work meeting an income threshold. Minimum EOI score is 65 points, though actual invitation rounds are usually far more competitive. Age limit for invitation: under 45."
+      },
+      {
+        heading: "The Points Test",
+        body: "Age: up to 30 points (peak 25–32). English: 0 points for Competent (IELTS 6+), 10 for Proficient (7+), 20 for Superior (8+). Australian work experience: 5–20 points (1 to 8+ years). Overseas work experience: 0–15 points. Education: up to 20 points for an Australian PhD, 15 for a Bachelor/Masters. Regional study: +5. Professional Year Program: +5. Partner skills/citizenship: +5 to +10. State nomination (190): +5. State/relative sponsorship (491): +15."
+      },
+      {
+        heading: "Skills Assessments by Occupation",
+        body: "IT → Australian Computer Society (ACS). Nursing → ANMAC. Accounting → CPA Australia / CAANZ / IPA. Chef/Cook → Trades Recognition Australia (TRA) Job Ready Program. Engineering → Engineers Australia. Social Work → AASW. Skills assessments (e.g. from ACS) are typically valid for a limited period (e.g. 3 years) — always confirm current validity."
+      }
+    ]
+  },
+
+  17: {
+    intro: "This module covers employer-sponsored visa FAQs from an education consultant's perspective, family and parent visa basics, the Section 48 bar, and — most importantly — exactly where general information ends and MARA-registered advice must begin.",
+    sections: [
+      {
+        heading: "Employer-Sponsored Visas — What Consultants Should Know",
+        body: "482: employer must pay at least the TSMIT or Annual Market Salary Rate, whichever is higher; SAF levy ~$1,200/year (small business); Labour Market Testing requires ~4 weeks of advertising; changing employers requires a new approved nomination, not the old employer's permission. 494: regional-only work/study/living requirement, breach risks cancellation. 407: training only, not a work-visa substitute, no direct PR pathway."
+      },
+      {
+        heading: "The Section 48 Bar",
+        body: "Section 48 of the Migration Act prevents someone who has had a visa refused or cancelled while in Australia from applying for most other visas while remaining in Australia, with very limited exceptions. This is one of the most consequential provisions to be aware of, as it can severely limit a client's onshore options — always flag it and refer to a MARA-registered agent."
+      },
+      {
+        heading: "The MARA Advice Boundary",
+        body: "Only a MARA-registered migration agent (or lawyer) may lawfully provide immigration assistance for a fee. Interlace Studies staff without MARA registration must refer clients requiring specific advice on their individual case to a registered agent — general factual information about visa conditions and processes is fine to share; case-specific strategy, document review, or predictions of outcome are not."
+      },
+      {
+        heading: "Family & Parent Visas",
+        body: "Partner visas run through the 820/801 (onshore) or 309/100 (offshore) pathway, generally requiring 12 months of de facto relationship (or a registered relationship). Parent visas: Subclass 103 has an extremely long queue (30+ years); Subclass 143 (Contributory) is much faster (2–3 years) but far more expensive. The 'balance of family test' requires at least half the applicant's children to be Australian citizens/PRs/eligible NZ citizens, or more children living in Australia than any other single country. The Subclass 870 (Sponsored Parent, Temporary) allows a temporary stay of up to 3–5 years, renewable to a 10-year total."
+      }
+    ]
   }
 };

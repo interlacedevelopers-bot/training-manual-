@@ -1552,5 +1552,831 @@ const MODULES = [
         tag: "conduct", difficulty: "easy"
       }
     ]
+  },
+  {
+    id: 11,
+    title: "Employer Sponsorship Services (482/186/494/407)",
+    icon: "🏢",
+    tag: "sponsor",
+    description: "The Standard Business Sponsorship framework, visa fee structures, and employer compliance obligations for the 482, 186, 494 and 407 pathways",
+    passmark: 100,
+    roles: ["Migration Consultant", "Branch Manager"],
+    remark_pass: "Excellent command of the employer sponsorship framework. This specialised knowledge lets you confidently advise business clients through the SBS → Nomination → Visa Application journey while protecting them from costly compliance breaches.",
+    remark_low: "Good foundation. Revisit the fee tables and the sponsorship obligations section — employer clients will expect precise figures, and getting an obligation wrong can expose them to civil penalties.",
+    remark_fail: "Employer sponsorship is a specialised, high-value service line with serious compliance stakes for clients. Please re-study the Employer Sponsored Visa Handbook in full before advising any business client.",
+    questions: [
+      {
+        q: "What are the three stages of the employer sponsorship framework, in order?",
+        options: ["Visa Application → Nomination → SBS", "Standard Business Sponsorship → Nomination → Visa Application", "Nomination → SBS → Visa Application", "LMT → SBS → Nomination"],
+        answer: 1,
+        explanation: "The framework is a structured, sequential three-stage journey: Stage A (Standard Business Sponsorship), Stage B (Nomination), then Stage C (Visa Application). Each stage must be completed in order.",
+        law: "Employer Handbook, Ch.2 — The Sponsorship Framework",
+        tag: "sponsor", difficulty: "easy"
+      },
+      {
+        q: "What is the government fee and validity period for a Standard Business Sponsorship (SBS)?",
+        options: ["$170, valid 2 years", "$420, valid 5 years", "$3,150, valid 1 year", "There is no fee for SBS"],
+        answer: 1,
+        explanation: "The SBS government fee is $420, and once approved it is valid for 5 years — it is a one-time application required before any nomination can be lodged for the 482, 407, or 494.",
+        law: "Employer Handbook, Ch.2 — Stage A: Standard Business Sponsorship",
+        tag: "sponsor", difficulty: "easy"
+      },
+      {
+        q: "What does Labour Market Testing (LMT) require for most 482 and 494 nominations?",
+        options: ["Advertising the role for at least 28 days on two or more platforms within the 4 months prior to lodgement", "A single 7-day job ad on any one platform", "No advertising is required if the employer is an accredited sponsor", "Advertising only needs to occur after the nomination is lodged"],
+        answer: 0,
+        explanation: "LMT requires advertising the position for at least 28 days on two or more platforms (e.g. Seek, LinkedIn) within the 4 months prior to nomination lodgement, to confirm no suitably qualified Australian was available.",
+        law: "Employer Handbook, Ch.2 — Stage B: Nomination",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "What is the TSMIT, and what must an employer pay a sponsored 482 worker?",
+        options: ["A flat $50,000 regardless of role", "At least the TSMIT (currently $73,150 p.a., confirm current rate) or the Annual Market Salary Rate, whichever is higher", "Whatever the employer's standard entry-level wage is", "The minimum wage set by the Fair Work Commission only"],
+        answer: 1,
+        explanation: "The Temporary Skilled Migration Income Threshold (TSMIT) was $73,150 per annum as of 1 July 2023 (always confirm the current rate) — the employer must pay at least this or the Annual Market Salary Rate, whichever is higher.",
+        law: "Employer Handbook, Ch.3 — Subclass 482 Eligibility Requirements",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "What are the three streams of the Subclass 482 (Skills in Demand) visa?",
+        options: ["Core Skills, Specialist Skills, and Labour Agreement", "Onshore, Offshore, and Regional", "Temporary, Provisional, and Permanent", "Standard, Accredited, and Premium"],
+        answer: 0,
+        explanation: "The 482 SID visa is available under three streams: Core Skills (Core Skills Occupations List), Specialist Skills (highly specialised, higher-salary roles), and Labour Agreement.",
+        law: "Employer Handbook, Ch.3 — What Is the Subclass 482 Visa?",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "What is the maximum duration of a Subclass 482 visa, and what is its main pathway to PR?",
+        options: ["2 years; no PR pathway", "Up to 4 years; Subclass 186 TRT after 2 years", "10 years; automatic PR after 5 years", "1 year; must reapply annually with no PR option"],
+        answer: 1,
+        explanation: "The 482 SID visa can be granted for up to 4 years and has a clear pathway to permanent residency via the Subclass 186 TRT stream after 2 years with the same employer.",
+        law: "Employer Handbook, Ch.3 — Subclass 482 Visa",
+        tag: "sponsor", difficulty: "easy"
+      },
+      {
+        q: "What is the eligibility requirement for the Subclass 186 Temporary Residence Transition (TRT) stream?",
+        options: ["3 years of any overseas work experience", "Holding a 482 visa for at least 2 years with the same employer in the nominated occupation", "A university degree only, regardless of visa history", "No prior visa is required — anyone can apply directly"],
+        answer: 1,
+        explanation: "The TRT stream requires the applicant to have held a 482 visa for 2+ years with the same employer in the nominated occupation — it's a pathway from temporary to permanent residency for proven employees.",
+        law: "Employer Handbook, Ch.4 — Stream A: Temporary Residence Transition",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "How does the Subclass 186 Direct Entry (DE) stream differ from the TRT stream?",
+        options: ["DE requires a 482 visa first; TRT does not", "DE is for workers who have NOT previously held a 482, requiring a skills assessment plus 3 years of relevant experience; TRT requires 2+ years already on a 482", "They are identical in every respect", "DE is only available to Australian citizens"],
+        answer: 1,
+        explanation: "The Direct Entry stream bypasses the temporary visa stage entirely — it's for applicants who have not previously held a 482, requiring a skills assessment and 3 years of relevant experience, ideal for senior or hard-to-fill roles needing immediate PR.",
+        law: "Employer Handbook, Ch.4 — Stream B: Direct Entry",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "What is the key restriction on a Subclass 494 visa holder, and what is its pathway to PR?",
+        options: ["No restriction; PR is automatic after 1 year", "Must live, work, and study only in a designated regional area; pathway to PR via Subclass 191 after 3 years", "Must remain unemployed for the first year; no PR pathway", "Must relocate to a capital city within 6 months"],
+        answer: 1,
+        explanation: "The 494 is a regional visa — the holder must live, work, and study only in a designated regional area. After 3 years of compliance and meeting an income threshold, they can apply for the Subclass 191 permanent visa.",
+        law: "Employer Handbook, Ch.5 — Subclass 494 Visa",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "What is the primary purpose of the Subclass 407 Training visa, and does it lead to PR?",
+        options: ["General employment; leads directly to PR after 1 year", "Structured workplace-based occupational training only; no direct pathway to PR", "Permanent skilled work; same PR pathway as the 482", "Only available to Australian citizens returning from overseas"],
+        answer: 1,
+        explanation: "The 407 is for structured workplace-based occupational training — not general employment — and has no direct pathway to PR. If the business wants to retain the worker long-term, the 482 SID is the more appropriate pathway.",
+        law: "Employer Handbook, Ch.6 — Subclass 407 Visa",
+        tag: "sponsor", difficulty: "easy"
+      },
+      {
+        q: "Which employer-sponsored visa has the lowest total employee Visa Application Charge (VAC), making it the most cost-effective for short-term purposes?",
+        options: ["Subclass 186 ($4,910)", "Subclass 482 ($3,210)", "Subclass 494 ($4,910)", "Subclass 407 ($430)"],
+        answer: 3,
+        explanation: "The Subclass 407 Training visa has a primary applicant VAC of only $430 and no SAF Levy requirement, making it significantly cheaper than the other employer-sponsored pathways — but it comes with no direct PR pathway.",
+        law: "Employer Handbook, Ch.6 — Cost Advantage",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "Under sponsorship obligations, what is the risk if an employer fails to pay a sponsored worker equivalent terms and conditions to an Australian worker in the same role?",
+        options: ["A warning letter only, with no financial consequence", "A civil penalty of up to $93,900 per breach", "Automatic visa grant is withdrawn but no penalty to the employer", "No consequence unless the worker complains"],
+        answer: 1,
+        explanation: "Sponsors must pay sponsored workers the same pay and conditions as equivalent Australian workers. Breaching this obligation carries a civil penalty of up to $93,900 per breach.",
+        law: "Employer Handbook, Ch.7 — Employer Sponsorship Obligations",
+        tag: "sponsor", difficulty: "hard"
+      },
+      {
+        q: "Can an employer pass on the cost of the SAF Levy or nomination fee to the sponsored worker?",
+        options: ["Yes, it's standard practice to split the cost", "No — cost recovery from the visa holder is prohibited and can result in a civil penalty and sponsorship cancellation", "Only the SAF Levy can be passed on, not the nomination fee", "Yes, but only for the Direct Entry stream"],
+        answer: 1,
+        explanation: "Employers cannot pass sponsorship, nomination, or SAF levy costs to the visa holder. Breaching this 'no cost recovery' obligation risks a civil penalty and cancellation of the sponsorship approval.",
+        law: "Employer Handbook, Ch.7 — Employer Sponsorship Obligations",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "How long must an employer notify the Department of Home Affairs after a change to a sponsored worker's role, salary, or employment status?",
+        options: ["Within 7 days", "Within 28 days", "Within 90 days", "There is no notification requirement"],
+        answer: 1,
+        explanation: "Sponsors must notify Home Affairs within 28 days of changes to the sponsored worker's role, salary, or employment status. Failing to do so carries a civil penalty.",
+        law: "Employer Handbook, Ch.7 — Employer Sponsorship Obligations",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "How long must an employer maintain records relating to a sponsored worker's employment, pay, and role?",
+        options: ["Only until the visa is granted", "For the duration of the visa and 2 years after", "For 6 months after the visa is granted", "Indefinitely with no defined minimum"],
+        answer: 1,
+        explanation: "Employers must maintain records of employment, pay, and role for the duration of the visa and for 2 years afterward — failure exposes the business to civil penalty and audit risk.",
+        law: "Employer Handbook, Ch.7 — Employer Sponsorship Obligations",
+        tag: "sponsor", difficulty: "easy"
+      },
+      {
+        q: "What happens if the 'genuine role requirement' is breached — i.e. the nominated position stops being a real, ongoing full-time role in the business?",
+        options: ["Nothing, as long as the visa was already granted", "It can lead to visa cancellation and a sponsorship bar", "The employer simply pays a small administrative fee", "The worker is automatically transferred to a 407 visa"],
+        answer: 1,
+        explanation: "The nominated position must be a genuine, full-time role that continues to exist in the business. Breaching this can lead to visa cancellation and a bar on the sponsor's ability to sponsor further workers.",
+        law: "Employer Handbook, Ch.7 — Employer Sponsorship Obligations",
+        tag: "sponsor", difficulty: "hard"
+      },
+      {
+        q: "What is the typical total end-to-end timeline for a 482 pathway, from pre-lodgement through to visa grant?",
+        options: ["2–4 weeks", "5–12 months", "3–5 years", "There is no typical timeline — it varies randomly"],
+        answer: 1,
+        explanation: "The typical end-to-end 482 pathway timeline is 5–12 months, covering pre-lodgement (eligibility assessment, LMT, document collection), SBS approval, nomination approval, and visa grant.",
+        law: "Employer Handbook, Ch.2 — Typical End-to-End Timeline",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "A business needs to fill a critical, senior role and wants to offer immediate permanent residency to attract the right candidate, bypassing a temporary visa stage. Which pathway is recommended?",
+        options: ["Subclass 407 Training visa", "Subclass 186 Direct Entry (DE) stream", "Subclass 494 only", "There is no such pathway available"],
+        answer: 1,
+        explanation: "For critical, senior, or hard-to-fill roles where immediate permanent residency is needed to attract the right candidate, the Subclass 186 Direct Entry stream bypasses the temporary visa stage entirely.",
+        law: "Employer Handbook, Ch.9 — Recommendations & Next Steps",
+        tag: "sponsor", difficulty: "medium"
+      },
+      {
+        q: "What is the recommended dual-pathway strategy for most employer clients?",
+        options: ["Use only the 407 visa for every role to save money", "Use the 482 SID as the primary pathway for most skilled roles, and the 186 DE stream for critical or senior roles needing immediate PR", "Use the 186 TRT stream for every role from day one", "Avoid sponsorship entirely and rely on local recruitment only"],
+        answer: 1,
+        explanation: "The recommended dual-pathway strategy uses the 482 SID as the primary pathway for most skilled roles (fastest entry, broadest occupations, PR pathway via 186 TRT) and the 186 DE stream as the secondary option for critical or senior roles needing immediate PR.",
+        law: "Employer Handbook, Ch.9 — Recommended Strategy",
+        tag: "sponsor", difficulty: "hard"
+      }
+    ]
+  },
+  {
+    id: 12,
+    title: "Call Centre Communication Excellence",
+    icon: "☎️",
+    tag: "callcentre",
+    description: "The CAEP communication standard, phone etiquette, active listening, de-escalation, and CRM documentation requirements",
+    passmark: 100,
+    roles: ["Education Consultant"],
+    remark_pass: "Excellent command of the communication standards. Consistent, professional, well-documented client interactions are the foundation of every client's experience with Interlace Studies.",
+    remark_low: "Good effort. Revisit the LARS and HEAT frameworks and the CRM documentation checklist — consistency here is what protects both clients and the business.",
+    remark_fail: "Communication and documentation standards are the foundation of this role. Please re-study Part A of the Staff Training Manual in full before handling client enquiries independently.",
+    questions: [
+      {
+        q: "What does the CAEP Communication Standard stand for?",
+        options: ["Calm, Attentive, Efficient, Polite", "Clarity, Accuracy, Empathy, and Professionalism", "Confidence, Assertiveness, Energy, Persistence", "Consistency, Availability, Expertise, Patience"],
+        answer: 1,
+        explanation: "All client interactions must adhere to the CAEP Standard: Clarity, Accuracy, Empathy, and Professionalism — the four pillars defining every communication, in every channel, at every stage.",
+        law: "Staff Training Manual, Part A — The CAEP Communication Standard",
+        tag: "callcentre", difficulty: "easy"
+      },
+      {
+        q: "Under the CAEP standard, what does 'Accuracy' require in practice?",
+        options: ["Speaking as quickly as possible to save time", "Never guessing — verifying information before advising and citing the source", "Using as much technical jargon as possible to sound authoritative", "Giving your own personal opinion when unsure"],
+        answer: 1,
+        explanation: "Accuracy means all information must be factual and sourced from official policy — never guess; verify before advising, and cite the source.",
+        law: "Staff Training Manual, Part A — The CAEP Communication Standard",
+        tag: "callcentre", difficulty: "medium"
+      },
+      {
+        q: "What is the correct order of steps in the LARS active listening method?",
+        options: ["Summarise → Respond → Acknowledge → Listen", "Listen → Acknowledge → Respond → Summarise", "Respond → Listen → Summarise → Acknowledge", "Acknowledge → Summarise → Listen → Respond"],
+        answer: 1,
+        explanation: "LARS stands for Listen (allow the client to speak without interruption), Acknowledge, Respond (confirm you've understood), and Summarise (recap key points and next steps).",
+        law: "Staff Training Manual, Part A — The LARS Active Listening Method",
+        tag: "callcentre", difficulty: "medium"
+      },
+      {
+        q: "What is the correct order of steps in the HEAT technique for difficult clients?",
+        options: ["Take Action → Empathise → Hear → Apologise", "Hear → Empathise → Apologise → Take Action", "Apologise → Hear → Take Action → Empathise", "Empathise → Take Action → Hear → Apologise"],
+        answer: 1,
+        explanation: "HEAT stands for Hear (let the client vent without interrupting), Empathise (acknowledge their feelings genuinely), Apologise (for the situation, not the decision), and Take Action (explain next steps clearly).",
+        law: "Staff Training Manual, Part A — The HEAT Technique for Difficult Clients",
+        tag: "callcentre", difficulty: "medium"
+      },
+      {
+        q: "When apologising to a frustrated client using the HEAT technique, what exactly should you apologise for?",
+        options: ["The Department's decision itself", "The situation the client finds themselves in — not the decision", "Nothing — apologising is discouraged", "Only apologise if the client demands it"],
+        answer: 1,
+        explanation: "The 'Apologise' step means apologising for the situation the client is experiencing (e.g. 'I'm sorry to hear you've had this experience'), not apologising for or admitting fault in a decision made by the Department.",
+        law: "Staff Training Manual, Part A — The HEAT Technique",
+        tag: "callcentre", difficulty: "hard"
+      },
+      {
+        q: "Which of the following is explicitly listed as something to NEVER do on a call?",
+        options: ["Summarise and confirm next steps before ending the call", "Put a client on hold for more than 2 minutes without checking back", "Ask the client clarifying questions", "Refer the client to a MARA-registered agent"],
+        answer: 1,
+        explanation: "Staff must never put a client on hold for more than 2 minutes without checking back in — among other rules such as never arguing, never providing specific migration advice, and never promising visa outcomes.",
+        law: "Staff Training Manual, Part A — Never Do This On a Call",
+        tag: "callcentre", difficulty: "easy"
+      },
+      {
+        q: "What must every professional email response include, according to the written communication standards?",
+        options: ["A personal opinion about the client's chances", "A clear subject line, a professional body, and the standard company disclaimer", "A guarantee of the outcome to reassure the client", "Nothing beyond a brief one-line reply"],
+        answer: 1,
+        explanation: "Written communication must have a clear subject line, use the client's name in the salutation, a professional and accurate body, and must include the standard company disclaimer at the bottom.",
+        law: "Staff Training Manual, Part A — Written Communication Standards",
+        tag: "callcentre", difficulty: "easy"
+      },
+      {
+        q: "The approved general enquiry email template explicitly advises the client to do what regarding specific advice?",
+        options: ["Wait for the Department to contact them directly", "Consult a MARA-registered migration agent for advice tailored to their individual circumstances", "Search online forums for other people's experiences", "Call back in 3 months for an update"],
+        answer: 1,
+        explanation: "The approved email template states that for specific advice tailored to individual circumstances, the client should consult a MARA-registered migration agent, and offers to refer them to one.",
+        law: "Staff Training Manual, Part A — Approved Email Template",
+        tag: "callcentre", difficulty: "medium"
+      },
+      {
+        q: "Within how long after a client interaction must it be documented in the CRM system?",
+        options: ["Within 15 minutes of the call ending", "Within 24 hours", "By the end of the week", "Documentation is optional if the call was brief"],
+        answer: 0,
+        explanation: "Every client interaction must be documented in the CRM system within 15 minutes of the call ending, to ensure accuracy and timely follow-up.",
+        law: "Staff Training Manual, Part A — Call Summarisation & CRM Documentation",
+        tag: "callcentre", difficulty: "medium"
+      },
+      {
+        q: "Which of the following is NOT one of the required fields for CRM call documentation?",
+        options: ["Enquiry Summary", "The client's personal social media password", "Referrals Made", "Follow-up Required (Yes/No, with date and nature)"],
+        answer: 1,
+        explanation: "Required CRM fields include Date & Time, Channel, Client Details, Enquiry Summary, Information Provided, Referrals Made, Next Steps, and Follow-up Required. A client's personal social media password is never something staff should collect or record.",
+        law: "Staff Training Manual, Part A — Call Summarisation & CRM Documentation",
+        tag: "callcentre", difficulty: "easy"
+      },
+      {
+        q: "What is the approved standard opening line for an inbound call?",
+        options: ["'Interlace Studies, what do you want?'", "'Good [morning/afternoon], thank you for calling Interlace Studies. My name is [Name]. How may I assist you today?'", "'Hello, please hold.'", "'You've reached the visa hotline, state your visa number.'"],
+        answer: 1,
+        explanation: "The approved opening script greets the client warmly, thanks them for calling, introduces the staff member by name, and asks how they may assist — setting a professional tone from the first second.",
+        law: "Staff Training Manual, Part A — Standard Greeting Script",
+        tag: "callcentre", difficulty: "easy"
+      },
+      {
+        q: "According to the minimum skill set requirements, which of the following is listed under 'Professional Conduct' rather than 'Technical Knowledge'?",
+        options: ["Familiarity with the ESOS Act and National Code", "Understanding of confidentiality and privacy obligations", "Basic knowledge of the points test", "Understanding of AQF qualification levels"],
+        answer: 1,
+        explanation: "Understanding confidentiality and privacy obligations, along with ethical conduct, escalation ability, and professional development, falls under the Professional Conduct category — distinct from the Technical Knowledge category.",
+        law: "Staff Training Manual, Intro — Minimum Skill Set Requirements",
+        tag: "callcentre", difficulty: "medium"
+      }
+    ]
+  },
+  {
+    id: 13,
+    title: "ESOS, PRISMS & Education Policy",
+    icon: "📘",
+    tag: "esos",
+    description: "The ESOS Act 2000, National Code 2018 standards, PRISMS, the 6-month transfer rule, and the Australian Qualifications Framework",
+    passmark: 100,
+    roles: ["Education Consultant"],
+    remark_pass: "Excellent command of the ESOS/National Code framework. Getting the 6-month transfer rule and PRISMS implications right is essential — mistakes here have direct visa consequences for students.",
+    remark_low: "Good foundation. Focus particularly on the 6-month transfer rule and its exceptions — this is described as one of the most frequently misunderstood rules in international education.",
+    remark_fail: "This is one of the most critical modules for the role. Incorrect advice on the 6-month rule or PRISMS reporting can have serious visa consequences for a student. Please re-study Part B in full before retrying.",
+    questions: [
+      {
+        q: "What is the primary purpose of the ESOS Act 2000?",
+        options: ["To regulate Australian domestic university fees", "To govern the provision of education to international students and protect their rights", "To set visa fees for the Department of Home Affairs", "To regulate migration agents only"],
+        answer: 1,
+        explanation: "The Education Services for Overseas Students (ESOS) Act 2000 is the primary legislation governing the provision of education to international students, establishing provider registration and student protections.",
+        law: "Staff Training Manual, Part B — The ESOS Act 2000",
+        tag: "esos", difficulty: "easy"
+      },
+      {
+        q: "Which National Code 2018 standard specifically governs when a student can transfer between education providers?",
+        options: ["Standard 3", "Standard 7", "Standard 9", "Standard 10"],
+        answer: 1,
+        explanation: "Standard 7 (Transfer Between Providers) states a registered provider must not allow a student to transfer to another provider within the first 6 months of their principal course, unless a specific exception applies.",
+        law: "Staff Training Manual, Part B — National Code 2018, Standard 7",
+        tag: "esos", difficulty: "medium"
+      },
+      {
+        q: "A student is 4 months into a packaged ELICOS + Diploma enrolment, with the ELICOS component already finished. Can they transfer to a new provider without a release letter?",
+        options: ["Yes, because the ELICOS component is complete", "No — the 6-month period applies to the principal course (the Diploma, the highest AQF level in the package), not the ELICOS component", "Yes, packaged courses are exempt from the 6-month rule entirely", "No, packaged courses can never transfer regardless of duration"],
+        answer: 1,
+        explanation: "The 6-month rule applies to the principal course — the highest AQF level course in a packaged enrolment. Even if the ELICOS component is finished, the student cannot transfer within 6 months of starting the Diploma without a release letter.",
+        law: "Staff Training Manual, Part B — The 6-Month Transfer Rule, Critical Point",
+        tag: "esos", difficulty: "hard"
+      },
+      {
+        q: "Which of the following is NOT a valid exception allowing a provider to release a student within the first 6 months?",
+        options: ["The provider cannot deliver the course as agreed (provider default)", "The student simply changed their mind and prefers a different city", "The course has been removed from CRICOS", "The student has been offered a place in a course at a higher AQF level"],
+        answer: 1,
+        explanation: "Valid exceptions to the 6-month rule are: provider default, course no longer registered, student welfare concerns, a higher AQF level offer, or the original provider voluntarily granting a release letter. Simply preferring a different city or provider is not a recognised exception.",
+        law: "Staff Training Manual, Part B — The 6-Month Transfer Rule",
+        tag: "esos", difficulty: "medium"
+      },
+      {
+        q: "What is PRISMS, and what is a key consequence of a provider reporting a student default through it?",
+        options: ["A payment portal with no visa implications", "The national student database — a reported default or compliance breach is automatically transmitted to the Department of Home Affairs and can trigger visa cancellation", "A private tutoring platform for struggling students", "An English testing platform"],
+        answer: 1,
+        explanation: "PRISMS (Provider Registration and International Student Management System) manages CoEs and reports student compliance. A default or breach reported through PRISMS is automatically sent to Home Affairs and can trigger visa cancellation — students must be made aware of this at enrolment.",
+        law: "Staff Training Manual, Part B — PRISMS & Visa Implications",
+        tag: "esos", difficulty: "medium"
+      },
+      {
+        q: "What does National Code Standard 8 require of providers regarding at-risk students?",
+        options: ["Immediate expulsion with no warning", "An intervention strategy to identify and assist students at risk of not meeting course progress requirements, before reporting them", "Nothing — Standard 8 only covers marketing", "Automatic visa cancellation without provider involvement"],
+        answer: 1,
+        explanation: "Standard 8 requires providers to monitor attendance/progress and have an intervention strategy to identify and assist at-risk students before reporting them to the Department.",
+        law: "Staff Training Manual, Part B / Part G — Standard 8, Intervention Strategy",
+        tag: "esos", difficulty: "medium"
+      },
+      {
+        q: "What AQF level is a Bachelor Degree, and what AQF level is a Diploma?",
+        options: ["Bachelor = Level 5; Diploma = Level 7", "Bachelor = Level 7; Diploma = Level 5", "Bachelor = Level 9; Diploma = Level 3", "They are both Level 6"],
+        answer: 1,
+        explanation: "Under the AQF, a Diploma is Level 5, while a Bachelor Degree is Level 7. Level 9 is a Masters Degree and Level 10 is a Doctoral Degree (PhD).",
+        law: "Staff Training Manual, Part B — Australian Qualifications Framework",
+        tag: "esos", difficulty: "easy"
+      },
+      {
+        q: "What is a 'release letter' and when is it required?",
+        options: ["A document allowing a student to skip their final exam", "A formal document from the current provider allowing a student to transfer to a new provider within the first 6 months of their principal course", "A letter releasing a student from OSHC obligations", "A document required only for postgraduate students"],
+        answer: 1,
+        explanation: "A release letter is issued by the current provider to permit a transfer within the first 6 months of the principal course. Without it, the new provider cannot enrol the student or issue a new CoE.",
+        law: "Staff Training Manual, Part G — Release Letter",
+        tag: "esos", difficulty: "easy"
+      },
+      {
+        q: "If a provider refuses to issue a release letter, what is the student's recourse?",
+        options: ["There is no recourse — the decision is final", "They can use the provider's internal complaints and appeals process, and escalate to the Overseas Students Ombudsman if unresolved", "They must immediately leave Australia", "They can only appeal directly to the Department of Home Affairs"],
+        answer: 1,
+        explanation: "A student can appeal a refusal through the provider's internal complaints and appeals process (Standard 10), and escalate to the Overseas Students Ombudsman (OSO) if the internal process is exhausted.",
+        law: "Staff Training Manual, Part G — Standard 10, Overseas Students Ombudsman",
+        tag: "esos", difficulty: "medium"
+      },
+      {
+        q: "What is a 'provider default' under the ESOS Act, and what must the provider do?",
+        options: ["When a student is late paying fees; the student is expelled", "When a provider is unable to deliver a course the student paid for; they must offer an equivalent course or refund tuition", "When a provider changes its logo; no action required", "When a provider closes for a public holiday"],
+        answer: 1,
+        explanation: "A provider default occurs when a provider cannot deliver a paid course. The Tuition Protection Service (TPS) ensures the student is offered an equivalent course elsewhere or refunded their unspent tuition fees.",
+        law: "Staff Training Manual, Part G — Provider Default & Tuition Protection Service",
+        tag: "esos", difficulty: "medium"
+      },
+      {
+        q: "What is the Tuition Protection Service (TPS)?",
+        options: ["A private insurance product students must buy separately", "A government-administered service that helps students find an alternative course or get a refund when a provider cannot deliver their course", "A scholarship fund for high-achieving students", "A visa fee waiver scheme"],
+        answer: 1,
+        explanation: "The TPS is a government-administered service assisting international students when their provider cannot fully deliver their course, helping them find an alternative course or receive a refund.",
+        law: "Staff Training Manual, Part G — Tuition Protection Service",
+        tag: "esos", difficulty: "easy"
+      },
+      {
+        q: "What is a 'packaged CoE' as opposed to a 'single CoE'?",
+        options: ["A packaged CoE covers multiple linked courses (e.g. ELICOS then a Diploma); a single CoE covers only one course", "A packaged CoE is only used for postgraduate students", "There is no difference — the terms are interchangeable", "A packaged CoE means the student pays no tuition fees"],
+        answer: 0,
+        explanation: "A packaged CoE covers a combination of linked courses, with the principal course being the highest AQF level in the package. A single CoE covers just one course.",
+        law: "Staff Training Manual, Part G — Packaged vs Single CoE",
+        tag: "esos", difficulty: "medium"
+      },
+      {
+        q: "What is CRICOS?",
+        options: ["The Australian citizenship test", "The official register of Australian education providers and courses approved to enrol international students", "A student visa subclass", "A skills assessment authority"],
+        answer: 1,
+        explanation: "CRICOS (Commonwealth Register of Institutions and Courses for Overseas Students) is the official register of providers and courses approved to deliver education to international students on a student visa.",
+        law: "Staff Training Manual, Part B / Part G — CRICOS",
+        tag: "esos", difficulty: "easy"
+      },
+      {
+        q: "What is the written agreement between a student and provider, and when must it be given?",
+        options: ["An informal verbal understanding with no documentation required", "A formal contract outlining course, fees, and refund policy, which must be given to the student before enrolment (Standard 3)", "A document only required for VET courses, not higher education", "A contract signed only after the course is completed"],
+        answer: 1,
+        explanation: "Standard 3 (Formalisation of Enrolment) requires the provider to give the student a written agreement — outlining course details, fees, and refund policy — before enrolment.",
+        law: "Staff Training Manual, Part B — National Code Standard 3",
+        tag: "esos", difficulty: "medium"
+      }
+    ]
+  },
+  {
+    id: 14,
+    title: "Career Counselling & Course Pathways",
+    icon: "🧭",
+    tag: "counselling",
+    description: "The DEPA counselling model, proven counselling questions, course pathway analysis, and financial capacity evidence requirements",
+    passmark: 100,
+    roles: ["Education Consultant"],
+    remark_pass: "Excellent grasp of the DEPA model and course pathway analysis. This structured, ethical approach to counselling is what turns a generic enquiry into a well-matched, achievable education and migration plan.",
+    remark_low: "Good foundation. Revisit the course pathway tables for nursing, IT, accounting, cookery, and social work — clients rely on you to know the PR-relevant details of each pathway precisely.",
+    remark_fail: "Career counselling is central to this role and directly shapes a client's education and migration outcomes. Please re-study Part C in full before conducting counselling sessions independently.",
+    questions: [
+      {
+        q: "What does the DEPA counselling model stand for, in order?",
+        options: ["Discuss, Evaluate, Present, Advise", "Discover, Explore, Plan, Act", "Define, Explain, Propose, Assess", "Diagnose, Educate, Persuade, Assist"],
+        answer: 1,
+        explanation: "DEPA stands for Discover (understand the client's background and goals), Explore (identify suitable options), Plan (develop a step-by-step pathway), and Act (identify immediate next steps and responsibilities).",
+        law: "Staff Training Manual, Part C — The DEPA Counselling Model",
+        tag: "counselling", difficulty: "easy"
+      },
+      {
+        q: "In the 'Discover' phase of DEPA, what kind of question would you ask?",
+        options: ["'Based on your goals, I recommend the following pathway...'", "'What is your current visa status?' or 'What are your career goals?'", "'I will send you the details by email today.'", "'The first step is to...'"],
+        answer: 1,
+        explanation: "The Discover phase is about understanding the client's background, goals, and current situation — questions like current visa status, educational background, and career goals belong here.",
+        law: "Staff Training Manual, Part C — DEPA Model",
+        tag: "counselling", difficulty: "easy"
+      },
+      {
+        q: "For a Registered Nurse (RN) pathway, what minimum IELTS score does AHPRA require, and how does this compare to the standard student visa requirement?",
+        options: ["6.0 in each component — the same as the standard student visa requirement", "7.0 in each of the four components — higher than the standard student visa requirement", "5.5 overall only — lower than the student visa requirement", "There is no English requirement for nursing registration"],
+        answer: 1,
+        explanation: "AHPRA registration for Registered Nurses requires a minimum IELTS score of 7.0 in each of the four components — notably higher than the standard student visa English requirement, and clients must be advised of this early.",
+        law: "Staff Training Manual, Part C — Nursing Pathway, IELTS Requirement",
+        tag: "counselling", difficulty: "hard"
+      },
+      {
+        q: "Why does a Diploma of Nursing (leading to Enrolled Nurse) have a LIMITED PR pathway compared to a Bachelor of Nursing (Registered Nurse)?",
+        options: ["Enrolled Nurse is not on the MLTSSL, while Registered Nurse is", "Diplomas take longer to complete than Bachelor degrees", "Enrolled Nurses cannot get a 485 visa under any circumstances", "There is no difference in PR pathway strength"],
+        answer: 0,
+        explanation: "Enrolled Nurse is not on the MLTSSL, giving it a limited PR pathway, while Registered Nurse (from a Bachelor of Nursing) IS on the MLTSSL, giving it a strong PR pathway via the 485 visa and ANMAC skills assessment.",
+        law: "Staff Training Manual, Part C — Nursing Pathway",
+        tag: "counselling", difficulty: "medium"
+      },
+      {
+        q: "For the Commercial Cookery / Kitchen Management pathway, which authority conducts the skills assessment, and via what program?",
+        options: ["ACS, via the Professional Year Program", "Trades Recognition Australia (TRA), via the Job Ready Program (JRP)", "AHPRA, via clinical placement", "CPA Australia, via membership"],
+        answer: 1,
+        explanation: "Cookery and kitchen management occupations are assessed by Trades Recognition Australia (TRA) via the Job Ready Program (JRP), which includes a period of paid work experience.",
+        law: "Staff Training Manual, Part C — Commercial Cookery Pathway",
+        tag: "counselling", difficulty: "medium"
+      },
+      {
+        q: "Which of the following is a proven 'PR Pathway' counselling question from the DEPA framework?",
+        options: ["'What is your favourite subject in school?'", "'Are you aware of the points test and how many points you might currently have?'", "'What is the weather like in your home country?'", "'Do you prefer online or in-person classes?'"],
+        answer: 1,
+        explanation: "PR Pathway questions include asking about awareness of the points test and current points estimate, family members who are citizens/PRs, and openness to regional study for extra points.",
+        law: "Staff Training Manual, Part C — 30+ Proven Career Counselling Questions",
+        tag: "counselling", difficulty: "easy"
+      },
+      {
+        q: "According to the financial capacity evidence requirements, what is the annual living cost benchmark for the primary student applicant?",
+        options: ["$10,400", "$29,710", "$4,449", "$8,000"],
+        answer: 1,
+        explanation: "The Department specifies an annual living cost of $29,710 for the primary student applicant (figures updated periodically) — with additional amounts for a partner/spouse ($10,400) and each child ($4,449).",
+        law: "Staff Training Manual, Part C — Financial Capacity Evidence Requirements",
+        tag: "counselling", difficulty: "medium"
+      },
+      {
+        q: "Which of the following is NOT listed as acceptable evidence of financial capacity for a student visa?",
+        options: ["Bank statements (last 3–6 months)", "A scholarship or loan approval letter", "Evidence of annual income (payslips, tax returns)", "A verbal assurance from a family friend"],
+        answer: 3,
+        explanation: "Acceptable evidence includes bank statements, scholarship letters, loan approval letters, and evidence of annual income — or a combination. A verbal assurance is not documentary evidence and is not acceptable.",
+        law: "Staff Training Manual, Part C — Financial Capacity Evidence Requirements",
+        tag: "counselling", difficulty: "easy"
+      },
+      {
+        q: "A client wants a quick, guaranteed pathway to PR. What is the correct, ethical response?",
+        options: ["Guarantee that nursing, IT, or accounting will definitely lead to PR", "Explain there is no single 'best' or guaranteed course — the right choice depends on background, skills, budget, and current occupation lists, and requires genuine interest in the field", "Recommend whichever course pays the highest commission", "Tell the client PR is impossible for anyone without a Bachelor degree"],
+        answer: 1,
+        explanation: "There is no single 'best' course for PR — it depends on the client's individual background, skills, budget, and the current occupation lists, and the client must have genuine interest in the field being pursued.",
+        law: "Staff Training Manual, Part G — Career Counselling FAQs",
+        tag: "counselling", difficulty: "medium"
+      },
+      {
+        q: "In the 'Plan' phase of DEPA, what should the consultant provide?",
+        options: ["Only a list of unrelated general questions", "A clear, step-by-step pathway with an expected timeline based on the client's goals", "A refusal to discuss anything until documents are provided", "A referral to a competitor agency"],
+        answer: 1,
+        explanation: "The Plan phase develops a clear, step-by-step pathway for the client, including the expected timeline — e.g. 'Based on your goals, I recommend the following pathway... the expected timeline would be...'",
+        law: "Staff Training Manual, Part C — DEPA Model",
+        tag: "counselling", difficulty: "easy"
+      },
+      {
+        q: "For the IT pathway, what does a Bachelor of IT graduate typically need to do to maximise points before lodging a skilled visa EOI?",
+        options: ["Nothing further — the degree alone guarantees an invitation", "Complete a Professional Year Program (PYP) for 5 extra points and obtain an ACS skills assessment", "Repeat the Bachelor degree a second time", "Switch to a Diploma qualification instead"],
+        answer: 1,
+        explanation: "A Bachelor of IT graduate typically completes the Post-Higher Education 485 stream, gains work experience, completes a Professional Year Program (PYP) for 5 extra points, and obtains an ACS skills assessment before lodging an EOI.",
+        law: "Staff Training Manual, Part G — Bachelor of IT to PR Pathway",
+        tag: "counselling", difficulty: "hard"
+      }
+    ]
+  },
+  {
+    id: 15,
+    title: "Student, Visitor & Bridging Visa FAQs",
+    icon: "🎓",
+    tag: "product",
+    description: "Policy-accurate FAQs on the Subclass 500 (Student), Subclass 600 (Visitor), and Bridging Visas A, B and C",
+    passmark: 100,
+    roles: ["Education Consultant"],
+    remark_pass: "Excellent command of the student, visitor, and bridging visa FAQs. Precise, policy-accurate answers to these everyday questions build trust and keep clients compliant.",
+    remark_low: "Good foundation. Focus particularly on visa conditions (8503, 8202, 8105) and bridging visa travel rights — these come up constantly and are easy to get subtly wrong.",
+    remark_fail: "Student, visitor, and bridging visa questions are the bread and butter of this role. Please re-study Part D in full before advising clients independently.",
+    questions: [
+      {
+        q: "A Tourist visa holder wants to apply for a Student visa while in Australia. What determines whether they can do this onshore?",
+        options: ["Their nationality", "Whether Condition 8503 (No Further Stay) has been imposed on their Visitor visa", "How much money they have in savings", "Whether they have a job offer in Australia"],
+        answer: 1,
+        explanation: "If Condition 8503 is present, the holder cannot apply for any other substantive visa (including a Student visa) while in Australia and must depart and apply offshore. Without 8503, they may apply onshore if they satisfy the Genuine Student requirement.",
+        law: "Staff Training Manual, Part D — FAQ 1, Subclass 600",
+        tag: "product", difficulty: "medium"
+      },
+      {
+        q: "What are the standard mandatory work rights conditions on a Tourist stream Visitor visa?",
+        options: ["Unrestricted work rights", "Condition 8101 — no work permitted at all", "48 hours per fortnight, same as a student visa", "20 hours per week only"],
+        answer: 1,
+        explanation: "Condition 8101 is mandatory on Visitor visas and prohibits the holder from working in Australia entirely. Working on a Visitor visa is a serious breach that can lead to cancellation and a future application ban.",
+        law: "Staff Training Manual, Part D — FAQ 10, Subclass 600",
+        tag: "product", difficulty: "easy"
+      },
+      {
+        q: "How many hours per fortnight can a Student visa holder work once their course has commenced?",
+        options: ["No work permitted at all", "Up to 48 hours per fortnight, with unlimited hours during scheduled course breaks", "Unlimited hours from day one", "20 hours per week, no exceptions"],
+        answer: 1,
+        explanation: "Once the course is in session, a Student visa holder can work up to 48 hours per fortnight under Condition 8105. During scheduled course breaks, they can work unlimited hours.",
+        law: "Staff Training Manual, Part D — FAQ 16, Subclass 500",
+        tag: "product", difficulty: "easy"
+      },
+      {
+        q: "What is the Genuine Student (GS) requirement?",
+        options: ["A requirement that the applicant already speaks fluent English", "A statement and evidence showing genuine intention to study, that the course is a logical progression, and understanding of visa conditions", "A requirement to have a job offer before studying", "A minimum bank balance with no other criteria"],
+        answer: 1,
+        explanation: "The Genuine Student requirement (which replaced GTE) requires the applicant to satisfy the case officer that they genuinely intend to study, that the course is a logical progression in their education/career, and that they understand and will comply with visa conditions.",
+        law: "Staff Training Manual, Part D — FAQ 18, Subclass 500",
+        tag: "product", difficulty: "medium"
+      },
+      {
+        q: "What is OSHC, and what visa condition governs it?",
+        options: ["A tuition discount scheme, governed by Condition 8105", "Overseas Student Health Cover, mandatory under Condition 8501 for the entire visa duration", "A one-time optional insurance product with no visa condition attached", "A government scholarship, governed by Condition 8202"],
+        answer: 1,
+        explanation: "Overseas Student Health Cover (OSHC) is mandatory health insurance under Condition 8501 for the entire duration of the visa — failing to maintain it can lead to visa cancellation.",
+        law: "Staff Training Manual, Part D — FAQ 20, Subclass 500",
+        tag: "product", difficulty: "easy"
+      },
+      {
+        q: "What does Condition 8534 prevent a student visa holder from doing?",
+        options: ["Working more than 48 hours per fortnight", "Applying for a Partner visa (Subclass 820) while in Australia", "Studying at more than one institution", "Travelling overseas during the course"],
+        answer: 1,
+        explanation: "Condition 8534 prevents a student visa holder from applying for a Partner visa (Subclass 820) onshore — it's imposed to ensure students complete their course of study before pursuing other pathways.",
+        law: "Staff Training Manual, Part D — FAQ 25, Subclass 500",
+        tag: "product", difficulty: "medium"
+      },
+      {
+        q: "What attendance rate must a student visa holder generally maintain to avoid being reported under Condition 8202?",
+        options: ["At least 50%", "At least 80%", "Exactly 100%, no exceptions", "There is no attendance requirement"],
+        answer: 1,
+        explanation: "Student visa holders must maintain at least 80% attendance. Falling below this threshold may lead the provider to report them to the Department, risking visa cancellation.",
+        law: "Staff Training Manual, Part D — FAQ 37, Subclass 500",
+        tag: "product", difficulty: "medium"
+      },
+      {
+        q: "Can a parent be included as a secondary applicant on their child's student visa application?",
+        options: ["Yes, parents are always included automatically", "No — only a partner and dependent children can be secondary applicants; parents must apply for their own visa", "Only if the parent pays an extra fee", "Only for postgraduate students"],
+        answer: 1,
+        explanation: "Parents are not members of the family unit for Student visa purposes. Only a partner and dependent children can be secondary applicants — parents would need to apply for their own visa, such as a Visitor visa.",
+        law: "Staff Training Manual, Part D — FAQ 30, Subclass 500",
+        tag: "product", difficulty: "medium"
+      },
+      {
+        q: "What is a Bridging Visa A (BVA), and what causes it to cease?",
+        options: ["A permanent visa that never ceases", "Automatically granted when a substantive visa application is lodged; it ceases if the person leaves Australia", "A visa exclusively for tourists", "A visa that only applies to skilled migrants"],
+        answer: 1,
+        explanation: "A BVA is automatically granted when a person on a valid substantive visa lodges another substantive visa application, allowing lawful stay while it's processed. It ceases if the holder leaves Australia (without a BVB), when the application is decided, or if cancelled.",
+        law: "Staff Training Manual, Part D — FAQ 38 & 43, Bridging Visas",
+        tag: "product", difficulty: "medium"
+      },
+      {
+        q: "Can a person on a Bridging Visa A (BVA) travel outside Australia and return using that same BVA?",
+        options: ["Yes, a BVA always includes full travel rights", "No — a BVA has no travel rights; they must obtain a Bridging Visa B (BVB) before departing, or the BVA will cease", "Yes, but only to one specific country", "No, BVA holders can never leave Australia under any visa"],
+        answer: 1,
+        explanation: "A BVA does not have travel rights. To travel, the holder must apply for and be granted a Bridging Visa B (BVB) before departing — leaving on a BVA alone causes it to cease and may prevent lawful re-entry.",
+        law: "Staff Training Manual, Part D — FAQ 39, Bridging Visas",
+        tag: "product", difficulty: "easy"
+      },
+      {
+        q: "What happens to a Bridging Visa A when the underlying substantive visa application is REFUSED?",
+        options: ["It ceases immediately with no further options", "It continues for a period to allow the person to seek merits review, then ceases once that period or review is finalised", "It automatically converts to a permanent visa", "It is extended indefinitely regardless of any review"],
+        answer: 1,
+        explanation: "When a visa is refused, the BVA does not immediately cease — it continues to allow the person to seek merits review of the decision, ceasing once the review period expires or the review is finalised.",
+        law: "Staff Training Manual, Part D — FAQ 45, Bridging Visas",
+        tag: "product", difficulty: "hard"
+      }
+    ]
+  },
+  {
+    id: 16,
+    title: "Graduate & Skilled Migration Visa FAQs",
+    icon: "📈",
+    tag: "skilled",
+    description: "Policy-accurate FAQs on the Subclass 485 (Temporary Graduate) visa and General Skilled Migration (189, 190, 491) including the points test",
+    passmark: 100,
+    roles: ["Education Consultant"],
+    remark_pass: "Excellent command of the 485 and skilled migration FAQs. Understanding the points test and stream differences lets you map realistic, accurate PR pathways for graduating clients.",
+    remark_low: "Good foundation. Revisit the difference between the two 485 streams and the points test factor table — these details determine whether a client's chosen course actually leads where they expect.",
+    remark_fail: "Graduate and skilled migration knowledge directly shapes whether a client's course choice achieves their PR goals. Please re-study Part E in full before advising clients independently.",
+    questions: [
+      {
+        q: "What is the Australian Study Requirement for the Subclass 485 visa?",
+        options: ["Any single semester of study, regardless of length", "At least 92 weeks of CRICOS-registered study completed in no less than 16 calendar months, in English, while in Australia on a valid visa", "A minimum of 5 years of continuous study", "There is no minimum study requirement"],
+        answer: 1,
+        explanation: "The applicant must have completed CRICOS-registered study totalling at least 92 weeks, over no less than 16 calendar months, undertaken in English while in Australia on a valid visa.",
+        law: "Staff Training Manual, Part E — FAQ 46, Subclass 485",
+        tag: "skilled", difficulty: "medium"
+      },
+      {
+        q: "What is the key difference between the Post-Vocational Education Work stream and the Post-Higher Education Work stream of the 485 visa?",
+        options: ["They are identical in every requirement", "Post-Vocational (VET graduates) requires a skills assessment in an MLTSSL occupation; Post-Higher Education (degree graduates) does not require a skills assessment", "Post-Higher Education requires a skills assessment; Post-Vocational does not", "Only the Post-Vocational stream leads to any work rights"],
+        answer: 1,
+        explanation: "The Post-Vocational stream (VET/Diploma graduates) requires a positive skills assessment in an MLTSSL occupation. The Post-Higher Education stream (Bachelor/Masters/PhD graduates) does not require a skills assessment or nominated occupation.",
+        law: "Staff Training Manual, Part E — FAQ 47, Subclass 485",
+        tag: "skilled", difficulty: "medium"
+      },
+      {
+        q: "A Diploma of Nursing graduate (Enrolled Nurse pathway) wants a 485 visa via the Post-Vocational stream. What is the obstacle?",
+        options: ["There is no obstacle — Enrolled Nurse is definitely eligible", "Enrolled Nurse (ANZSCO 4114) is not on the MLTSSL, so they may not be eligible for the Post-Vocational stream", "Nursing is entirely excluded from the 485 visa", "They must complete a PhD first"],
+        answer: 1,
+        explanation: "Enrolled Nurse (ANZSCO 4114) is not on the MLTSSL, meaning a Diploma of Nursing graduate may not be eligible for the Post-Vocational Education Work stream — occupation lists should always be checked.",
+        law: "Staff Training Manual, Part E — FAQ 56, Subclass 485",
+        tag: "skilled", difficulty: "hard"
+      },
+      {
+        q: "Can a person be the primary applicant for a Subclass 485 visa more than once in their lifetime?",
+        options: ["Yes, unlimited times with no restriction", "Generally no — with very limited exceptions for those who studied in a designated regional area", "Yes, but only twice", "No, it can never be granted more than once under any circumstances"],
+        answer: 1,
+        explanation: "An applicant can generally only be the primary applicant for a 485 visa once in their lifetime, with very limited exceptions for those who lived and studied in a designated regional area.",
+        law: "Staff Training Manual, Part E — FAQ 49, Subclass 485",
+        tag: "skilled", difficulty: "medium"
+      },
+      {
+        q: "What additional benefit is available to graduates who complete at least 2 years of study in a designated regional area, relevant to the 485 visa?",
+        options: ["A discount on the visa application fee only", "An additional 1 year added to their 485 visa duration", "Automatic permanent residency", "Exemption from the Australian Study Requirement"],
+        answer: 1,
+        explanation: "Graduates who complete at least 2 years of study in a designated regional area may be eligible for an additional 1 year on their 485 visa — an incentive to study regionally.",
+        law: "Staff Training Manual, Part E — FAQ 58, Subclass 485",
+        tag: "skilled", difficulty: "medium"
+      },
+      {
+        q: "What is the key difference between the Subclass 189, 190, and 491 visas?",
+        options: ["They are all identical permanent visas", "189 = no nomination needed (permanent); 190 = state nomination (permanent, +5 points); 491 = state/relative sponsorship (provisional, +15 points, leads to 191 after 3 years)", "491 is a permanent visa requiring no points at all", "190 does not require any points test"],
+        answer: 1,
+        explanation: "The 189 is points-tested with no nomination required. The 190 requires state/territory nomination (worth 5 extra points). The 491 is a provisional visa requiring state or eligible relative sponsorship (worth 15 extra points), leading to permanent residence via the 191 after 3 years.",
+        law: "Staff Training Manual, Part E — FAQ 59, GSM Visas",
+        tag: "skilled", difficulty: "medium"
+      },
+      {
+        q: "What is the minimum points score required to submit an Expression of Interest (EOI) for the 189, 190, or 491 visa?",
+        options: ["50 points", "65 points", "80 points", "100 points"],
+        answer: 1,
+        explanation: "The minimum points score to submit an EOI is 65, though the actual score needed to receive an invitation is often much higher depending on the occupation and current invitation rounds.",
+        law: "Staff Training Manual, Part E — FAQ 61 & 194, Points Test",
+        tag: "skilled", difficulty: "easy"
+      },
+      {
+        q: "What is the age limit to be INVITED to apply for a 189, 190, or 491 visa?",
+        options: ["Under 35 years", "Under 45 years", "Under 55 years", "There is no age limit"],
+        answer: 1,
+        explanation: "To be invited to apply for a 189, 190, or 491 visa, the applicant must be under 45 years of age at the time the invitation is issued.",
+        law: "Staff Training Manual, Part E — FAQ 63, Age Requirement",
+        tag: "skilled", difficulty: "easy"
+      },
+      {
+        q: "What does 'superior English' mean for the points test, and how many points is it worth?",
+        options: ["IELTS 6.0 in each band, worth 0 points", "IELTS 8.0 in each of the four components, worth 20 points", "IELTS 7.0 overall only, worth 10 points", "Any English test result, worth 15 points"],
+        answer: 1,
+        explanation: "'Superior English' requires an IELTS score of at least 8.0 in each of the four components (or equivalent), and is worth 20 points on the points test — the highest English tier.",
+        law: "Staff Training Manual, Part E — FAQ 83, Points Test",
+        tag: "skilled", difficulty: "medium"
+      },
+      {
+        q: "Which authority conducts the skills assessment for IT professionals seeking skilled migration?",
+        options: ["Engineers Australia (EA)", "The Australian Computer Society (ACS)", "CPA Australia", "TRA"],
+        answer: 1,
+        explanation: "IT occupations are assessed by the Australian Computer Society (ACS), which evaluates the applicant's qualifications and work experience against the nominated occupation.",
+        law: "Staff Training Manual, Part E — FAQ 71, Skills Assessment",
+        tag: "skilled", difficulty: "easy"
+      },
+      {
+        q: "What are the designated regional areas relevant to 491 visa nomination and PR pathways?",
+        options: ["Only Tasmania and the Northern Territory", "All of Australia except Sydney, Melbourne, Brisbane, the Gold Coast, and Perth", "Only areas more than 500km from any capital city", "There are no designated regional areas — it applies everywhere"],
+        answer: 1,
+        explanation: "Designated regional areas include all of Australia except Sydney, Melbourne, Brisbane, the Gold Coast, and Perth — this includes cities like Canberra, Adelaide, Hobart, and Darwin.",
+        law: "Staff Training Manual, Part E — FAQ 80, Subclass 491",
+        tag: "skilled", difficulty: "medium"
+      },
+      {
+        q: "What is the Professional Year Program (PYP) and how many points is it worth?",
+        options: ["A 44-week structured work experience program for accounting, IT, or engineering graduates, worth 5 points", "A university degree program worth 20 points", "A skills assessment itself, worth 0 points", "A citizenship preparation course worth 10 points"],
+        answer: 0,
+        explanation: "The PYP is a roughly 44-week structured work experience program (including an internship) for recent graduates in accounting, IT, or engineering, earning 5 additional points on the points test.",
+        law: "Staff Training Manual, Part E — FAQ 67, Professional Year Program",
+        tag: "skilled", difficulty: "medium"
+      }
+    ]
+  },
+  {
+    id: 17,
+    title: "Employer-Sponsored, Family & Compliance FAQs",
+    icon: "⚖️",
+    tag: "family",
+    description: "Employer-sponsored visa FAQs (482/494/407), family and parent visa basics, the Section 48 bar, and the MARA advice boundary",
+    passmark: 100,
+    roles: ["Education Consultant"],
+    remark_pass: "Excellent grasp of the employer-sponsored, family, and compliance FAQs. Knowing exactly where general information ends and MARA-registered advice begins protects both clients and the business.",
+    remark_low: "Good foundation. Focus on the Section 48 bar and the MARA advice boundary — these are the highest-stakes compliance points in this module.",
+    remark_fail: "This module covers the compliance boundary that protects both clients and Interlace Studies. Please re-study Parts F and G in full before advising clients independently.",
+    questions: [
+      {
+        q: "What is the TSMIT and how does it relate to the Annual Market Salary Rate (AMSR) for a 482 sponsored worker?",
+        options: ["The employer chooses whichever figure is lowest", "The employer must pay at least the TSMIT or the AMSR, whichever is HIGHER", "TSMIT only applies to Australian citizens", "AMSR replaced TSMIT entirely in all cases"],
+        answer: 1,
+        explanation: "The employer must pay the sponsored worker at least the TSMIT or the AMSR for the occupation, whichever is higher — this prevents overseas workers from being underpaid or undercutting local wages.",
+        law: "Staff Training Manual, Part F — FAQ 85 & 91",
+        tag: "family", difficulty: "medium"
+      },
+      {
+        q: "Can a 482 visa holder change employers without their current employer's permission?",
+        options: ["No, they are bound to the employer for life", "Yes — but the new employer must become an approved sponsor and have a new nomination approved before the client starts working for them", "Yes, immediately, with no new nomination required", "Only after 10 years with the same employer"],
+        answer: 1,
+        explanation: "A 482 visa holder can change employers, but the new employer must be an approved sponsor and have a new nomination approved. The visa holder does not need the current employer's permission, but cannot start the new role before the new nomination is approved.",
+        law: "Staff Training Manual, Part F / Part G — FAQ 86 & 133",
+        tag: "family", difficulty: "medium"
+      },
+      {
+        q: "What is the Skilling Australians Fund (SAF) levy for a small business sponsoring a 482 visa?",
+        options: ["No fee applies to small businesses", "Typically $1,200 per year (small business, turnover under $10 million); $1,800/year for larger businesses", "A flat $10,000 regardless of business size", "Only payable by the visa applicant, never the employer"],
+        answer: 1,
+        explanation: "The SAF levy for a 482 nomination is typically $1,200 per year for small businesses (turnover under $10 million) and $1,800 per year for larger businesses.",
+        law: "Staff Training Manual, Part F — FAQ 87",
+        tag: "family", difficulty: "medium"
+      },
+      {
+        q: "What must an employer demonstrate through Labour Market Testing (LMT) before sponsoring a 482 worker?",
+        options: ["That the sponsored worker has family in Australia", "That they attempted to recruit an Australian worker for the position first, typically by advertising for at least 4 weeks", "That the business has been operating for over 20 years", "Nothing — LMT is optional"],
+        answer: 1,
+        explanation: "LMT requires the employer to show they attempted to recruit Australian workers before sponsoring an overseas worker — typically advertising the position for at least 4 weeks on a national job board.",
+        law: "Staff Training Manual, Part F — FAQ 93",
+        tag: "family", difficulty: "medium"
+      },
+      {
+        q: "What is the key obligation and restriction for a Subclass 494 (SESR) visa holder?",
+        options: ["They may live anywhere in Australia freely", "They must live, work, and study only in a designated regional area, or risk visa cancellation", "They must change employer every 12 months", "There are no location restrictions on this visa"],
+        answer: 1,
+        explanation: "The 494 is a regional visa — the holder must live, work, and study only in a designated regional area. Moving to a non-regional area without permission is a breach that can lead to cancellation.",
+        law: "Staff Training Manual, Part F — FAQ 96 & 100",
+        tag: "family", difficulty: "medium"
+      },
+      {
+        q: "What is the purpose of the Subclass 407 Training visa, and is it a substitute for a work visa?",
+        options: ["It is exactly the same as a work visa with full employment rights", "It is for workplace-based occupational training only — it is not for formal qualification study and not a substitute for a work visa", "It grants immediate permanent residency", "It is only available to Australian citizens"],
+        answer: 1,
+        explanation: "The 407 visa is for workplace-based occupational training to improve skills — it explicitly is not for formal study toward a qualification, and is not a substitute for a genuine work visa.",
+        law: "Staff Training Manual, Part F — FAQ 97",
+        tag: "family", difficulty: "medium"
+      },
+      {
+        q: "What is the Section 48 bar, and why is it critical to understand?",
+        options: ["It only affects visitor visas and nothing else", "It prevents a person who has had a visa refused or cancelled while in Australia from applying for most other visas while remaining in Australia, with very limited exceptions", "It is a bar on international travel only", "It has been repealed and no longer applies"],
+        answer: 1,
+        explanation: "Section 48 of the Migration Act prevents a person who has had a visa refused or cancelled while in Australia from applying for most other visas while they remain in the country — this can severely limit a client's options and must always be checked.",
+        law: "Staff Training Manual, Part G — FAQ 151, Section 48",
+        tag: "family", difficulty: "hard"
+      },
+      {
+        q: "What is a MARA-registered migration agent, and why does it matter for Interlace Studies staff?",
+        options: ["Anyone with a university degree, and it doesn't affect staff", "A person registered with the Migration Agents Registration Authority to lawfully provide immigration assistance for a fee; non-MARA staff must refer clients to one for specific advice", "A government department, not a person", "A visa subclass for migration professionals"],
+        answer: 1,
+        explanation: "Only a MARA-registered agent (or lawyer) can lawfully provide immigration assistance for a fee. Interlace Studies staff who are not MARA-registered must refer clients requiring specific migration advice to a registered agent.",
+        law: "Staff Training Manual, Part G — FAQ 169",
+        tag: "family", difficulty: "easy"
+      },
+      {
+        q: "What is the difference between the Subclass 103 and Subclass 143 parent visas?",
+        options: ["They are identical in cost and wait time", "The 103 has a very long wait time (often 30+ years); the 143 (Contributory) has a much shorter wait (2–3 years) but a significantly higher charge", "The 103 is temporary; the 143 is permanent", "The 143 has no visa application charge at all"],
+        answer: 1,
+        explanation: "The Subclass 103 (Parent) visa has an extremely long queue (often 30+ years), while the Subclass 143 (Contributory Parent) visa has a much shorter wait (typically 2–3 years) due to a significantly higher visa application charge.",
+        law: "Staff Training Manual, Part G — FAQ 174",
+        tag: "family", difficulty: "medium"
+      },
+      {
+        q: "What is the 'balance of family test' for parent visas?",
+        options: ["A financial test on the parent's income only", "At least half the applicant's children must be Australian citizens/PRs/eligible NZ citizens, OR more children live in Australia than any other single country", "A requirement that all children must live overseas", "A test that only applies to single parents"],
+        answer: 1,
+        explanation: "The balance of family test requires that at least half of the applicant's children are Australian citizens, permanent residents, or eligible New Zealand citizens, OR that more of their children live in Australia than in any other single country.",
+        law: "Staff Training Manual, Part G — FAQ 175",
+        tag: "family", difficulty: "hard"
+      },
+      {
+        q: "What is the minimum de facto relationship duration generally required for a partner visa, before any exceptions apply?",
+        options: ["3 months", "12 months", "5 years", "There is no minimum duration"],
+        answer: 1,
+        explanation: "A de facto relationship must generally have lasted at least 12 months before applying for a partner visa, unless the relationship is registered under a state/territory scheme.",
+        law: "Staff Training Manual, Part G — FAQ 178",
+        tag: "family", difficulty: "easy"
+      },
+      {
+        q: "A client on a student visa asks if they can apply for a partner visa onshore for their Australian citizen partner. What should you advise?",
+        options: ["Yes, they can do this at any time with no restrictions", "Generally no — Condition 8534 on the student visa prevents applying for a Subclass 820 while in Australia", "Only migration agents are allowed to answer this, so refuse to say anything at all", "Yes, but only if they pay an extra fee"],
+        answer: 1,
+        explanation: "Condition 8534 generally prevents a student visa holder from applying for a Partner visa (Subclass 820) onshore. This is general factual information about the visa condition — for their specific situation, refer them to a MARA-registered agent.",
+        law: "Staff Training Manual, Part D / Part G — FAQ 25 & 141",
+        tag: "family", difficulty: "hard"
+      }
+    ]
   }
 ];

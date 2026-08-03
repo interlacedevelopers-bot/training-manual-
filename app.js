@@ -27,6 +27,11 @@ const TRACKS = {
     academyName: 'Sales &amp; Client Relations Academy',
     bodyText: 'demonstrating comprehensive knowledge of compliant lead generation, client engagement, CRM discipline, and the OMARA Green Line / Red Line compliance boundary.'
   },
+  'Education Consultant': {
+    programName: 'Education &amp; Migration Consultancy Training Programme',
+    academyName: 'Education Consultant Academy',
+    bodyText: 'demonstrating comprehensive knowledge of call centre communication standards, the ESOS Act and National Code, career counselling and course pathways, and policy-accurate visa product knowledge across the student, graduate, skilled migration, employer-sponsored, and family visa categories.'
+  },
 };
 function getMyModules() {
   const role = STATE.user.role;
@@ -434,14 +439,18 @@ function renderQuestion() {
     eligibility:'eligibility', evidence:'evidence', refusal:'refusal',
     integrity:'integrity', fv:'fv', process:'process',
     compliance:'compliance', product:'product', leadgen:'leadgen',
-    engagement:'engagement', crm:'crm', conduct:'conduct'
+    engagement:'engagement', crm:'crm', conduct:'conduct',
+    sponsor:'sponsor', callcentre:'callcentre', esos:'esos',
+    counselling:'counselling', skilled:'skilled', family:'family'
   };
   const tagClass = tagMap[q.tag] || 'process';
   const tagLabels = {
     eligibility:'Eligibility', evidence:'Evidence', refusal:'Refusal Grounds',
     integrity:'Integrity / PIC 4020', fv:'Family Violence / ART', process:'Process & Obligations',
     compliance:'Compliance & Legal', product:'Visa Product Knowledge', leadgen:'Lead Generation',
-    engagement:'Client Engagement', crm:'CRM & Operations', conduct:'Code of Conduct'
+    engagement:'Client Engagement', crm:'CRM & Operations', conduct:'Code of Conduct',
+    sponsor:'Employer Sponsorship', callcentre:'Call Centre Skills', esos:'ESOS & Education Policy',
+    counselling:'Career Counselling', skilled:'Skilled Migration', family:'Family & Compliance'
   };
 
   const diffClass = q.difficulty === 'easy' ? 'diff-easy' : q.difficulty === 'medium' ? 'diff-med' : 'diff-hard';
