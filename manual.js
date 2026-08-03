@@ -172,5 +172,151 @@ const MANUALS = {
         body: "Best practice on a refusal: call the client before they read the letter themselves, confirm the 21-day ART deadline immediately, read the full decision before advising, and schedule a strategy consultation within 48 hours."
       }
     ]
+  },
+
+  6: {
+    intro: "This module covers who Interlace Studies is, the Australian visa products you'll be discussing with prospects, and — most importantly — the Green Line / Red Line rule that defines exactly what a sales team member can and cannot say.",
+    sections: [
+      {
+        heading: "Your Role in the Sales Funnel",
+        body: "The sales funnel has three stages. Your role covers the first two: Awareness & Hunting (monitoring social media, engaging in groups, initiating DMs) and Lead Qualification (collecting full lead data, entering it into GHL, booking the consultation appointment). Stage three — Consultation & Conversion, where actual migration advice is given — belongs entirely to the Registered Migration Agents (RMAs) and Education Counselors in Australia. You are the client's first impression of Interlace Studies, and everything you do reflects on the brand."
+      },
+      {
+        heading: "About Interlace Studies",
+        body: "Interlace Studies Pty Ltd is a registered, ICEF-accredited education and migration consultancy headquartered in Brisbane, Queensland, with offices in Adelaide, Perth, Sydney, and Kathmandu. The company holds multiple MARA registrations, ensuring all migration advice is delivered by qualified Registered Migration Agents, across student visas, skilled migration, family visas, employer-sponsored visas, and education placement."
+      },
+      {
+        heading: "Key Visa Products You Will Discuss",
+        body: "Subclass 500 (Student Visa) — for students enrolled in a CRICOS-registered course; common questions cover GTE, English requirements, and work rights. Subclass 600 (Visitor Visa) — tourists, family visitors, business visitors, medical treatment. Subclass 820/801 (Partner Visa, Onshore) and Subclass 309/100 (Partner Visa, Offshore) — for applicants in a genuine relationship with an Australian citizen/PR, distinguished by whether the applicant is residing in or outside Australia. Subclass 482 (TSS) — skilled workers sponsored by an approved employer, involving ANZSCO occupations and TSMIT salary thresholds. Subclass 186 (ENS) — permanent employer-sponsored residence via the TRT, DE, or Labour Agreement pathways. Subclass 485 (Temporary Graduate) — for recent graduates of Australian institutions."
+      },
+      {
+        heading: "The OMARA Framework",
+        body: "The Office of the Migration Agents Registration Authority (OMARA) regulates all Registered Migration Agents under the Migration Act 1958. Its Code of Conduct (effective 1 March 2022) sets strict rules for how migration assistance can be provided. Providing immigration assistance without being an RMA is a criminal offence — as a sales team member, you are NOT an RMA, and you must never provide specific migration advice."
+      },
+      {
+        heading: "The Green Line / Red Line Rule",
+        body: "GREEN LINE (you CAN do this): share publicly available factual information from immi.homeaffairs.gov.au; explain the general purpose of a visa category; describe Interlace Studies' services and the benefits of an RMA consultation; collect contact details and inquiry context; book RMA appointments; answer general study/education questions; refer clients to the official DHA website. RED LINE (you must NEVER do this): recommend a specific visa subclass for someone's personal circumstances; assess or predict chances of success or refusal; advise on responding to a Departmental RFI; advise on what documents to prepare or how to present a case; advise on refusals, appeals, or the AAT; advise on bridging visa conditions, work rights, or travel restrictions for a specific client; draft, prepare, or help complete any visa application form."
+      },
+      {
+        heading: "The Standard Deflection Script",
+        body: "When a prospect asks for specific advice, use a version of: 'That is a great question, and I completely understand your concern. Because Australian migration law is complex and constantly changing, I am not in a position to provide specific advice on your individual circumstances. What I can do is connect you with one of our Registered Migration Agents who can review your full case and give you expert, personalised guidance. Would you like me to book a consultation for you?'"
+      }
+    ]
+  },
+
+  7: {
+    intro: "This module covers what makes a lead genuinely usable by the business (Quality Lead Standards and Scoring), and the platform-by-platform strategy for finding those leads on social media.",
+    sections: [
+      {
+        heading: "The Seven Required Lead Fields",
+        body: "Before a lead counts toward your target, GoHighLevel must contain: (1) Lead Context — what they want and why they reached out; (2) Phone Number — with country code; (3) Email Address — confirmed as valid and active; (4) Services Sought — the specific service(s) of interest; (5) Client History — current visa, previous refusals, education, occupation; (6) Source Platform — where the lead was found; (7) Lead Date & Time — in Nepal Standard Time (NST)."
+      },
+      {
+        heading: "Lead Quality Scoring",
+        body: "Leads are scored by the team leader. 90–100% (Premium Lead) — immediate priority booking with an RMA within 24 hours. 70–89% (Qualified Lead) — counts toward the monthly target, book within 48 hours. 50–69% (Warm Lead) — does NOT count toward target, follow up for missing information. Below 50% (Incomplete Lead) — returned to the rep, must be completed within 24 hours or it is discarded."
+      },
+      {
+        heading: "Platform Landscape & Time Allocation",
+        body: "Facebook remains dominant at 78% of Australian internet users, followed by Instagram (65%), TikTok (48%), LinkedIn (42%), and Reddit (35%). Daily allocation: Facebook Groups 3 hours (★★★★★, highest volume, all lead types); Facebook Pages 1 hour (education, student visa); Instagram 1.5 hours (student visa 500, education); TikTok 1 hour (student visa 500, visitor 600); Reddit r/AusVisa 1 hour (partner visa, employer sponsored); LinkedIn 1 hour (482/186 visas); WhatsApp Groups 30 minutes (all types, high conversion, referral-based); YouTube Comments 30 minutes (all types)."
+      },
+      {
+        heading: "The Facebook Engagement Protocol",
+        body: "Seven steps for every group engagement: (1) Monitor — spend the first 30 minutes scanning new posts using keyword search from the past 24 hours; (2) Assess — read the full post and comments, decide if it's general or advisory-only; (3) Public Comment — post a helpful, factual comment with a call-to-action; (4) Direct Message — DM within 5 minutes of the public comment; (5) Qualify — gather all required lead data in the DM, building rapport first; (6) Enter in GHL — immediately, never delayed more than 2 hours; (7) Book Appointment — use the GHL calendar, confirm via DM and SMS."
+      },
+      {
+        heading: "Instagram & TikTok",
+        body: "On Instagram: monitor target hashtags daily, post a minimum of 20 helpful comments per day, send a minimum of 15 personalised DMs per day after public engagement, reply to relevant stories daily, and monitor influencer accounts weekly. On TikTok: your role is to engage in comments on relevant videos — not to create content unless directed by management."
+      },
+      {
+        heading: "Reddit & LinkedIn",
+        body: "Reddit (r/AusVisa, r/AskAnAustralian, r/Australia, r/ImmigrationAustralia) is highly sensitive to self-promotion — never directly advertise Interlace Studies in a post or comment; only mention it if asked, or via DM after rapport is built. LinkedIn is the primary channel for employer-sponsored (482/186) leads — target Nepali professionals in Australia, HR managers, and individuals in MLTSSL-listed occupations, with a professional profile clearly stating your Interlace Studies role."
+      }
+    ]
+  },
+
+  8: {
+    intro: "This module covers how to actually talk to prospects — the DM qualification flow, the phone engagement protocol (including strict call-time windows), and how to handle the objections you'll hear every day.",
+    sections: [
+      {
+        heading: "Scripts Are Templates, Not Copy-Paste",
+        body: "Every script in the manual must be adapted to the individual situation. Copy-pasting scripts verbatim risks platforms flagging the messages as spam — they must feel genuine and personalised every time."
+      },
+      {
+        heading: "The DM Qualification Flow",
+        body: "Once a prospect responds, the conversation flows through five stages, without rushing: Opening (introduce yourself, reference their question, ask if they're in Australia or planning to come); Context Gathering (their visa status and main goal — study, work, or family); History Gathering (previous applications or refusals, education, occupation); Contact Confirmation (get their best email and phone number for the appointment); Booking (confirm the consultation time and ask if there's anything else to note for the agent)."
+      },
+      {
+        heading: "Phone Engagement Rules",
+        body: "All outbound calls must be made during Australian business hours, 9:00 AM – 6:00 PM AEST — approximately 3:15 AM – 12:15 PM Nepal Standard Time. Before calling: review the lead's GHL profile, ensure a quiet environment with stable VoIP, have the GHL calendar and service/pricing guide ready, review prior notes, and confirm the client's time zone."
+      },
+      {
+        heading: "The Phone Call Script Structure",
+        body: "Opening (first 30 seconds) — confirm you're speaking with the right person, introduce yourself and Interlace Studies, reference their inquiry, check if it's a good time. Rapport Building — confirm their goal and ask where they are in the process. Qualification — confirm any missing lead data. Booking the Appointment — propose a specific date/time with an RMA. Closing — confirm the booking, mention documents to bring, and thank them warmly."
+      },
+      {
+        heading: "Call Etiquette",
+        body: "Speak clearly, slowly, and professionally — many clients are not native English speakers. Never leave a client on hold more than 30 seconds without checking in. If you can't answer a question, say you'll note it for the agent to address at the consultation. Never argue — acknowledge frustration empathetically. Log every call in GHL immediately, with a summary and follow-up actions. Never promise visa outcomes, processing times, or success rates."
+      },
+      {
+        heading: "Handling Objections",
+        body: "Objections are not rejections — they are requests for more information. Common objections include 'I can do this myself,' 'it's too expensive,' 'I'll think about it,' 'I already have an agent,' and 'I'm not sure if I'm eligible.' Each is answered by acknowledging the concern genuinely and steering back toward the value of a professional RMA consultation, without being pushy or dismissive."
+      }
+    ]
+  },
+
+  9: {
+    intro: "This module covers GoHighLevel (GHL) — the CRM that every lead, conversation, and appointment must run through — along with the monthly targets, individual KPIs, and technology stack that keep the whole operation measurable.",
+    sections: [
+      {
+        heading: "GHL Lead Entry, Step by Step",
+        body: "Navigate to Contacts → Add Contact; enter name, phone (with country code), and email; set the Source field to the platform the lead came from; apply tags for visa type, location (onshore/offshore-Nepal), and lead quality (Premium/Qualified); write a detailed Notes summary — thorough enough that the RMA can prepare from it alone; move the contact through the Pipeline (New Lead → Contacted → Qualified → Appointment Booked → Consultation Complete); book the appointment via the GHL calendar; confirm with the client by DM, SMS, or email."
+      },
+      {
+        heading: "Pipeline Stages & Required Actions",
+        body: "New Lead — contact within 2 hours of identification. Contacted — follow up if no response within 24 hours. Qualified — book an appointment within 48 hours. Appointment Booked — send a reminder 24 hours before. Consultation Complete — no further sales action; the RMA manages from here. Lost/Unresponsive — after 3 follow-up attempts over 7 days with no response, tag as 'Unresponsive' and let GHL automation handle re-engagement."
+      },
+      {
+        heading: "Monthly Targets",
+        body: "The team-wide minimum is 1,000 leads/month (250/week, ~50/day per rep) — rated CRITICAL. By category: Onshore Education 250, Offshore Education (Nepal) 150, Student Visa 500 leads 200–300 (CRITICAL), Visitor Visa 600 leads 100–200 (MEDIUM), Partner Visa 820/309 leads 100 (HIGH), Employer Sponsored 482/186 leads 50 (HIGH)."
+      },
+      {
+        heading: "Individual KPIs",
+        body: "Minimum 50 social media engagements (comments + DMs) per day. Minimum 10 new leads entered in GHL per day. Minimum 75% average lead quality score, measured weekly. Minimum 40% appointment booking conversion rate of qualified leads, measured weekly. Maximum 2-hour response time to new inquiries, measured daily. 100% follow-up completion within 24 hours, measured daily. Minimum 100% of assigned monthly lead target achieved, measured monthly."
+      },
+      {
+        heading: "The Technology Stack",
+        body: "GoHighLevel (GHL) is mandatory for every team member — the CRM and automation backbone. Meta Business Suite manages Facebook/Instagram pages and DMs. WhatsApp Business (business account only) handles client communication. Canva Pro is for assigned team members creating branded content. Grammarly Premium ensures professional writing. Zoom/Google Meet handles video consultations (logged in GHL). Google Sheets supports daily reporting until fully automated. Slack/Microsoft Teams covers internal communication. A VoIP service (e.g. Aircall) makes/receives calls to Australian numbers and auto-logs them in GHL. Notion/Confluence is the knowledge base for scripts and compliance guidelines."
+      }
+    ]
+  },
+
+  10: {
+    intro: "This module covers your daily reporting obligations and the Code of Conduct that governs every single client interaction — described in the manual as non-negotiable, applying at all times.",
+    sections: [
+      {
+        heading: "Daily Reporting Requirements",
+        body: "At the end of each working day (Nepal Standard Time), every team member submits a daily activity report via the designated Slack channel or GHL report, covering: Date, Total Engagements (comments + DMs across all platforms), New Leads Entered, Appointments Booked, Follow-Ups Completed, and Issues/Escalations (any compliance concerns, difficult situations, or technical issues)."
+      },
+      {
+        heading: "The Weekly Team Review",
+        body: "Every Monday (NST), the team leader conducts a mandatory 30-minute virtual review covering the previous week's performance against targets, top-performing strategies, compliance reminders, and any script or process updates. Attendance is mandatory for all team members."
+      },
+      {
+        heading: "Honesty and Transparency",
+        body: "Never make false or misleading claims about visa success rates, processing times, or service outcomes. Always be transparent about what Interlace Studies can and cannot guarantee."
+      },
+      {
+        heading: "Respect, Professionalism & Confidentiality",
+        body: "Treat every client with respect regardless of their situation, background, or English proficiency — never use condescending, dismissive, or inappropriate language. All client information is strictly confidential: never share client data with third parties, discuss cases in public forums, or use client information for anything other than their own service delivery."
+      },
+      {
+        heading: "No Spam, No Impersonation, No Guarantees",
+        body: "Never send mass, unsolicited messages — all outreach must respond to a genuine inquiry or relevant public post. Never impersonate an RMA, lawyer, or other qualified professional — always clearly identify yourself as a sales consultant. Never guarantee a visa outcome, processing time, or specific result — use language like 'our agents will assess your case and advise on the best pathway' rather than 'we will get you the visa.'"
+      },
+      {
+        heading: "Reporting Obligations",
+        body: "If you encounter a situation that appears to involve fraud, exploitation, or illegal activity, you must report it to your team leader immediately."
+      }
+    ]
   }
 };

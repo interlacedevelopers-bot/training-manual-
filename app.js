@@ -9,6 +9,37 @@ const ADMIN_PASSCODE = 'INTERLACE-ADMIN-2026';
 const LMS_STORAGE_KEY = 'interlace_lms_data_v1';
 const MAX_ATTEMPTS = 3;
 
+// Role-based access: which staff roles see which training track, and how
+// the certificate should describe that track.
+const TRACKS = {
+  'Migration Consultant': {
+    programName: 'Australian Partner Visa Training Programme',
+    academyName: 'Partner Visa Training Academy',
+    bodyText: 'demonstrating comprehensive knowledge of partner visa law, evidence requirements, compliance obligations, and client advisory best practices as governed by the <em>Migration Act 1958</em> and <em>Migration Regulations 1994</em>.'
+  },
+  'Branch Manager': {
+    programName: 'Australian Partner Visa Training Programme',
+    academyName: 'Partner Visa Training Academy',
+    bodyText: 'demonstrating comprehensive knowledge of partner visa law, evidence requirements, compliance obligations, and client advisory best practices as governed by the <em>Migration Act 1958</em> and <em>Migration Regulations 1994</em>.'
+  },
+  'Sales & Client Relations': {
+    programName: 'Sales &amp; Client Engagement Training Programme',
+    academyName: 'Sales &amp; Client Relations Academy',
+    bodyText: 'demonstrating comprehensive knowledge of compliant lead generation, client engagement, CRM discipline, and the OMARA Green Line / Red Line compliance boundary.'
+  },
+};
+function getMyModules() {
+  const role = STATE.user.role;
+  return MODULES.filter(m => (m.roles || []).includes(role));
+}
+function getTrackInfo() {
+  return TRACKS[STATE.user.role] || { programName: 'Staff Training Programme', academyName: 'Staff Training Academy' };
+}
+function moduleLabel(modId) {
+  const idx = getMyModules().findIndex(m => m.id === modId);
+  return idx >= 0 ? `Module ${idx+1}` : `Module`;
+}
+
 // ── State ────────────────────────────────────────────────────────
 const STATE = {
   userKey: null,
@@ -169,15 +200,32 @@ function renderModules() {
   lockContainer.innerHTML = '';
   list.innerHTML = '';
 
-  const total = MODULES.length;
-  const done = MODULES.filter(m => STATE.moduleMeta[m.id]?.passed).length;
+  const myModules = getMyModules();
+  const total = myModules.length;
+
+  if (total === 0) {
+    progressWrap.style.display = 'none';
+    list.style.display = 'none';
+    lockContainer.innerHTML = `
+      <div class="lockout-card" style="border-color:var(--grey-lt)">
+        <div class="lock-icon">📭</div>
+        <h2 style="color:var(--teal)">No Modules Assigned Yet</h2>
+        <p>There is no training track assigned to the <strong>${STATE.user.role}</strong> role yet.</p>
+        <p>Please contact your training administrator to have a module set assigned to your role.</p>
+      </div>
+    `;
+    $('tb-progress').textContent = '—';
+    return;
+  }
+
+  const done = myModules.filter(m => STATE.moduleMeta[m.id]?.passed).length;
   const pct = Math.round((done/total)*100);
 
   $('overall-bar').style.width = pct + '%';
   $('overall-pct').textContent = pct + '%';
   $('tb-progress').textContent = `${done} / ${total} Complete`;
 
-  MODULES.forEach(mod => {
+  myModules.forEach((mod, idx) => {
     const res = STATE.moduleResults[mod.id];
     const meta = STATE.moduleMeta[mod.id] || { attempts:0, studyTimeSec:0, passed:false };
     const passed = !!meta.passed;
@@ -192,7 +240,7 @@ function renderModules() {
 
     card.innerHTML = `
       ${statusBadge}
-      <div class="mod-num">Module ${mod.id} of ${total}</div>
+      <div class="mod-num">Module ${idx+1} of ${total}</div>
       <div class="mod-icon-big">${mod.icon}</div>
       <h3>${mod.title}</h3>
       <p>${mod.description}</p>
@@ -217,7 +265,7 @@ function renderModules() {
     banner.innerHTML = `
       <div style="font-size:36px;margin-bottom:8px">🏆</div>
       <h3 style="font-size:20px;font-weight:800;margin-bottom:6px">All Modules Complete!</h3>
-      <p style="opacity:0.85;margin-bottom:16px">Congratulations! You have passed all 5 training modules with a 100% score.</p>
+      <p style="opacity:0.85;margin-bottom:16px">Congratulations! You have passed all ${total} training modules with a 100% score.</p>
       <button onclick="showCert()" style="background:#d4a017;color:#1c2833;border:none;font-size:15px;font-weight:700;padding:13px 32px;border-radius:10px;cursor:pointer;">
         🎓 &nbsp; Download Your Certificate
       </button>
@@ -271,7 +319,7 @@ function renderManual(modId) {
        </div>`;
 
   $('manual-wrap').innerHTML = `
-    <div class="manual-title-row"><h2>${mod.icon} Module ${mod.id}: ${mod.title} — Study Manual</h2></div>
+    <div class="manual-title-row"><h2>${mod.icon} ${moduleLabel(mod.id)}: ${mod.title} — Study Manual</h2></div>
     <div class="manual-intro">${man.intro}</div>
     ${sectionsHtml}
     ${footerHtml}
@@ -280,11 +328,11 @@ function renderManual(modId) {
 
 function openManual(modId) {
   if (STATE.lmsLocked) { renderModules(); show('screen-modules'); return; }
-  const mod = MODULES.find(m => m.id === modId);
+  const mod = getMyModules().find(m => m.id === modId);
   if (!mod) return;
 
   STATE.pendingManualModId = modId;
-  $('manual-top-module').textContent = `Module ${mod.id}: ${mod.title}`;
+  $('manual-top-module').textContent = `${moduleLabel(mod.id)}: ${mod.title}`;
   renderManual(modId);
 
   STATE.manualSessionElapsed = 0;
@@ -322,7 +370,7 @@ function beginAssessment() {
 // ── SCREEN 3: Quiz ────────────────────────────────────────────────
 function startModule(modId) {
   if (STATE.lmsLocked) { renderModules(); show('screen-modules'); return; }
-  const mod = MODULES.find(m => m.id === modId);
+  const mod = getMyModules().find(m => m.id === modId);
   if (!mod) return;
 
   STATE.currentModule = { ...mod, questions: shuffleQuestions(mod.questions) };
@@ -338,7 +386,7 @@ function startModule(modId) {
     if (el) el.textContent = '⏱ ' + fmtTime(secs);
   }, 1000);
 
-  $('quiz-top-module').textContent = `Module ${mod.id}: ${mod.title}`;
+  $('quiz-top-module').textContent = `${moduleLabel(mod.id)}: ${mod.title}`;
   $('sidebar-mod-name').textContent = mod.title;
 
   renderNavList();
@@ -384,12 +432,16 @@ function renderQuestion() {
 
   const tagMap = {
     eligibility:'eligibility', evidence:'evidence', refusal:'refusal',
-    integrity:'integrity', fv:'fv', process:'process'
+    integrity:'integrity', fv:'fv', process:'process',
+    compliance:'compliance', product:'product', leadgen:'leadgen',
+    engagement:'engagement', crm:'crm', conduct:'conduct'
   };
   const tagClass = tagMap[q.tag] || 'process';
   const tagLabels = {
     eligibility:'Eligibility', evidence:'Evidence', refusal:'Refusal Grounds',
-    integrity:'Integrity / PIC 4020', fv:'Family Violence / ART', process:'Process & Obligations'
+    integrity:'Integrity / PIC 4020', fv:'Family Violence / ART', process:'Process & Obligations',
+    compliance:'Compliance & Legal', product:'Visa Product Knowledge', leadgen:'Lead Generation',
+    engagement:'Client Engagement', crm:'CRM & Operations', conduct:'Code of Conduct'
   };
 
   const diffClass = q.difficulty === 'easy' ? 'diff-easy' : q.difficulty === 'medium' ? 'diff-med' : 'diff-hard';
@@ -564,11 +616,11 @@ function finishModule() {
   $('res-grade').className = 'result-grade ' + (passed ? 'pass' : 'fail');
 
   if (passed) {
-    $('res-tagline').textContent = `✅ Module ${mod.id} Passed — ${correct} of ${totalQ} correct (Attempt ${meta.attempts} of ${MAX_ATTEMPTS})`;
+    $('res-tagline').textContent = `✅ ${moduleLabel(mod.id)} Passed — ${correct} of ${totalQ} correct (Attempt ${meta.attempts} of ${MAX_ATTEMPTS})`;
   } else if (justLocked) {
-    $('res-tagline').textContent = `🔒 Module ${mod.id} — Not passed. That was attempt ${meta.attempts} of ${MAX_ATTEMPTS}. Your training access is now LOCKED.`;
+    $('res-tagline').textContent = `🔒 ${moduleLabel(mod.id)} — Not passed. That was attempt ${meta.attempts} of ${MAX_ATTEMPTS}. Your training access is now LOCKED.`;
   } else {
-    $('res-tagline').textContent = `❌ Module ${mod.id} — Not yet passed. 100% is required. Attempt ${meta.attempts} of ${MAX_ATTEMPTS} used.`;
+    $('res-tagline').textContent = `❌ ${moduleLabel(mod.id)} — Not yet passed. 100% is required. Attempt ${meta.attempts} of ${MAX_ATTEMPTS} used.`;
   }
 
   $('res-score').textContent = `${correct}/${totalQ}`;
@@ -605,7 +657,8 @@ function finishModule() {
     reviewList.appendChild(div);
   });
 
-  const allPassed = MODULES.every(m => STATE.moduleMeta[m.id]?.passed);
+  const myModules = getMyModules();
+  const allPassed = myModules.length > 0 && myModules.every(m => STATE.moduleMeta[m.id]?.passed);
   $('btn-cert').style.display = allPassed ? 'inline-flex' : 'none';
   $('btn-retry').style.display = (passed || STATE.lmsLocked) ? 'none' : 'inline-flex';
 
@@ -623,7 +676,7 @@ function retryModule() {
 function buildCertStats() {
   let rows = '';
   let totalStudy = 0, totalQuiz = 0, totalAttempts = 0;
-  MODULES.forEach(m => {
+  getMyModules().forEach(m => {
     const r = STATE.moduleResults[m.id] || {};
     const meta = STATE.moduleMeta[m.id] || { attempts:0, studyTimeSec:0 };
     totalStudy += meta.studyTimeSec || 0;
@@ -652,26 +705,26 @@ function buildCertStats() {
 
 function showCert() {
   const u = STATE.user;
-  const allPassed = MODULES.every(m => STATE.moduleMeta[m.id]?.passed);
+  const myModules = getMyModules();
+  const allPassed = myModules.length > 0 && myModules.every(m => STATE.moduleMeta[m.id]?.passed);
   if (!allPassed) {
-    alert('Complete all 5 modules with a 100% score to unlock the certificate.');
+    alert(`Complete all ${myModules.length} modules with a 100% score to unlock the certificate.`);
     return;
   }
 
+  const track = getTrackInfo();
   $('cert-name').textContent = `${u.firstName} ${u.lastName}`;
 
   let totalCorrect = 0, totalQ = 0;
-  MODULES.forEach(m => {
+  myModules.forEach(m => {
     const r = STATE.moduleResults[m.id];
     if (r) { totalCorrect += r.score; totalQ += r.total; }
   });
   const overallPct = Math.round((totalCorrect/totalQ)*100);
 
   $('cert-body').innerHTML = `
-    has successfully completed the <strong>Australian Partner Visa Training Programme</strong>
-    at Interlace Studies Pty Ltd, demonstrating comprehensive knowledge of partner visa law,
-    evidence requirements, compliance obligations, and client advisory best practices
-    as governed by the <em>Migration Act 1958</em> and <em>Migration Regulations 1994</em>.
+    has successfully completed the <strong>${track.programName}</strong>
+    at Interlace Studies Pty Ltd, ${track.bodyText}
     <br><br>
     Role: <strong>${u.role}</strong> &nbsp;|&nbsp; Branch: <strong>${u.branch}</strong>
     &nbsp;|&nbsp; Overall Score: <strong>${overallPct}%</strong>
@@ -679,7 +732,7 @@ function showCert() {
 
   const badges = $('cert-badges');
   badges.innerHTML = '';
-  MODULES.forEach(m => {
+  myModules.forEach(m => {
     const r = STATE.moduleResults[m.id];
     const b = document.createElement('div');
     b.className = 'cert-badge';

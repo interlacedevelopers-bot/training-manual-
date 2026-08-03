@@ -12,6 +12,7 @@ const MODULES = [
     tag: "eligibility",
     description: "Visa subclasses, sponsor requirements, de facto rules, and who can apply",
     passmark: 100,
+    roles: ["Migration Consultant", "Branch Manager"],
     remark_pass: "Strong understanding of the partner visa framework. You can confidently advise clients on which subclass applies to their situation and explain eligibility to sponsors.",
     remark_low: "Good effort! Review the differences between onshore and offshore applications, and the sponsor eligibility rules in detail before advising clients.",
     remark_fail: "This module covers critical eligibility rules that every staff member must master. Please re-read the training manual sections on visa subclasses, de facto requirements, and sponsor limitations before retrying.",
@@ -185,6 +186,7 @@ const MODULES = [
     tag: "evidence",
     description: "The Four-Pillar Test — financial, household, social, and commitment evidence",
     passmark: 100,
+    roles: ["Migration Consultant", "Branch Manager"],
     remark_pass: "Excellent grasp of evidence requirements. You can guide clients to build a strong, decision-ready file across all four relationship aspects. This directly prevents RFIs and refusals.",
     remark_low: "Good foundation. Focus on understanding why each evidence category matters and the weight given to different document types. Thin files remain the primary cause of RFIs.",
     remark_fail: "Evidence assessment is the single most important skill for client outcomes. Please review the Four-Pillar Test in detail and understand what constitutes high, medium, and low weight evidence.",
@@ -358,6 +360,7 @@ const MODULES = [
     tag: "refusal",
     description: "Section 48, Schedule 3, PIC 4020 false information, character, and health requirements",
     passmark: 100,
+    roles: ["Migration Consultant", "Branch Manager"],
     remark_pass: "Excellent command of the integrity and refusal provisions. Understanding these protects clients from catastrophic immigration consequences and protects Interlace Studies from compliance risks.",
     remark_low: "Good effort on a complex topic. Focus particularly on PIC 4020 — its triggers, consequences, and the crucial 2017 amendment on withdrawals. These are career-defining issues for clients.",
     remark_fail: "This is one of the most critical modules. PIC 4020 violations can result in 3–10 year bans. Please master the Section 48 bar, Schedule 3 criteria, and PIC 4020 provisions before advising any client.",
@@ -531,6 +534,7 @@ const MODULES = [
     tag: "fv",
     description: "Family violence provisions (July 2024 amendments), ART appeal process, outcomes, and client management",
     passmark: 100,
+    roles: ["Migration Consultant", "Branch Manager"],
     remark_pass: "Strong understanding of the family violence provisions and ART appeal system. Your ability to recognise FV situations and guide clients through the ART process could genuinely change lives.",
     remark_low: "Review the July 2024 family violence amendments carefully — they significantly expanded protections. Also ensure you know the ART appeal deadline (21 days) and that it is non-negotiable.",
     remark_fail: "Family violence provisions and ART appeals are legally complex areas with life-changing consequences. Please study Module 4 materials in full before retrying. Never advise in these areas without MARN supervision.",
@@ -704,6 +708,7 @@ const MODULES = [
     tag: "process",
     description: "Application process, fees, bridging visas, work rights, Medicare, professional obligations, and sales best practices",
     passmark: 100,
+    roles: ["Migration Consultant", "Branch Manager"],
     remark_pass: "Excellent understanding of operational requirements. This practical knowledge — especially bridging visa travel rules and RFI management — directly protects clients from avoidable errors that can derail applications.",
     remark_low: "Good understanding overall. Pay special attention to the Bridging Visa B requirement before travel and the RFI response process — these are the most common operational errors staff make.",
     remark_fail: "Operational knowledge is what protects clients every day. The BVB travel rule, RFI deadlines, and professional obligations must be mastered. Please revisit these sections before advising any onshore client.",
@@ -867,6 +872,684 @@ const MODULES = [
         explanation: "Section 280 of the Migration Act 1958 defines immigration assistance broadly. Providing specific advice about visa options at a community seminar — particularly if the agency receives any benefit — can constitute unlawful immigration assistance if the person is not MARN registered.",
         law: "Migration Act 1958 s.280; OMARA Compliance",
         tag: "process", difficulty: "hard"
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "Company Overview & Compliance Boundaries",
+    icon: "🧭",
+    tag: "compliance",
+    description: "Interlace Studies background, key Australian visa products, and the OMARA Green Line / Red Line compliance rule",
+    passmark: 100,
+    roles: ["Sales & Client Relations"],
+    remark_pass: "Excellent grasp of the compliance boundary. Knowing exactly where the Green Line ends and the Red Line begins protects clients, protects you, and protects the company's MARA registration.",
+    remark_low: "Good effort. Re-read Section 4 (Compliance & Legal Boundaries) carefully — the Green Line / Red Line table is the single most important reference in this entire manual.",
+    remark_fail: "This module covers the legal boundary between lawful lead generation and unlawful migration advice. Getting this wrong is a criminal offence under the Migration Act 1958. Please re-study Sections 1–4 in full before retrying.",
+    questions: [
+      {
+        q: "What is the legal consequence of providing immigration assistance without being a Registered Migration Agent (RMA)?",
+        options: ["A warning from Interlace Studies management only", "It is a criminal offence under the Migration Act 1958 (Cth)", "A small administrative fine payable to OMARA", "There is no consequence if the client consents"],
+        answer: 1,
+        explanation: "Providing immigration assistance without being an RMA is a criminal offence under the Migration Act 1958 (Cth). As a sales team member, you are NOT an RMA and must never provide specific migration advice.",
+        law: "Sales Manual §4 — Compliance & Legal Boundaries",
+        tag: "compliance", difficulty: "easy"
+      },
+      {
+        q: "Which of the following is something you CAN do under the Green Line rule?",
+        options: ["Recommend a specific visa subclass based on a client's personal circumstances", "Share publicly available, factual information from the Department of Home Affairs website", "Assess or predict a client's chances of visa success", "Advise on how to respond to a Departmental request for information (RFI)"],
+        answer: 1,
+        explanation: "Sharing publicly available, factual information from immi.homeaffairs.gov.au is explicitly listed as a Green Line (permitted) activity.",
+        law: "Sales Manual §4.2 — Green Line / Red Line Rule",
+        tag: "compliance", difficulty: "easy"
+      },
+      {
+        q: "Which of the following is a Red Line action you must NEVER do?",
+        options: ["Book an appointment with an RMA for a paid consultation", "Draft, prepare, or assist in completing any visa application form", "Collect a client's contact details and inquiry context for the lead profile", "Answer general questions about study options and education pathways"],
+        answer: 1,
+        explanation: "Drafting, preparing, or assisting in completing a visa application form is explicitly listed as a Red Line activity reserved for Registered Migration Agents.",
+        law: "Sales Manual §4.2 — Green Line / Red Line Rule",
+        tag: "compliance", difficulty: "medium"
+      },
+      {
+        q: "A prospect on Facebook asks, 'What are my chances of getting this visa approved?' What is the correct response?",
+        options: ["Give an honest personal estimate based on similar cases you've seen", "Use the standard deflection script and offer to book a consultation with a Registered Migration Agent", "Tell them the published approval statistics for that visa subclass", "Say it looks strong to keep them engaged"],
+        answer: 1,
+        explanation: "Assessing or predicting a client's chances of success is a Red Line activity. Use the standard deflection script: explain migration law is complex, and offer to connect them with an RMA for a paid consultation.",
+        law: "Sales Manual §4.3 — Standard Deflection Script",
+        tag: "compliance", difficulty: "medium"
+      },
+      {
+        q: "Which visa subclass is for international students enrolled at a CRICOS-registered institution?",
+        options: ["Subclass 600", "Subclass 500", "Subclass 482", "Subclass 485"],
+        answer: 1,
+        explanation: "Subclass 500 is the Student Visa, for international students seeking to study in Australia at a CRICOS-registered institution.",
+        law: "Sales Manual §3 — Understanding Australian Visa Products",
+        tag: "product", difficulty: "easy"
+      },
+      {
+        q: "A client says they want to visit family in Australia for a short trip. Which visa subclass is most relevant to discuss in general terms?",
+        options: ["Subclass 482", "Subclass 600", "Subclass 186", "Subclass 300"],
+        answer: 1,
+        explanation: "Subclass 600 (Visitor Visa) covers tourists, family visitors, business visitors, and those seeking medical treatment.",
+        law: "Sales Manual §3 — Understanding Australian Visa Products",
+        tag: "product", difficulty: "easy"
+      },
+      {
+        q: "What is the key difference between the Subclass 820/801 and Subclass 309/100 partner visa pathways?",
+        options: ["820/801 is for skilled workers; 309/100 is for students", "820/801 is for applicants residing in Australia (onshore); 309/100 is for applicants residing outside Australia (offshore)", "820/801 has no processing time; 309/100 takes over 5 years", "There is no difference — they are the same visa"],
+        answer: 1,
+        explanation: "Subclass 820/801 is the onshore partner visa pathway; Subclass 309/100 is the offshore equivalent for applicants residing outside Australia.",
+        law: "Sales Manual §3 — Understanding Australian Visa Products",
+        tag: "product", difficulty: "medium"
+      },
+      {
+        q: "Which visa is for skilled workers sponsored by an approved Australian employer, with common questions about ANZSCO occupations and TSMIT?",
+        options: ["Subclass 485", "Subclass 482 (TSS)", "Subclass 600", "Subclass 300"],
+        answer: 1,
+        explanation: "Subclass 482 (Temporary Skill Shortage) is for skilled workers sponsored by an approved employer. Common questions cover eligible ANZSCO occupations, the employer sponsorship process, and TSMIT salary requirements.",
+        law: "Sales Manual §3 — Understanding Australian Visa Products",
+        tag: "product", difficulty: "medium"
+      },
+      {
+        q: "Which visa is aimed at international students who have recently graduated from an Australian institution?",
+        options: ["Subclass 485 (Temporary Graduate Visa)", "Subclass 186 (ENS)", "Subclass 600", "Subclass 820"],
+        answer: 0,
+        explanation: "Subclass 485 (Temporary Graduate Visa) is for international students who have recently graduated from an Australian institution, with common questions on eligibility, duration, and regional area benefits.",
+        law: "Sales Manual §3 — Understanding Australian Visa Products",
+        tag: "product", difficulty: "easy"
+      },
+      {
+        q: "Which pathways are associated with the Subclass 186 (Employer Nomination Scheme)?",
+        options: ["TRT, DE, and Labour Agreement", "Onshore and offshore only", "Student and graduate pathways only", "There is only one pathway"],
+        answer: 0,
+        explanation: "Subclass 186 (ENS) common questions cover pathways (TRT, DE, Labour Agreement), age limits, skills assessment, and English requirements.",
+        law: "Sales Manual §3 — Understanding Australian Visa Products",
+        tag: "product", difficulty: "hard"
+      },
+      {
+        q: "Which two stages of the three-stage sales funnel is the Nepal-based sales team primarily responsible for?",
+        options: ["Consultation & Conversion only", "Awareness & Hunting, and Lead Qualification", "Lead Qualification and Consultation & Conversion", "None — RMAs handle the entire funnel"],
+        answer: 1,
+        explanation: "The sales team's role covers Awareness & Hunting (monitoring social media, engaging, initiating DMs) and Lead Qualification (collecting lead data, entering into GHL, booking appointments). Consultation & Conversion is handled by the RMA / Education Counselor.",
+        law: "Sales Manual §1.2 — Your Role in the Sales Funnel",
+        tag: "compliance", difficulty: "medium"
+      },
+      {
+        q: "Where is Interlace Studies Pty Ltd headquartered, and what accreditation does it hold?",
+        options: ["Sydney; CRICOS-accredited only", "Brisbane, Queensland; ICEF-accredited with multiple MARA registrations", "Kathmandu; not accredited", "Perth; OMARA-accredited"],
+        answer: 1,
+        explanation: "Interlace Studies Pty Ltd is a registered and ICEF-accredited education and migration consultancy headquartered in Brisbane, Queensland, with offices also in Adelaide, Perth, Sydney, and Kathmandu, and holds multiple MARA registrations.",
+        law: "Sales Manual §2 — About Interlace Studies",
+        tag: "compliance", difficulty: "easy"
+      },
+      {
+        q: "Who regulates Registered Migration Agents in Australia, and from what date does the current Code of Conduct apply?",
+        options: ["ASIC, effective 1 January 2020", "OMARA, effective 1 March 2022", "The Federal Court, effective immediately upon registration", "The Department of Education, effective 1 July 2024"],
+        answer: 1,
+        explanation: "The Office of the Migration Agents Registration Authority (OMARA) regulates registered migration agents under the Migration Act 1958. The Code of Conduct for Registered Migration Agents has applied since 1 March 2022.",
+        law: "Sales Manual §4.1 — The OMARA Framework",
+        tag: "compliance", difficulty: "medium"
+      },
+      {
+        q: "A client wants advice on how to respond to a Departmental Request for Information (RFI) they just received. What should you do?",
+        options: ["Draft a response with them since it's just paperwork", "Explain this is outside what you can advise on, and connect them with an RMA", "Tell them to ignore it since RFIs are optional", "Give general tips since it's not 'specific' advice"],
+        answer: 1,
+        explanation: "Advising on how to respond to a Departmental RFI is explicitly a Red Line activity — it must be referred to a Registered Migration Agent.",
+        law: "Sales Manual §4.2 — Green Line / Red Line Rule",
+        tag: "compliance", difficulty: "hard"
+      },
+      {
+        q: "Can you provide advice on a visa refusal or an Administrative Appeals Tribunal (AAT) matter?",
+        options: ["Yes, if you've seen similar cases before", "No — this is a Red Line activity reserved for Registered Migration Agents", "Yes, but only in writing, never verbally", "Only if the client insists"],
+        answer: 1,
+        explanation: "Providing advice on visa refusals, appeals, or the AAT is a Red Line activity that must always be referred to an RMA.",
+        law: "Sales Manual §4.2 — Green Line / Red Line Rule",
+        tag: "compliance", difficulty: "medium"
+      },
+      {
+        q: "What is an acceptable Green Line way to describe the Subclass 500 visa to a prospective student?",
+        options: ["'You will definitely be approved for a Subclass 500 given your profile.'", "'The Subclass 500 is for students enrolled in a CRICOS-registered course.'", "'I can help you prepare your GTE statement myself.'", "'Your previous refusal won't matter for this application.'"],
+        answer: 1,
+        explanation: "Explaining the general purpose and process of a visa category — e.g. that the Subclass 500 is for students enrolled in a CRICOS-registered course — is a Green Line activity.",
+        law: "Sales Manual §4.2 — Green Line / Red Line Rule",
+        tag: "product", difficulty: "easy"
+      }
+    ]
+  },
+  {
+    id: 7,
+    title: "Lead Generation & Social Media Hunting",
+    icon: "🎯",
+    tag: "leadgen",
+    description: "Quality lead standards, lead scoring, and platform-specific hunting strategy across Facebook, Instagram, TikTok, Reddit and LinkedIn",
+    passmark: 100,
+    roles: ["Sales & Client Relations"],
+    remark_pass: "Outstanding command of the lead generation system. Disciplined platform strategy and rigorous lead quality standards are what keep the pipeline full of leads RMAs can actually convert.",
+    remark_low: "Solid foundation. Focus on the lead scoring thresholds and the platform-by-platform time allocation table — these directly drive your daily targets.",
+    remark_fail: "Lead quality and platform strategy are the engine of your role. Please re-study Sections 5 through 9 in full — especially the lead scoring table — before retrying.",
+    questions: [
+      {
+        q: "Which of the following is NOT one of the seven required fields for a valid lead entered into GHL?",
+        options: ["Lead Context", "Client's home postal address", "Source Platform", "Lead Date & Time (NST)"],
+        answer: 1,
+        explanation: "The seven required fields are: Lead Context, Phone Number, Email Address, Services Sought, Client History, Source Platform, and Lead Date & Time (NST). A postal address is not one of them.",
+        law: "Sales Manual §5 — Quality Lead Definition & Standards",
+        tag: "leadgen", difficulty: "medium"
+      },
+      {
+        q: "A lead is reviewed and scores 65%. How is it classified, and does it count toward the monthly target?",
+        options: ["Qualified Lead — counts toward target", "Warm Lead — does NOT count toward target, follow up to gather missing information", "Premium Lead — priority booking within 24 hours", "Incomplete Lead — discarded immediately"],
+        answer: 1,
+        explanation: "A score of 50–69% is a Warm Lead. It does NOT count toward the monthly target; the rep must follow up to gather the missing information.",
+        law: "Sales Manual §5.1 — Lead Quality Scoring",
+        tag: "leadgen", difficulty: "medium"
+      },
+      {
+        q: "A lead scores 95%. What action is required?",
+        options: ["No action — it's automatically booked", "Immediate priority booking with an RMA within 24 hours", "Return it to the rep for completion", "Booking within 48 hours, same as any qualified lead"],
+        answer: 1,
+        explanation: "A score of 90–100% is a Premium Lead, requiring immediate priority booking with an RMA within 24 hours.",
+        law: "Sales Manual §5.1 — Lead Quality Scoring",
+        tag: "leadgen", difficulty: "easy"
+      },
+      {
+        q: "A Qualified Lead (70–89%) must be booked for an appointment within what timeframe?",
+        options: ["24 hours", "48 hours", "7 days", "There is no deadline"],
+        answer: 1,
+        explanation: "A Qualified Lead (70–89%) counts toward the monthly target and must be booked within 48 hours.",
+        law: "Sales Manual §5.1 — Lead Quality Scoring",
+        tag: "leadgen", difficulty: "easy"
+      },
+      {
+        q: "A lead scores below 50%. What happens to it?",
+        options: ["It automatically counts as a Warm Lead", "It is returned to the sales rep and must be completed within 24 hours or it is discarded", "It is escalated directly to an RMA", "Nothing — low scores are ignored"],
+        answer: 1,
+        explanation: "A score below 50% is an Incomplete Lead. It is returned to the rep, who must complete it within 24 hours or it will be discarded.",
+        law: "Sales Manual §5.1 — Lead Quality Scoring",
+        tag: "leadgen", difficulty: "medium"
+      },
+      {
+        q: "What percentage of Australian internet users are active on Facebook, making it the dominant platform?",
+        options: ["48%", "65%", "78%", "35%"],
+        answer: 2,
+        explanation: "Facebook remains the dominant platform with 78% of Australian internet users active on it, followed by Instagram (65%), TikTok (48%), LinkedIn (42%), and Reddit (35%).",
+        law: "Sales Manual §6 — Social Media Platforms",
+        tag: "leadgen", difficulty: "easy"
+      },
+      {
+        q: "According to the platform strategy table, how much daily time should be allocated to Facebook Groups, and what is the priority?",
+        options: ["1 hour, medium priority", "3 hours, ★★★★★ (highest volume, all lead types)", "30 minutes, lowest priority", "1.5 hours, student visa leads only"],
+        answer: 1,
+        explanation: "Facebook Groups get 3 hours of daily allocation and the top ★★★★★ priority rating, as the highest-volume source across all lead types.",
+        law: "Sales Manual §6 — Social Media Platforms — Hunting Strategy",
+        tag: "leadgen", difficulty: "medium"
+      },
+      {
+        q: "Which platform is identified as the primary channel for targeting employer-sponsored (482/186) visa leads?",
+        options: ["TikTok", "Instagram", "LinkedIn", "YouTube Comments"],
+        answer: 2,
+        explanation: "LinkedIn is the primary platform for employer-sponsored visa leads — connecting with Nepali professionals, HR managers, and skilled workers on the MLTSSL.",
+        law: "Sales Manual §9.2 — LinkedIn Strategy",
+        tag: "leadgen", difficulty: "medium"
+      },
+      {
+        q: "On TikTok, what is your role primarily supposed to be?",
+        options: ["Creating original viral video content daily", "Engaging in the comments section of relevant videos, not creating content unless directed by management", "Running paid TikTok advertising campaigns", "Only monitoring — no direct engagement allowed"],
+        answer: 1,
+        explanation: "Your role on TikTok is primarily to engage in the comments section of relevant videos (e.g. searching 'Australia student visa', 'partner visa Australia'), not to create content unless directed by management.",
+        law: "Sales Manual §8.2 — TikTok Strategy",
+        tag: "leadgen", difficulty: "easy"
+      },
+      {
+        q: "What is the strict rule for engaging on Reddit?",
+        options: ["Advertise Interlace Studies directly in every comment for maximum visibility", "Never directly advertise Interlace Studies in a post or comment — only mention it if asked, or via private message after building rapport", "Only post links to the Interlace Studies website", "Reddit engagement is not permitted at all"],
+        answer: 1,
+        explanation: "Reddit requires a particularly careful approach: never directly advertise Interlace Studies in a post or comment. Build credibility with genuinely helpful responses, and only mention the company if directly asked or via DM after rapport is established.",
+        law: "Sales Manual §9.1 — Reddit Strategy",
+        tag: "leadgen", difficulty: "hard"
+      },
+      {
+        q: "Under the Facebook Engagement Protocol, how soon after posting a helpful public comment should you send a private DM?",
+        options: ["Within 5 minutes", "Within 24 hours", "Within 1 week", "There is no specific timeframe"],
+        answer: 0,
+        explanation: "Step 4 of the Facebook Engagement Protocol requires sending a private DM within 5 minutes of the public comment.",
+        law: "Sales Manual §7.2 — Facebook Engagement Protocol",
+        tag: "leadgen", difficulty: "medium"
+      },
+      {
+        q: "Once all required lead data has been collected in a DM conversation, how quickly must it be entered into GHL?",
+        options: ["Immediately, within 2 hours at most", "Within 24 hours", "At the end of the week", "There is no deadline as long as it's entered eventually"],
+        answer: 0,
+        explanation: "Step 6 of the Facebook Engagement Protocol states the lead must be entered into GHL immediately — data entry must not be delayed by more than 2 hours.",
+        law: "Sales Manual §7.2 — Facebook Engagement Protocol",
+        tag: "leadgen", difficulty: "medium"
+      },
+      {
+        q: "What is the minimum number of comments you should post per day on Instagram using target hashtags?",
+        options: ["5 per day", "20 per day", "50 per day", "There is no minimum"],
+        answer: 1,
+        explanation: "Comment Engagement on Instagram requires a minimum of 20 comments per day on posts using target hashtags.",
+        law: "Sales Manual §8.1 — Instagram Strategy",
+        tag: "leadgen", difficulty: "easy"
+      },
+      {
+        q: "What is the minimum number of personalised DMs you should send per day on Instagram after public engagement?",
+        options: ["5 per day", "15 per day", "30 per day", "1 per week"],
+        answer: 1,
+        explanation: "DM Outreach on Instagram requires a minimum of 15 personalised DMs per day, sent after public engagement.",
+        law: "Sales Manual §8.1 — Instagram Strategy",
+        tag: "leadgen", difficulty: "easy"
+      },
+      {
+        q: "A client mentions TSMIT and ANZSCO in a Facebook comment. Which visa category's keyword group does this fall under?",
+        options: ["Student Visa (500)", "Visitor Visa (600)", "Employer Sponsored (482/186)", "Partner Visa (820/309)"],
+        answer: 2,
+        explanation: "TSMIT (Temporary Skilled Migration Income Threshold) and ANZSCO occupation codes are keywords listed under the Employer Sponsored (482/186) category.",
+        law: "Sales Manual §6.1 — Keyword Monitoring",
+        tag: "leadgen", difficulty: "medium"
+      },
+      {
+        q: "Which four subreddits are specifically named as containing a high concentration of genuine, complex visa questions?",
+        options: ["r/Australia, r/funny, r/news, r/worldnews", "r/AusVisa, r/AskAnAustralian, r/Australia, r/ImmigrationAustralia", "r/immigration, r/travel, r/study, r/work", "None — Reddit is not used for lead generation"],
+        answer: 1,
+        explanation: "r/AusVisa, r/AskAnAustralian, r/Australia, and r/ImmigrationAustralia are named as containing a high concentration of individuals with genuine, complex visa questions.",
+        law: "Sales Manual §9.1 — Reddit Strategy",
+        tag: "leadgen", difficulty: "medium"
+      },
+      {
+        q: "Which lead source is described as 'referral-based' with high conversion, allocated 30 minutes daily?",
+        options: ["YouTube Comments", "WhatsApp Groups", "LinkedIn", "Facebook Pages"],
+        answer: 1,
+        explanation: "WhatsApp Groups (Nepalese community groups, referral-based) are allocated 30 minutes daily and noted for high conversion.",
+        law: "Sales Manual §6 — Social Media Platforms — Hunting Strategy",
+        tag: "leadgen", difficulty: "easy"
+      },
+      {
+        q: "What is Step 1 of the Facebook Engagement Protocol, and how long should it take?",
+        options: ["Book Appointment — 10 minutes", "Monitor: scan new posts in assigned groups using keyword search over the past 24 hours — 30 minutes", "Enter in GHL — 2 hours", "Direct Message — 5 minutes"],
+        answer: 1,
+        explanation: "Step 1 (Monitor) requires spending the first 30 minutes of each session scanning new posts in assigned groups, using keyword search for posts from the past 24 hours.",
+        law: "Sales Manual §7.2 — Facebook Engagement Protocol",
+        tag: "leadgen", difficulty: "medium"
+      }
+    ]
+  },
+  {
+    id: 8,
+    title: "Engagement Scripts, Phone & Objection Handling",
+    icon: "💬",
+    tag: "engagement",
+    description: "DM qualification scripts, phone engagement protocol, call etiquette, and handling common client objections",
+    passmark: 100,
+    roles: ["Sales & Client Relations"],
+    remark_pass: "Great command of the engagement scripts and phone protocol. Confident, compliant conversations are what turn a social media comment into a booked consultation.",
+    remark_low: "Good effort. Revisit the DM qualification flow and the phone call script structure — the order and timing of each step matters for both compliance and conversion.",
+    remark_fail: "Engagement scripts and phone protocol are core to converting leads into bookings. Please re-study Sections 10 through 12 in full before retrying.",
+    questions: [
+      {
+        q: "Why must engagement scripts never be copy-pasted verbatim to multiple prospects?",
+        options: ["It's against company style guidelines only", "Social media platforms may flag repetitive messages as spam", "Scripts are copyrighted and can only be used once", "It takes too long to type them out each time"],
+        answer: 1,
+        explanation: "Scripts must be adapted to each individual situation so they feel genuine and personalised — copy-pasting verbatim risks platforms flagging the messages as spam.",
+        law: "Sales Manual §10 — Engagement Scripts & Templates",
+        tag: "engagement", difficulty: "easy"
+      },
+      {
+        q: "What is the correct order of the DM qualification conversational flow?",
+        options: ["Booking → Opening → Contact Confirmation → Context Gathering → History Gathering", "Opening → Context Gathering → History Gathering → Contact Confirmation → Booking", "Contact Confirmation → Opening → Booking → History Gathering → Context Gathering", "History Gathering → Opening → Context Gathering → Booking → Contact Confirmation"],
+        answer: 1,
+        explanation: "The DM Qualification Script flows: Opening, then Context Gathering, then History Gathering, then Contact Confirmation, then Booking.",
+        law: "Sales Manual §10.2 — DM Qualification Script",
+        tag: "engagement", difficulty: "medium"
+      },
+      {
+        q: "During what hours (AEST) must all outbound phone calls to Australian clients be made?",
+        options: ["6:00 AM – 3:00 PM AEST", "9:00 AM – 6:00 PM AEST", "24 hours a day, any time", "12:00 PM – 9:00 PM AEST"],
+        answer: 1,
+        explanation: "All outbound calls must be made during Australian business hours, 9:00 AM – 6:00 PM AEST.",
+        law: "Sales Manual §11 — Phone Engagement Strategy",
+        tag: "engagement", difficulty: "medium"
+      },
+      {
+        q: "9:00 AM – 6:00 PM AEST corresponds to approximately what window in Nepal Standard Time (NST)?",
+        options: ["3:15 AM – 12:15 PM NST", "9:00 AM – 6:00 PM NST (same time)", "6:00 PM – 3:00 AM NST", "12:00 PM – 9:00 PM NST"],
+        answer: 0,
+        explanation: "Australian business hours of 9:00 AM – 6:00 PM AEST correspond to approximately 3:15 AM – 12:15 PM Nepal Standard Time.",
+        law: "Sales Manual §11 — Phone Engagement Strategy",
+        tag: "engagement", difficulty: "hard"
+      },
+      {
+        q: "Before making an outbound call, what should you review first according to the Call Preparation Checklist?",
+        options: ["The company's annual report", "The client's lead profile in GHL", "The RMA's personal calendar", "Nothing — calls can be made without preparation"],
+        answer: 1,
+        explanation: "The Call Preparation Checklist begins with reviewing the client's lead profile in GHL before calling.",
+        law: "Sales Manual §11.1 — Call Preparation Checklist",
+        tag: "engagement", difficulty: "easy"
+      },
+      {
+        q: "A client on a call asks a question you genuinely cannot answer. What is the correct scripted response?",
+        options: ["Make an educated guess so the call keeps moving", "Say you'll note it for their agent to address in the consultation", "Tell them to search the Department of Home Affairs website themselves and hang up", "Transfer the call immediately without explanation"],
+        answer: 1,
+        explanation: "The correct response is: 'That is a great question. I want to make sure you get the most accurate answer, so I will note this for your agent to address in the consultation.'",
+        law: "Sales Manual §11.3 — Call Etiquette Rules",
+        tag: "engagement", difficulty: "medium"
+      },
+      {
+        q: "What is the maximum time a client should be left on hold without being checked on?",
+        options: ["10 seconds", "30 seconds", "2 minutes", "There is no limit"],
+        answer: 1,
+        explanation: "A client should never be put on hold for more than 30 seconds without checking back in.",
+        law: "Sales Manual §11.3 — Call Etiquette Rules",
+        tag: "engagement", difficulty: "easy"
+      },
+      {
+        q: "Which of the following must NEVER be promised to a client during a call?",
+        options: ["A follow-up email confirmation", "Visa outcomes, processing times, or success rates", "A consultation booking time", "The name of the RMA they'll be speaking with"],
+        answer: 1,
+        explanation: "Call Etiquette Rules explicitly state: do not make promises about visa outcomes, processing times, or success rates.",
+        law: "Sales Manual §11.3 — Call Etiquette Rules",
+        tag: "engagement", difficulty: "medium"
+      },
+      {
+        q: "When must a call be logged in GHL, and what must the log include?",
+        options: ["Once a week, with only the client's name", "Immediately after the call ends, including a summary and any follow-up actions required", "Only if an appointment was booked", "Logging calls is optional"],
+        answer: 1,
+        explanation: "All calls must be logged in GHL immediately after the call ends, including a summary of the conversation and any follow-up actions required.",
+        law: "Sales Manual §11.3 — Call Etiquette Rules",
+        tag: "engagement", difficulty: "easy"
+      },
+      {
+        q: "What core principle underlies how all client objections (e.g. 'it's too expensive', 'I'll think about it') should be handled?",
+        options: ["Objections mean the client is not a real lead and should be dropped", "Objections are not rejections — they are requests for more information", "Objections should be met with a lower price on the spot", "Objections should be argued against firmly until the client agrees"],
+        answer: 1,
+        explanation: "Objections are a natural part of the sales process. They are not rejections — they are requests for more information.",
+        law: "Sales Manual §12 — Handling Objections",
+        tag: "engagement", difficulty: "medium"
+      },
+      {
+        q: "What is Step 4 of the Facebook Engagement Protocol, and what governs how it should be done?",
+        options: ["Public Comment — post a generic templated reply", "Direct Message — sent within 5 minutes, using the DM script templates but personalised, not copy-pasted", "Book Appointment — done automatically by GHL", "Monitor — scan posts for 30 minutes"],
+        answer: 1,
+        explanation: "Step 4 is Direct Message: send a private DM within 5 minutes of the public comment, using the DM script templates — adapted, not copy-pasted verbatim.",
+        law: "Sales Manual §7.2 / §10 — Engagement Protocol & Scripts",
+        tag: "engagement", difficulty: "medium"
+      },
+      {
+        q: "In the phone call script, what is the purpose of the 'Opening (First 30 Seconds)' section?",
+        options: ["To immediately book the appointment before the client can object", "To confirm you're speaking with the right person, introduce yourself, reference their inquiry, and check if it's a good time to talk", "To read out the full pricing menu", "To ask for payment details"],
+        answer: 1,
+        explanation: "The Opening confirms the client's identity, introduces the caller and Interlace Studies, references the topic they inquired about, and checks whether it's a good time to talk.",
+        law: "Sales Manual §11.2 — Phone Call Script",
+        tag: "engagement", difficulty: "easy"
+      },
+      {
+        q: "Why should you confirm a client's time zone before calling?",
+        options: ["It's not necessary — GHL handles this automatically", "To ensure the call is being made at a suitable, respectful time for the client", "Only relevant for clients outside Nepal", "To calculate the call duration in advance"],
+        answer: 1,
+        explanation: "The Call Preparation Checklist requires confirming the client's time zone before calling, to ensure it is a suitable time to call.",
+        law: "Sales Manual §11.1 — Call Preparation Checklist",
+        tag: "engagement", difficulty: "medium"
+      },
+      {
+        q: "A client becomes frustrated on a call. What is the correct approach?",
+        options: ["Argue back to defend the company", "Acknowledge their feelings — e.g. 'I completely understand your frustration, and I assure you we are here to help' — and never argue with the client", "End the call immediately", "Transfer them to the team leader without comment"],
+        answer: 1,
+        explanation: "Call Etiquette Rules state: never argue with a client, and if they are frustrated, acknowledge their feelings with an empathetic response.",
+        law: "Sales Manual §11.3 — Call Etiquette Rules",
+        tag: "engagement", difficulty: "medium"
+      }
+    ]
+  },
+  {
+    id: 9,
+    title: "GHL CRM, Targets & Technology Stack",
+    icon: "📊",
+    tag: "crm",
+    description: "GoHighLevel pipeline management, monthly targets and individual KPIs, and the full sales technology stack",
+    passmark: 100,
+    roles: ["Sales & Client Relations"],
+    remark_pass: "Excellent understanding of the CRM workflow and performance targets. Disciplined GHL use and consistent KPI achievement are what the whole sales pipeline depends on.",
+    remark_low: "Good foundation. Review the GHL pipeline stages and their required actions, plus the monthly and individual KPI targets — these are checked weekly.",
+    remark_fail: "GHL discipline and target awareness are core to this role. Please re-study Sections 13 through 15 in full before retrying.",
+    questions: [
+      {
+        q: "What is described as 'the central nervous system' of the sales operation, through which every lead, conversation, appointment, and follow-up must be managed?",
+        options: ["Slack", "GoHighLevel (GHL)", "WhatsApp Business", "Google Sheets"],
+        answer: 1,
+        explanation: "GoHighLevel (GHL) is described as the central nervous system of the sales operation — every lead, conversation, appointment, and follow-up must be managed through it.",
+        law: "Sales Manual §13 — GoHighLevel (GHL) CRM Workflow",
+        tag: "crm", difficulty: "easy"
+      },
+      {
+        q: "Within how long of identifying a New Lead must contact be made?",
+        options: ["Within 2 hours", "Within 24 hours", "Within 48 hours", "Within 7 days"],
+        answer: 0,
+        explanation: "A 'New Lead' (identified but not yet contacted) requires contact within 2 hours of identification.",
+        law: "Sales Manual §13.2 — GHL Pipeline Stages & Definitions",
+        tag: "crm", difficulty: "medium"
+      },
+      {
+        q: "A lead is in the 'Contacted' stage and hasn't responded yet. When should you follow up?",
+        options: ["Immediately, within minutes", "If no response within 24 hours", "After exactly 7 days", "Never — wait for them to respond"],
+        answer: 1,
+        explanation: "The 'Contacted' pipeline stage requires a follow-up if there is no response within 24 hours.",
+        law: "Sales Manual §13.2 — GHL Pipeline Stages & Definitions",
+        tag: "crm", difficulty: "medium"
+      },
+      {
+        q: "After how many follow-up attempts, over how many days, is a lead tagged 'Unresponsive'?",
+        options: ["1 attempt over 24 hours", "3 attempts over 7 days", "5 attempts over 30 days", "Leads are never marked unresponsive"],
+        answer: 1,
+        explanation: "A lead is tagged 'Unresponsive' after 3 follow-up attempts over 7 days with no response, triggering a GHL re-engagement automation.",
+        law: "Sales Manual §13.2 — GHL Pipeline Stages & Definitions",
+        tag: "crm", difficulty: "medium"
+      },
+      {
+        q: "What is the team's total minimum monthly lead target across all categories?",
+        options: ["500", "1,000", "2,000", "250"],
+        answer: 1,
+        explanation: "The total minimum monthly target across all lead categories is 1,000 (250 weekly, ~50 daily per rep), rated CRITICAL priority.",
+        law: "Sales Manual §14 — Monthly Targets & KPIs",
+        tag: "crm", difficulty: "easy"
+      },
+      {
+        q: "Which lead category has the highest monthly target range and is rated CRITICAL priority?",
+        options: ["Visitor Visa (Subclass 600) Leads", "Employer Sponsored (482/186) Leads", "Student Visa (Subclass 500) Leads", "Partner Visa (820/309) Leads"],
+        answer: 2,
+        explanation: "Student Visa (Subclass 500) Leads carry a monthly target of 200–300, the highest range, and are rated CRITICAL priority.",
+        law: "Sales Manual §14 — Monthly Targets & KPIs",
+        tag: "crm", difficulty: "medium"
+      },
+      {
+        q: "What is the minimum number of daily social media engagements (comments + DMs combined) required per rep?",
+        options: ["10 per day", "50 per day", "100 per day", "There is no daily minimum"],
+        answer: 1,
+        explanation: "The individual KPI for daily social media engagements (comments + DMs) is a minimum of 50 per day.",
+        law: "Sales Manual §14.1 — Individual KPIs",
+        tag: "crm", difficulty: "easy"
+      },
+      {
+        q: "What is the minimum number of new leads a rep must enter into GHL per day?",
+        options: ["1 per day", "5 per day", "10 per day", "20 per day"],
+        answer: 2,
+        explanation: "The individual KPI requires a minimum of 10 new leads entered into GHL per day per rep.",
+        law: "Sales Manual §14.1 — Individual KPIs",
+        tag: "crm", difficulty: "easy"
+      },
+      {
+        q: "What is the minimum average weekly lead quality score target for an individual rep?",
+        options: ["50%", "60%", "75%", "90%"],
+        answer: 2,
+        explanation: "The individual KPI for average lead quality score is a minimum of 75%, measured weekly.",
+        law: "Sales Manual §14.1 — Individual KPIs",
+        tag: "crm", difficulty: "medium"
+      },
+      {
+        q: "What is the minimum appointment booking conversion rate required, measured against qualified leads?",
+        options: ["10%", "25%", "40%", "75%"],
+        answer: 2,
+        explanation: "The individual KPI for appointment booking conversion rate is a minimum of 40% of qualified leads, measured weekly.",
+        law: "Sales Manual §14.1 — Individual KPIs",
+        tag: "crm", difficulty: "medium"
+      },
+      {
+        q: "What is the maximum acceptable response time to a new inquiry?",
+        options: ["30 minutes", "2 hours", "24 hours", "48 hours"],
+        answer: 1,
+        explanation: "The individual KPI for response time to new inquiries is a maximum of 2 hours, measured daily.",
+        law: "Sales Manual §14.1 — Individual KPIs",
+        tag: "crm", difficulty: "easy"
+      },
+      {
+        q: "Which tool is described as mandatory for all team members and used for lead management, pipeline tracking, and automated follow-ups?",
+        options: ["Canva (Pro)", "GoHighLevel (GHL)", "Notion / Confluence", "Zoom / Google Meet"],
+        answer: 1,
+        explanation: "GoHighLevel (GHL) is listed as mandatory for all team members, covering lead management, pipeline tracking, appointment booking, automated follow-ups, and call logging.",
+        law: "Sales Manual §15 — Tools & Technology Stack",
+        tag: "crm", difficulty: "easy"
+      },
+      {
+        q: "Which communication tool must be used strictly as its 'Business' version for client communication?",
+        options: ["Slack", "WhatsApp — must use the Business account only", "Personal Instagram DMs", "Personal email"],
+        answer: 1,
+        explanation: "WhatsApp Business is used for client communication, appointment reminders, and document sharing — the manual specifies to use the business account only.",
+        law: "Sales Manual §15 — Tools & Technology Stack",
+        tag: "crm", difficulty: "medium"
+      },
+      {
+        q: "Which tool integrates with GHL to automatically log calls made to Australian numbers?",
+        options: ["Canva (Pro)", "Grammarly (Premium)", "A VoIP service such as Aircall", "Google Sheets"],
+        answer: 2,
+        explanation: "A VoIP service (e.g. Aircall) is used to make and receive calls to Australian numbers, and integrates with GHL for automatic call logging.",
+        law: "Sales Manual §15 — Tools & Technology Stack",
+        tag: "crm", difficulty: "medium"
+      },
+      {
+        q: "On which day, and for how long, is the mandatory weekly team review held?",
+        options: ["Friday, 1 hour", "Monday (NST), 30 minutes", "Sunday, 2 hours", "It is not mandatory to attend"],
+        answer: 1,
+        explanation: "Every Monday (NST), the team leader conducts a mandatory 30-minute virtual team review covering performance against targets, top strategies, compliance reminders, and process updates.",
+        law: "Sales Manual §16.2 — Weekly Team Review",
+        tag: "crm", difficulty: "easy"
+      },
+      {
+        q: "What is required for monthly lead target achievement as an individual KPI?",
+        options: ["A minimum of 50% of the assigned target", "A minimum of 75% of the assigned target", "A minimum of 100% of the assigned target", "There is no individual monthly KPI, only a team-wide one"],
+        answer: 2,
+        explanation: "The individual KPI for monthly lead target achievement is a minimum of 100% of the assigned target, measured monthly.",
+        law: "Sales Manual §14.1 — Individual KPIs",
+        tag: "crm", difficulty: "medium"
+      }
+    ]
+  },
+  {
+    id: 10,
+    title: "Performance Reporting, Ethics & Code of Conduct",
+    icon: "🤝",
+    tag: "conduct",
+    description: "Daily reporting requirements and the non-negotiable Code of Conduct governing every client interaction",
+    passmark: 100,
+    roles: ["Sales & Client Relations"],
+    remark_pass: "Excellent understanding of the reporting requirements and Code of Conduct. Honesty, confidentiality, and professionalism in every interaction is what protects both clients and the Interlace Studies brand.",
+    remark_low: "Good effort. Revisit the six Code of Conduct pillars in Section 17 — each one is described as non-negotiable and applies at all times.",
+    remark_fail: "The Code of Conduct is non-negotiable and applies to every interaction you have as a representative of Interlace Studies. Please re-study Sections 16 and 17 in full before retrying.",
+    questions: [
+      {
+        q: "What six fields must be included in every daily activity report?",
+        options: ["Name, Age, Salary, Manager, Location, Photo", "Date, Total Engagements, New Leads Entered, Appointments Booked, Follow-Ups Completed, Issues/Escalations", "Only the number of leads entered", "Client names and phone numbers only"],
+        answer: 1,
+        explanation: "The daily activity report must include: Date, Total Engagements, New Leads Entered, Appointments Booked, Follow-Ups Completed, and Issues/Escalations.",
+        law: "Sales Manual §16.1 — Daily Reporting Requirements",
+        tag: "conduct", difficulty: "medium"
+      },
+      {
+        q: "When and how must the daily activity report be submitted?",
+        options: ["Once a month via email", "At the end of each working day (NST), via the designated Slack channel or GHL report", "Only when requested by the team leader", "It is optional"],
+        answer: 1,
+        explanation: "At the end of each working day (Nepal Standard Time), every team member must submit a daily activity report via the designated Slack channel or GHL report.",
+        law: "Sales Manual §16.1 — Daily Reporting Requirements",
+        tag: "conduct", difficulty: "easy"
+      },
+      {
+        q: "A colleague asks you to share a client's contact details with an unrelated third-party business. Which Code of Conduct principle prohibits this?",
+        options: ["No Guarantees", "Confidentiality", "No Unsolicited Spam", "Respect and Professionalism"],
+        answer: 1,
+        explanation: "The Confidentiality principle states all client information is strictly confidential — never share client data with third parties or use it for any purpose other than their service delivery.",
+        law: "Sales Manual §17 — Code of Conduct & Ethics",
+        tag: "conduct", difficulty: "medium"
+      },
+      {
+        q: "Can you send mass messages to people who have not expressed any interest in Interlace Studies' services?",
+        options: ["Yes, as long as the message is polite", "No — all outreach must be in response to a genuine inquiry or a relevant public post (No Unsolicited Spam)", "Yes, but only on weekends", "Only if you use a personal account, not a company one"],
+        answer: 1,
+        explanation: "The No Unsolicited Spam principle prohibits mass, unsolicited messages to individuals who have not expressed interest — all outreach must be in response to a genuine inquiry or relevant public post.",
+        law: "Sales Manual §17 — Code of Conduct & Ethics",
+        tag: "conduct", difficulty: "easy"
+      },
+      {
+        q: "A rep tells a hesitant prospect, 'I guarantee we will get your visa approved.' Which Code of Conduct principle does this breach?",
+        options: ["Confidentiality", "No Guarantees", "No Unsolicited Spam", "Reporting Obligations"],
+        answer: 1,
+        explanation: "The No Guarantees principle explicitly prohibits guaranteeing a visa outcome, processing time, or specific result — language like 'our agents will assess your case' should be used instead.",
+        law: "Sales Manual §17 — Code of Conduct & Ethics",
+        tag: "conduct", difficulty: "hard"
+      },
+      {
+        q: "Can a sales team member introduce themselves in a way that implies they are a Registered Migration Agent?",
+        options: ["Yes, if it helps build the client's confidence", "No — you must never impersonate an RMA, lawyer, or other qualified professional, and must always clearly identify as a sales consultant", "Yes, as long as an RMA reviews the case eventually", "Only during phone calls, not in writing"],
+        answer: 1,
+        explanation: "The No Impersonation principle requires you to never impersonate an RMA, lawyer, or other qualified professional, and to always clearly identify yourself as a sales consultant.",
+        law: "Sales Manual §17 — Code of Conduct & Ethics",
+        tag: "conduct", difficulty: "medium"
+      },
+      {
+        q: "What must you do if you encounter a situation that appears to involve fraud, exploitation, or illegal activity?",
+        options: ["Handle it yourself quietly to avoid drama", "Report it to your team leader immediately", "Ignore it unless the client brings it up again", "Post about it in the public Facebook group to warn others"],
+        answer: 1,
+        explanation: "The Reporting Obligations principle requires immediate reporting to your team leader if you encounter a situation that appears to involve fraud, exploitation, or illegal activity.",
+        law: "Sales Manual §17 — Code of Conduct & Ethics",
+        tag: "conduct", difficulty: "hard"
+      },
+      {
+        q: "How should a client with limited English proficiency be treated, according to the Respect and Professionalism principle?",
+        options: ["With extra caution and shorter responses", "With the same respect as any other client — never condescending, dismissive, or inappropriate", "Referred immediately to another rep", "Told to find a translator before continuing"],
+        answer: 1,
+        explanation: "Respect and Professionalism requires treating every client with respect regardless of background or English proficiency, and never using condescending, dismissive, or inappropriate language.",
+        law: "Sales Manual §17 — Code of Conduct & Ethics",
+        tag: "conduct", difficulty: "easy"
+      },
+      {
+        q: "Instead of saying 'we will get you the visa,' what language does the manual recommend using?",
+        options: ["'It's basically guaranteed at this point.'", "'Our agents will assess your case and advise on the best pathway.'", "'Don't worry, everyone gets approved eventually.'", "'We have a 100% success rate.'"],
+        answer: 1,
+        explanation: "The No Guarantees principle recommends language such as 'our agents will assess your case and advise on the best pathway' rather than guaranteeing an outcome.",
+        law: "Sales Manual §17 — Code of Conduct & Ethics",
+        tag: "conduct", difficulty: "medium"
+      },
+      {
+        q: "Discussing a specific client's case details in a public Facebook group would breach which principle?",
+        options: ["No Guarantees", "Confidentiality", "No Impersonation", "Reporting Obligations"],
+        answer: 1,
+        explanation: "Confidentiality prohibits discussing client cases in public forums, sharing client data with third parties, or using client information for any purpose other than service delivery.",
+        law: "Sales Manual §17 — Code of Conduct & Ethics",
+        tag: "conduct", difficulty: "medium"
+      },
+      {
+        q: "Is it acceptable to exaggerate visa success rates to persuade a hesitant lead to book a consultation?",
+        options: ["Yes, as long as it results in a booking", "No — Honesty and Transparency prohibits false or misleading claims about success rates, processing times, or outcomes", "Yes, but only for premium leads", "It depends on the visa subclass"],
+        answer: 1,
+        explanation: "Honesty and Transparency requires never making false or misleading claims about visa success rates, processing times, or service outcomes.",
+        law: "Sales Manual §17 — Code of Conduct & Ethics",
+        tag: "conduct", difficulty: "medium"
+      },
+      {
+        q: "Who conducts the mandatory weekly team review, and is attendance optional?",
+        options: ["An RMA conducts it; attendance is optional", "The team leader conducts it; attendance is mandatory for all team members", "Head office conducts it once a quarter; attendance is optional", "It is self-directed with no set leader; attendance is optional"],
+        answer: 1,
+        explanation: "The team leader conducts the weekly review covering performance, top strategies, compliance reminders, and process updates. Attendance is mandatory for all team members.",
+        law: "Sales Manual §16.2 — Weekly Team Review",
+        tag: "conduct", difficulty: "easy"
       }
     ]
   }
