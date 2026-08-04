@@ -5,12 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Interlace Studies — Staff Training Academy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&family=Poppins:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════
-   DESIGN TOKENS
+   DESIGN TOKENS — Interlace Studies visual system
+   Colour sourced from training_app/assets/logo-color.png
+   (pixel-sampled) and interlace.com.au (computed styles).
 ═══════════════════════════════════════════════ */
 :root {
+  /* Interlace brand — read from the logo, not guessed */
+  --ink:            #030405;  /* wordmark fill */
+  --paper:          #fbfaf8;  /* warm-neutral ground */
+  --paper-raised:   #ffffff;
+  --interlace-deep: #1b72b2;  /* icon, upper weave band — primary */
+  --interlace-sky:  #4fbfe0;  /* icon, lower weave band — accent */
+  --slate:          #5d5c5b;  /* "STUDIES" wordmark grey */
+  --signal:         #1e9e7c;  /* completion / approved states only */
+  --line:           rgba(3,4,5,0.10);
+
+  /* legacy tokens — still used by screens not yet migrated to the
+     system above (quiz / manual / certificate / admin) */
   --teal:       #1a5276;
   --teal-dark:  #154360;
   --teal-mid:   #2471a3;
@@ -19,9 +33,9 @@
   --gold:       #d4a017;
   --gold-lt:    #fef9e7;
   --gold-dark:  #b8860b;
-  --brand-blue:  #3267ad;
-  --brand-sky:   #4bb8e2;
-  --brand-black: #040403;
+  --brand-blue:  #1b72b2;
+  --brand-sky:   #4fbfe0;
+  --brand-black: #030405;
   --white:      #ffffff;
   --off-white:  #f8fafc;
   --dark:       #1c2833;
@@ -40,8 +54,8 @@
 
   --radius:     12px;
   --radius-lg:  20px;
-  --shadow:     0 4px 24px rgba(26,82,118,0.10);
-  --shadow-lg:  0 12px 48px rgba(26,82,118,0.16);
+  --shadow:     0 1px 2px rgba(3,4,5,0.04), 0 8px 24px rgba(3,4,5,0.06);
+  --shadow-lg:  0 4px 8px rgba(3,4,5,0.05), 0 16px 40px rgba(3,4,5,0.10);
   --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
 }
 
@@ -304,115 +318,210 @@ input, select { font-family: inherit; }
    ██ MODULE SELECT SCREEN
 ═══════════════════════════════════════════════ */
 #screen-modules {
-  background: var(--off-white);
+  background: var(--paper);
+  font-family: 'Poppins', sans-serif;
 }
 .top-bar {
-  background: var(--teal-dark);
-  padding: 14px 24px;
+  background: var(--ink);
+  padding: 16px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: inset 0 -2px 0 var(--interlace-deep), 0 2px 16px rgba(3,4,5,0.22);
 }
 .top-bar-brand {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 500;
   color: #fff;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.top-bar-brand .sep { color: rgba(255,255,255,0.3); }
+.top-bar-brand .sep { color: rgba(255,255,255,0.25); }
 .top-bar-user {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .avatar {
   width: 34px; height: 34px;
   border-radius: 50%;
-  background: var(--gold);
-  color: var(--dark);
-  font-size: 13px;
-  font-weight: 800;
+  background: var(--interlace-deep);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.user-name { font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500; }
+.user-name { font-size: 13px; color: rgba(255,255,255,0.82); font-weight: 500; }
 .progress-badge {
-  background: rgba(212,160,23,0.2);
-  border: 1px solid rgba(212,160,23,0.4);
-  color: var(--gold);
+  font-family: 'IBM Plex Mono', monospace;
+  background: rgba(79,191,224,0.14);
+  border: 1px solid rgba(79,191,224,0.35);
+  color: var(--interlace-sky);
   font-size: 11px;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 100px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
 }
 
 .modules-content {
-  max-width: 1000px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 48px 24px;
+  padding: 52px 24px 90px;
 }
 .modules-content h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  color: var(--teal);
+  font-weight: 800;
+  font-size: 30px;
+  color: var(--ink);
   margin-bottom: 8px;
+  text-wrap: balance;
 }
 .modules-content > p {
-  color: var(--grey);
+  color: var(--slate);
   font-size: 14px;
-  margin-bottom: 36px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 56ch;
 }
-.modules-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-.mod-card {
-  background: #fff;
-  border-radius: var(--radius-lg);
-  padding: 28px;
+
+/* Overall progress — a case-status strip, mono figures */
+.overall-progress {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-bottom: 44px;
   box-shadow: var(--shadow);
-  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.progress-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--slate); min-width: 120px;
+}
+.progress-bar-wrap {
+  flex: 1;
+  background: var(--line);
+  border-radius: 100px;
+  height: 6px;
+  min-width: 150px;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--interlace-deep), var(--interlace-sky));
+  transition: width 0.8s cubic-bezier(.22,1,.36,1);
+}
+.progress-pct {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15px; font-weight: 600; color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── The Interlace Thread — case-file spine ─────────────
+   One woven line connects every module in sequence: dashed
+   where a module hasn't been started, filled solid where it
+   has been passed. This is the one place on the page that
+   carries the brand's signature motion. */
+.modules-list {
+  position: relative;
+}
+.modules-list::before {
+  content: '';
+  position: absolute;
+  left: 21px; top: 21px; bottom: 21px; width: 2px;
+  background: repeating-linear-gradient(to bottom, var(--slate) 0 3px, transparent 3px 10px);
+  opacity: 0.30;
+}
+.modules-list::after {
+  content: '';
+  position: absolute;
+  left: 21px; top: 21px; width: 2px;
+  height: var(--thread-fill, 0%);
+  background: linear-gradient(to bottom, var(--interlace-deep), var(--interlace-sky));
+  border-radius: 2px;
+  transition: height 1s cubic-bezier(.22,1,.36,1);
+}
+.path-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+.path-node {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; font-weight: 600;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  color: var(--slate);
+  transition: var(--transition);
+}
+.path-node.in-progress {
+  background: var(--interlace-deep);
+  border-color: var(--interlace-deep);
+  color: #fff;
+  box-shadow: 0 0 0 5px rgba(27,114,178,0.14);
+}
+.path-node.complete {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: #fff;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .path-node.in-progress { animation: threadPulse 2.4s ease-in-out infinite; }
+  @keyframes threadPulse {
+    0%, 100% { box-shadow: 0 0 0 5px rgba(27,114,178,0.14); }
+    50% { box-shadow: 0 0 0 8px rgba(27,114,178,0.06); }
+  }
+}
+
+.mod-card {
+  flex: 1;
+  min-width: 0;
+  background: var(--paper-raised);
+  border-radius: 10px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
   transition: var(--transition);
   cursor: pointer;
   position: relative;
-  overflow: hidden;
 }
-.mod-card::before {
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:4px;
-  background: linear-gradient(90deg, var(--teal), var(--gold));
-  opacity:0;
-  transition: var(--transition);
-}
-.mod-card:hover { border-color: var(--teal-lt); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.mod-card:hover::before { opacity:1; }
-.mod-card.completed { border-color: var(--green); background: var(--green-lt); }
-.mod-card.completed::before { opacity:1; background: var(--green); }
+.mod-card:hover { border-color: var(--interlace-deep); box-shadow: var(--shadow); transform: translateX(2px); }
+.mod-card.completed { border-color: rgba(30,158,124,0.35); }
 .mod-card.locked { opacity: 0.55; cursor: not-allowed; }
 .mod-num {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--grey);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--slate);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
 }
-.mod-icon-big { font-size: 36px; margin-bottom: 12px; }
-.mod-card h3 { font-size: 16px; font-weight: 700; color: var(--teal); margin-bottom: 6px; }
-.mod-card p { font-size: 13px; color: var(--grey); line-height: 1.5; margin-bottom: 16px; }
+.mod-card h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 5px; }
+.mod-card p { font-size: 13px; color: var(--slate); line-height: 1.55; margin-bottom: 14px; }
 .mod-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 .meta-pill {
@@ -422,52 +531,60 @@ input, select { font-family: inherit; }
   font-size: 11px;
   font-weight: 600;
   padding: 4px 10px;
-  border-radius: 100px;
-  background: var(--grey-pale);
-  color: var(--grey-dk);
+  border-radius: 4px;
+  background: rgba(3,4,5,0.04);
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
 }
-.meta-pill.teal { background: var(--teal-pale); color: var(--teal); }
-.meta-pill.gold { background: var(--gold-lt); color: var(--gold-dark); }
-.meta-pill.green { background: var(--green-lt); color: var(--green); }
+.meta-pill.teal { background: rgba(27,114,178,0.08); color: var(--interlace-deep); }
+.meta-pill.gold { background: rgba(93,92,91,0.08); color: var(--slate); }
+.meta-pill.green { background: rgba(30,158,124,0.10); color: var(--signal); }
 .status-badge {
   position: absolute;
   top: 16px; right: 16px;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 100px;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 4px;
+  font-family: 'IBM Plex Mono', monospace;
 }
-.status-badge.done { background: var(--green-lt); color: var(--green); }
-.status-badge.progress { background: var(--gold-lt); color: var(--gold-dark); }
-.status-badge.locked-badge { background: var(--grey-pale); color: var(--grey); }
+.status-badge.done { background: rgba(30,158,124,0.10); color: var(--signal); }
+.status-badge.progress { background: rgba(27,114,178,0.08); color: var(--interlace-deep); }
+.status-badge.locked-badge { background: rgba(3,4,5,0.04); color: var(--slate); }
 
-/* Overall progress bar */
-.overall-progress {
-  background: #fff;
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  margin-bottom: 32px;
-  box-shadow: var(--shadow);
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+/* completion moment — deliberately the only other animated beat */
+.seal-banner {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 36px 28px;
+  text-align: center;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-lg);
 }
-.progress-label { font-size: 13px; font-weight: 600; color: var(--grey-dk); min-width: 120px; }
-.progress-bar-wrap {
-  flex: 1;
-  background: var(--grey-lt);
-  border-radius: 100px;
-  height: 10px;
-  min-width: 150px;
+.seal-mark { width: 56px; height: 56px; margin-bottom: 14px; }
+.seal-banner h3 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 21px; color: var(--ink); margin-bottom: 8px; }
+.seal-banner p { font-size: 14px; color: var(--slate); margin-bottom: 20px; max-width: 46ch; margin-left: auto; margin-right: auto; }
+.seal-cta {
+  background: var(--interlace-deep);
+  color: #fff;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
 }
-.progress-bar-fill {
-  height: 100%;
-  border-radius: 100px;
-  background: linear-gradient(90deg, var(--teal), var(--gold));
-  transition: width 0.6s ease;
+.seal-cta:hover { background: var(--ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .seal-banner { animation: sealReveal 0.6s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes sealReveal {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
 }
-.progress-pct { font-size: 15px; font-weight: 800; color: var(--teal); }
 
 /* ═══════════════════════════════════════════════
    ██ QUIZ SCREEN
@@ -943,6 +1060,19 @@ input, select { font-family: inherit; }
 .lockout-card .lock-icon { font-size: 52px; margin-bottom: 16px; }
 .lockout-card h2 { font-size: 24px; color: var(--red); margin-bottom: 12px; }
 .lockout-card p { font-size: 14px; color: var(--grey-dk); line-height: 1.7; margin-bottom: 10px; }
+.empty-state {
+  max-width: 480px;
+  margin: 60px auto;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 44px 36px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.empty-mark { width: 96px; height: 30px; margin-bottom: 18px; }
+.empty-state h2 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 20px; color: var(--ink); margin-bottom: 10px; }
+.empty-state p { font-family: 'Poppins', sans-serif; font-size: 14px; color: var(--slate); line-height: 1.65; margin-bottom: 8px; }
 .attempt-pill {
   display: inline-flex;
   align-items: center;
@@ -1727,8 +1857,8 @@ input, select { font-family: inherit; }
   </div>
 </div>
 
-<script src="questions.js?v=6"></script>
-<script src="manual.js?v=6"></script>
-<script src="app.js?v=6"></script>
+<script src="questions.js?v=7"></script>
+<script src="manual.js?v=7"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>

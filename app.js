@@ -296,9 +296,14 @@ function renderModules() {
     progressWrap.style.display = 'none';
     list.style.display = 'none';
     lockContainer.innerHTML = `
-      <div class="lockout-card" style="border-color:var(--grey-lt)">
-        <div class="lock-icon">📭</div>
-        <h2 style="color:var(--teal)">No Modules Assigned Yet</h2>
+      <div class="empty-state">
+        <svg class="empty-mark" viewBox="0 0 64 20" aria-hidden="true">
+          <line x1="10" y1="10" x2="54" y2="10" stroke="var(--slate)" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="10" cy="10" r="8" fill="var(--paper)" stroke="var(--slate)" stroke-width="2"/>
+          <circle cx="32" cy="10" r="8" fill="var(--paper)" stroke="var(--slate)" stroke-width="2"/>
+          <circle cx="54" cy="10" r="8" fill="var(--paper)" stroke="var(--slate)" stroke-width="2"/>
+        </svg>
+        <h2>No modules assigned yet</h2>
         <p>Your administrator has not yet assigned any training modules to your account.</p>
         <p>Please contact your training administrator.</p>
       </div>
@@ -314,50 +319,66 @@ function renderModules() {
   $('overall-pct').textContent = pct + '%';
   $('tb-progress').textContent = `${done} / ${total} Complete`;
 
+  let completeCount = 0;
+  let hasInProgress = false;
+
   myModules.forEach((mod, idx) => {
     const res = STATE.moduleResults[mod.id];
     const meta = STATE.moduleMeta[mod.id] || { attempts:0, studyTimeSec:0, passed:false };
     const passed = !!meta.passed;
     const attempted = !!res;
+    if (passed) completeCount++;
+    else if (attempted) hasInProgress = true;
+
+    const row = document.createElement('div');
+    row.className = 'path-row';
+
+    const node = document.createElement('div');
+    node.className = `path-node${passed ? ' complete' : attempted ? ' in-progress' : ''}`;
+    node.textContent = String(idx + 1);
+    node.setAttribute('aria-hidden', 'true');
 
     const card = document.createElement('div');
     card.className = `mod-card${passed ? ' completed' : ''}`;
 
     let statusBadge = '';
-    if (passed) statusBadge = '<span class="status-badge done">✓ Passed</span>';
+    if (passed) statusBadge = '<span class="status-badge done">Passed</span>';
     else if (attempted) statusBadge = `<span class="status-badge progress">Attempt ${meta.attempts}/${MAX_ATTEMPTS}</span>`;
 
     card.innerHTML = `
       ${statusBadge}
       <div class="mod-num">Module ${idx+1} of ${total}</div>
-      <div class="mod-icon-big">${mod.icon}</div>
       <h3>${mod.title}</h3>
       <p>${mod.description}</p>
       <div class="mod-meta">
-        <span class="meta-pill teal">📝 ${mod.questions.length} Questions</span>
-        <span class="meta-pill gold">✓ Pass: ${mod.passmark}%</span>
-        ${passed ? `<span class="meta-pill green">Score: ${res.pct}%</span>` : ''}
+        <span class="meta-pill teal">${mod.questions.length} Questions</span>
+        <span class="meta-pill gold">Pass ${mod.passmark}%</span>
+        ${passed ? `<span class="meta-pill green">Score ${res.pct}%</span>` : ''}
       </div>
     `;
     card.onclick = () => openManual(mod.id);
-    list.appendChild(card);
+
+    row.appendChild(node);
+    row.appendChild(card);
+    list.appendChild(row);
   });
+
+  const fillFraction = Math.min(1, (completeCount + (hasInProgress ? 0.5 : 0)) / total);
+  list.style.setProperty('--thread-fill', (fillFraction * 100) + '%');
 
   if (done === total) {
     const banner = document.createElement('div');
     banner.id = 'cert-unlock-banner';
-    banner.style.cssText = `
-      background:linear-gradient(135deg,#1a5276,#2471a3);
-      color:#fff;border-radius:16px;padding:28px;text-align:center;
-      margin-bottom:24px;box-shadow:0 8px 32px rgba(26,82,118,0.25);
-    `;
+    banner.className = 'seal-banner';
     banner.innerHTML = `
-      <div style="font-size:36px;margin-bottom:8px">🏆</div>
-      <h3 style="font-size:20px;font-weight:800;margin-bottom:6px">All Modules Complete!</h3>
-      <p style="opacity:0.85;margin-bottom:16px">Congratulations! You have passed all ${total} training modules with a 100% score.</p>
-      <button onclick="showCert()" style="background:#d4a017;color:#1c2833;border:none;font-size:15px;font-weight:700;padding:13px 32px;border-radius:10px;cursor:pointer;">
-        🎓 &nbsp; Download Your Certificate
-      </button>
+      <svg class="seal-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="29" fill="none" stroke="var(--interlace-deep)" stroke-width="2"/>
+        <circle cx="32" cy="32" r="21" fill="none" stroke="var(--interlace-sky)" stroke-width="2"/>
+        <text x="32" y="39" text-anchor="middle" font-family="Playfair Display, serif" font-weight="800" font-size="17" fill="var(--interlace-deep)">IS</text>
+      </svg>
+      <h3>All modules complete</h3>
+      <p>You have passed all ${total} training modules with a 100% score. Your certificate is ready.</p>
+      <button onclick="showCert()" class="seal-cta">View Your Certificate</button>
     `;
     $('modules-list').before(banner);
   }
