@@ -85,15 +85,58 @@ input, select { font-family: inherit; }
 ═══════════════════════════════════════════════ */
 #screen-landing {
   position: relative;
-  overflow: hidden;
+  background: var(--paper);
   font-family: 'Poppins', sans-serif;
+}
+
+/* ── Top nav — a persistent bar, not a floating logo ─────── */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: var(--ink);
+  box-shadow: inset 0 -2px 0 var(--interlace-deep), 0 2px 16px rgba(3,4,5,0.2);
+}
+.site-nav-logo { height: 28px; width: auto; }
+.site-nav-actions { display: flex; align-items: center; gap: 20px; }
+.site-nav-admin {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.68);
+  transition: var(--transition);
+}
+.site-nav-admin:hover { color: #fff; }
+.site-nav-cta {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--interlace-deep), var(--interlace-sky));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: 7px;
+  transition: var(--transition);
+}
+.site-nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(27,114,178,0.35); }
+.top-bar-logo { height: 24px; width: auto; display: block; }
+.cert-logo-img { height: 52px; width: auto; }
+
+/* ── Hero banner ──────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 68px 24px 80px;
+  text-align: center;
   background:
     linear-gradient(165deg, rgba(4,4,3,0.72) 0%, rgba(50,103,173,0.55) 45%, rgba(75,184,226,0.32) 75%, rgba(4,4,3,0.68) 100%),
     url('assets/hero-shape-your-future.webp') center 38% / cover no-repeat,
     var(--brand-black);
-  background-blend-mode: normal;
 }
-#screen-landing::before {
+.hero::before {
   content:'';
   position:absolute;
   inset: 0;
@@ -105,7 +148,7 @@ input, select { font-family: inherit; }
   animation: auroraDrift 18s ease-in-out infinite;
   pointer-events:none;
 }
-#screen-landing::after {
+.hero::after {
   content:'';
   position:absolute;
   inset: 0;
@@ -128,23 +171,9 @@ input, select { font-family: inherit; }
   0%, 100% { transform: translateY(0); opacity: 0.7; }
   50% { transform: translateY(-14px); opacity: 1; }
 }
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  justify-content: center;
-  padding: 22px 24px 16px;
-  background: linear-gradient(to bottom, rgba(4,4,3,0.55), transparent);
-}
-.site-header-logo { height: clamp(32px, 5vw, 44px); width: auto; }
-
-.landing-inner {
-  max-width: 900px;
+.hero-inner {
+  max-width: 720px;
   margin: 0 auto;
-  padding: 20px 24px 80px;
-  text-align: center;
   position: relative;
   z-index: 1;
 }
@@ -161,16 +190,49 @@ input, select { font-family: inherit; }
   color: transparent;
   text-shadow: 0 4px 30px rgba(75,184,226,0.25);
 }
-.top-bar-logo { height: 24px; width: auto; display: block; }
-.cert-logo-img { height: 52px; width: auto; }
 .landing-sub {
   font-size: 18px;
   font-weight: 500;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(0,0,0,0.55);
-  margin-bottom: 44px;
   letter-spacing: 0.2px;
 }
+
+/* ── Value section — a conventional 3-step feature grid ───── */
+.value-section {
+  padding: 60px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.value-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+}
+.value-card { text-align: left; }
+.value-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(27,114,178,0.08);
+  color: var(--interlace-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.value-card h3 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 17px; color: var(--ink); margin-bottom: 6px; }
+.value-card p { font-size: 13.5px; color: var(--slate); line-height: 1.6; }
+
+/* ── Access section ───────────────────────────────────────── */
+.access-section { padding: 56px 24px 8px; }
+
+/* ── Footer ───────────────────────────────────────────────── */
+.site-footer { padding: 28px 24px 56px; }
+
 /* ── 3D Tilt Tiles ─────────────────────────────── */
 .tilt-card {
   position: relative;
@@ -305,14 +367,13 @@ input, select { font-family: inherit; }
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: rgba(255,255,255,0.88);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  color: var(--slate);
   justify-content: center;
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 }
-.compliance-note span { color: var(--brand-sky); font-weight: 700; white-space: nowrap; }
+.compliance-note span { color: var(--interlace-deep); font-weight: 700; white-space: nowrap; }
 
 /* ═══════════════════════════════════════════════
    ██ MODULE SELECT SCREEN
@@ -1476,13 +1537,42 @@ input, select { font-family: inherit; }
      SCREEN 1: LANDING / REGISTRATION
 ═══════════════════════════════════════════════ -->
 <div id="screen-landing" class="screen active">
-  <header class="site-header">
-    <img src="assets/logo-white.png" alt="Interlace Studies" class="site-header-logo">
-  </header>
-  <div class="landing-inner">
-    <h1 class="landing-tagline">Shape Your Future</h1>
-    <p class="landing-sub">Staff Training Academy &mdash; Certification Programme</p>
+  <nav class="site-nav">
+    <img src="assets/logo-white.png" alt="Interlace Studies" class="site-nav-logo">
+    <div class="site-nav-actions">
+      <button class="site-nav-admin" onclick="showAdminLogin()">Admin</button>
+      <button class="site-nav-cta" onclick="showStaffLogin()">Staff Sign In</button>
+    </div>
+  </nav>
 
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 class="landing-tagline">Shape Your Future</h1>
+      <p class="landing-sub">Staff Training Academy &mdash; Certification Programme</p>
+    </div>
+  </section>
+
+  <section class="value-section">
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon">1</div>
+        <h3>Study the Manual</h3>
+        <p>Every module opens with a full study manual, tracked and timed, before you're allowed to attempt the assessment.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">2</div>
+        <h3>Pass the Assessment</h3>
+        <p>Questions and answer order reshuffle on every attempt. A 100% pass mark is required, with three attempts before lockout.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">3</div>
+        <h3>Earn Certification</h3>
+        <p>Complete every module your administrator has assigned and receive a signed, verifiable training certificate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="access-section">
     <div id="landing-portal-menu" class="portal-menu">
       <div class="portal-card" onclick="showStaffLogin()">
         <div class="portal-icon">👤</div>
@@ -1526,14 +1616,16 @@ input, select { font-family: inherit; }
         </div>
       </div>
     </div>
+  </section>
 
+  <footer class="site-footer">
     <div class="compliance-note">
       <span>⚖️ LEGAL NOTE:</span> This training is based on Migration Act 1958, Migration Regulations 1994 &amp; current DHA policy. Law changes frequently — always verify before advising clients.
     </div>
     <div class="compliance-note" style="margin-top:10px">
       <span>📋 POLICY:</span> Every module requires studying the manual first, a 100% pass mark, and questions/options are reshuffled on every attempt. Three attempts without a 100% score locks your account.
     </div>
-  </div>
+  </footer>
 </div>
 
 <!-- ═══════════════════════════════════════════════
@@ -1855,8 +1947,8 @@ input, select { font-family: inherit; }
   </div>
 </div>
 
-<script src="questions.js?v=8"></script>
-<script src="manual.js?v=8"></script>
-<script src="app.js?v=8"></script>
+<script src="questions.js?v=9"></script>
+<script src="manual.js?v=9"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>
