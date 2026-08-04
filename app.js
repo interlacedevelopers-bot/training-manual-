@@ -195,6 +195,20 @@ function backToEmailStep() {
   $('login-step-email').style.display = 'block';
 }
 
+// ── Landing portal menu (Staff vs Administrator) ─────────────────
+function showStaffLogin() {
+  $('landing-portal-menu').style.display = 'none';
+  $('landing-staff-card').style.display = 'block';
+  $('login-step-otp').style.display = 'none';
+  $('login-step-email').style.display = 'block';
+  $('login-email').focus();
+}
+
+function backToPortalMenu() {
+  $('landing-staff-card').style.display = 'none';
+  $('landing-portal-menu').style.display = 'grid';
+}
+
 async function verifyOtp() {
   const code = $('otp-code').value.trim();
   if (!code) { alert('Please enter the 6-digit code from your email.'); return; }
@@ -882,6 +896,7 @@ function showAdminLogin() {
 }
 
 function backToStaffLogin() {
+  backToPortalMenu();
   show('screen-landing');
 }
 

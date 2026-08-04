@@ -179,6 +179,36 @@ input, select { font-family: inherit; }
 }
 
 /* Staff Registration */
+/* Landing portal menu — the two entry-point cards */
+.portal-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 620px;
+  margin: 0 auto 40px;
+}
+.portal-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+.portal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  border-color: var(--gold);
+}
+.portal-icon { font-size: 34px; margin-bottom: 12px; }
+.portal-card h3 { font-size: 18px; font-weight: 700; color: var(--teal); margin-bottom: 8px; }
+.portal-card p { font-size: 13px; color: var(--grey); line-height: 1.5; margin-bottom: 16px; }
+.portal-cta { font-size: 13px; font-weight: 700; color: var(--teal-mid); }
+.portal-card-admin .portal-cta { color: var(--gold-dark); }
+.portal-card-admin:hover { border-color: var(--teal-mid); }
+
 .reg-card {
   background: #fff;
   border-radius: var(--radius-lg);
@@ -1341,7 +1371,22 @@ input, select { font-family: inherit; }
       </div>
     </div>
 
-    <div class="reg-card">
+    <div id="landing-portal-menu" class="portal-menu">
+      <div class="portal-card" onclick="showStaffLogin()">
+        <div class="portal-icon">👤</div>
+        <h3>Staff Access</h3>
+        <p>Sign in with your work email to continue training your administrator has assigned to you.</p>
+        <span class="portal-cta">Sign In →</span>
+      </div>
+      <div class="portal-card portal-card-admin" onclick="showAdminLogin()">
+        <div class="portal-icon">🔑</div>
+        <h3>Administrator Access</h3>
+        <p>Assign modules, manage staff access, and review training progress across the organisation.</p>
+        <span class="portal-cta">Admin Sign In →</span>
+      </div>
+    </div>
+
+    <div class="reg-card" id="landing-staff-card" style="display:none">
       <div id="login-step-email">
         <h3>Staff Sign-In</h3>
         <p>Enter your work email address. Your administrator must have already assigned your training before you can sign in.</p>
@@ -1350,6 +1395,9 @@ input, select { font-family: inherit; }
           <input type="email" id="login-email" placeholder="your@interlace.com.au" autocomplete="email">
         </div>
         <button class="btn-start" id="btn-request-otp" onclick="requestOtp()">📧 &nbsp; Send Verification Code</button>
+        <div style="text-align:center;margin-top:14px">
+          <button class="btn-link" onclick="backToPortalMenu()">← Back</button>
+        </div>
       </div>
 
       <div id="login-step-otp" style="display:none">
@@ -1372,9 +1420,6 @@ input, select { font-family: inherit; }
     </div>
     <div class="compliance-note" style="margin-top:10px">
       <span>📋 POLICY:</span> Every module requires studying the manual first, a 100% pass mark, and questions/options are reshuffled on every attempt. Three attempts without a 100% score locks your account.
-    </div>
-    <div style="text-align:center;margin-top:24px">
-      <button class="btn-link" style="opacity:0.6" onclick="showAdminLogin()">🔑 Administrator Access</button>
     </div>
   </div>
 </div>
@@ -1698,8 +1743,8 @@ input, select { font-family: inherit; }
   </div>
 </div>
 
-<script src="questions.js?v=4"></script>
-<script src="manual.js?v=4"></script>
-<script src="app.js?v=4"></script>
+<script src="questions.js?v=5"></script>
+<script src="manual.js?v=5"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>
