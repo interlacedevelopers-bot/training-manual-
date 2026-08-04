@@ -19,8 +19,9 @@
   --gold:       #d4a017;
   --gold-lt:    #fef9e7;
   --gold-dark:  #b8860b;
-  --brand-blue: #2472b0;
-  --brand-sky:  #58bfe4;
+  --brand-blue:  #3267ad;
+  --brand-sky:   #4bb8e2;
+  --brand-black: #040403;
   --white:      #ffffff;
   --off-white:  #f8fafc;
   --dark:       #1c2833;
@@ -72,9 +73,9 @@ input, select { font-family: inherit; }
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(165deg, rgba(21,67,96,0.78) 0%, rgba(36,113,163,0.52) 45%, rgba(88,191,228,0.30) 75%, rgba(21,67,96,0.72) 100%),
+    linear-gradient(165deg, rgba(4,4,3,0.72) 0%, rgba(50,103,173,0.55) 45%, rgba(75,184,226,0.32) 75%, rgba(4,4,3,0.68) 100%),
     url('assets/hero-shape-your-future.webp') center 38% / cover no-repeat,
-    var(--teal-dark);
+    var(--brand-black);
   background-blend-mode: normal;
 }
 #screen-landing::before {
@@ -82,9 +83,9 @@ input, select { font-family: inherit; }
   position:absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 15% 20%, rgba(88,191,228,0.40) 0%, transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(88,191,228,0.28) 0%, transparent 40%),
-    radial-gradient(circle at 50% 100%, rgba(36,113,163,0.5) 0%, transparent 55%);
+    radial-gradient(circle at 15% 20%, rgba(75,184,226,0.40) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(75,184,226,0.28) 0%, transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(50,103,173,0.5) 0%, transparent 55%);
   background-size: 200% 200%;
   animation: auroraDrift 18s ease-in-out infinite;
   pointer-events:none;
@@ -96,9 +97,9 @@ input, select { font-family: inherit; }
   background-image:
     radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.5), transparent),
     radial-gradient(2px 2px at 75% 15%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1.5px 1.5px at 60% 55%, rgba(88,191,228,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 60% 55%, rgba(75,184,226,0.7), transparent),
     radial-gradient(1.5px 1.5px at 35% 70%, rgba(255,255,255,0.35), transparent),
-    radial-gradient(2px 2px at 90% 60%, rgba(88,191,228,0.6), transparent);
+    radial-gradient(2px 2px at 90% 60%, rgba(75,184,226,0.6), transparent);
   background-size: 100% 100%;
   animation: sparkleFloat 12s ease-in-out infinite;
   opacity: 0.8;
@@ -120,7 +121,7 @@ input, select { font-family: inherit; }
   display: flex;
   justify-content: center;
   padding: 22px 24px 16px;
-  background: linear-gradient(to bottom, rgba(21,67,96,0.55), transparent);
+  background: linear-gradient(to bottom, rgba(4,4,3,0.55), transparent);
 }
 .site-header-logo { height: clamp(32px, 5vw, 44px); width: auto; }
 
@@ -143,19 +144,8 @@ input, select { font-family: inherit; }
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 4px 30px rgba(88,191,228,0.25);
+  text-shadow: 0 4px 30px rgba(75,184,226,0.25);
 }
-.landing-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(36px,6vw,62px);
-  font-weight: 800;
-  color: #fff;
-  line-height: 1.1;
-  margin-bottom: 12px;
-  letter-spacing: -1px;
-}
-.landing-logo span { color: var(--gold); }
-.landing-logo-img { height: clamp(40px,6vw,64px); width: auto; margin-bottom: 20px; }
 .top-bar-logo { height: 24px; width: auto; display: block; }
 .cert-logo-img { height: 52px; width: auto; }
 .landing-sub {
@@ -229,7 +219,7 @@ input, select { font-family: inherit; }
   font-size: 11px;
   font-weight: 600;
   color: var(--brand-sky);
-  background: rgba(88,191,228,0.18);
+  background: rgba(75,184,226,0.18);
   padding: 3px 10px;
   border-radius: 100px;
 }
@@ -258,11 +248,11 @@ input, select { font-family: inherit; }
   border-color: var(--brand-sky);
 }
 .portal-icon { font-size: 34px; margin-bottom: 12px; }
-.portal-card h3 { font-size: 18px; font-weight: 700; color: var(--teal); margin-bottom: 8px; }
-.portal-card p { font-size: 13px; color: var(--grey); line-height: 1.5; margin-bottom: 16px; }
-.portal-cta { font-size: 13px; font-weight: 700; color: var(--teal-mid); }
-.portal-card-admin .portal-cta { color: var(--teal-dark); }
-.portal-card-admin:hover { border-color: var(--teal-mid); }
+.portal-card h3 { font-size: 18px; font-weight: 700; color: var(--brand-black); margin-bottom: 8px; }
+.portal-card p { font-size: 13px; color: rgba(4,4,3,0.62); line-height: 1.5; margin-bottom: 16px; }
+.portal-cta { font-size: 13px; font-weight: 700; color: var(--brand-blue); }
+.portal-card-admin .portal-cta { color: var(--brand-black); }
+.portal-card-admin:hover { border-color: var(--brand-blue); }
 
 .reg-card {
   background: #fff;
@@ -276,12 +266,12 @@ input, select { font-family: inherit; }
 .reg-card h3 {
   font-size: 20px;
   font-weight: 700;
-  color: var(--teal);
+  color: var(--brand-black);
   margin-bottom: 6px;
 }
 .reg-card p {
   font-size: 13px;
-  color: var(--grey);
+  color: rgba(4,4,3,0.62);
   margin-bottom: 24px;
 }
 .form-row {
@@ -294,29 +284,29 @@ input, select { font-family: inherit; }
 .form-group label {
   font-size: 12px;
   font-weight: 600;
-  color: var(--grey-dk);
+  color: rgba(4,4,3,0.68);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 .form-group input, .form-group select {
-  border: 1.5px solid var(--grey-lt);
+  border: 1.5px solid rgba(4,4,3,0.16);
   border-radius: 8px;
   padding: 11px 14px;
   font-size: 14px;
-  color: var(--dark);
-  background: var(--off-white);
+  color: var(--brand-black);
+  background: #fff;
   transition: var(--transition);
   outline: none;
   width: 100%;
 }
 .form-group input:focus, .form-group select:focus {
-  border-color: var(--teal-mid);
+  border-color: var(--brand-blue);
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(36,113,163,0.12);
+  box-shadow: 0 0 0 3px rgba(50,103,173,0.14);
 }
 .btn-start {
   width: 100%;
-  background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-sky));
   color: #fff;
   font-size: 15px;
   font-weight: 700;
@@ -328,7 +318,7 @@ input, select { font-family: inherit; }
 }
 .btn-start:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(26,82,118,0.3);
+  box-shadow: 0 8px 24px rgba(50,103,173,0.3);
 }
 .compliance-note {
   display: flex;
@@ -887,14 +877,14 @@ input, select { font-family: inherit; }
 .btn-link {
   background: none;
   border: none;
-  color: var(--teal-mid);
+  color: var(--brand-blue);
   font-size: 13px;
   font-weight: 600;
   text-decoration: underline;
   cursor: pointer;
   padding: 4px;
 }
-.btn-link:hover { color: var(--teal-dark); }
+.btn-link:hover { color: var(--brand-black); }
 .btn-gold {
   background: linear-gradient(135deg, var(--gold-dark), var(--gold));
   color: var(--dark);
