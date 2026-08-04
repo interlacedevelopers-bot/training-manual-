@@ -1074,6 +1074,48 @@ function renderWatermark() {
   wm.innerHTML = Array.from({ length: 24 }).map(() => `<span>${label}</span>`).join('');
 }
 
+// ── Dynamic 3D tilt tiles (landing page module previews + portal cards) ──
+function initTiltTiles() {
+  const targets = document.querySelectorAll('.module-card, .portal-card');
+  targets.forEach(el => {
+    if (el.dataset.tiltInit) return;
+    el.dataset.tiltInit = '1';
+    el.classList.add('tilt-card');
+
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const px = (x / rect.width) * 100;
+      const py = (y / rect.height) * 100;
+      const rotateY = ((x / rect.width) - 0.5) * 16;
+      const rotateX = ((y / rect.height) - 0.5) * -16;
+      el.style.setProperty('--mx', px + '%');
+      el.style.setProperty('--my', py + '%');
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.02)`;
+      el.classList.add('tilting');
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.classList.remove('tilting');
+      el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+    });
+
+    // Gentle touch-device tilt on tap, since there's no hover/mousemove there.
+    el.addEventListener('touchstart', () => {
+      el.style.setProperty('--mx', '50%');
+      el.style.setProperty('--my', '30%');
+      el.style.transform = 'perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-4px) scale(1.015)';
+      el.classList.add('tilting');
+    }, { passive: true });
+    el.addEventListener('touchend', () => {
+      el.classList.remove('tilting');
+      el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+    });
+  });
+}
+initTiltTiles();
+
 // ── Keyboard navigation ───────────────────────────────────────────
 document.addEventListener('keydown', e => {
   if (!$('screen-quiz').classList.contains('active')) return;
