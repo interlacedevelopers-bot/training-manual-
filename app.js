@@ -766,8 +766,6 @@ function finishModule() {
   $('btn-cert').style.display = allPassed ? 'inline-flex' : 'none';
   $('btn-retry').style.display = (passed || STATE.lmsLocked) ? 'none' : 'inline-flex';
 
-  if (passed && pct >= 90) spawnConfetti();
-
   show('screen-results');
 }
 
@@ -850,7 +848,6 @@ function showCert() {
   const today = fmtDate(new Date());
   $('cert-id').textContent = `Certificate ID: ${id}  |  Issued: ${today}  |  Valid for CPD purposes`;
 
-  spawnConfetti();
   renderWatermark();
   show('screen-cert');
 }
@@ -862,49 +859,25 @@ function downloadCert() {
     display:flex;align-items:center;justify-content:center;z-index:9999;
   `;
   modal.innerHTML = `
-    <div style="background:#fff;border-radius:16px;padding:40px;max-width:440px;text-align:center;">
-      <div style="font-size:48px;margin-bottom:16px">🖨️</div>
-      <h3 style="color:#1a5276;margin-bottom:12px">Download Your Certificate</h3>
-      <p style="color:#718096;margin-bottom:24px;line-height:1.6">
-        To save as PDF or PNG:<br>
-        1. Click <strong>Print Certificate</strong><br>
-        2. Select <strong>"Save as PDF"</strong> as your printer<br>
+    <div style="background:#fff;border-radius:12px;padding:40px;max-width:440px;text-align:center;font-family:'Poppins',sans-serif;border:1px solid var(--line);">
+      <h3 style="font-family:'Playfair Display',serif;font-weight:800;color:var(--ink);margin-bottom:12px;font-size:20px;">Download Your Certificate</h3>
+      <p style="color:var(--slate);margin-bottom:24px;line-height:1.6;font-size:14px;">
+        To save as PDF:<br>
+        1. Click <strong style="color:var(--ink)">Print Now</strong><br>
+        2. Select <strong style="color:var(--ink)">"Save as PDF"</strong> as your printer<br>
         3. Save to your device
       </p>
       <button onclick="this.closest('[style]').remove(); window.print();"
-        style="background:linear-gradient(135deg,#1a5276,#2471a3);color:#fff;border:none;font-size:14px;font-weight:700;padding:12px 28px;border-radius:10px;cursor:pointer;margin-right:8px">
-        🖨️ Print Now
+        style="background:linear-gradient(135deg,var(--interlace-deep),var(--interlace-sky));color:#fff;border:none;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;cursor:pointer;margin-right:8px">
+        Print Now
       </button>
       <button onclick="this.closest('[style]').remove()"
-        style="background:#f7f8fa;color:#4a5568;border:1.5px solid #e2e8f0;font-size:14px;font-weight:600;padding:12px 20px;border-radius:10px;cursor:pointer;">
+        style="background:var(--paper);color:var(--slate);border:1.5px solid var(--line);font-size:14px;font-weight:600;padding:12px 20px;border-radius:8px;cursor:pointer;">
         Cancel
       </button>
     </div>
   `;
   document.body.appendChild(modal);
-}
-
-// ── Confetti ──────────────────────────────────────────────────────
-function spawnConfetti() {
-  const colors = ['#1a5276','#d4a017','#1e8449','#2471a3','#d35400','#6c3483','#fff'];
-  for (let i=0; i<80; i++) {
-    setTimeout(() => {
-      const c = document.createElement('div');
-      c.className = 'confetti-piece';
-      c.style.cssText = `
-        left:${Math.random()*100}vw;
-        background:${colors[Math.floor(Math.random()*colors.length)]};
-        width:${6+Math.random()*8}px;
-        height:${6+Math.random()*8}px;
-        border-radius:${Math.random()>0.5?'50%':'2px'};
-        animation-duration:${2+Math.random()*2}s;
-        animation-delay:${Math.random()*0.5}s;
-        transform:rotate(${Math.random()*360}deg);
-      `;
-      document.body.appendChild(c);
-      setTimeout(() => c.remove(), 4000);
-    }, i*20);
-  }
 }
 
 // ── Admin Panel ───────────────────────────────────────────────────

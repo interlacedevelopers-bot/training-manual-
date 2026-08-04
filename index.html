@@ -939,49 +939,52 @@ input, select { font-family: inherit; }
   flex-wrap: wrap;
 }
 .btn-primary {
-  background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+  background: linear-gradient(135deg, var(--interlace-deep), var(--interlace-sky));
   color: #fff;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   padding: 13px 28px;
-  border-radius: 10px;
+  border-radius: 8px;
   transition: var(--transition);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
-.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,82,118,0.25); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,114,178,0.28); }
 .btn-primary:disabled { opacity:0.4; cursor:not-allowed; transform:none; box-shadow:none; }
 .btn-secondary {
-  background: var(--grey-pale);
-  color: var(--grey-dk);
+  background: var(--paper-raised);
+  color: var(--slate);
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 600;
   padding: 13px 24px;
-  border-radius: 10px;
-  border: 1.5px solid var(--grey-lt);
+  border-radius: 8px;
+  border: 1.5px solid var(--line);
   transition: var(--transition);
 }
-.btn-secondary:hover { background: var(--grey-lt); }
+.btn-secondary:hover { background: var(--paper); border-color: var(--interlace-deep); color: var(--ink); }
 .btn-link {
   background: none;
   border: none;
-  color: var(--brand-blue);
+  color: var(--interlace-deep);
   font-size: 13px;
   font-weight: 600;
   text-decoration: underline;
   cursor: pointer;
   padding: 4px;
 }
-.btn-link:hover { color: var(--brand-black); }
+.btn-link:hover { color: var(--ink); }
 .btn-gold {
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-  color: var(--dark);
+  background: var(--ink);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   padding: 13px 28px;
-  border-radius: 10px;
+  border-radius: 8px;
   transition: var(--transition);
 }
-.btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,160,23,0.35); }
+.btn-gold:hover { transform: translateY(-1px); background: var(--interlace-deep); box-shadow: 0 6px 20px rgba(3,4,5,0.25); }
 
 /* ═══════════════════════════════════════════════
    ██ STUDY MANUAL SCREEN
@@ -1183,11 +1186,12 @@ input, select { font-family: inherit; }
    ██ CERTIFICATE SCREEN
 ═══════════════════════════════════════════════ */
 #screen-cert {
-  background: var(--off-white);
+  background: var(--paper);
   min-height: 100vh;
   flex-direction: column;
   align-items: center;
   padding: 48px 24px;
+  font-family: 'Poppins', sans-serif;
 }
 #screen-cert.active { display: flex; }
 .cert-wrapper {
@@ -1202,18 +1206,25 @@ input, select { font-family: inherit; }
 }
 .certificate {
   background: #fff;
-  border: 3px solid var(--teal);
-  border-radius: 4px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
   padding: 60px;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
 }
+@media (prefers-reduced-motion: no-preference) {
+  .certificate { animation: certReveal 0.7s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes certReveal {
+    from { opacity: 0; transform: translateY(14px) scale(0.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+}
 .cert-corner {
   position: absolute;
-  width: 100px; height: 100px;
+  width: 84px; height: 84px;
 }
-.cert-corner.tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.cert-corner.tl { top: 0; left: 0; }
 .cert-corner.tr { top: 0; right: 0; transform: scaleX(-1); }
 .cert-corner.bl { bottom: 0; left: 0; transform: scaleY(-1); }
 .cert-corner.br { bottom: 0; right: 0; transform: scale(-1); }
@@ -1228,21 +1239,23 @@ input, select { font-family: inherit; }
   margin-bottom: 8px;
 }
 .cert-company-sub {
-  font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
   font-weight: 500;
-  color: var(--grey);
-  letter-spacing: 1px;
+  color: var(--slate);
+  letter-spacing: 0.06em;
   margin-bottom: 4px;
 }
 .cert-divider-gold {
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--interlace-deep), var(--interlace-sky), transparent);
   margin: 20px 0;
+  opacity: 0.6;
 }
 .cert-presents {
-  font-size: 13px;
-  color: var(--grey);
-  letter-spacing: 2px;
+  font-size: 12.5px;
+  color: var(--slate);
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 500;
   margin-bottom: 6px;
@@ -1251,34 +1264,36 @@ input, select { font-family: inherit; }
   font-family: 'Playfair Display', serif;
   font-size: 38px;
   font-weight: 800;
-  color: var(--teal-dark);
+  color: var(--ink);
   margin-bottom: 24px;
   letter-spacing: -0.5px;
+  text-wrap: balance;
 }
 .cert-issued-to {
-  font-size: 13px;
-  color: var(--grey);
+  font-size: 12.5px;
+  color: var(--slate);
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.12em;
   margin-bottom: 8px;
 }
 .cert-name {
   font-family: 'Playfair Display', serif;
   font-size: 42px;
   font-weight: 700;
-  color: var(--teal);
-  border-bottom: 2px solid var(--gold);
+  color: var(--interlace-deep);
+  border-bottom: 2px solid var(--interlace-sky);
   display: inline-block;
   padding-bottom: 8px;
   margin-bottom: 24px;
 }
 .cert-body-text {
   font-size: 14px;
-  color: var(--grey-dk);
+  color: var(--slate);
   line-height: 1.7;
   max-width: 580px;
   margin: 0 auto 28px;
 }
+.cert-body-text strong { color: var(--ink); }
 .cert-badge-row {
   display: flex;
   justify-content: center;
@@ -1287,16 +1302,17 @@ input, select { font-family: inherit; }
   margin-bottom: 32px;
 }
 .cert-badge {
-  background: var(--teal-pale);
-  border: 1.5px solid var(--teal-lt);
-  border-radius: 8px;
+  background: rgba(27,114,178,0.06);
+  border: 1px solid rgba(27,114,178,0.20);
+  border-radius: 6px;
   padding: 10px 18px;
   font-size: 12px;
   font-weight: 700;
-  color: var(--teal);
+  color: var(--interlace-deep);
   text-align: center;
+  font-variant-numeric: tabular-nums;
 }
-.cert-badge small { display:block; font-size:10px; font-weight:500; color:var(--grey); margin-top:2px; }
+.cert-badge small { display:block; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; font-weight: 500; color: var(--slate); margin-top:3px; letter-spacing: 0.02em; }
 .cert-footer {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -1304,57 +1320,52 @@ input, select { font-family: inherit; }
   align-items: end;
   margin-top: 40px;
   padding-top: 28px;
-  border-top: 1px solid var(--grey-lt);
+  border-top: 1px solid var(--line);
 }
 .cert-sig-block { text-align: center; }
 .cert-sig-name {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
-  color: var(--teal);
+  color: var(--ink);
   margin-bottom: 4px;
 }
-.cert-sig-title { font-size: 11px; color: var(--grey); letter-spacing: 0.5px; }
-.cert-sig-line { height: 1px; background: var(--grey-lt); margin-bottom: 8px; }
+.cert-sig-title { font-size: 10.5px; color: var(--slate); letter-spacing: 0.04em; }
+.cert-sig-line { height: 1px; background: var(--line); margin-bottom: 8px; }
+
+/* The Interlace seal — same device as the module-completion banner,
+   closing the loop from first module to certificate. */
 .cert-seal {
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  border: 3px solid var(--gold);
+  width: 84px; height: 84px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  background: var(--gold-lt);
-  font-size: 9px;
-  font-weight: 800;
-  color: var(--gold-dark);
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  line-height: 1.3;
 }
-.cert-seal .seal-icon { font-size: 20px; margin-bottom: 2px; }
+.cert-seal svg { width: 100%; height: 100%; }
 .cert-id {
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
-  color: var(--grey);
+  color: var(--slate);
   margin-top: 20px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
 }
 .cert-stats { margin: 24px auto 0; max-width: 640px; text-align: left; }
 .cert-stats-title {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--teal);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--slate);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
   margin-bottom: 8px;
   text-align: center;
 }
 .cert-stats table { width: 100%; border-collapse: collapse; font-size: 11px; }
-.cert-stats th, .cert-stats td { padding: 6px 10px; border-bottom: 1px solid var(--grey-lt); text-align: left; color: var(--grey-dk); }
-.cert-stats th { color: var(--teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; font-size: 9.5px; }
-.cert-stats td.num { text-align: center; }
-.cert-stats-totals { display: flex; justify-content: center; gap: 24px; margin-top: 14px; font-size: 11px; color: var(--grey); flex-wrap: wrap; }
-.cert-stats-totals strong { color: var(--teal); }
+.cert-stats th, .cert-stats td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; color: var(--slate); font-variant-numeric: tabular-nums; }
+.cert-stats th { font-family: 'IBM Plex Mono', monospace; color: var(--ink); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 9.5px; }
+.cert-stats td.num { text-align: center; font-family: 'IBM Plex Mono', monospace; }
+.cert-stats-totals { display: flex; justify-content: center; gap: 24px; margin-top: 14px; font-size: 11px; color: var(--slate); flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; }
+.cert-stats-totals strong { color: var(--ink); }
 
 /* ═══════════════════════════════════════════════
    RESPONSIVE
@@ -1378,19 +1389,6 @@ input, select { font-family: inherit; }
 /* Block printing of study material (manual/quiz) — the certificate is the only intended print target */
 @media print {
   body:has(#screen-manual.active) *, body:has(#screen-quiz.active) * { display: none !important; }
-}
-
-/* Confetti animation */
-.confetti-piece {
-  position: fixed;
-  width: 10px; height: 10px;
-  top: -20px;
-  border-radius: 2px;
-  animation: confettiFall linear forwards;
-  z-index: 9999;
-}
-@keyframes confettiFall {
-  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
 }
 
 /* ═══════════════════════════════════════════════
@@ -1672,33 +1670,29 @@ input, select { font-family: inherit; }
     </div>
 
     <div class="certificate" id="certificate">
-      <!-- Decorative corners -->
+      <!-- Decorative corners — two interlacing brackets, echoing the logo's own weave -->
       <div class="cert-corner tl">
         <svg viewBox="0 0 100 100" fill="none">
-          <path d="M0 0 L80 0 L80 8 L8 8 L8 80 L0 80 Z" fill="#1a5276" opacity="0.15"/>
-          <path d="M0 0 L50 0 L50 4 L4 4 L4 50 L0 50 Z" fill="#d4a017" opacity="0.5"/>
-          <circle cx="10" cy="10" r="4" fill="#d4a017" opacity="0.6"/>
+          <path d="M6 62 L6 16 Q6 6 16 6 L62 6" stroke="var(--interlace-deep)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M18 76 L18 28 Q18 18 28 18 L76 18" stroke="var(--interlace-sky)" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
         </svg>
       </div>
       <div class="cert-corner tr">
         <svg viewBox="0 0 100 100" fill="none">
-          <path d="M0 0 L80 0 L80 8 L8 8 L8 80 L0 80 Z" fill="#1a5276" opacity="0.15"/>
-          <path d="M0 0 L50 0 L50 4 L4 4 L4 50 L0 50 Z" fill="#d4a017" opacity="0.5"/>
-          <circle cx="10" cy="10" r="4" fill="#d4a017" opacity="0.6"/>
+          <path d="M6 62 L6 16 Q6 6 16 6 L62 6" stroke="var(--interlace-deep)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M18 76 L18 28 Q18 18 28 18 L76 18" stroke="var(--interlace-sky)" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
         </svg>
       </div>
       <div class="cert-corner bl">
         <svg viewBox="0 0 100 100" fill="none">
-          <path d="M0 0 L80 0 L80 8 L8 8 L8 80 L0 80 Z" fill="#1a5276" opacity="0.15"/>
-          <path d="M0 0 L50 0 L50 4 L4 4 L4 50 L0 50 Z" fill="#d4a017" opacity="0.5"/>
-          <circle cx="10" cy="10" r="4" fill="#d4a017" opacity="0.6"/>
+          <path d="M6 62 L6 16 Q6 6 16 6 L62 6" stroke="var(--interlace-deep)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M18 76 L18 28 Q18 18 28 18 L76 18" stroke="var(--interlace-sky)" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
         </svg>
       </div>
       <div class="cert-corner br">
         <svg viewBox="0 0 100 100" fill="none">
-          <path d="M0 0 L80 0 L80 8 L8 8 L8 80 L0 80 Z" fill="#1a5276" opacity="0.15"/>
-          <path d="M0 0 L50 0 L50 4 L4 4 L4 50 L0 50 Z" fill="#d4a017" opacity="0.5"/>
-          <circle cx="10" cy="10" r="4" fill="#d4a017" opacity="0.6"/>
+          <path d="M6 62 L6 16 Q6 6 16 6 L62 6" stroke="var(--interlace-deep)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M18 76 L18 28 Q18 18 28 18 L76 18" stroke="var(--interlace-sky)" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
         </svg>
       </div>
 
@@ -1727,11 +1721,15 @@ input, select { font-family: inherit; }
             <div class="cert-sig-name">Rajaram Dhungana</div>
             <div class="cert-sig-title">Registered Migration Agent &nbsp;|&nbsp; MARN 2418363</div>
           </div>
-          <div style="display:flex;justify-content:center">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
             <div class="cert-seal">
-              <div class="seal-icon">⚖️</div>
-              OFFICIAL<br>TRAINING<br>SEAL
+              <svg viewBox="0 0 84 84" aria-hidden="true">
+                <circle cx="42" cy="42" r="38" fill="none" stroke="var(--interlace-deep)" stroke-width="2"/>
+                <circle cx="42" cy="42" r="28" fill="none" stroke="var(--interlace-sky)" stroke-width="2"/>
+                <text x="42" y="51" text-anchor="middle" font-family="Playfair Display, serif" font-weight="800" font-size="22" fill="var(--interlace-deep)">IS</text>
+              </svg>
             </div>
+            <div class="cert-sig-title" style="letter-spacing:0.12em">OFFICIAL TRAINING SEAL</div>
           </div>
           <div class="cert-sig-block">
             <div class="cert-sig-line"></div>
@@ -1857,8 +1855,8 @@ input, select { font-family: inherit; }
   </div>
 </div>
 
-<script src="questions.js?v=7"></script>
-<script src="manual.js?v=7"></script>
-<script src="app.js?v=7"></script>
+<script src="questions.js?v=8"></script>
+<script src="manual.js?v=8"></script>
+<script src="app.js?v=8"></script>
 </body>
 </html>
