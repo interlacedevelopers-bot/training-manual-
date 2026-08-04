@@ -1074,9 +1074,9 @@ function renderWatermark() {
   wm.innerHTML = Array.from({ length: 24 }).map(() => `<span>${label}</span>`).join('');
 }
 
-// ── Dynamic 3D tilt tiles (landing page module previews + portal cards) ──
+// ── Dynamic 3D tilt tiles (landing page access cards) ──
 function initTiltTiles() {
-  const targets = document.querySelectorAll('.module-card, .portal-card');
+  const targets = document.querySelectorAll('.portal-card');
   targets.forEach(el => {
     if (el.dataset.tiltInit) return;
     el.dataset.tiltInit = '1';
