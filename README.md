@@ -1,69 +1,39 @@
-# Interlace Studies — Partner Visa Training Academy
-## Deployment Guide
+# Interlace Studies — Internal Training Platform
 
----
+Welcome to the internal training academy for **Interlace Studies**. This platform provides interactive modules and assessments for staff to master Partner Visa requirements, Relationship Evidence, Refusals & Appeals, and overall Client Care.
 
-## 📁 Files in this package
+## 📁 Architecture Overview
+
+This platform is a modern, static-first web application designed for fast, seamless staff training across any device. 
 
 ```
-training_app/
-├── index.html        ← Main app (open this file)
-├── questions.js      ← All 100 questions across 5 modules
-├── app.js            ← Application logic
-└── README.md         ← This file
+/
+├── index.html        ← Core Application View (UI/State handling)
+├── app.js            ← Core Application Logic & State Management
+├── manual.js         ← Training content structure and modules
+├── questions.js      ← Assessment question bank
+├── api/              ← Serverless functions (Auth, Staff Admin)
+├── lib/              ← Shared utilities (Redis, Email)
+└── assets/           ← Brand assets and imagery
 ```
 
----
+## 🚀 Local Development
 
-## 🚀 Option 1: Zero-install local use (fastest)
+To run the application locally and test design changes:
+1. Clone the repository: `git clone https://github.com/interlacedevelopers-bot/training-manual-.git`
+2. Open `index.html` in any modern web browser.
+3. No build tools are required for the frontend static files. 
 
-**Double-click `index.html`** — opens directly in any web browser.
-No server, no internet, no installation required.
+## 🌐 Deployment & Access
 
----
-
-## 🌐 Option 2: Deploy to GitHub Pages (free, shareable URL)
-
-1. Create a free account at [github.com](https://github.com)
-2. Click **New repository** → name it `interlace-training`
-3. Upload all 3 files (index.html, questions.js, app.js)
-4. Go to **Settings → Pages → Source: main branch → root**
-5. Your URL: `https://[your-username].github.io/interlace-training`
-
-Share this URL with all staff — works on phones, tablets, and computers.
-
----
-
-## 🌐 Option 3: Deploy to Netlify (free, 1 click)
-
-1. Go to [netlify.com](https://netlify.com) and sign up free
-2. Drag the entire `training_app` folder onto the Netlify dashboard
-3. Netlify gives you a shareable URL instantly (e.g. `interlace-training.netlify.app`)
-4. Custom domain available in Netlify settings
-
----
-
-## 🌐 Option 4: Vercel (free, fast CDN)
-
-1. Go to [vercel.com](https://vercel.com) and sign up free
-2. Install Vercel CLI: `npm i -g vercel`
-3. Run `vercel` in the `training_app` folder
-4. Done — instant global deployment
-
----
-
-## 📱 Browser compatibility
-
-Tested and working in:
-- Chrome 90+ ✅
-- Firefox 88+ ✅
-- Safari 14+ ✅  
-- Edge 90+ ✅
-- Mobile Chrome/Safari ✅
-
----
+The platform is designed to be deployed via a global edge network (e.g., Vercel) utilizing the `/api` directory for serverless authentication.
+- **Production URL:** [Internal Interlace Portal]
+- **Target Audience:** Internal staff only. 
+- *Note: Ensure environmental variables for Redis (`UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`) and Email (`RESEND_API_KEY`) are configured in the production deployment environment.*
 
 ## 🎓 Training Structure
+
+The academy is currently structured into 5 core modules:
 
 | Module | Topic | Questions | Pass Mark |
 |--------|-------|-----------|-----------|
@@ -73,31 +43,26 @@ Tested and working in:
 | 4 | Family Violence & ART Appeals | 20 | 70% (14/20) |
 | 5 | Process, Fees & Client Care | 20 | 70% (14/20) |
 
-**Certificate**: Issued automatically upon passing all 5 modules.
+**Certificate**: Issued automatically upon passing all 5 modules with a score of 70% or higher.
 
----
+## ⚙️ Content Customisation
 
-## ⚙️ Customisation
-
-**Adding/editing questions**: Open `questions.js` in any text editor.
-Each question follows this structure:
+**Modifying Questions:** 
+Open `questions.js` to modify or add new assessment items. Ensure you follow the established JSON object structure:
 ```javascript
 {
   q: "Question text here?",
   options: ["Option A", "Option B", "Option C", "Option D"],
-  answer: 0,          // Index of correct answer (0=A, 1=B, etc.)
-  explanation: "Why this is the correct answer.",
-  law: "Legal citation — e.g. Migration Act 1958 s.48",
-  tag: "eligibility", // eligibility | evidence | refusal | integrity | fv | process
-  difficulty: "easy"  // easy | medium | hard
+  answer: 0,          // Index of correct answer
+  explanation: "Detailed rationale.",
+  law: "Legal citation",
+  tag: "eligibility", 
+  difficulty: "easy"  
 }
 ```
 
-**Changing pass mark**: In `questions.js`, update `passmark: 70` on each module.
-
-**Changing branding**: In `index.html`, update company name, MARN, and colour variables in the `:root` CSS block.
-
----
+**Design System:**
+The UI strictly adheres to the **Interlace Design Principles**. Brand colors (`--brand-blue`, `--dark-navy`, `--bg-soft-blue`), typography (`Playfair Display`, `Poppins`), and squircle shapes (`border-radius: 12px`, `28px`) are defined centrally in `index.html`.
 
 ## 📋 Legal Disclaimer
 
@@ -108,10 +73,7 @@ This training system is based on:
 - F2024L00751 (Family Violence Provisions 2024)
 - Department of Home Affairs Policy (PAM3)
 
-**Migration law changes frequently. Always verify provisions at immi.homeaffairs.gov.au before advising clients.**
-
-This system is for internal training only and does not constitute legal or migration advice.
+*This system is for internal training only and does not constitute legal or migration advice. Migration law changes frequently.*
 
 ---
-
 *Interlace Studies Pty Ltd | MARN 2418363 | interlace.com.au | 1300 365 423*
