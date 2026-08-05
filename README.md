@@ -1,49 +1,27 @@
-# Interlace Studies — Internal Training Platform
+# Interlace Studies — Staff Training Academy
 
-Welcome to the internal training academy for **Interlace Studies**. This platform provides interactive modules and assessments for staff to master Partner Visa requirements, Relationship Evidence, Refusals & Appeals, and overall Client Care.
+Welcome to the internal training academy for **Interlace Studies**. This platform provides interactive modules and assessments for our staff to master Partner Visa requirements, Relationship Evidence, Refusals & Appeals, and overall Client Care.
 
-## 📁 Architecture Overview
-
-This platform is a modern, static-first web application designed for fast, seamless staff training across any device. 
-
-```
-/
-├── index.html        ← Core Application View (UI/State handling)
-├── app.js            ← Core Application Logic & State Management
-├── manual.js         ← Training content structure and modules
-├── questions.js      ← Assessment question bank
-├── api/              ← Serverless functions (Auth, Staff Admin)
-├── lib/              ← Shared utilities (Redis, Email)
-└── assets/           ← Brand assets and imagery
-```
+Our training system follows the premium, client-focused design principles of [interlace.com.au](https://interlace.com.au/), ensuring a seamless and modern learning experience.
 
 ## 🚀 Local Development
 
-To run the application locally and test design changes:
+To run the application locally and test design changes or new questions:
+
 1. Clone the repository: `git clone https://github.com/interlacedevelopers-bot/training-manual-.git`
-2. Open `index.html` in any modern web browser.
-3. No build tools are required for the frontend static files. 
+2. Open a terminal in the project folder and start a local HTTP server:
+   ```bash
+   python -m http.server 55
+   ```
+3. Open `http://localhost:55` in your modern web browser.
+4. No complex build tools are required for the frontend static files.
 
-## 🌐 Deployment & Access
+## 🎨 Design System
 
-The platform is designed to be deployed via a global edge network (e.g., Vercel) utilizing the `/api` directory for serverless authentication.
-- **Production URL:** [Internal Interlace Portal]
-- **Target Audience:** Internal staff only. 
-- *Note: Ensure environmental variables for Redis (`UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`) and Email (`RESEND_API_KEY`) are configured in the production deployment environment.*
-
-## 🎓 Training Structure
-
-The academy is currently structured into 5 core modules:
-
-| Module | Topic | Questions | Pass Mark |
-|--------|-------|-----------|-----------|
-| 1 | Visa Framework & Eligibility | 20 | 70% (14/20) |
-| 2 | Relationship Evidence | 20 | 70% (14/20) |
-| 3 | Refusals, Bars & Integrity | 20 | 70% (14/20) |
-| 4 | Family Violence & ART Appeals | 20 | 70% (14/20) |
-| 5 | Process, Fees & Client Care | 20 | 70% (14/20) |
-
-**Certificate**: Issued automatically upon passing all 5 modules with a score of 70% or higher.
+The UI strictly adheres to the **Interlace Design Principles**:
+- **Brand Colors:** Interlace Blue (`#0050C9`), Accent Sky Blue (`#066aab`), Dark Navy (`#133149`).
+- **Typography:** `Playfair Display` for major headings and a premium feel; `Poppins` for highly legible UI elements and body text.
+- **Button Styling:** Modern "rounded-pill" buttons (`border-radius: 50px`) matching our primary website's CTAs.
 
 ## ⚙️ Content Customisation
 
@@ -61,8 +39,19 @@ Open `questions.js` to modify or add new assessment items. Ensure you follow the
 }
 ```
 
-**Design System:**
-The UI strictly adheres to the **Interlace Design Principles**. Brand colors (`--brand-blue`, `--dark-navy`, `--bg-soft-blue`), typography (`Playfair Display`, `Poppins`), and squircle shapes (`border-radius: 12px`, `28px`) are defined centrally in `index.html`.
+## 🎓 Training Structure
+
+The academy is currently structured into 5 core modules:
+
+| Module | Topic | Questions | Pass Mark |
+|--------|-------|-----------|-----------|
+| 1 | Visa Framework & Eligibility | 20 | 70% (14/20) |
+| 2 | Relationship Evidence | 20 | 70% (14/20) |
+| 3 | Refusals, Bars & Integrity | 20 | 70% (14/20) |
+| 4 | Family Violence & ART Appeals | 20 | 70% (14/20) |
+| 5 | Process, Fees & Client Care | 20 | 70% (14/20) |
+
+**Certificate**: Issued automatically upon passing all 5 modules with a score of 70% or higher.
 
 ## 📋 Legal Disclaimer
 

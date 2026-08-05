@@ -17,10 +17,11 @@
   --ink:            #133149;  /* wordmark fill */
   --paper:          #fbfaf8;  /* warm-neutral ground */
   --paper-raised:   #ffffff;
-  --interlace-deep: #3267ad;  /* icon, upper weave band — primary */
-  --interlace-sky:  #4bb8e2;  /* icon, lower weave band — accent */
+  --interlace-deep: #0050C9;  /* icon, upper weave band — primary */
+  --interlace-sky:  #066aab;  /* icon, lower weave band — accent */
   --slate:          #a2a2a2;  /* "STUDIES" wordmark grey */
-  --signal:         #1e9e7c;  /* completion / approved states only */
+  --signal:         #1e9e7c;
+  --signal-bg:      rgba(30,158,124,0.1);  /* completion / approved states only */
   --line:           rgba(3,4,5,0.10);
   --dark-navy:      #133149;
   --muted-grey:     #a2a2a2;
@@ -34,10 +35,12 @@
   --teal-lt:    #d6eaf8;
   --teal-pale:  #eaf4fb;
   --gold:       #d4a017;
+  --warn:           #d4a017;
+  --warn-bg:        rgba(212,160,23,0.1);
   --gold-lt:    #fef9e7;
   --gold-dark:  #b8860b;
-  --brand-blue:  #3267ad;
-  --brand-sky:   #1e96e0;
+  --brand-blue:  #0050C9;
+  --brand-sky:   #066aab;
   --brand-black: #133149;
   --white:      #ffffff;
   --off-white:  #f8fafc;
@@ -55,8 +58,9 @@
   --purple:     #6c3483;
   --purple-lt:  #f4ecfb;
 
-  --radius:     28px;
-  --radius-lg:  28px;
+  --radius:     12px;
+  --radius-lg:  16px;
+  --radius-pill: 50px;
   --shadow:     0 2px 4px rgba(0,0,0,0.075);
   --shadow-lg:  0 4px 8px rgba(0,0,0,0.05), 0 16px 40px rgba(0,0,0,0.10);
   --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
@@ -127,7 +131,7 @@ input, select { font-family: inherit; }
   font-size: 13px;
   font-weight: 600;
   padding: 9px 20px;
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
   transition: var(--transition);
 }
 .site-nav-cta:hover { 
@@ -346,7 +350,7 @@ input, select { font-family: inherit; }
 }
 .form-group input, .form-group select {
   border: 1.5px solid rgba(19,49,73,0.16);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 11px 14px;
   font-size: 14px;
   color: var(--brand-black);
@@ -368,7 +372,7 @@ input, select { font-family: inherit; }
   font-size: 15px;
   font-weight: 700;
   padding: 15px;
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
   margin-top: 8px;
   transition: var(--transition);
   letter-spacing: 0.3px;
@@ -474,7 +478,7 @@ input, select { font-family: inherit; }
 .overall-progress {
   background: var(--paper-raised);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 18px 22px;
   margin-bottom: 44px;
   box-shadow: var(--shadow);
@@ -575,7 +579,7 @@ input, select { font-family: inherit; }
   flex: 1;
   min-width: 0;
   background: var(--paper-raised);
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   padding: 20px 22px;
   border: 1px solid var(--line);
   transition: var(--transition);
@@ -634,7 +638,7 @@ input, select { font-family: inherit; }
 .seal-banner {
   background: var(--paper-raised);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 36px 28px;
   text-align: center;
   margin-bottom: 28px;
@@ -651,7 +655,7 @@ input, select { font-family: inherit; }
   font-size: 14px;
   font-weight: 600;
   padding: 13px 30px;
-  border-radius: 12px;
+  border-radius: var(--radius);
   cursor: pointer;
   transition: var(--transition);
 }
@@ -710,7 +714,7 @@ input, select { font-family: inherit; }
   align-items: center;
   gap: 10px;
   padding: 9px 12px;
-  border-radius: 12px;
+  border-radius: var(--radius);
   cursor: pointer;
   transition: var(--transition);
   font-size: 13px;
@@ -1023,7 +1027,7 @@ input, select { font-family: inherit; }
   font-size: 14px;
   font-weight: 600;
   padding: 13px 28px;
-  border-radius: 12px;
+  border-radius: var(--radius-pill);
   transition: var(--transition);
   letter-spacing: 0.2px;
 }
@@ -1036,7 +1040,7 @@ input, select { font-family: inherit; }
   font-size: 14px;
   font-weight: 600;
   padding: 13px 24px;
-  border-radius: 12px;
+  border-radius: var(--radius-pill);
   border: 1.5px solid var(--line);
   transition: var(--transition);
 }
@@ -1052,17 +1056,17 @@ input, select { font-family: inherit; }
   padding: 4px;
 }
 .btn-link:hover { color: var(--brand-black); }
-.btn-gold {
+.btn-dark {
   background: var(--brand-black);
   color: #fff;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 600;
   padding: 13px 28px;
-  border-radius: 12px;
+  border-radius: var(--radius-pill);
   transition: var(--transition);
 }
-.btn-gold:hover { transform: translateY(-1px); background: var(--interlace-deep); box-shadow: 0 6px 20px rgba(3,4,5,0.25); }
+.btn-dark:hover { transform: translateY(-1px); background: var(--interlace-deep); box-shadow: 0 6px 20px rgba(3,4,5,0.25); }
 
 /* ═══════════════════════════════════════════════
    ██ STUDY MANUAL SCREEN
@@ -1146,7 +1150,7 @@ input, select { font-family: inherit; }
   margin: 60px auto;
   background: var(--paper-raised);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 44px 36px;
   text-align: center;
   box-shadow: var(--shadow);
@@ -1285,7 +1289,7 @@ input, select { font-family: inherit; }
 .certificate {
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 60px;
   position: relative;
   overflow: hidden;
@@ -1382,7 +1386,7 @@ input, select { font-family: inherit; }
 .cert-badge {
   background: rgba(27,114,178,0.06);
   border: 1px solid rgba(27,114,178,0.20);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 10px 18px;
   font-size: 12px;
   font-weight: 700;
@@ -1555,7 +1559,7 @@ input, select { font-family: inherit; }
 ═══════════════════════════════════════════════ -->
 <div id="screen-landing" class="screen active">
   <nav class="site-nav">
-    <img src="assets/logo-white.png" alt="Interlace Studies" class="site-nav-logo">
+    <img src="assets/logo-color.png" alt="Interlace Studies" class="site-nav-logo">
     <div class="site-nav-actions">
       <button class="site-nav-admin" onclick="showAdminLogin()">Admin</button>
       <button class="site-nav-cta" onclick="showStaffLogin()">Staff Sign In</button>
@@ -1651,9 +1655,9 @@ input, select { font-family: inherit; }
 <div id="screen-modules" class="screen">
   <div class="top-bar">
     <div class="top-bar-brand">
-      <img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo">
+      <img src="assets/logo-color.png" alt="Interlace Studies" class="top-bar-logo">
       <span class="sep">|</span>
-      <span style="font-weight:400;color:rgba(255,255,255,0.6)">Training Academy</span>
+      <span style="font-weight:400;color:var(--slate)">Training Academy</span>
     </div>
     <div class="top-bar-user">
       <div class="avatar" id="tb-avatar">IS</div>
@@ -1686,9 +1690,9 @@ input, select { font-family: inherit; }
 <div id="screen-manual" class="screen">
   <div class="top-bar">
     <div class="top-bar-brand">
-      <img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo">
+      <img src="assets/logo-color.png" alt="Interlace Studies" class="top-bar-logo">
       <span class="sep">|</span>
-      <span style="font-weight:400;color:rgba(255,255,255,0.6)" id="manual-top-module">Module</span>
+      <span style="font-weight:400;color:var(--slate)" id="manual-top-module">Module</span>
     </div>
     <div class="top-bar-user">
       <div class="timer-pill" id="manual-timer">⏱ 00:00</div>
@@ -1704,9 +1708,9 @@ input, select { font-family: inherit; }
 <div id="screen-quiz" class="screen">
   <div class="top-bar">
     <div class="top-bar-brand">
-      <img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo">
+      <img src="assets/logo-color.png" alt="Interlace Studies" class="top-bar-logo">
       <span class="sep">|</span>
-      <span style="font-weight:400;color:rgba(255,255,255,0.6)" id="quiz-top-module">Module</span>
+      <span style="font-weight:400;color:var(--slate)" id="quiz-top-module">Module</span>
     </div>
     <div class="top-bar-user">
       <div class="avatar" id="q-avatar">IS</div>
@@ -1738,7 +1742,7 @@ input, select { font-family: inherit; }
 ═══════════════════════════════════════════════ -->
 <div id="screen-results" class="screen">
   <div class="top-bar">
-    <div class="top-bar-brand"><img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo"> <span class="sep">|</span> <span style="font-weight:400;color:rgba(255,255,255,0.6)">Module Results</span></div>
+    <div class="top-bar-brand"><img src="assets/logo-color.png" alt="Interlace Studies" class="top-bar-logo"> <span class="sep">|</span> <span style="font-weight:400;color:var(--slate)">Module Results</span></div>
   </div>
   <div class="results-inner">
     <div class="result-hero">
@@ -1762,7 +1766,7 @@ input, select { font-family: inherit; }
     <div class="results-actions">
       <button class="btn-secondary" id="btn-retry" onclick="retryModule()">↺ &nbsp;Retry This Module</button>
       <button class="btn-primary" onclick="goToModules()">← Back to Modules</button>
-      <button class="btn-gold" id="btn-cert" onclick="showCert()" style="display:none">🏆 &nbsp;Get Certificate</button>
+      <button class="btn-dark" id="btn-cert" onclick="showCert()" style="display:none">🏆 &nbsp;Get Certificate</button>
     </div>
   </div>
 </div>
@@ -1775,7 +1779,7 @@ input, select { font-family: inherit; }
     <div class="cert-controls">
       <button class="btn-secondary" onclick="goToModules()">← Back to Modules</button>
       <button class="btn-primary" onclick="window.print()">🖨️ &nbsp;Print Certificate</button>
-      <button class="btn-gold" onclick="downloadCert()">⬇️ &nbsp;Download PNG</button>
+      <button class="btn-dark" onclick="downloadCert()">⬇️ &nbsp;Download PNG</button>
     </div>
 
     <div class="certificate" id="certificate">
@@ -1858,9 +1862,9 @@ input, select { font-family: inherit; }
 <div id="screen-admin" class="screen">
   <div class="top-bar">
     <div class="top-bar-brand">
-      <img src="assets/logo-white.png" alt="Interlace Studies" class="top-bar-logo">
+      <img src="assets/logo-color.png" alt="Interlace Studies" class="top-bar-logo">
       <span class="sep">|</span>
-      <span style="font-weight:400;color:rgba(255,255,255,0.6)">Administrator Panel</span>
+      <span style="font-weight:400;color:var(--slate)">Administrator Panel</span>
     </div>
     <div class="top-bar-user">
       <button class="btn-secondary" style="font-size:12px;padding:6px 14px" onclick="backToStaffLogin()">← Staff Sign-In</button>
@@ -1946,7 +1950,7 @@ input, select { font-family: inherit; }
 
       <div id="admin-module-checklist" class="admin-module-checklist"></div>
 
-      <button class="btn-gold" style="margin-top:18px" onclick="adminAssign()">💾 &nbsp; Save Assignment</button>
+      <button class="btn-dark" style="margin-top:18px" onclick="adminAssign()">💾 &nbsp; Save Assignment</button>
       <span id="admin-assign-status" class="admin-status-msg"></span>
     </div>
 
@@ -1969,3 +1973,4 @@ input, select { font-family: inherit; }
 <script src="app.js?v=9"></script>
 </body>
 </html>
+
