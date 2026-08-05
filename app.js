@@ -860,11 +860,11 @@ function downloadCert() {
   `;
   modal.innerHTML = `
     <div style="background:#fff;border-radius:12px;padding:40px;max-width:440px;text-align:center;font-family:'Poppins',sans-serif;border:1px solid var(--line);">
-      <h3 style="font-family:'Playfair Display',serif;font-weight:800;color:var(--ink);margin-bottom:12px;font-size:20px;">Download Your Certificate</h3>
+      <h3 style="font-family:'Playfair Display',serif;font-weight:800;color:var(--brand-black);margin-bottom:12px;font-size:20px;">Download Your Certificate</h3>
       <p style="color:var(--slate);margin-bottom:24px;line-height:1.6;font-size:14px;">
         To save as PDF:<br>
-        1. Click <strong style="color:var(--ink)">Print Now</strong><br>
-        2. Select <strong style="color:var(--ink)">"Save as PDF"</strong> as your printer<br>
+        1. Click <strong style="color:var(--brand-black)">Print Now</strong><br>
+        2. Select <strong style="color:var(--brand-black)">"Save as PDF"</strong> as your printer<br>
         3. Save to your device
       </p>
       <button onclick="this.closest('[style]').remove(); window.print();"
