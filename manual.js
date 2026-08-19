@@ -568,6 +568,44 @@ const MANUALS = {
         body: "Employees must not consume, possess, or distribute illicit drugs, and must not be impaired by alcohol or drugs at work. Alcohol is only permitted at approved company events, consumed moderately and responsibly, with safe transport home always required. Prescription medication that may impair safe work must be flagged to a manager or HR (side effects only — not the underlying condition). If impairment is suspected, a manager should direct the employee to stop work, hold a private discussion with HR present, and arrange safe transport home. Dependency is treated primarily as a health issue, with EAP support and rehabilitation assistance encouraged."
       }
     ]
+  },
+
+  22: {
+    intro: "This module covers the Employer Outreach team's playbook: the CAEP and HEAT standards used on cold calls to employers, CRM documentation discipline, and the sponsorship and DAMA knowledge you need to speak credibly with a business about hiring overseas talent.",
+    sections: [
+      {
+        heading: "The Mission & the CAEP Standard",
+        body: "The Employer Outreach team connects Australian employers advertising skilled roles with visa sponsorship to Interlace Studies' migration services. This is a sales and relationship role, not a legal-advice role — registered migration agents provide formal advice; outreach staff identify opportunities, build rapport, and connect employers to the right expert. Every interaction must follow CAEP: Courteous (polite, respectful of the employer's time), Accurate (verified information only — never guess, commit to finding out and following up), Empathetic (understand the employer's pain points before pitching), and Professional (represent Interlace Studies as a competent, reliable partner)."
+      },
+      {
+        heading: "The Approved Call Script",
+        body: "Before dialling, confirm: company name and advertised job title, the job portal the ad was seen on, the hiring manager's name if available, and that the CRM is open. The opening asks for the hiring manager by name, introduces yourself and Interlace Studies, and references the specific job ad. The pitch explains that Interlace Studies manages the entire sponsorship process end-to-end and asks whether the employer has sponsored before. The close books a no-obligation 15-minute call with a senior migration consultant — the outreach team's job is to book the appointment, not to close the sale itself."
+      },
+      {
+        heading: "The HEAT Technique for Employer Objections",
+        body: "When an employer objects (too expensive, too slow, too complicated, 'we tried before and it failed', 'just send me an email'), use HEAT: Hear them out fully, Empathise with the concern genuinely, Acknowledge the real constraint (e.g. government fees, regulatory complexity), and Take Action with a concrete next step — a cost breakdown, an explanation of how Interlace Studies' expertise minimises delays, or an offer to tailor a follow-up email to their specific need. This is a different sequence from the client-facing HEAT technique used elsewhere in the business (which apologises rather than acknowledges) — the outreach version is built specifically for overcoming employer sales objections."
+      },
+      {
+        heading: "Written Communication & CRM Documentation",
+        body: "Emails to employers need a clear, specific subject line, a formal salutation ('Dear Mr./Ms. [Last Name]' on first contact), no more than three short paragraphs stating purpose, key benefit, and a clear call to action, and the standard disclaimer that the communication does not constitute migration advice. Every call must be logged immediately using LARS: Log (date, time, duration, contact name/title, company), Action (what was discussed, objections raised), Result (outcome — appointment booked, email to send, not interested, callback), and Schedule (the next action and date)."
+      },
+      {
+        heading: "The Three-Step Sponsorship Framework",
+        body: "Explaining the pathway to employers means walking them through three sequential steps. Step 1 — Sponsorship: the business becomes a Standard Business Sponsor (SBS), a $420 approval valid for 5 years covering all future nominations, requiring evidence across four categories (lawful operation, financial viability, genuine need, compliance record). Step 2 — Nomination: the employer nominates a specific position for a specific worker, requiring Labour Market Testing (28+ days, 2+ platforms, within 4 months prior), TSMIT/market salary compliance, and the SAF levy. Step 3 — Visa Application: the worker applies, meeting health, character, English, and skills requirements."
+      },
+      {
+        heading: "The Nomination — LMT, TSMIT, and the SAF Levy",
+        body: "LMT is mandatory for the 482 Core Skills stream and the 494 visa (not for 482 Specialist Skills or 186 TRT). Ads must run 28+ consecutive days on 2+ platforms, in English, within 4 months prior to lodgement, and include job title, duties, salary, employer name, and location. TSMIT is the minimum annual base salary for a sponsored worker (indexed annually); the employer must pay the higher of the TSMIT or the market salary rate for the role and location. The SAF levy for a 482/494 nomination is $1,200/year (small business, turnover under $10M) or $1,800/year (large business) — and is refunded if the nomination is refused or withdrawn before a decision. The 186 SAF levy is structured differently: a one-time payment of $3,000 (small business) or $5,000 (large business)."
+      },
+      {
+        heading: "Visa Comparison: 482, 186 & 494",
+        body: "Subclass 482 (Skills in Demand): temporary, up to 4 years, three streams (Specialist Skills, Core Skills, Essential Skills — not yet operational), PR pathway via 186 TRT. Subclass 186 (Employer Nomination Scheme): permanent from grant; TRT stream requires 3 years on a 482 with the same employer; Direct Entry requires a skills assessment plus 3 years' relevant experience for workers who've never held a 482; generally under-45 with exemptions for high-income earners, university-nominated academics, and regional/remote medical practitioners. Subclass 494 (Skilled Employer Sponsored Regional): a 5-year provisional visa requiring the holder to live and work in a designated regional area — which includes most of Australia outside Sydney, Melbourne and Brisbane, such as Perth, Adelaide, Canberra, Hobart and Darwin — with a mandatory skills assessment and a Regional Certifying Body (RCB) assessment before nomination, leading to the permanent Subclass 191 after 3 years."
+      },
+      {
+        heading: "DAMA — Designated Area Migration Agreements",
+        body: "A DAMA is a formal agreement between the Australian Government and a state, territory, or regional authority (the Designated Area Representative, or DAR) that grants access to occupations beyond the standard skilled lists and concessions on age, English, salary, and skills-assessment requirements. There are 13 current DAMA regions across Australia. The framework has two tiers: Tier 1 is a 5-year Head Agreement between the Government and the DAR, setting region-wide terms; Tier 2 is a 5-year Individual Labour Agreement between the Government and a specific DAR-endorsed employer, allowing that employer to nominate workers under the DAMA's concessions. For an employer, the process is: confirm the business and occupation fall within a DAMA region, obtain DAR endorsement, then apply to the Department for the individual labour agreement."
+      }
+    ]
   }
 };
 

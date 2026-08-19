@@ -9,14 +9,14 @@ const ADMIN_TOKEN_KEY = 'interlace_admin_token';
 
 const MODULE_GROUPS = [
   { label: 'Partner Visa (Migration Consultant / Branch Manager)', ids: [1,2,3,4,5,11] },
-  { label: 'Sales & Client Relations', ids: [6,7,8,9,10] },
+  { label: 'Sales & Client Relations', ids: [6,7,8,9,10,22] },
   { label: 'Education Consultant', ids: [12,13,14,15,16,17] },
   { label: 'Company Policy (mandatory for all)', ids: [18,19,20,21] },
 ];
 const ROLE_DEFAULT_MODULES = {
   'Migration Consultant': [1,2,3,4,5,11,18,19,20,21],
   'Branch Manager': [1,2,3,4,5,11,18,19,20,21],
-  'Sales & Client Relations': [6,7,8,9,10,18,19,20,21],
+  'Sales & Client Relations': [6,7,8,9,10,22,18,19,20,21],
   'Education Consultant': [12,13,14,15,16,17,18,19,20,21],
   'Policy Only': [18,19,20,21],
   'None': [],
@@ -38,7 +38,7 @@ const TRACKS = {
   'Sales & Client Relations': {
     programName: 'Sales &amp; Client Engagement Training Programme',
     academyName: 'Sales &amp; Client Relations Academy',
-    bodyText: 'demonstrating comprehensive knowledge of compliant lead generation, client engagement, CRM discipline, and the OMARA Green Line / Red Line compliance boundary.'
+    bodyText: 'demonstrating comprehensive knowledge of compliant lead generation, client engagement, CRM discipline, the OMARA Green Line / Red Line compliance boundary, and employer outreach for sponsorship and DAMA pathways.'
   },
   'Education Consultant': {
     programName: 'Education &amp; Migration Consultancy Training Programme',

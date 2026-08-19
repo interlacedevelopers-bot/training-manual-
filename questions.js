@@ -2922,6 +2922,180 @@ const MODULES = [
         tag: "itwhs", difficulty: "medium"
       }
     ]
+  },
+  {
+    id: 22,
+    title: "Employer Outreach & Sponsorship Sales",
+    icon: "📞",
+    tag: "outreach",
+    description: "Cold-calling employers, the outreach CAEP and HEAT standards, and the SBS → Nomination → Visa sponsorship pathway including DAMA regional agreements",
+    passmark: 100,
+    roles: ["Sales & Client Relations"],
+    remark_pass: "Excellent command of the Employer Outreach playbook. You can confidently open a cold call, handle objections, and speak accurately about the sponsorship and DAMA pathways employers will ask about.",
+    remark_low: "Good effort. Revisit the HEAT objection framework and the nomination fee/threshold figures — employers will test your knowledge on both in the first few minutes of a call.",
+    remark_fail: "This module covers the core skills of the Employer Outreach role — call technique and sponsorship knowledge. Please re-study the Employer Outreach Training Manual in full before making live calls.",
+    questions: [
+      {
+        q: "In the Employer Outreach team's call standard, what does CAEP stand for?",
+        options: ["Confident, Assertive, Efficient, Persuasive", "Courteous, Accurate, Empathetic, Professional", "Clear, Active, Engaged, Polite", "Calm, Attentive, Ethical, Prompt"],
+        answer: 1,
+        explanation: "Every employer interaction must be Courteous (polite, respectful of their time), Accurate (verified, policy-based information only), Empathetic (understand the employer's challenges first), and Professional (represent Interlace Studies as a competent, reliable partner).",
+        law: "Employer Outreach Manual, Part A.2 — The CAEP Communication Standard",
+        tag: "outreach", difficulty: "easy"
+      },
+      {
+        q: "Under the Employer Outreach CAEP standard, what does 'Accurate' require if you don't know the answer to an employer's question?",
+        options: ["Give your best guess so the call keeps moving", "Never guess — commit to finding out and following up", "Change the subject back to the pitch", "Tell them to look it up on the Home Affairs website themselves"],
+        answer: 1,
+        explanation: "Accurate means providing only verified, policy-based information and never guessing. If unsure, the correct response is to commit to finding out and calling back — e.g. 'I'll confirm that with our migration agent and call you back within the hour.'",
+        law: "Employer Outreach Manual, Part A.2 — The CAEP Communication Standard",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "Before dialling an employer, what must be confirmed on the pre-call checklist?",
+        options: ["Only the company's phone number", "Company name and advertised job title, the job portal where the ad was seen, the hiring manager's name if available, and that the CRM is open and ready", "The employer's annual revenue and credit rating", "Nothing — outreach calls are made without preparation"],
+        answer: 1,
+        explanation: "The pre-call checklist requires confirming: (1) company name and advertised job title, (2) the job portal where the ad was seen, (3) the hiring manager's name if available, and (4) that the CRM is open and ready for notes.",
+        law: "Employer Outreach Manual, Part A.3 — Pre-Call Checklist",
+        tag: "outreach", difficulty: "easy"
+      },
+      {
+        q: "What is the correct order of steps in the Employer Outreach HEAT technique for handling objections?",
+        options: ["Hear → Empathise → Acknowledge → Take action", "Hear → Empathise → Apologise → Take action", "Acknowledge → Hear → Take action → Empathise", "Take action → Hear → Empathise → Acknowledge"],
+        answer: 0,
+        explanation: "For employer objections, HEAT is Hear (let them explain), Empathise (validate their concern), Acknowledge (name the real constraint, e.g. government fees or complex regulations), and Take action (offer the concrete next step, such as a cost breakdown or an expert call).",
+        law: "Employer Outreach Manual, Part A.4 — Handling Common Employer Objections (HEAT Technique)",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "An employer objects: 'It's too expensive.' Following the HEAT technique, what is the correct 'Take Action' response?",
+        options: ["Immediately offer a discount on Interlace Studies' service fee", "Prepare a full cost breakdown, framing it against the cost of a vacant position", "End the call politely since the objection can't be overcome", "Tell them the government fees are negotiable"],
+        answer: 1,
+        explanation: "The Take Action step reframes cost against the cost of leaving the position vacant, and offers a concrete next step: 'The cost of a vacant position is often much higher. Let me prepare a full cost breakdown for you.'",
+        law: "Employer Outreach Manual, Part A.4 — Handling Common Employer Objections (HEAT Technique)",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "In the Employer Outreach team's LARS method for CRM call documentation, what does each letter record?",
+        options: ["Log (date/time/company), Action (what was discussed, objections), Result (outcome), Schedule (next action and date)", "Listen, Acknowledge, Respond, Summarise — a way of speaking to the employer, not a CRM field", "Location, Availability, Rate, Salary — details about the vacant position", "Lead, Assign, Report, Sell — a sales pipeline stage tracker"],
+        answer: 0,
+        explanation: "For the Employer Outreach team, LARS is a CRM documentation structure: Log (date, time, duration, contact name/title, company), Action (what was discussed and any objections), Result (outcome — appointment booked, email to send, not interested, callback), and Schedule (the next action and date).",
+        law: "Employer Outreach Manual, Part A.6 — CRM Documentation, The LARS Method",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "What are the three steps of the employer sponsorship framework, in order, as explained to employers?",
+        options: ["Nomination → Sponsorship → Visa Application", "Sponsorship → Nomination → Visa Application", "Visa Application → Sponsorship → Nomination", "LMT → SAF Levy → Nomination"],
+        answer: 1,
+        explanation: "The business first becomes a Standard Business Sponsor (Sponsorship), then nominates a specific position for a specific worker (Nomination), and finally the worker applies for the visa (Visa Application).",
+        law: "Employer Outreach Manual, Part B.1 — The Three-Step Process",
+        tag: "outreach", difficulty: "easy"
+      },
+      {
+        q: "What is the government fee and validity period for a Standard Business Sponsorship (SBS)?",
+        options: ["$170, valid for 2 years", "$420, valid for 5 years, and covers all future nominations", "$3,150, valid for 1 year only", "There is no fee — SBS is free"],
+        answer: 1,
+        explanation: "SBS costs $420 and is valid for 5 years, covering all future nominations made during that period — it is the mandatory first step before any nomination can be lodged.",
+        law: "Employer Outreach Manual, Part B.1 — The Three-Step Process",
+        tag: "outreach", difficulty: "easy"
+      },
+      {
+        q: "Which four categories of evidence does a business need to demonstrate for Standard Business Sponsorship approval?",
+        options: ["Marketing plan, staff photos, office lease, insurance", "Proof of lawful operation, financial viability, genuine need, and compliance record", "Only financial statements — nothing else is required", "Tax file number, ABN, and nothing further"],
+        answer: 1,
+        explanation: "SBS evidence covers four categories: Proof of Lawful Operation (ABN, ASIC extract, business name registration), Financial Viability (financial statements, BAS, accountant's letter), Genuine Need (org chart, written submission, job description), and Compliance Record (workers compensation, Fair Work compliance).",
+        law: "Employer Outreach Manual, Part B.2 — SBS Evidence Required",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "What are the specific requirements for a Labour Market Testing (LMT) advertisement to be valid?",
+        options: ["A single 7-day ad on any platform is sufficient", "Advertised for at least 28 consecutive days on 2+ platforms, within 4 months prior to lodging the nomination, in English, with role/salary/employer details included", "LMT ads can be placed at any time before or after the nomination is lodged", "LMT is never required for any visa subclass"],
+        answer: 1,
+        explanation: "LMT ads must run for at least 28 consecutive days on two or more platforms, be placed within the 4 months prior to nomination lodgement, be in English, and include job title, duties, required skills, salary or salary range, employer name, and location.",
+        law: "Employer Outreach Manual, Part D — Q12–Q13, Labour Market Testing",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "A sponsored worker's TSMIT-equivalent role has a market salary rate of $95,000, higher than the $73,150 TSMIT. What must the employer pay?",
+        options: ["Exactly the TSMIT of $73,150, regardless of market rate", "The higher of the two figures — at least $95,000 in this case", "Whichever figure the employer prefers", "The average of the TSMIT and market rate"],
+        answer: 1,
+        explanation: "The sponsored worker must be paid the higher of the TSMIT or the market salary rate for the role and location — in this example, $95,000, even though it exceeds the TSMIT.",
+        law: "Employer Outreach Manual, Part D — Q16, The Market Salary Rate",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "What is the SAF (Skilling Australians Fund) levy for a 482 nomination, and is it refundable?",
+        options: ["$1,200/yr (small business) or $1,800/yr (large business), refunded if the nomination is refused or withdrawn before a decision", "A flat $500 one-off fee, never refundable", "Paid entirely by the sponsored worker, not the employer", "$5,000 per year regardless of business size"],
+        answer: 0,
+        explanation: "The SAF levy for a 482 nomination is $1,200 per year of the visa for small businesses (turnover under $10M) and $1,800 per year for large businesses — and it is refunded if the nomination is refused or withdrawn before a decision.",
+        law: "Employer Outreach Manual, Part D — Q17–Q18, The SAF Levy",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "What are the three streams of the Subclass 482 (Skills in Demand) visa, and which one is not yet operational?",
+        options: ["Core, Specialist, and Regional — Regional is not yet operational", "Specialist Skills, Core Skills, and Essential Skills — Essential Skills is not yet operational", "Onshore, Offshore, and Labour Agreement — Labour Agreement is not yet operational", "All three streams have been operational since the visa launched"],
+        answer: 1,
+        explanation: "The 482 SID visa (which replaced the TSS visa on 7 December 2024) has three streams: Specialist Skills (high earners, most occupations), Core Skills (CSOL occupations, TSMIT salary), and Essential Skills (lower-paid workers) — Essential Skills is not yet operational.",
+        law: "Employer Outreach Manual, Part E — Q26–Q27, The 482 Visa",
+        tag: "outreach", difficulty: "hard"
+      },
+      {
+        q: "Per the Employer Outreach Manual, how long must a worker have held a 482 visa with the same employer before applying for the 186 TRT stream?",
+        options: ["1 year", "At least 3 years, in the nominated occupation", "6 months", "There is no minimum period"],
+        answer: 1,
+        explanation: "The 186 Temporary Residence Transition stream requires the worker to have held a 482 (or its predecessor TSS) visa for at least 3 years with the sponsoring employer in the nominated occupation.",
+        law: "Employer Outreach Manual, Part E — Q42, The 186 TRT Stream",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "What does the Subclass 186 Direct Entry (DE) stream require, for a worker who has never held a 482 visa?",
+        options: ["Nothing beyond a job offer", "A positive skills assessment for the nominated occupation and at least 3 years of relevant work experience", "A university degree only, with no work experience needed", "Only English language proficiency"],
+        answer: 1,
+        explanation: "The Direct Entry stream is for workers who have not previously held a 482. It requires a positive skills assessment for the nominated occupation, at least 3 years of relevant work experience, and English/health/character requirements.",
+        law: "Employer Outreach Manual, Part E — Q43, The 186 Direct Entry Stream",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "What is the general age limit for a Subclass 186 visa, and who is exempt from it?",
+        options: ["No age limit ever applies", "Under 45, with exemptions for certain high-income earners, academics nominated by a university, and regional/remote medical practitioners", "Under 35, with no exemptions", "Under 45, with exemptions only for company directors"],
+        answer: 1,
+        explanation: "The 186 visa generally requires applicants to be under 45. Exemptions exist for certain high-income earners above a set threshold, academics nominated by an Australian university, and medical practitioners working in regional or remote areas.",
+        law: "Employer Outreach Manual, Part E — Q44, Age Limit for the 186 Visa",
+        tag: "outreach", difficulty: "hard"
+      },
+      {
+        q: "What is the duration of a Subclass 494 (Skilled Employer Sponsored Regional) visa, and its pathway to permanent residency?",
+        options: ["Permanent from grant, no further steps", "A 5-year provisional visa, with a pathway to the Subclass 191 permanent visa after 3 years", "2 years, non-renewable, no PR pathway", "10 years, then automatic citizenship"],
+        answer: 1,
+        explanation: "The 494 is a 5-year provisional visa. After 3 years of living and working in the designated regional area, the holder can apply for the Subclass 191 Permanent Residence (Skilled Regional) visa.",
+        law: "Employer Outreach Manual, Part E — Q51 & Q57, The 494 Visa",
+        tag: "outreach", difficulty: "easy"
+      },
+      {
+        q: "An employer in Perth asks if their business qualifies as a 'designated regional area' for a Subclass 494 nomination. What should you tell them?",
+        options: ["No — only rural or remote towns qualify as regional", "Yes — designated regional areas include most of Australia outside Sydney, Melbourne and Brisbane, including cities like Perth, Adelaide, Canberra, Hobart and Darwin", "No — only Tasmania and the Northern Territory qualify", "Regional status is decided case-by-case with no defined list"],
+        answer: 1,
+        explanation: "Designated regional areas cover most of Australia outside Sydney, Melbourne and Brisbane — this includes major cities like Perth, Adelaide, Canberra, Hobart, Darwin, the Gold Coast, Newcastle and Wollongong, not just rural or remote locations.",
+        law: "Employer Outreach Manual, Part E — Q52, Designated Regional Areas",
+        tag: "outreach", difficulty: "medium"
+      },
+      {
+        q: "What is a Designated Area Migration Agreement (DAMA), and how many DAMA regions currently exist in Australia?",
+        options: ["A state-run visa lottery; there are 5 regions", "A formal agreement between the Australian Government and a regional authority granting access to more occupations and concessions; there are 13 current regions", "A DAMA is the same thing as a Standard Business Sponsorship; there is 1 nationwide agreement", "A temporary COVID-era program that no longer exists"],
+        answer: 1,
+        explanation: "A DAMA is a formal agreement between the Australian Government and a state, territory, or regional authority, providing access to occupations beyond the standard lists and concessions on standard visa requirements. There are currently 13 DAMA regions across Australia.",
+        law: "Employer Outreach Manual, Part C.1–C.2, What is a DAMA?",
+        tag: "outreach", difficulty: "easy"
+      },
+      {
+        q: "In the DAMA two-tier framework, what is the difference between the Tier 1 Head Agreement and the Tier 2 Individual Labour Agreement?",
+        options: ["They are the same document filed twice", "Tier 1 is between the Australian Government and the Designated Area Representative (DAR), setting region-wide terms; Tier 2 is between the Government and an individual endorsed employer, allowing that employer to nominate workers", "Tier 1 is for large businesses only, Tier 2 for small businesses only", "Tier 2 must be signed before Tier 1 can exist"],
+        answer: 1,
+        explanation: "Tier 1 (Head Agreement) is a 5-year agreement between the Australian Government and the region's Designated Area Representative, setting overarching terms, eligible occupations, and concessions. Tier 2 (Individual Labour Agreement) is a 5-year agreement between the Government and a specific DAR-endorsed employer, allowing that employer to nominate workers under the DAMA terms.",
+        law: "Employer Outreach Manual, Part C.3, The DAMA Two-Tier Framework",
+        tag: "outreach", difficulty: "hard"
+      }
+    ]
   }
 ];
 
