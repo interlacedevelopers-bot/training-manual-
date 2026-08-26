@@ -286,6 +286,25 @@ input, select { font-family: inherit; }
 }
 .schedule-tab:hover { border-color: var(--ilc-primary); color: var(--ilc-primary); }
 .schedule-tab.active { background: var(--ilc-primary); border-color: var(--ilc-primary); color: #fff; }
+.schedule-controls-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.schedule-view-toggle {
+  display: inline-flex;
+  background: var(--ilc-bg-utility);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+}
+.schedule-view-btn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ilc-text);
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  transition: var(--transition);
+}
+.schedule-view-btn.active { background: #fff; color: var(--ilc-primary); box-shadow: var(--shadow); }
+.schedule-grid-hint { max-width: 900px; margin: 0 auto 14px; font-size: 12.5px; color: var(--ilc-text); font-style: italic; }
 .schedule-trainer-filter {
   font-family: 'Poppins', sans-serif;
   font-size: 13px;
@@ -370,6 +389,76 @@ input, select { font-family: inherit; }
 .schedule-row-chevron { flex: none; color: var(--line); font-size: 16px; }
 
 .schedule-empty { text-align: center; padding: 32px; color: var(--ilc-text); font-size: 13.5px; }
+
+/* ── Weekly grid — "who's training on what day" at a glance ─ */
+.schedule-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.schedule-grid-week-label {
+  grid-column: 1 / -1;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ilc-accent);
+  margin: 14px 0 2px;
+}
+.schedule-grid-week-label:first-child { margin-top: 4px; }
+.schedule-grid-day-header {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ilc-text);
+  text-align: center;
+  padding-bottom: 4px;
+}
+.schedule-grid-cell {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 12px 14px;
+  text-align: left;
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+button.schedule-grid-cell { cursor: pointer; }
+button.schedule-grid-cell:hover { border-color: var(--ilc-primary); box-shadow: var(--shadow); transform: translateY(-1px); }
+button.schedule-grid-cell:focus-visible { outline: 2px solid var(--ilc-primary); outline-offset: 2px; }
+.schedule-grid-cell.is-holiday { background: var(--ilc-bg-utility); opacity: 0.75; }
+.schedule-grid-cell.is-blank { background: transparent; border-style: dashed; border-color: var(--line); }
+.schedule-grid-date { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; color: var(--ilc-primary); margin-bottom: 6px; }
+.grid-dow-mobile { display: none; }
+.schedule-grid-trainer { font-size: 12.5px; font-weight: 700; color: var(--ilc-text-dark); margin-bottom: 3px; }
+.schedule-grid-topic {
+  font-size: 11.5px;
+  color: var(--ilc-text);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.schedule-grid-cell.is-holiday .schedule-grid-trainer { color: var(--ilc-text); }
+@media (max-width: 640px) {
+  /* A 5-across grid can't work on a phone screen — degrade to a single
+     stacked column per week, day name folded into each cell instead of
+     conveyed by column position. */
+  .schedule-grid { grid-template-columns: 1fr; }
+  .schedule-grid-day-header { display: none; }
+  .schedule-grid-cell { flex-direction: row; align-items: center; gap: 12px; min-height: auto; }
+  .schedule-grid-date { margin-bottom: 0; flex: none; width: 64px; display: flex; flex-direction: column; gap: 2px; }
+  .schedule-grid-cell > div:last-child { flex: 1; min-width: 0; }
+  .grid-dow-mobile { display: block; font-size: 9.5px; color: var(--ilc-text); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+}
 
 .schedule-trainers-toggle {
   display: block;
@@ -1850,11 +1939,20 @@ input, select { font-family: inherit; }
 
     <div class="schedule-controls">
       <div class="schedule-tabs" id="schedule-tabs"></div>
-      <select class="schedule-trainer-filter" id="schedule-trainer-filter" onchange="renderScheduleList()">
-      </select>
+      <div class="schedule-controls-right">
+        <div class="schedule-view-toggle" id="schedule-view-toggle">
+          <button type="button" class="schedule-view-btn active" data-view="grid" onclick="setScheduleView('grid')">Weekly Grid</button>
+          <button type="button" class="schedule-view-btn" data-view="list" onclick="setScheduleView('list')">List</button>
+        </div>
+        <select class="schedule-trainer-filter" id="schedule-trainer-filter" onchange="renderScheduleList()" style="display:none">
+        </select>
+      </div>
     </div>
 
-    <div class="schedule-list" id="schedule-list"></div>
+    <p class="schedule-grid-hint" id="schedule-grid-hint">Who's training on what day, at a glance — click any session for details.</p>
+
+    <div class="schedule-grid" id="schedule-grid"></div>
+    <div class="schedule-list" id="schedule-list" style="display:none"></div>
 
     <button class="schedule-trainers-toggle" id="schedule-trainers-toggle" onclick="toggleTrainerDirectory()">Meet the Trainers ↓</button>
     <div class="trainer-directory" id="trainer-directory" style="display:none"></div>

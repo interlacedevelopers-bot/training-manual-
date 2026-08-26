@@ -1069,7 +1069,7 @@ function renderWatermark() {
 }
 
 // ── Public training schedule (shown on the landing page, before sign-in) ──
-const SCHEDULE_STATE = { month: null, trainer: '', lastFocused: null };
+const SCHEDULE_STATE = { month: null, trainer: '', view: 'grid', lastFocused: null };
 
 function scheduleMonthKey(iso) { return iso.slice(0, 7); }
 function scheduleMonthLabel(key) {
@@ -1113,7 +1113,22 @@ function initScheduleSection() {
 
   renderScheduleNext();
   renderTrainerDirectory();
-  renderScheduleList();
+  renderScheduleView();
+}
+
+function setScheduleView(view) {
+  SCHEDULE_STATE.view = view;
+  document.querySelectorAll('.schedule-view-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  $('schedule-grid').style.display = view === 'grid' ? 'grid' : 'none';
+  $('schedule-list').style.display = view === 'list' ? 'flex' : 'none';
+  $('schedule-trainer-filter').style.display = view === 'list' ? '' : 'none';
+  $('schedule-grid-hint').style.display = view === 'grid' ? 'block' : 'none';
+  renderScheduleView();
+}
+
+function renderScheduleView() {
+  if (SCHEDULE_STATE.view === 'grid') renderScheduleGrid();
+  else renderScheduleList();
 }
 
 function renderScheduleNext() {
@@ -1138,7 +1153,85 @@ function renderScheduleNext() {
 function selectScheduleMonth(key) {
   SCHEDULE_STATE.month = key;
   document.querySelectorAll('.schedule-tab').forEach(b => b.classList.toggle('active', b.dataset.month === key));
-  renderScheduleList();
+  renderScheduleView();
+}
+
+const SCHEDULE_DAY_NAMES = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+
+function renderScheduleGrid() {
+  document.querySelectorAll('.schedule-tab').forEach(b => b.classList.toggle('active', b.dataset.month === SCHEDULE_STATE.month));
+
+  const grid = $('schedule-grid');
+  grid.innerHTML = '';
+
+  const rows = TRAINING_SCHEDULE
+    .map((s, idx) => ({ ...s, idx }))
+    .filter(s => scheduleMonthKey(s.date) === SCHEDULE_STATE.month);
+
+  if (rows.length === 0) {
+    grid.innerHTML = '<div class="schedule-empty">No sessions this month.</div>';
+    return;
+  }
+
+  const weeks = new Map();
+  rows.forEach(s => {
+    const key = scheduleMondayOf(s.date);
+    if (!weeks.has(key)) weeks.set(key, {});
+    const [y, m, d] = s.date.split('-').map(Number);
+    const dow = new Date(y, m - 1, d).getDay(); // 1 Mon .. 5 Fri
+    weeks.get(key)[dow - 1] = s;
+  });
+
+  SCHEDULE_DAY_NAMES.forEach(name => {
+    const h = document.createElement('div');
+    h.className = 'schedule-grid-day-header';
+    h.textContent = name;
+    grid.appendChild(h);
+  });
+
+  [...weeks.keys()].sort().forEach(weekKey => {
+    const days = weeks.get(weekKey);
+    const present = SCHEDULE_DAY_NAMES.map((_, i) => days[i]).filter(Boolean);
+    const label = document.createElement('div');
+    label.className = 'schedule-grid-week-label';
+    label.textContent = present.length ? scheduleWeekLabel(present) : '';
+    grid.appendChild(label);
+
+    for (let i = 0; i < 5; i++) {
+      const s = days[i];
+      if (!s) {
+        const blank = document.createElement('div');
+        blank.className = 'schedule-grid-cell is-blank';
+        grid.appendChild(blank);
+        continue;
+      }
+      if (s.holiday) {
+        const cell = document.createElement('div');
+        cell.className = 'schedule-grid-cell is-holiday';
+        cell.innerHTML = `
+          <div class="schedule-grid-date">${fmtScheduleDate(s.date)}<span class="grid-dow-mobile">${SCHEDULE_DAY_NAMES[i]}</span></div>
+          <div>
+            <div class="schedule-grid-trainer">Office Closed</div>
+            <div class="schedule-grid-topic">${s.topic}</div>
+          </div>
+        `;
+        grid.appendChild(cell);
+        continue;
+      }
+      const cell = document.createElement('button');
+      cell.className = 'schedule-grid-cell';
+      cell.setAttribute('type', 'button');
+      cell.onclick = () => openSessionModal(s.idx);
+      cell.innerHTML = `
+        <div class="schedule-grid-date">${fmtScheduleDate(s.date)}<span class="grid-dow-mobile">${SCHEDULE_DAY_NAMES[i]}</span></div>
+        <div>
+          <div class="schedule-grid-trainer">${s.trainer}</div>
+          <div class="schedule-grid-topic">${s.topic}</div>
+        </div>
+      `;
+      grid.appendChild(cell);
+    }
+  });
 }
 
 function renderScheduleList() {
