@@ -1158,36 +1158,73 @@ function renderScheduleList() {
     return;
   }
 
+  // Group into calendar weeks (Monday start) so the list reads as a
+  // week-by-week plan rather than one long flat run of dates.
+  const weeks = new Map();
   rows.forEach(s => {
-    if (s.holiday) {
-      const row = document.createElement('div');
-      row.className = 'schedule-row is-holiday';
+    const key = scheduleMondayOf(s.date);
+    if (!weeks.has(key)) weeks.set(key, []);
+    weeks.get(key).push(s);
+  });
+
+  [...weeks.keys()].sort().forEach(weekKey => {
+    const weekRows = weeks.get(weekKey);
+    const header = document.createElement('div');
+    header.className = 'schedule-week-header';
+    header.textContent = scheduleWeekLabel(weekRows);
+    list.appendChild(header);
+
+    weekRows.forEach(s => {
+      if (s.holiday) {
+        const row = document.createElement('div');
+        row.className = 'schedule-row is-holiday';
+        row.innerHTML = `
+          <div class="schedule-row-date">${fmtScheduleDate(s.date)}<span class="dow">${s.day.slice(0,3)}</span></div>
+          <div class="schedule-row-main">
+            <div class="schedule-row-topic">${s.topic}</div>
+            <div class="schedule-row-meta">${s.notes || ''}</div>
+          </div>
+          <span class="schedule-row-trainer">Closed</span>
+        `;
+        list.appendChild(row);
+        return;
+      }
+      const row = document.createElement('button');
+      row.className = 'schedule-row';
+      row.setAttribute('type', 'button');
+      row.onclick = () => openSessionModal(s.idx);
       row.innerHTML = `
         <div class="schedule-row-date">${fmtScheduleDate(s.date)}<span class="dow">${s.day.slice(0,3)}</span></div>
         <div class="schedule-row-main">
           <div class="schedule-row-topic">${s.topic}</div>
-          <div class="schedule-row-meta">${s.notes || ''}</div>
+          <div class="schedule-row-meta">${s.time}</div>
         </div>
-        <span class="schedule-row-trainer">Closed</span>
+        <span class="schedule-row-trainer">${s.trainer}</span>
+        <span class="schedule-row-chevron">›</span>
       `;
       list.appendChild(row);
-      return;
-    }
-    const row = document.createElement('button');
-    row.className = 'schedule-row';
-    row.setAttribute('type', 'button');
-    row.onclick = () => openSessionModal(s.idx);
-    row.innerHTML = `
-      <div class="schedule-row-date">${fmtScheduleDate(s.date)}<span class="dow">${s.day.slice(0,3)}</span></div>
-      <div class="schedule-row-main">
-        <div class="schedule-row-topic">${s.topic}</div>
-        <div class="schedule-row-meta">${s.time}</div>
-      </div>
-      <span class="schedule-row-trainer">${s.trainer}</span>
-      <span class="schedule-row-chevron">›</span>
-    `;
-    list.appendChild(row);
+    });
   });
+}
+
+// Returns the ISO date (YYYY-MM-DD) of the Monday starting the given date's week.
+function scheduleMondayOf(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  const dt = new Date(y, m - 1, d);
+  const dow = dt.getDay(); // 0 = Sun .. 6 = Sat
+  dt.setDate(dt.getDate() + (dow === 0 ? -6 : 1 - dow));
+  return `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}-${String(dt.getDate()).padStart(2, '0')}`;
+}
+
+function scheduleWeekLabel(weekRows) {
+  const first = weekRows[0].date;
+  const last = weekRows[weekRows.length - 1].date;
+  if (first === last) return `Week of ${fmtScheduleDate(first)}`;
+  const day1 = Number(first.split('-')[2]);
+  const day2 = Number(last.split('-')[2]);
+  const mon1 = SCHEDULE_MONTH_ABBR[Number(first.split('-')[1]) - 1];
+  const mon2 = SCHEDULE_MONTH_ABBR[Number(last.split('-')[1]) - 1];
+  return mon1 === mon2 ? `Week of ${day1}–${day2} ${mon1}` : `Week of ${fmtScheduleDate(first)} – ${fmtScheduleDate(last)}`;
 }
 
 function openSessionModal(idx) {
