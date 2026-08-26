@@ -1068,6 +1068,173 @@ function renderWatermark() {
   wm.innerHTML = Array.from({ length: 24 }).map(() => `<span>${label}</span>`).join('');
 }
 
+// ── Public training schedule (shown on the landing page, before sign-in) ──
+const SCHEDULE_STATE = { month: null, trainer: '', lastFocused: null };
+
+function scheduleMonthKey(iso) { return iso.slice(0, 7); }
+function scheduleMonthLabel(key) {
+  const [y, m] = key.split('-').map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString('en-AU', { month: 'long', year: 'numeric' });
+}
+const SCHEDULE_MONTH_ABBR = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+function fmtScheduleDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${String(d).padStart(2,'0')} ${SCHEDULE_MONTH_ABBR[m - 1]}`;
+}
+
+function initScheduleSection() {
+  if (typeof TRAINING_SCHEDULE === 'undefined') return;
+
+  const trainerSelect = $('schedule-trainer-filter');
+  TRAINERS.forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t.name;
+    opt.textContent = t.name;
+    trainerSelect.appendChild(opt);
+  });
+
+  const months = [...new Set(TRAINING_SCHEDULE.map(s => scheduleMonthKey(s.date)))];
+  const tabsWrap = $('schedule-tabs');
+  months.forEach(key => {
+    const btn = document.createElement('button');
+    btn.className = 'schedule-tab';
+    btn.textContent = scheduleMonthLabel(key).split(' ')[0];
+    btn.onclick = () => selectScheduleMonth(key);
+    btn.dataset.month = key;
+    tabsWrap.appendChild(btn);
+  });
+
+  const now = new Date();
+  const todayKey = now.toISOString().slice(0, 7);
+  SCHEDULE_STATE.month = months.includes(todayKey) ? todayKey : months[0];
+
+  renderScheduleNext();
+  renderTrainerDirectory();
+  renderScheduleList();
+}
+
+function renderScheduleNext() {
+  const wrap = $('schedule-next');
+  const now = new Date();
+  const next = TRAINING_SCHEDULE.find(s => !s.holiday && new Date(s.date + 'T23:59:59') >= now);
+  if (!next) { wrap.innerHTML = ''; return; }
+  const idx = TRAINING_SCHEDULE.indexOf(next);
+  const isToday = next.date === now.toISOString().slice(0, 10);
+  wrap.innerHTML = `
+    <div class="schedule-next-card" onclick="openSessionModal(${idx})" tabindex="0" role="button" aria-label="View details for the next session">
+      <span class="schedule-next-badge">${isToday ? 'Today' : 'Next Session'}</span>
+      <div class="schedule-next-info">
+        <div class="schedule-next-date">${next.day}, ${fmtScheduleDate(next.date)} · ${next.time}</div>
+        <div class="schedule-next-topic">${next.topic}</div>
+        <div class="schedule-next-trainer">with ${next.trainer}</div>
+      </div>
+    </div>
+  `;
+}
+
+function selectScheduleMonth(key) {
+  SCHEDULE_STATE.month = key;
+  document.querySelectorAll('.schedule-tab').forEach(b => b.classList.toggle('active', b.dataset.month === key));
+  renderScheduleList();
+}
+
+function renderScheduleList() {
+  SCHEDULE_STATE.trainer = $('schedule-trainer-filter').value;
+  document.querySelectorAll('.schedule-tab').forEach(b => b.classList.toggle('active', b.dataset.month === SCHEDULE_STATE.month));
+
+  const list = $('schedule-list');
+  list.innerHTML = '';
+
+  const rows = TRAINING_SCHEDULE
+    .map((s, idx) => ({ ...s, idx }))
+    .filter(s => scheduleMonthKey(s.date) === SCHEDULE_STATE.month)
+    .filter(s => !SCHEDULE_STATE.trainer || s.trainer === SCHEDULE_STATE.trainer || s.holiday);
+
+  if (rows.length === 0) {
+    list.innerHTML = '<div class="schedule-empty">No sessions with this trainer in this month.</div>';
+    return;
+  }
+
+  rows.forEach(s => {
+    if (s.holiday) {
+      const row = document.createElement('div');
+      row.className = 'schedule-row is-holiday';
+      row.innerHTML = `
+        <div class="schedule-row-date">${fmtScheduleDate(s.date)}<span class="dow">${s.day.slice(0,3)}</span></div>
+        <div class="schedule-row-main">
+          <div class="schedule-row-topic">${s.topic}</div>
+          <div class="schedule-row-meta">${s.notes || ''}</div>
+        </div>
+        <span class="schedule-row-trainer">Closed</span>
+      `;
+      list.appendChild(row);
+      return;
+    }
+    const row = document.createElement('button');
+    row.className = 'schedule-row';
+    row.setAttribute('type', 'button');
+    row.onclick = () => openSessionModal(s.idx);
+    row.innerHTML = `
+      <div class="schedule-row-date">${fmtScheduleDate(s.date)}<span class="dow">${s.day.slice(0,3)}</span></div>
+      <div class="schedule-row-main">
+        <div class="schedule-row-topic">${s.topic}</div>
+        <div class="schedule-row-meta">${s.time}</div>
+      </div>
+      <span class="schedule-row-trainer">${s.trainer}</span>
+      <span class="schedule-row-chevron">›</span>
+    `;
+    list.appendChild(row);
+  });
+}
+
+function openSessionModal(idx) {
+  const s = TRAINING_SCHEDULE[idx];
+  if (!s || s.holiday) return;
+  SCHEDULE_STATE.lastFocused = document.activeElement;
+
+  const trainerInfo = TRAINERS.find(t => t.name === s.trainer);
+  const overlay = $('schedule-modal-overlay');
+  $('schedule-modal-body').innerHTML = `
+    <span class="schedule-modal-badge">${s.day}, ${fmtScheduleDate(s.date)} 2026 · ${s.time}</span>
+    <h3 id="schedule-modal-title">${s.topic}</h3>
+    <div class="schedule-modal-row"><span class="label">Trainer</span><span class="value">${s.trainer}</span></div>
+    ${trainerInfo ? `<div class="schedule-modal-row"><span class="label">Specialises in</span><span class="value">${trainerInfo.subject}</span></div>` : ''}
+    ${s.batch ? `<div class="schedule-modal-batch">Reference material: <strong>${s.batch}</strong></div>` : ''}
+  `;
+  overlay.style.display = 'flex';
+  document.addEventListener('keydown', scheduleModalKeydown);
+  overlay.querySelector('.schedule-modal-close').focus();
+}
+
+function closeSessionModal() {
+  $('schedule-modal-overlay').style.display = 'none';
+  document.removeEventListener('keydown', scheduleModalKeydown);
+  if (SCHEDULE_STATE.lastFocused) SCHEDULE_STATE.lastFocused.focus();
+}
+
+function scheduleModalKeydown(e) {
+  if (e.key === 'Escape') closeSessionModal();
+}
+
+function toggleTrainerDirectory() {
+  const dir = $('trainer-directory');
+  const btn = $('schedule-trainers-toggle');
+  const showing = dir.style.display !== 'none';
+  dir.style.display = showing ? 'none' : 'grid';
+  btn.textContent = showing ? 'Meet the Trainers ↓' : 'Hide Trainers ↑';
+}
+
+function renderTrainerDirectory() {
+  const dir = $('trainer-directory');
+  dir.innerHTML = TRAINERS.map(t => `
+    <div class="trainer-card">
+      <div class="trainer-card-name">${t.name}</div>
+      <div class="trainer-card-subject">${t.subject}</div>
+      <div class="trainer-card-meta">${t.sessions} session${t.sessions === 1 ? '' : 's'} · ${t.availableDays}</div>
+    </div>
+  `).join('');
+}
+
 // ── Dynamic 3D tilt tiles (landing page access cards) ──
 function initTiltTiles() {
   const targets = document.querySelectorAll('.portal-card');
@@ -1142,6 +1309,7 @@ window.addEventListener('beforeunload', () => {
 });
 
 // ── Auto sign-in on page load if a valid session token is stored ──
+initScheduleSection();
 (async function bootstrap() {
   await tryAutoLogin();
 })();

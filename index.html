@@ -218,6 +218,247 @@ input, select { font-family: inherit; }
 .value-card h3 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 17px; color: var(--ilc-text-dark); margin-bottom: 6px; }
 .value-card p { font-size: 13.5px; color: var(--slate); line-height: 1.6; }
 
+/* ── Training schedule — public, before sign-in ───────────── */
+.schedule-section {
+  padding: 64px 24px;
+  background: var(--ilc-bg-utility);
+  border-bottom: 1px solid var(--line);
+}
+.schedule-header { max-width: 900px; margin: 0 auto 28px; text-align: left; }
+.schedule-header h2 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 28px; color: var(--ilc-primary); margin-bottom: 8px; }
+.schedule-header p { font-size: 14px; color: var(--ilc-text); line-height: 1.6; }
+
+.schedule-next {
+  max-width: 900px;
+  margin: 0 auto 24px;
+}
+.schedule-next-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1.5px solid var(--ilc-primary);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.schedule-next-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+.schedule-next-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--ilc-primary);
+  padding: 5px 10px;
+  border-radius: 100px;
+  flex: none;
+}
+.schedule-next-info { flex: 1; min-width: 200px; }
+.schedule-next-date { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ilc-accent); font-weight: 600; margin-bottom: 3px; }
+.schedule-next-topic { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: var(--ilc-text-dark); }
+.schedule-next-trainer { font-size: 12.5px; color: var(--ilc-text); margin-top: 3px; }
+
+.schedule-controls {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.schedule-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.schedule-tab {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ilc-text);
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  transition: var(--transition);
+}
+.schedule-tab:hover { border-color: var(--ilc-primary); color: var(--ilc-primary); }
+.schedule-tab.active { background: var(--ilc-primary); border-color: var(--ilc-primary); color: #fff; }
+.schedule-trainer-filter {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ilc-text-dark);
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  outline: none;
+}
+.schedule-trainer-filter:focus { border-color: var(--ilc-primary); }
+
+.schedule-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.schedule-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 13px 18px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  width: 100%;
+}
+.schedule-row:hover { border-color: var(--ilc-primary); box-shadow: var(--shadow); }
+.schedule-row:focus-visible { outline: 2px solid var(--ilc-primary); outline-offset: 2px; }
+.schedule-row-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ilc-primary);
+  flex: none;
+  width: 82px;
+}
+.schedule-row-date .dow { display: block; font-size: 10px; color: var(--ilc-text); font-weight: 500; margin-top: 1px; }
+.schedule-row-main { flex: 1; min-width: 0; }
+.schedule-row-topic {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ilc-text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.schedule-row-meta { font-size: 12px; color: var(--ilc-text); margin-top: 2px; }
+.schedule-row-trainer {
+  flex: none;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ilc-primary);
+  background: var(--ilc-bg-tint);
+  padding: 5px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.schedule-row.is-holiday {
+  cursor: default;
+  background: var(--ilc-bg-utility);
+  opacity: 0.75;
+}
+.schedule-row.is-holiday .schedule-row-trainer { background: var(--line); color: var(--ilc-text); }
+.schedule-row-chevron { flex: none; color: var(--line); font-size: 16px; }
+
+.schedule-empty { text-align: center; padding: 32px; color: var(--ilc-text); font-size: 13.5px; }
+
+.schedule-trainers-toggle {
+  display: block;
+  margin: 28px auto 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ilc-primary);
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+.trainer-directory {
+  max-width: 900px;
+  margin: 20px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.trainer-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  text-align: left;
+}
+.trainer-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 14.5px; color: var(--ilc-text-dark); margin-bottom: 4px; }
+.trainer-card-subject { font-size: 12px; color: var(--ilc-text); line-height: 1.5; margin-bottom: 6px; }
+.trainer-card-meta { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--ilc-accent); }
+
+/* ── Session detail modal ─────────────────────────────────── */
+.schedule-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(19,49,73,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 200;
+}
+.schedule-modal {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  max-width: 460px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.schedule-modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--ilc-bg-utility);
+  color: var(--ilc-text-dark);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.schedule-modal-close:hover { background: var(--line); }
+.schedule-modal-close:focus-visible { outline: 2px solid var(--ilc-primary); outline-offset: 2px; }
+.schedule-modal-badge {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ilc-primary);
+  background: var(--ilc-bg-tint);
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.schedule-modal h3 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 20px; color: var(--ilc-text-dark); margin-bottom: 16px; line-height: 1.3; }
+.schedule-modal-row { display: flex; gap: 10px; font-size: 13.5px; color: var(--ilc-text-dark); margin-bottom: 10px; }
+.schedule-modal-row .label { flex: none; width: 90px; color: var(--ilc-text); font-weight: 500; }
+.schedule-modal-row .value { flex: 1; }
+.schedule-modal-batch {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--ilc-text);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .schedule-modal-overlay { animation: scheduleFadeIn 0.18s ease both; }
+  .schedule-modal { animation: scheduleScaleIn 0.2s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes scheduleFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scheduleScaleIn { from { opacity: 0; transform: scale(0.96) translateY(6px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+}
+@media (max-width: 560px) {
+  .schedule-row { flex-wrap: wrap; }
+  .schedule-row-date { width: auto; }
+  .schedule-row-trainer { order: 3; width: 100%; text-align: center; }
+}
+
 /* ── Access section ───────────────────────────────────────── */
 .access-section { padding: 56px 24px 8px; }
 
@@ -1588,6 +1829,27 @@ input, select { font-family: inherit; }
     </div>
   </section>
 
+  <section class="schedule-section" id="schedule-section">
+    <div class="schedule-header">
+      <h2>Sales &amp; Marketing Team Training Schedule</h2>
+      <p>Live, instructor-led sessions — 1 September to 30 November 2026, Monday to Friday, 5:00–7:30 PM Brisbane time. Click any session for the trainer and topics covered.</p>
+    </div>
+
+    <div class="schedule-next" id="schedule-next"></div>
+
+    <div class="schedule-controls">
+      <div class="schedule-tabs" id="schedule-tabs"></div>
+      <select class="schedule-trainer-filter" id="schedule-trainer-filter" onchange="renderScheduleList()">
+        <option value="">All Trainers</option>
+      </select>
+    </div>
+
+    <div class="schedule-list" id="schedule-list"></div>
+
+    <button class="schedule-trainers-toggle" id="schedule-trainers-toggle" onclick="toggleTrainerDirectory()">Meet the Trainers ↓</button>
+    <div class="trainer-directory" id="trainer-directory" style="display:none"></div>
+  </section>
+
   <section class="access-section">
     <div id="landing-portal-menu" class="portal-menu">
       <div class="portal-card" onclick="showStaffLogin()">
@@ -1642,6 +1904,14 @@ input, select { font-family: inherit; }
       <span>📋 POLICY:</span> Every module requires studying the manual first, a 100% pass mark, and questions/options are reshuffled on every attempt. Three attempts without a 100% score locks your account.
     </div>
   </footer>
+</div>
+
+<!-- Training session detail modal — shared, appended to body -->
+<div class="schedule-modal-overlay" id="schedule-modal-overlay" style="display:none" onclick="if(event.target===this) closeSessionModal()">
+  <div class="schedule-modal" role="dialog" aria-modal="true" aria-labelledby="schedule-modal-title">
+    <button class="schedule-modal-close" onclick="closeSessionModal()" aria-label="Close">✕</button>
+    <div id="schedule-modal-body"></div>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════
@@ -1965,7 +2235,8 @@ input, select { font-family: inherit; }
 
 <script src="questions.js?v=10"></script>
 <script src="manual.js?v=10"></script>
-<script src="app.js?v=10"></script>
+<script src="schedule.js?v=1"></script>
+<script src="app.js?v=11"></script>
 
 <!-- Floating Action Buttons -->
 <div class="fab-container" style="position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 9999;">
