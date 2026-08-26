@@ -1086,12 +1086,15 @@ function initScheduleSection() {
   if (typeof TRAINING_SCHEDULE === 'undefined') return;
 
   const trainerSelect = $('schedule-trainer-filter');
-  TRAINERS.forEach(t => {
+  const sortedTrainers = [...TRAINERS].sort((a, b) => a.name.localeCompare(b.name));
+  sortedTrainers.forEach(t => {
     const opt = document.createElement('option');
     opt.value = t.name;
     opt.textContent = t.name;
     trainerSelect.appendChild(opt);
   });
+  trainerSelect.value = sortedTrainers[0].name;
+  SCHEDULE_STATE.trainer = sortedTrainers[0].name;
 
   const months = [...new Set(TRAINING_SCHEDULE.map(s => scheduleMonthKey(s.date)))];
   const tabsWrap = $('schedule-tabs');
@@ -1148,7 +1151,7 @@ function renderScheduleList() {
   const rows = TRAINING_SCHEDULE
     .map((s, idx) => ({ ...s, idx }))
     .filter(s => scheduleMonthKey(s.date) === SCHEDULE_STATE.month)
-    .filter(s => !SCHEDULE_STATE.trainer || s.trainer === SCHEDULE_STATE.trainer || s.holiday);
+    .filter(s => s.trainer === SCHEDULE_STATE.trainer || s.holiday);
 
   if (rows.length === 0) {
     list.innerHTML = '<div class="schedule-empty">No sessions with this trainer in this month.</div>';
