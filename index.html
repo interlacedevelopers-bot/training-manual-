@@ -460,7 +460,7 @@ input, select { font-family: inherit; }
 }
 
 /* ── Access section ───────────────────────────────────────── */
-.access-section { padding: 56px 24px 8px; }
+.access-section { padding: 8px 24px; }
 
 /* ── Footer ───────────────────────────────────────────────── */
 .site-footer { padding: 28px 24px 56px; }
@@ -1850,20 +1850,11 @@ input, select { font-family: inherit; }
   </section>
 
   <section class="access-section">
-    <div id="landing-portal-menu" class="portal-menu">
-      <div class="portal-card" onclick="showStaffLogin()">
-        <div class="portal-icon">👤</div>
-        <h3>Staff Access</h3>
-        <p>Sign in with your work email to continue training your administrator has assigned to you.</p>
-        <span class="portal-cta">Sign In →</span>
-      </div>
-      <div class="portal-card portal-card-admin" onclick="showAdminLogin()">
-        <div class="portal-icon">🔑</div>
-        <h3>Administrator Access</h3>
-        <p>Assign modules, manage staff access, and review training progress across the organisation.</p>
-        <span class="portal-cta">Admin Sign In →</span>
-      </div>
-    </div>
+    <!-- Staff/Admin entry cards removed: duplicated the nav bar's
+         "Staff Sign In" / "Admin" links. Kept as an empty, hidden
+         container since showStaffLogin()/backToPortalMenu() in app.js
+         still toggle its display. -->
+    <div id="landing-portal-menu" class="portal-menu" style="display:none"></div>
 
     <div class="reg-card" id="landing-staff-card" style="display:none">
       <div id="login-step-email">
