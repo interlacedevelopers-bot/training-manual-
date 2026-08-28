@@ -3,7 +3,7 @@ const { isAdminSession, getStaff, saveStaff, normalizeEmail } = require('../../l
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).json({ error: 'method_not_allowed' });
 
-  const { adminToken, email, firstName, lastName, mobile, role, branch, moduleIds } = req.body || {};
+  const { adminToken, email, firstName, lastName, mobile, role, branch, moduleIds, isTeamLeader, isManager } = req.body || {};
 
   if (!(await isAdminSession(adminToken))) {
     return res.status(401).json({ error: 'unauthorized' });
@@ -39,6 +39,8 @@ module.exports = async (req, res) => {
   record.branch = branch || record.branch || '';
   record.assignedModules = moduleIds;
   record.assignedAt = new Date().toISOString();
+  record.isTeamLeader = !!isTeamLeader;
+  record.isManager = !!isManager;
 
   await saveStaff(record);
 

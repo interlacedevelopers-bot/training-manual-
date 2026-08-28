@@ -681,6 +681,11 @@ button.schedule-grid-cell:focus-visible { outline: 2px solid var(--ilc-primary);
 .gap-history-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; cursor: pointer; }
 .gap-history-title { font-size: 13.5px; font-weight: 700; color: var(--ilc-text-dark); }
 .gap-history-meta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ilc-text); margin-top: 2px; }
+.gap-status-badge { font-weight: 700; padding: 1px 8px; border-radius: 100px; }
+.gap-status-badge.draft { background: var(--ilc-bg-utility); color: var(--ilc-text); }
+.gap-status-badge.pending { background: rgba(212,160,23,0.12); color: var(--gold-dark); }
+.gap-status-badge.approved { background: rgba(50,103,173,0.10); color: var(--ilc-primary); }
+.gap-status-badge.signed-off { background: var(--signal-bg); color: var(--signal); }
 .gap-history-avg { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; color: var(--ilc-primary); flex: none; }
 .gap-history-detail { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); display: none; }
 .gap-history-detail.open { display: block; }
@@ -2163,6 +2168,8 @@ button.schedule-grid-cell:focus-visible { outline: 2px solid var(--ilc-primary);
       <span class="user-name" id="tb-name">Staff Member</span>
       <span class="progress-badge" id="tb-progress">0 / 5 Complete</span>
       <button class="btn-secondary" style="font-size:12px;padding:6px 14px" onclick="openMyReviewsModal()">My Reviews</button>
+      <button class="btn-secondary" id="tb-leader-btn" style="font-size:12px;padding:6px 14px;display:none" onclick="openTeamLeaderPanel()">Team Leader Panel</button>
+      <button class="btn-secondary" id="tb-manager-btn" style="font-size:12px;padding:6px 14px;display:none" onclick="openManagerApprovals()">Manager Approvals</button>
     </div>
   </div>
 
@@ -2438,6 +2445,18 @@ button.schedule-grid-cell:focus-visible { outline: 2px solid var(--ilc-primary);
           </select>
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label style="display:flex;align-items:center;gap:8px;text-transform:none;font-weight:600;color:var(--ilc-text-dark)">
+            <input type="checkbox" id="admin-is-leader" style="width:auto"> Team Leader (can record and submit GAP Analysis reviews for staff)
+          </label>
+        </div>
+        <div class="form-group">
+          <label style="display:flex;align-items:center;gap:8px;text-transform:none;font-weight:600;color:var(--ilc-text-dark)">
+            <input type="checkbox" id="admin-is-manager" style="width:auto"> Departmental Manager (approves GAP Analysis reviews)
+          </label>
+        </div>
+      </div>
 
       <div class="admin-quickselect">
         <span>Quick select:</span>
@@ -2488,7 +2507,7 @@ button.schedule-grid-cell:focus-visible { outline: 2px solid var(--ilc-primary);
 <script src="manual.js?v=10"></script>
 <script src="schedule.js?v=1"></script>
 <script src="gapframework.js?v=1"></script>
-<script src="app.js?v=12"></script>
+<script src="app.js?v=13"></script>
 
 <!-- Floating Action Buttons -->
 <div class="fab-container" style="position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 9999;">
