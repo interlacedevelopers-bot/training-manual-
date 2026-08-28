@@ -66,6 +66,7 @@ const STATE = {
   moduleMeta: {},         // { modId: {attempts, studyTimeSec, passed} }
   lmsLocked: false,
   lockedInfo: null,
+  gapAnalyses: [],        // biannual GAP analysis reviews recorded by the team leader
 
   pendingLoginEmail: null,
   adminToken: null,
@@ -149,6 +150,7 @@ function applyStaffRecord(rec) {
   STATE.moduleMeta = rec.moduleMeta || {};
   STATE.lmsLocked = !!rec.lmsLocked;
   STATE.lockedInfo = rec.lockedInfo || null;
+  STATE.gapAnalyses = rec.gapAnalyses || [];
 
   const ini = initials(STATE.user.firstName, STATE.user.lastName);
   ['tb-avatar','q-avatar'].forEach(id => { const el = $(id); if (el) el.textContent = ini; });
@@ -993,7 +995,10 @@ async function loadAdminStaff() {
   }
 }
 
+let ADMIN_STAFF_CACHE = [];
+
 function renderAdminStaffTable(staffList) {
+  ADMIN_STAFF_CACHE = staffList;
   const tbody = $('admin-staff-tbody');
   if (!staffList.length) {
     tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--grey)">No staff assigned yet.</td></tr>`;
@@ -1007,6 +1012,7 @@ function renderAdminStaffTable(staffList) {
       : (passedCount === assigned.length && assigned.length > 0)
         ? '<span class="admin-ok-pill">✓ Complete</span>'
         : (s.activatedAt ? 'In Progress' : 'Not yet signed in');
+    const reviewCount = (s.gapAnalyses || []).length;
     return `
       <tr>
         <td>${s.firstName || ''} ${s.lastName || ''}</td>
@@ -1016,6 +1022,7 @@ function renderAdminStaffTable(staffList) {
         <td>${passedCount} / ${assigned.length} passed</td>
         <td>${statusHtml}</td>
         <td>
+          <button class="btn-secondary" onclick="openGapAnalysisModal('${s.email}')">Gap Analysis${reviewCount ? ` (${reviewCount})` : ''}</button>
           <button class="btn-secondary" onclick="adminResetStaff('${s.email}')">Reset Attempts</button>
           <button class="btn-secondary" onclick="adminUnassignStaff('${s.email}')">Remove</button>
         </td>
@@ -1042,6 +1049,294 @@ async function adminUnassignStaff(email) {
   } catch (e) {
     alert(e.message || 'Could not remove this staff member.');
   }
+}
+
+// ── GAP Analysis — recorded twice a year by the team leader ────────
+function escAttr(s) { return String(s == null ? '' : s).replace(/"/g, '&quot;'); }
+
+function gapBadgeClass(gap) {
+  if (gap <= 0) return 'on-target';
+  if (gap <= 2) return 'minor-gap';
+  return 'significant-gap';
+}
+function gapBadgeLabel(gap) {
+  if (gap <= 0) return 'On Target';
+  if (gap <= 2) return `Minor Gap (${gap})`;
+  return `Significant Gap (${gap})`;
+}
+function guessGapRole(trainingRole) {
+  if (trainingRole === 'Education Consultant') return 'International Education Counsellor';
+  return Object.keys(GAP_FRAMEWORK)[0];
+}
+function defaultGapPeriod() {
+  const now = new Date();
+  return `${now.getMonth() < 6 ? 'H1' : 'H2'} ${now.getFullYear()}`;
+}
+function buildTrainingSnapshot(staff) {
+  const assigned = staff.assignedModules || [];
+  const items = assigned.map(id => {
+    const mod = MODULES.find(m => m.id === id);
+    const meta = (staff.moduleMeta || {})[id];
+    return { id, title: mod ? mod.title : `Module ${id}`, passed: !!meta?.passed, attempts: meta?.attempts || 0 };
+  });
+  return { assignedCount: assigned.length, passedCount: items.filter(i => i.passed).length, items };
+}
+
+function openGapAnalysisModal(email) {
+  const staff = ADMIN_STAFF_CACHE.find(s => s.email === email);
+  if (!staff) return;
+  renderGapModalBody(staff);
+  $('gap-modal-overlay').style.display = 'flex';
+  document.addEventListener('keydown', gapModalKeydown);
+}
+function closeGapAnalysisModal() {
+  $('gap-modal-overlay').style.display = 'none';
+  document.removeEventListener('keydown', gapModalKeydown);
+}
+function gapModalKeydown(e) { if (e.key === 'Escape') closeGapAnalysisModal(); }
+
+function renderGapModalBody(staff, editEntry) {
+  const snapshot = buildTrainingSnapshot(staff);
+  const history = staff.gapAnalyses || [];
+  const defaultRole = editEntry ? editEntry.gapRole : guessGapRole(staff.role);
+  const period = editEntry ? editEntry.period : defaultGapPeriod();
+
+  $('gap-modal-body').innerHTML = `
+    <h3 id="gap-modal-title">${staff.firstName || ''} ${staff.lastName || ''}</h3>
+    <p class="gap-modal-sub">${staff.email} &middot; ${staff.role || 'No role set'}</p>
+
+    <div class="gap-section-label">Training Assigned &amp; Progress</div>
+    <div class="gap-training-summary">
+      <strong>${snapshot.passedCount} / ${snapshot.assignedCount}</strong> assigned modules passed
+      <div class="gap-training-list">
+        ${snapshot.items.map(i => `<span class="gap-training-pill ${i.passed ? 'passed' : 'pending'}">${i.title}${i.passed ? ' ✓' : (i.attempts ? ` (${i.attempts} attempt${i.attempts > 1 ? 's' : ''})` : '')}</span>`).join('') || '<em>No modules assigned</em>'}
+      </div>
+    </div>
+
+    <div class="gap-section-label">${editEntry ? 'Edit Review' : 'New Review'}</div>
+    <div class="gap-form-row">
+      <div class="gap-form-group">
+        <label>Review Period</label>
+        <input type="text" id="gap-period" value="${escAttr(period)}" placeholder="e.g. H1 2026">
+      </div>
+      <div class="gap-form-group">
+        <label>Job Role (GAP Framework)</label>
+        <select id="gap-role" onchange="rerenderGapSkills()">
+          ${Object.keys(GAP_FRAMEWORK).map(r => `<option value="${escAttr(r)}" ${r === defaultRole ? 'selected' : ''}>${r}</option>`).join('')}
+        </select>
+      </div>
+      <div class="gap-form-group">
+        <label>Reviewed By</label>
+        <input type="text" id="gap-reviewer" value="${escAttr(editEntry?.reviewedBy)}" placeholder="Team leader name">
+      </div>
+    </div>
+
+    <div class="gap-section-label">Skill Assessment <span style="text-transform:none;font-weight:500;color:var(--ilc-text)">— target: ${GAP_TARGET_SCORE}/10 (Advanced)</span></div>
+    <div id="gap-skills-wrap"></div>
+
+    <div class="gap-section-label">Overall Feedback</div>
+    <div class="gap-form-group">
+      <textarea id="gap-feedback" placeholder="Overall performance feedback for this review period...">${editEntry?.feedback || ''}</textarea>
+    </div>
+
+    <div class="gap-section-label">Development Plan / Recommended Actions</div>
+    <div class="gap-form-group">
+      <textarea id="gap-devplan" placeholder="Training, mentorship, or goals recommended for the next period...">${editEntry?.developmentPlan || ''}</textarea>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:18px">
+      <button class="btn-primary" onclick="saveGapAnalysis('${staff.email}'${editEntry ? `,'${editEntry.id}'` : ''})">${editEntry ? 'Update Review' : 'Save Review'}</button>
+      ${editEntry ? `<button class="btn-secondary" onclick="cancelGapEdit('${staff.email}')">Cancel Edit</button>` : ''}
+    </div>
+
+    <div class="gap-section-label">Review History (${history.length})</div>
+    <div id="gap-history-list">
+      ${history.length ? [...history].reverse().map(h => renderGapHistoryCard(staff.email, h)).join('') : '<div class="gap-empty">No reviews recorded yet.</div>'}
+    </div>
+  `;
+
+  renderGapSkillInputs(defaultRole, editEntry);
+}
+
+function cancelGapEdit(email) {
+  renderGapModalBody(ADMIN_STAFF_CACHE.find(s => s.email === email));
+}
+
+function renderGapSkillInputs(role, editEntry) {
+  const framework = GAP_FRAMEWORK[role];
+  const wrap = $('gap-skills-wrap');
+  if (!framework) { wrap.innerHTML = ''; return; }
+  wrap.innerHTML = framework.skills.map(sk => {
+    const existing = editEntry?.skills?.find(s => s.name === sk.name);
+    const score = existing ? existing.score : 5;
+    const note = existing ? (existing.note || '') : '';
+    const gap = GAP_TARGET_SCORE - score;
+    return `
+      <div class="gap-skill-row" data-skill="${escAttr(sk.name)}">
+        <div class="gap-skill-head">
+          <span class="gap-skill-name">${sk.name}</span>
+          <span class="gap-skill-importance">${sk.importance} Importance</span>
+        </div>
+        <div class="gap-skill-desc">${sk.description}</div>
+        <div class="gap-skill-controls">
+          <div class="gap-skill-score">
+            <label>Current Score</label>
+            <input type="range" min="1" max="10" value="${score}" oninput="updateGapScoreDisplay(this)">
+            <span class="gap-skill-score-val">${score}</span>
+          </div>
+          <span class="gap-badge ${gapBadgeClass(gap)}">${gapBadgeLabel(gap)}</span>
+        </div>
+        <div class="gap-skill-note">
+          <input type="text" placeholder="Optional note for this skill..." value="${escAttr(note)}">
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function rerenderGapSkills() {
+  renderGapSkillInputs($('gap-role').value, null);
+}
+
+function updateGapScoreDisplay(rangeEl) {
+  const score = Number(rangeEl.value);
+  rangeEl.parentElement.querySelector('.gap-skill-score-val').textContent = score;
+  const badge = rangeEl.closest('.gap-skill-controls').querySelector('.gap-badge');
+  const gap = GAP_TARGET_SCORE - score;
+  badge.className = `gap-badge ${gapBadgeClass(gap)}`;
+  badge.textContent = gapBadgeLabel(gap);
+}
+
+async function saveGapAnalysis(email, existingId) {
+  const staff = ADMIN_STAFF_CACHE.find(s => s.email === email);
+  const period = $('gap-period').value.trim();
+  if (!period) { alert('Please enter a review period (e.g. H1 2026).'); return; }
+  const role = $('gap-role').value;
+  const reviewedBy = $('gap-reviewer').value.trim();
+  const feedback = $('gap-feedback').value.trim();
+  const developmentPlan = $('gap-devplan').value.trim();
+
+  const skills = Array.from(document.querySelectorAll('#gap-skills-wrap .gap-skill-row')).map(row => {
+    const score = Number(row.querySelector('input[type="range"]').value);
+    return {
+      name: row.dataset.skill,
+      score,
+      target: GAP_TARGET_SCORE,
+      gap: GAP_TARGET_SCORE - score,
+      note: row.querySelector('.gap-skill-note input').value.trim(),
+    };
+  });
+  const averageScore = Math.round((skills.reduce((sum, s) => sum + s.score, 0) / skills.length) * 10) / 10;
+
+  const gapAnalysis = {
+    id: existingId || undefined,
+    period, gapRole: role, reviewedBy, feedback, developmentPlan, skills, averageScore,
+    trainingSnapshot: buildTrainingSnapshot(staff),
+    reviewDate: new Date().toISOString(),
+  };
+
+  try {
+    const data = await apiPost('/api/admin/gap-analysis-save', { adminToken: getAdminToken(), email, gapAnalysis });
+    staff.gapAnalyses = data.gapAnalyses;
+    renderAdminStaffTable(ADMIN_STAFF_CACHE);
+    renderGapModalBody(staff);
+  } catch (e) {
+    alert(e.message || 'Could not save this review.');
+  }
+}
+
+function renderGapHistoryCard(email, entry) {
+  const skillLines = (entry.skills || []).map(s => `
+    <div class="gap-history-skill-line">
+      <span>${s.name}</span>
+      <span><strong>${s.score}</strong>/10 &nbsp;<span class="gap-badge ${gapBadgeClass(s.gap)}" style="padding:2px 8px;font-size:10px">${gapBadgeLabel(s.gap)}</span></span>
+    </div>`).join('');
+  return `
+    <div class="gap-history-card">
+      <div class="gap-history-head" onclick="toggleGapHistory('${entry.id}')">
+        <div>
+          <div class="gap-history-title">${entry.period} — ${entry.gapRole}</div>
+          <div class="gap-history-meta">${fmtDate(entry.reviewDate || entry.createdAt)}${entry.reviewedBy ? ' · Reviewed by ' + entry.reviewedBy : ''}</div>
+        </div>
+        <div class="gap-history-avg">Avg ${entry.averageScore}/10</div>
+      </div>
+      <div class="gap-history-detail" id="gap-history-detail-${entry.id}">
+        ${skillLines}
+        ${entry.feedback ? `<div class="gap-history-feedback"><strong>Feedback:</strong> ${entry.feedback}</div>` : ''}
+        ${entry.developmentPlan ? `<div class="gap-history-feedback"><strong>Development Plan:</strong> ${entry.developmentPlan}</div>` : ''}
+        <div class="gap-history-actions">
+          <button class="btn-secondary" onclick="editGapReview('${email}','${entry.id}')">Edit</button>
+          <button class="btn-secondary" onclick="deleteGapAnalysisEntry('${email}','${entry.id}')">Delete</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function toggleGapHistory(id) {
+  const el = document.getElementById(`gap-history-detail-${id}`);
+  if (el) el.classList.toggle('open');
+}
+
+function editGapReview(email, id) {
+  const staff = ADMIN_STAFF_CACHE.find(s => s.email === email);
+  const entry = (staff.gapAnalyses || []).find(g => g.id === id);
+  renderGapModalBody(staff, entry);
+}
+
+async function deleteGapAnalysisEntry(email, id) {
+  if (!confirm('Delete this review permanently?')) return;
+  try {
+    const data = await apiPost('/api/admin/gap-analysis-delete', { adminToken: getAdminToken(), email, id });
+    const staff = ADMIN_STAFF_CACHE.find(s => s.email === email);
+    staff.gapAnalyses = data.gapAnalyses;
+    renderAdminStaffTable(ADMIN_STAFF_CACHE);
+    renderGapModalBody(staff);
+  } catch (e) {
+    alert(e.message || 'Could not delete this review.');
+  }
+}
+
+// ── GAP Analysis — staff read-only view of their own reviews ───────
+function openMyReviewsModal() {
+  const history = STATE.gapAnalyses || [];
+  $('myreviews-modal-body').innerHTML = `
+    <h3 id="myreviews-modal-title">My Performance Reviews</h3>
+    <p class="gap-modal-sub">GAP analysis reviews recorded by your team leader, twice a year.</p>
+    ${history.length ? [...history].reverse().map(h => renderMyReviewCard(h)).join('') : '<div class="gap-empty">No reviews have been recorded yet.</div>'}
+  `;
+  $('myreviews-modal-overlay').style.display = 'flex';
+  document.addEventListener('keydown', myReviewsModalKeydown);
+}
+function closeMyReviewsModal() {
+  $('myreviews-modal-overlay').style.display = 'none';
+  document.removeEventListener('keydown', myReviewsModalKeydown);
+}
+function myReviewsModalKeydown(e) { if (e.key === 'Escape') closeMyReviewsModal(); }
+
+function renderMyReviewCard(entry) {
+  const skillLines = (entry.skills || []).map(s => `
+    <div class="gap-history-skill-line">
+      <span>${s.name}</span>
+      <span><strong>${s.score}</strong>/10 &nbsp;<span class="gap-badge ${gapBadgeClass(s.gap)}" style="padding:2px 8px;font-size:10px">${gapBadgeLabel(s.gap)}</span></span>
+    </div>`).join('');
+  const detailId = `my-${entry.id}`;
+  return `
+    <div class="gap-history-card">
+      <div class="gap-history-head" onclick="toggleGapHistory('${detailId}')">
+        <div>
+          <div class="gap-history-title">${entry.period} — ${entry.gapRole}</div>
+          <div class="gap-history-meta">${fmtDate(entry.reviewDate || entry.createdAt)}${entry.reviewedBy ? ' · Reviewed by ' + entry.reviewedBy : ''}</div>
+        </div>
+        <div class="gap-history-avg">Avg ${entry.averageScore}/10</div>
+      </div>
+      <div class="gap-history-detail" id="gap-history-detail-${detailId}">
+        ${skillLines}
+        ${entry.feedback ? `<div class="gap-history-feedback"><strong>Feedback:</strong> ${entry.feedback}</div>` : ''}
+        ${entry.developmentPlan ? `<div class="gap-history-feedback"><strong>Development Plan:</strong> ${entry.developmentPlan}</div>` : ''}
+      </div>
+    </div>
+  `;
 }
 
 // ── Content protection (deterrents only — cannot stop screenshots) ──
