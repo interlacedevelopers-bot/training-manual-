@@ -1028,6 +1028,7 @@ function renderAdminStaffTable(staffList) {
         <td>${passedCount} / ${assigned.length} passed</td>
         <td>${statusHtml}</td>
         <td>
+          <button class="btn-secondary" onclick="adminSendInvite('${s.email}', this)">Send Invite</button>
           <button class="btn-secondary" onclick="openGapAnalysisModal('${s.email}')">Gap Analysis${reviewCount ? ` (${reviewCount})` : ''}</button>
           <button class="btn-secondary" onclick="adminResetStaff('${s.email}')">Reset Attempts</button>
           <button class="btn-secondary" onclick="adminUnassignStaff('${s.email}')">Remove</button>
@@ -1055,6 +1056,35 @@ async function adminUnassignStaff(email) {
   } catch (e) {
     alert(e.message || 'Could not remove this staff member.');
   }
+}
+
+// A one-time welcome email (distinct from the OTP verification code) that
+// tells a newly assigned staff member their account exists and how to
+// sign in, without itself containing a time-limited code.
+async function adminSendInvite(email, btnEl) {
+  if (btnEl) { btnEl.disabled = true; btnEl.textContent = 'Sending…'; }
+  try {
+    await apiPost('/api/admin/send-invite', { adminToken: getAdminToken(), email });
+    if (btnEl) { btnEl.textContent = 'Invite Sent ✓'; setTimeout(() => { btnEl.textContent = 'Send Invite'; btnEl.disabled = false; }, 2500); }
+  } catch (e) {
+    alert(e.message || `Could not send the invitation to ${email}.`);
+    if (btnEl) { btnEl.disabled = false; btnEl.textContent = 'Send Invite'; }
+  }
+}
+
+async function adminSendInviteToAll() {
+  if (!ADMIN_STAFF_CACHE.length) { alert('No staff to invite.'); return; }
+  if (!confirm(`Send the welcome/invitation email to all ${ADMIN_STAFF_CACHE.length} assigned staff members?`)) return;
+  const results = [];
+  for (const s of ADMIN_STAFF_CACHE) {
+    try {
+      await apiPost('/api/admin/send-invite', { adminToken: getAdminToken(), email: s.email });
+      results.push(`✓ ${s.email}`);
+    } catch (e) {
+      results.push(`✗ ${s.email} — ${e.message || 'failed'}`);
+    }
+  }
+  alert('Invitations sent:\n\n' + results.join('\n'));
 }
 
 // ── GAP Analysis / Performance Review workflow ──────────────────────
