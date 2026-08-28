@@ -35,7 +35,11 @@ module.exports = async (req, res) => {
     if (e.code === 'EMAIL_NOT_CONFIGURED') {
       return res.status(500).json({ error: 'email_not_configured', message: 'Email delivery is not yet configured. Contact your administrator.' });
     }
-    return res.status(502).json({ error: 'email_send_failed', message: 'Could not send the verification email. Please try again shortly.' });
+    // Log the real Resend rejection reason server-side (visible in Vercel
+    // function logs) without exposing provider internals to the client --
+    // this is what silently failed before EMAIL_SEND_REJECTED existed.
+    console.error('OTP email send failed for', email, e.resendError || e.message);
+    return res.status(502).json({ error: 'email_send_failed', message: 'Could not send the verification email. Please try again shortly, or contact your administrator.' });
   }
 
   return res.status(200).json({ ok: true });
