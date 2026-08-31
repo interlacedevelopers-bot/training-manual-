@@ -3096,6 +3096,181 @@ const MODULES = [
         tag: "outreach", difficulty: "hard"
       }
     ]
+  },
+
+  {
+    id: 23,
+    title: "Company Overview & Service Landscape",
+    icon: "🏢",
+    tag: "onboarding",
+    description: "Interlace Studies' role and locations, the four connected service pillars, and the client consultation, handover, and escalation standards for all staff",
+    passmark: 100,
+    roles: ["Migration Consultant", "Education Consultant", "Sales & Client Relations", "Office Administrator", "Branch Manager", "Support Staff"],
+    remark_pass: "Excellent command of the company overview and service landscape. You can confidently guide clients across pillars, hand over cleanly, and escalate through the right channel.",
+    remark_low: "Good foundation. Revisit the three-step consultation principle and the migration escalation chain — these come up in almost every client conversation, whatever your role.",
+    remark_fail: "This module covers how Interlace Studies operates as one connected team. Please re-study the staff onboarding training in full before handling client conversations independently.",
+    questions: [
+      {
+        q: "What are Interlace Studies' four core service pillars?",
+        options: ["Career Counselling, Migration & Visa Services, University & College Admissions, Skills Assessment", "Sales, Marketing, Compliance, HR", "Recruitment, Training, Payroll, Legal", "Visa Services, Insurance, Banking, Education"],
+        answer: 0,
+        explanation: "Interlace Studies guides clients through four connected pillars: Career Counselling, University & College Admissions, Migration & Visa Services, and Skills Assessment — treated as one client journey, not isolated services.",
+        law: "Staff Onboarding & Company Overview Training, Slide 5 — Four pillars, one client experience",
+        tag: "onboarding", difficulty: "easy"
+      },
+      {
+        q: "According to the training, what should be the first question in a client consultation?",
+        options: ["\"Which service do you need?\"", "\"What outcome are you aiming for?\"", "\"Do you have a valid visa?\"", "\"What is your budget?\""],
+        answer: 1,
+        explanation: "The best first question is not 'Which service do you need?' — it is 'What outcome are you aiming for?', which lets the client's goal (not a pre-chosen product) drive the conversation.",
+        law: "Staff Onboarding & Company Overview Training, Slide 6 — Start with the client's goal, not the service",
+        tag: "onboarding", difficulty: "easy"
+      },
+      {
+        q: "What are the three steps of the client consultation principle taught in this module?",
+        options: ["Listen to the goal, Discover the facts, Route wisely", "Greet, Pitch, Close", "Qualify, Convert, Retain", "Introduce, Assess, Refer"],
+        answer: 0,
+        explanation: "Step 1 is Listen to the goal, Step 2 is Discover the facts, and Step 3 is Route wisely — choosing the starting pillar while staying alert to connected needs in the other pillars.",
+        law: "Staff Onboarding & Company Overview Training, Slide 6 — Client consultation principle",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "Which Australian cities host Interlace Studies' onshore offices?",
+        options: ["Sydney, Melbourne, Canberra, Hobart", "Brisbane, Parramatta, Perth, Adelaide", "Brisbane, Sydney, Perth, Darwin", "Melbourne, Parramatta, Adelaide, Cairns"],
+        answer: 1,
+        explanation: "Interlace Studies' Australian offices are in Brisbane, Parramatta, Perth, and Adelaide.",
+        law: "Staff Onboarding & Company Overview Training, Slide 4 — A connected presence across key markets",
+        tag: "onboarding", difficulty: "easy"
+      },
+      {
+        q: "Which locations make up Interlace Studies' regional/offshore team presence?",
+        options: ["Manila, Jakarta, Bangkok", "Kathmandu, Bali, Phnom Penh", "Delhi, Colombo, Dhaka", "Kathmandu, Manila, Hanoi"],
+        answer: 1,
+        explanation: "The regional/offshore team presence is in Kathmandu, Bali, and Phnom Penh, combining local client engagement with shared specialist support.",
+        law: "Staff Onboarding & Company Overview Training, Slide 4 — A connected presence across key markets",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "In the Career Counselling process, what is the purpose of Stage 1, \"Explore the client profile\"?",
+        options: ["Book the client into a course immediately", "Consider interests, experience, studies, evidence, constraints, and long-term direction", "Determine the client's ability to pay fees", "Refer the client directly to a migration agent"],
+        answer: 1,
+        explanation: "Stage 1 explores the client's full profile — interests, experience, studies, evidence, constraints, and long-term direction — before any pathway is proposed.",
+        law: "Staff Onboarding & Company Overview Training, Slide 7 — Career counselling creates the foundation",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "In the Career Counselling process, what must happen at Stage 3, \"Record and hand over clearly\"?",
+        options: ["Nothing — the counselling conversation ends there", "Document key facts and the agreed next step so the next team can continue confidently", "Ask the client to summarise the conversation themselves", "Escalate automatically to a Registered Migration Agent"],
+        answer: 1,
+        explanation: "Stage 3 requires documenting the key facts and the agreed next step so the receiving team can continue confidently, producing a client journey that starts with clarity and stays consistent.",
+        law: "Staff Onboarding & Company Overview Training, Slide 7 — Career counselling creates the foundation",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "When a client's admissions discussion raises a migration-related question, what is the approved next step?",
+        options: ["Answer it yourself using general knowledge", "Capture the query accurately and use the approved specialist escalation route", "Tell the client migration questions cannot be answered by Interlace Studies", "Give an informal opinion, then follow up in writing later"],
+        answer: 1,
+        explanation: "The training's knowledge check for this exact scenario requires capturing the query and using the approved specialist escalation route — not answering it directly or giving informal guidance.",
+        law: "Staff Onboarding & Company Overview Training, Slide 14 — Knowledge check, Scenario 2",
+        tag: "onboarding", difficulty: "hard"
+      },
+      {
+        q: "What is required at the third step of handling a migration/visa query internally?",
+        options: ["The client's own signature confirming they accept the risk", "Registered Migration Agent (RMA) sign-off at the defined internal control points", "A second staff member's verbal agreement", "No further approval is required once escalated"],
+        answer: 1,
+        explanation: "The third step of the migration/visa handling sequence is securing the required RMA sign-off at the defined internal control points, before any advice or action is finalised.",
+        law: "Staff Onboarding & Company Overview Training, Slide 9 — Migration and visa work requires controlled handling",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "Staff without MARA/RMA registration handling a migration-related enquiry should:",
+        options: ["Give client-specific guidance as long as they are confident it's correct", "Use approved scripts and current information, and escalate matters needing migration expertise rather than promise outcomes", "Promise the client a likely outcome to keep them engaged", "Refuse to discuss migration topics at all, even to capture the query"],
+        answer: 1,
+        explanation: "Staff must work within approved authority — capturing the query using approved scripts and current information, and escalating matters requiring migration expertise, without promising outcomes or giving client-specific guidance beyond their approved role.",
+        law: "Staff Onboarding & Company Overview Training, Slide 9 — Migration and visa work requires controlled handling",
+        tag: "onboarding", difficulty: "hard"
+      },
+      {
+        q: "What is the correct order of the migration/visa handling chain described in the training?",
+        options: ["Specialist escalation → RMA sign-off → Approved information", "Approved information → Specialist escalation → Required RMA sign-off", "RMA sign-off → Approved information → Specialist escalation", "Escalation and sign-off happen simultaneously with no fixed order"],
+        answer: 1,
+        explanation: "The fixed sequence is: Approved information → Specialist escalation → Required RMA sign-off.",
+        law: "Staff Onboarding & Company Overview Training, Slide 9 — Migration and visa work requires controlled handling",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "In the Admissions process, when should a staff member coordinate early with other pillars?",
+        options: ["Only after the client has enrolled", "Where the study choice connects to migration or skills-assessment needs", "Coordination with other pillars is never required for Admissions", "Only if the client explicitly asks for it"],
+        answer: 1,
+        explanation: "Admissions staff should coordinate early wherever the study choice connects to migration or skills-assessment needs, rather than treating the enquiry as an isolated transaction.",
+        law: "Staff Onboarding & Company Overview Training, Slide 8 — Admissions turns intent into a study pathway",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "In the Skills Assessment process, what does \"Confirm the facts\" (Step 1) require?",
+        options: ["Only the client's passport number", "Occupation, qualifications, employment evidence, and the client's objective", "A completed visa application", "A signed contract with Interlace Studies"],
+        answer: 1,
+        explanation: "Step 1 of Skills Assessment confirms the occupation, qualifications, employment evidence, and the client's objective, before discussing readiness or a coordinated plan.",
+        law: "Staff Onboarding & Company Overview Training, Slide 10 — Skills assessment supports recognised outcomes",
+        tag: "onboarding", difficulty: "easy"
+      },
+      {
+        q: "Why does the training emphasise \"evidence quality\" in Skills Assessment conversations?",
+        options: ["It has no real impact on later stages", "It makes every subsequent conversation clearer and safer", "It is only relevant to the client's own paperwork, not staff", "It only matters for the Migration pillar, not Skills Assessment"],
+        answer: 1,
+        explanation: "Evidence quality gathered at the Skills Assessment stage makes every subsequent conversation — including any later migration or counselling handover — clearer and safer for everyone involved.",
+        law: "Staff Onboarding & Company Overview Training, Slide 10 — Skills assessment supports recognised outcomes",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "What is a \"warm handover\" between pillars expected to do?",
+        options: ["Simply forward the client's contact details with no further explanation", "Share client context, confirm ownership, and make the next step unmistakably clear", "End the relationship with the previous team entirely", "Require the client to re-explain their entire situation from scratch"],
+        answer: 1,
+        explanation: "A warm handover shares client context, confirms ownership, and makes the next step unmistakably clear — a bare contact-detail forward is not sufficient.",
+        law: "Staff Onboarding & Company Overview Training, Slide 11 — Clients move between pillars, often more than once",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "What is the primary distinction between onshore and offshore teams described in the training?",
+        options: ["Onshore teams handle client-facing engagement and case ownership; offshore teams handle coordinated operations, documentation follow-up, research, and administration", "Onshore teams only handle migration matters; offshore teams only handle admissions", "There is no functional difference — the split is purely geographic", "Offshore teams are client-facing; onshore teams are back-office only"],
+        answer: 0,
+        explanation: "Onshore teams own client-facing engagement, relationship management, and case ownership. Offshore teams provide coordinated operations, documentation follow-up, research, and administration.",
+        law: "Staff Onboarding & Company Overview Training, Slide 12 — One team: clear handovers and escalation",
+        tag: "onboarding", difficulty: "medium"
+      },
+      {
+        q: "What is the correct escalation chain when a matter needs escalation?",
+        options: ["Management → Relevant specialist → Team lead → RMA", "Team lead or senior adviser → Relevant specialist → RMA or compliance contact as needed → Management as required", "RMA → Team lead → Specialist → Management", "Any staff member may escalate directly to Management without going through a team lead"],
+        answer: 1,
+        explanation: "The escalation chain runs: Team lead or senior adviser → Relevant specialist → RMA or compliance contact as needed → Management as required.",
+        law: "Staff Onboarding & Company Overview Training, Slide 12 — One team: clear handovers and escalation",
+        tag: "onboarding", difficulty: "hard"
+      },
+      {
+        q: "Where should staff find the current, authoritative escalation contacts and sign-off points?",
+        options: ["Whatever contact list they personally remember", "The current organisation chart", "A general internet search", "The client's own recommendation"],
+        answer: 1,
+        explanation: "Staff must always use the current organisation chart for named escalation contacts and sign-off points, rather than relying on memory or outdated lists.",
+        law: "Staff Onboarding & Company Overview Training, Slide 12 — One team: clear handovers and escalation",
+        tag: "onboarding", difficulty: "easy"
+      },
+      {
+        q: "Which of the following best reflects the \"Stay within authority\" operational control?",
+        options: ["Making unsupported promises to close a client faster", "Not promising outcomes or making unsupported claims", "Giving personal opinions when unsure of the policy", "Deferring every decision to the client"],
+        answer: 1,
+        explanation: "Staying within authority means never promising outcomes or making unsupported claims — professional service is delivered consistently, and within approved authority.",
+        law: "Staff Onboarding & Company Overview Training, Slide 13 — Use controls to protect clients and Interlace",
+        tag: "onboarding", difficulty: "easy"
+      },
+      {
+        q: "If a skills-assessment query arrives with incomplete employment evidence, what is the approved next action (per the training's knowledge check)?",
+        options: ["Proceed with the assessment anyway and hope it is accepted", "Clarify the required evidence, record the gap, and coordinate next steps", "Tell the client the assessment is not possible and end the conversation", "Escalate immediately to a Registered Migration Agent without clarifying evidence first"],
+        answer: 1,
+        explanation: "The training's knowledge check for this exact scenario requires clarifying the required evidence, recording the gap, and coordinating next steps — not abandoning the query or skipping straight to escalation.",
+        law: "Staff Onboarding & Company Overview Training, Slide 14 — Knowledge check, Scenario 3",
+        tag: "onboarding", difficulty: "hard"
+      }
+    ]
   }
 ];
 

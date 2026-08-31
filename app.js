@@ -11,14 +11,14 @@ const MODULE_GROUPS = [
   { label: 'Partner Visa (Migration Consultant / Branch Manager)', ids: [1,2,3,4,5,11] },
   { label: 'Sales & Client Relations', ids: [6,7,8,9,10,22] },
   { label: 'Education Consultant', ids: [12,13,14,15,16,17] },
-  { label: 'Company Policy (mandatory for all)', ids: [18,19,20,21] },
+  { label: 'Company Policy (mandatory for all)', ids: [18,19,20,21,23] },
 ];
 const ROLE_DEFAULT_MODULES = {
-  'Migration Consultant': [1,2,3,4,5,11,18,19,20,21],
-  'Branch Manager': [1,2,3,4,5,11,18,19,20,21],
-  'Sales & Client Relations': [6,7,8,9,10,22,18,19,20,21],
-  'Education Consultant': [12,13,14,15,16,17,18,19,20,21],
-  'Policy Only': [18,19,20,21],
+  'Migration Consultant': [1,2,3,4,5,11,18,19,20,21,23],
+  'Branch Manager': [1,2,3,4,5,11,18,19,20,21,23],
+  'Sales & Client Relations': [6,7,8,9,10,22,18,19,20,21,23],
+  'Education Consultant': [12,13,14,15,16,17,18,19,20,21,23],
+  'Policy Only': [18,19,20,21,23],
   'None': [],
 };
 

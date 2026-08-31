@@ -606,6 +606,48 @@ const MANUALS = {
         body: "A DAMA is a formal agreement between the Australian Government and a state, territory, or regional authority (the Designated Area Representative, or DAR) that grants access to occupations beyond the standard skilled lists and concessions on age, English, salary, and skills-assessment requirements. There are 13 current DAMA regions across Australia. The framework has two tiers: Tier 1 is a 5-year Head Agreement between the Government and the DAR, setting region-wide terms; Tier 2 is a 5-year Individual Labour Agreement between the Government and a specific DAR-endorsed employer, allowing that employer to nominate workers under the DAMA's concessions. For an employer, the process is: confirm the business and occupation fall within a DAMA region, obtain DAR endorsement, then apply to the Department for the individual labour agreement."
       }
     ]
+  },
+
+  23: {
+    intro: "This module is mandatory for every Interlace Studies staff member. It covers who we are, our connected service model across four pillars, our onshore and offshore locations, and the consultation, handover, and escalation standards that keep every client's journey coherent no matter which team they touch.",
+    sections: [
+      {
+        heading: "Our Role & Connected Service Model",
+        body: "Interlace Studies helps clients connect study, career, migration, and recognised-skills pathways — starting with the client's aspiration and evidence, not with a pre-chosen product. Teams work across specialist pillars and locations, and our value comes from listening carefully, matching the right expertise, and keeping every step connected to the client's longer-term goal. Staff must always verify entity, ABN/ACN, and MARN details using current, internally approved records — never from memory or an outdated document."
+      },
+      {
+        heading: "Our Locations",
+        body: "Interlace Studies operates a multi-location team combining local client engagement with shared specialist support. Onshore Australian offices are in Brisbane, Parramatta, Perth, and Adelaide. Regional/offshore teams operate from Kathmandu, Bali, and Phnom Penh. This location diversity strengthens continuity, responsiveness, and service coordination across time zones."
+      },
+      {
+        heading: "Four Pillars, One Client Journey",
+        body: "Interlace Studies guides clients through connected decisions, not isolated services, across four pillars: Career Counselling (clarifying personal, academic, and professional direction), University & College Admissions (connecting suitable applicants with study options and requirements), Migration & Visa Services (supporting appropriate pathways through authorised processes), and Skills Assessment (preparing eligible clients for recognised assessment pathways). A client's journey is described as 'one journey' across these four connected pillars, not four separate transactions."
+      },
+      {
+        heading: "Start With the Client's Goal, Not the Service",
+        body: "The best first question to a client is never 'Which service do you need?' — it is 'What outcome are you aiming for?'. The consultation principle has three steps: Step 1, Listen to the goal — understand the outcome the client is aiming for; Step 2, Discover the facts — gather the relevant details through structured conversation; Step 3, Route wisely — choose the correct starting pillar, then remain alert to connected needs in the other three pillars."
+      },
+      {
+        heading: "Career Counselling in Practice",
+        body: "Career Counselling uses a structured, three-stage conversation to turn client ambition into a grounded next step. Stage 1, Explore the client profile — consider interests, experience, studies, evidence, constraints, and long-term direction. Stage 2, Align realistic options — match pathways to documented facts, client goals, timeframe, and appropriate requirements. Stage 3, Record and hand over clearly — document the key facts and the agreed next step so the next team can continue confidently. The outcome is a client journey that starts with clarity and stays consistent."
+      },
+      {
+        heading: "University & College Admissions in Practice",
+        body: "Admissions turns intent into a study pathway through three steps: Step 1, Match the study option — align the choice with the client's goals and profile. Step 2, Clarify requirements — explain evidence, milestones, and realistic next actions. Step 3, Confirm the next action — set expectations and maintain ownership through handover. Staff must coordinate early wherever the study choice connects to migration or skills-assessment needs, rather than treating admissions as an isolated transaction."
+      },
+      {
+        heading: "Migration & Visa Queries — Controlled Handling",
+        body: "Migration and visa work requires controlled handling in three steps: capture the query accurately using approved scripts, current information, and the client's documented circumstances, working strictly within approved authority; escalate to the right specialist by routing matters needing migration expertise through the approved internal path, without promising outcomes or giving client-specific guidance beyond the approved role; and secure the required sign-off by obtaining Registered Migration Agent (RMA) approval at the defined internal control points. The fixed sequence is: Approved information → Specialist escalation → Required RMA sign-off."
+      },
+      {
+        heading: "Skills Assessment in Practice",
+        body: "Skills Assessment conversations follow three steps: Confirm the facts — occupation, qualifications, employment evidence, and the client's objective. Explain readiness — clarify the required documents, stages, and the client's responsibilities. Coordinate the plan — link with the counselling and migration teams whenever the pathway connects to those pillars. Evidence quality gathered at this stage makes every subsequent conversation clearer and safer for everyone involved."
+      },
+      {
+        heading: "Handovers, Escalation & Operational Controls",
+        body: "Clients move between pillars, often more than once — every conversation can reveal the next connection in a client's broader journey. A warm handover shares client context, confirms ownership, and makes the next step unmistakably clear; a handover that merely forwards contact details is not sufficient. Onshore teams own client-facing engagement, relationship management, and case ownership; offshore teams provide coordinated operations, documentation follow-up, research, and administration. When a matter needs escalation, the chain is: Team lead or senior adviser → Relevant specialist → RMA or compliance contact as needed → Management as required — always using the current organisation chart for named contacts and sign-off points. Three operational controls protect clients and Interlace Studies: stay within authority (never promise outcomes or make unsupported claims), use approved resources (the current sales manual, guidance, ethics, and FAQ bank), and document promptly (record interactions, actions, and escalations in the approved system). When in doubt: pause, check the approved source, and escalate."
+      }
+    ]
   }
 };
 
